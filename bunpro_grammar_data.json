@@ -1,0 +1,3977 @@
+{
+    "N5": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "だ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0"
+                },
+                {
+                    "text": "です",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%99"
+                },
+                {
+                    "text": "は",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF"
+                },
+                {
+                    "text": "も",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82"
+                },
+                {
+                    "text": "これ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%82%8C"
+                },
+                {
+                    "text": "それ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C"
+                },
+                {
+                    "text": "あれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%82%8C"
+                },
+                {
+                    "text": "の",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE"
+                },
+                {
+                    "text": "いい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "い-Adjectives",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjectives"
+                },
+                {
+                    "text": "な-Adjectives",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-Adjectives"
+                },
+                {
+                    "text": "か",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 2,
+            "grammar_points": [
+                {
+                    "text": "が",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C"
+                },
+                {
+                    "text": "よ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88"
+                },
+                {
+                    "text": "ね",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AD"
+                },
+                {
+                    "text": "る-Verb (Dictionary)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-Verb%20%28Dictionary%29"
+                },
+                {
+                    "text": "う-Verb (Dictionary)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%86-Verb%20%28Dictionary%29"
+                },
+                {
+                    "text": "を",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92"
+                },
+                {
+                    "text": "る-Verb (Negative)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-Verb%20%28Negative%29"
+                },
+                {
+                    "text": "う-Verb (Negative)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%86-Verb%20%28Negative%29"
+                },
+                {
+                    "text": "と",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8"
+                },
+                {
+                    "text": "ここ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%93"
+                },
+                {
+                    "text": "そこ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%93"
+                },
+                {
+                    "text": "あそこ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%9D%E3%81%93"
+                }
+            ]
+        },
+        {
+            "lesson_num": 3,
+            "grammar_points": [
+                {
+                    "text": "で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7"
+                },
+                {
+                    "text": "に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB"
+                },
+                {
+                    "text": "か",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B"
+                },
+                {
+                    "text": "と",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8"
+                },
+                {
+                    "text": "でしょう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86"
+                },
+                {
+                    "text": "だろう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86"
+                },
+                {
+                    "text": "がある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "がいる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "この",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%AE"
+                },
+                {
+                    "text": "その",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE"
+                },
+                {
+                    "text": "あの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%AE"
+                },
+                {
+                    "text": "～んです・のです",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%82%93%E3%81%A7%E3%81%99%E3%83%BB%E3%81%AE%E3%81%A7%E3%81%99"
+                },
+                {
+                    "text": "い-Adjective (Past)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjective%20%28Past%29"
+                }
+            ]
+        },
+        {
+            "lesson_num": 4,
+            "grammar_points": [
+                {
+                    "text": "の",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE"
+                },
+                {
+                    "text": "い-Adjective + Noun",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjective%20%2B%20Noun"
+                },
+                {
+                    "text": "な-Adjective + Noun",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-Adjective%20%2B%20Noun"
+                },
+                {
+                    "text": "へいく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B8%E3%81%84%E3%81%8F"
+                },
+                {
+                    "text": "する",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "くる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%8B"
+                },
+                {
+                    "text": "る-Verb (Past)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-Verb%20%28Past%29"
+                },
+                {
+                    "text": "う-Verb (Past)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%86-Verb%20%28Past%29"
+                },
+                {
+                    "text": "好き",
+                    "link": "https://bunpro.jp/grammar_points/%E5%A5%BD%E3%81%8D"
+                },
+                {
+                    "text": "きらい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%82%89%E3%81%84"
+                },
+                {
+                    "text": "のがすき",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%99%E3%81%8D"
+                },
+                {
+                    "text": "がある + Noun",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%82%E3%82%8B%20%2B%20Noun"
+                },
+                {
+                    "text": "い-Adjectives くない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjectives%20%E3%81%8F%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 5,
+            "grammar_points": [
+                {
+                    "text": "で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7"
+                },
+                {
+                    "text": "ので",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7"
+                },
+                {
+                    "text": "から",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "から",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "けど・だけど",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9%E3%83%BB%E3%81%A0%E3%81%91%E3%81%A9"
+                },
+                {
+                    "text": "が",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C"
+                },
+                {
+                    "text": "る-Verb (Negative-Past)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-Verb%20%28Negative-Past%29"
+                },
+                {
+                    "text": "う-Verb (Negative-Past)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%86-Verb%20%28Negative-Past%29"
+                },
+                {
+                    "text": "Verb + て",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%A6"
+                },
+                {
+                    "text": "ている①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E2%91%A0"
+                },
+                {
+                    "text": "へ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B8"
+                },
+                {
+                    "text": "Verb + にいく",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%AB%E3%81%84%E3%81%8F"
+                }
+            ]
+        },
+        {
+            "lesson_num": 6,
+            "grammar_points": [
+                {
+                    "text": "誰",
+                    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0"
+                },
+                {
+                    "text": "い-Adjective (Predicate)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjective%20%28Predicate%29"
+                },
+                {
+                    "text": "な-Adjective だ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-Adjective%20%E3%81%A0"
+                },
+                {
+                    "text": "だった・でした",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%A3%E3%81%9F%E3%83%BB%E3%81%A7%E3%81%97%E3%81%9F"
+                },
+                {
+                    "text": "じゃない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "じゃなかった",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F"
+                },
+                {
+                    "text": "い-Adjective くなかった",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjective%20%E3%81%8F%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F"
+                },
+                {
+                    "text": "と",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8"
+                },
+                {
+                    "text": "って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "Verbs (Non-past)",
+                    "link": "https://bunpro.jp/grammar_points/Verbs%20%28Non-past%29"
+                },
+                {
+                    "text": "Verb［た・ている］+ Noun",
+                    "link": "https://bunpro.jp/grammar_points/Verb%EF%BC%BB%E3%81%9F%E3%83%BB%E3%81%A6%E3%81%84%E3%82%8B%EF%BC%BD%2B%20Noun"
+                },
+                {
+                    "text": "の",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE"
+                },
+                {
+                    "text": "な",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA"
+                }
+            ]
+        },
+        {
+            "lesson_num": 7,
+            "grammar_points": [
+                {
+                    "text": "だけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91"
+                },
+                {
+                    "text": "どれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%8C"
+                },
+                {
+                    "text": "どこ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%93"
+                },
+                {
+                    "text": "どの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%AE"
+                },
+                {
+                    "text": "ている②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E2%91%A1"
+                },
+                {
+                    "text": "てから",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "Verb + て+ B",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%A6%2B%20B"
+                },
+                {
+                    "text": "もう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%86"
+                },
+                {
+                    "text": "まだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0"
+                },
+                {
+                    "text": "まだ～ていません",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0%EF%BD%9E%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93"
+                },
+                {
+                    "text": "てもいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "たい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84"
+                },
+                {
+                    "text": "たり～たりする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%8A%EF%BD%9E%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 8,
+            "grammar_points": [
+                {
+                    "text": "けっこう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A3%E3%81%93%E3%81%86"
+                },
+                {
+                    "text": "たくさん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93"
+                },
+                {
+                    "text": "まえに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%88%E3%81%AB"
+                },
+                {
+                    "text": "くらい ①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%89%E3%81%84%20%E2%91%A0"
+                },
+                {
+                    "text": "Noun + まで",
+                    "link": "https://bunpro.jp/grammar_points/Noun%20%2B%20%E3%81%BE%E3%81%A7"
+                },
+                {
+                    "text": "Verb + まで",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%BE%E3%81%A7"
+                },
+                {
+                    "text": "すぎる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B"
+                },
+                {
+                    "text": "にする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "～になる・～くなる",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AB%E3%81%AA%E3%82%8B%E3%83%BB%EF%BD%9E%E3%81%8F%E3%81%AA%E3%82%8B"
+                },
+                {
+                    "text": "のなかで～がいちばん～",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7%EF%BD%9E%E3%81%8C%E3%81%84%E3%81%A1%E3%81%B0%E3%82%93%EF%BD%9E"
+                },
+                {
+                    "text": "より～のほうが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A%EF%BD%9E%E3%81%AE%E3%81%BB%E3%81%86%E3%81%8C"
+                },
+                {
+                    "text": "なにか・なにも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%AB%E3%81%8B%E3%83%BB%E3%81%AA%E3%81%AB%E3%82%82"
+                },
+                {
+                    "text": "誰か・どこか・誰も・どこも",
+                    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B%E3%83%BB%E3%81%A9%E3%81%93%E3%81%8B%E3%83%BB%E8%AA%B0%E3%82%82%E3%83%BB%E3%81%A9%E3%81%93%E3%82%82"
+                }
+            ]
+        },
+        {
+            "lesson_num": 9,
+            "grammar_points": [
+                {
+                    "text": "ましょう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86"
+                },
+                {
+                    "text": "～ましょうか",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%8B"
+                },
+                {
+                    "text": "ませんか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B"
+                },
+                {
+                    "text": "Verb + てもいい",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "てください",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84"
+                },
+                {
+                    "text": "ないでください",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84"
+                },
+                {
+                    "text": "てはいけない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "なくてはいけない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "なくてはならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "たほうがいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "ないほうがいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "なくちゃ・なきゃ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A1%E3%82%83%E3%83%BB%E3%81%AA%E3%81%8D%E3%82%83"
+                },
+                {
+                    "text": "や",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 10,
+            "grammar_points": [
+                {
+                    "text": "たことがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "ている③",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E2%91%A2"
+                },
+                {
+                    "text": "Adjective + て・Noun + で",
+                    "link": "https://bunpro.jp/grammar_points/Adjective%20%2B%20%E3%81%A6%E3%83%BBNoun%20%2B%20%E3%81%A7"
+                },
+                {
+                    "text": "Adjective + て + B",
+                    "link": "https://bunpro.jp/grammar_points/Adjective%20%2B%20%E3%81%A6%20%2B%20B"
+                },
+                {
+                    "text": "のがへた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%B8%E3%81%9F"
+                },
+                {
+                    "text": "のがじょうず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%98%E3%82%87%E3%81%86%E3%81%9A"
+                },
+                {
+                    "text": "Adjective + の(は)",
+                    "link": "https://bunpro.jp/grammar_points/Adjective%20%2B%20%E3%81%AE%28%E3%81%AF%29"
+                },
+                {
+                    "text": "あげる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%92%E3%82%8B"
+                },
+                {
+                    "text": "くれる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%8C%E3%82%8B"
+                },
+                {
+                    "text": "もらう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%82%89%E3%81%86"
+                },
+                {
+                    "text": "けれども",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%82%8C%E3%81%A9%E3%82%82"
+                },
+                {
+                    "text": "つもりだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0"
+                }
+            ]
+        }
+    ],
+    "N4": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "でも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "やすい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84%E3%81%99%E3%81%84"
+                },
+                {
+                    "text": "にくい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8F%E3%81%84"
+                },
+                {
+                    "text": "だんだん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%93%E3%81%A0%E3%82%93"
+                },
+                {
+                    "text": "どんどん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%93%E3%81%A9%E3%82%93"
+                },
+                {
+                    "text": "～ら",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%82%89"
+                },
+                {
+                    "text": "ていく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%8F"
+                },
+                {
+                    "text": "てくる ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8B%20"
+                },
+                {
+                    "text": "かた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%9F"
+                },
+                {
+                    "text": "だけで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7"
+                },
+                {
+                    "text": "だが・ですが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%8C%E3%83%BB%E3%81%A7%E3%81%99%E3%81%8C"
+                },
+                {
+                    "text": "なくて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6"
+                },
+                {
+                    "text": "なくて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6"
+                },
+                {
+                    "text": "ないで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7"
+                },
+                {
+                    "text": "Verb［れる・られる］",
+                    "link": "https://bunpro.jp/grammar_points/Verb%EF%BC%BB%E3%82%8C%E3%82%8B%E3%83%BB%E3%82%89%E3%82%8C%E3%82%8B%EF%BC%BD"
+                },
+                {
+                    "text": "他動詞・自動詞",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%96%E5%8B%95%E8%A9%9E%E3%83%BB%E8%87%AA%E5%8B%95%E8%A9%9E"
+                },
+                {
+                    "text": "なおす",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8A%E3%81%99"
+                },
+                {
+                    "text": "ということ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8"
+                }
+            ]
+        },
+        {
+            "lesson_num": 2,
+            "grammar_points": [
+                {
+                    "text": "とき",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8D"
+                },
+                {
+                    "text": "まず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9A"
+                },
+                {
+                    "text": "まで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A7"
+                },
+                {
+                    "text": "までに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A7%E3%81%AB"
+                },
+                {
+                    "text": "また",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9F"
+                },
+                {
+                    "text": "はじめる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%98%E3%82%81%E3%82%8B"
+                },
+                {
+                    "text": "おわる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%82%8F%E3%82%8B"
+                },
+                {
+                    "text": "ごろ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%94%E3%82%8D"
+                },
+                {
+                    "text": "あとで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%A8%E3%81%A7"
+                },
+                {
+                    "text": "ていた ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F%20"
+                },
+                {
+                    "text": "に (Frequency)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%20%28Frequency%29"
+                },
+                {
+                    "text": "とうとう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%86%E3%81%A8%E3%81%86"
+                },
+                {
+                    "text": "より",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A"
+                },
+                {
+                    "text": "ごとに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%94%E3%81%A8%E3%81%AB"
+                },
+                {
+                    "text": "なるべく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%8B%E3%81%B9%E3%81%8F"
+                },
+                {
+                    "text": "るところだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0"
+                },
+                {
+                    "text": "のに ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AB%20"
+                }
+            ]
+        },
+        {
+            "lesson_num": 3,
+            "grammar_points": [
+                {
+                    "text": "とおもう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8A%E3%82%82%E3%81%86"
+                },
+                {
+                    "text": "など",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%A9"
+                },
+                {
+                    "text": "みたい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BF%E3%81%9F%E3%81%84"
+                },
+                {
+                    "text": "こと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8"
+                },
+                {
+                    "text": "そう ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%20"
+                },
+                {
+                    "text": "さ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95"
+                },
+                {
+                    "text": "とか～とか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B%EF%BD%9E%E3%81%A8%E3%81%8B"
+                },
+                {
+                    "text": "そういう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%84%E3%81%86"
+                },
+                {
+                    "text": "Verb[よう]",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%82%88%E3%81%86%5D"
+                },
+                {
+                    "text": "ようだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A0"
+                },
+                {
+                    "text": "ぜんぜん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9C%E3%82%93%E3%81%9C%E3%82%93"
+                },
+                {
+                    "text": "かな",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AA"
+                },
+                {
+                    "text": "あまり～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0"
+                },
+                {
+                    "text": "なら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89"
+                },
+                {
+                    "text": "がる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%82%8B"
+                },
+                {
+                    "text": "がする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "たがる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8C%E3%82%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 4,
+            "grammar_points": [
+                {
+                    "text": "かもしれない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "みたいに・みたいな",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB%E3%83%BB%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA"
+                },
+                {
+                    "text": "そうに・そうな ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%AB%E3%83%BB%E3%81%9D%E3%81%86%E3%81%AA%20"
+                },
+                {
+                    "text": "のように・のような ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E3%83%BB%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%20"
+                },
+                {
+                    "text": "〜ようと思う・〜おうと思う",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%82%88%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86%E3%83%BB%E3%80%9C%E3%81%8A%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86"
+                },
+                {
+                    "text": "～にする・～くする",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AB%E3%81%99%E3%82%8B%E3%83%BB%EF%BD%9E%E3%81%8F%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "といい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "ようになる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B"
+                },
+                {
+                    "text": "まい～のように",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%84%EF%BD%9E%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB"
+                },
+                {
+                    "text": "じゃないか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%8B"
+                },
+                {
+                    "text": "らしい ①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%89%E3%81%97%E3%81%84%20%E2%91%A0"
+                },
+                {
+                    "text": "ておく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8A%E3%81%8F"
+                },
+                {
+                    "text": "がほしい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%BB%E3%81%97%E3%81%84"
+                },
+                {
+                    "text": "てほしい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84"
+                },
+                {
+                    "text": "ときいた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8D%E3%81%84%E3%81%9F"
+                },
+                {
+                    "text": "聞こえる",
+                    "link": "https://bunpro.jp/grammar_points/%E8%81%9E%E3%81%93%E3%81%88%E3%82%8B"
+                },
+                {
+                    "text": "見える",
+                    "link": "https://bunpro.jp/grammar_points/%E8%A6%8B%E3%81%88%E3%82%8B"
+                },
+                {
+                    "text": "だす",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%99"
+                }
+            ]
+        },
+        {
+            "lesson_num": 5,
+            "grammar_points": [
+                {
+                    "text": "～代",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E4%BB%A3"
+                },
+                {
+                    "text": "Number + も",
+                    "link": "https://bunpro.jp/grammar_points/Number%20%2B%20%E3%82%82"
+                },
+                {
+                    "text": "ほとんど",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A8%E3%82%93%E3%81%A9"
+                },
+                {
+                    "text": "そんな・こんな・あんな・どんな",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%93%E3%81%AA%E3%83%BB%E3%81%93%E3%82%93%E3%81%AA%E3%83%BB%E3%81%82%E3%82%93%E3%81%AA%E3%83%BB%E3%81%A9%E3%82%93%E3%81%AA"
+                },
+                {
+                    "text": "各",
+                    "link": "https://bunpro.jp/grammar_points/%E5%90%84"
+                },
+                {
+                    "text": "以上 ①",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A5%E4%B8%8A%20%E2%91%A0"
+                },
+                {
+                    "text": "いか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8B"
+                },
+                {
+                    "text": "いがい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8C%E3%81%84"
+                },
+                {
+                    "text": "ずっと ①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%A3%E3%81%A8%20%E2%91%A0"
+                },
+                {
+                    "text": "だいたい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84"
+                },
+                {
+                    "text": "のなかで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7"
+                },
+                {
+                    "text": "ように・ような",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%83%BB%E3%82%88%E3%81%86%E3%81%AA"
+                },
+                {
+                    "text": "Number/Amount + は",
+                    "link": "https://bunpro.jp/grammar_points/Number/Amount%20%2B%20%E3%81%AF"
+                },
+                {
+                    "text": "なん + counter + か",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%93%20%2B%20counter%20%2B%20%E3%81%8B"
+                },
+                {
+                    "text": "真(っ)",
+                    "link": "https://bunpro.jp/grammar_points/%E7%9C%9F%28%E3%81%A3%29"
+                },
+                {
+                    "text": "Number + しか〜ない",
+                    "link": "https://bunpro.jp/grammar_points/Number%20%2B%20%E3%81%97%E3%81%8B%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "～は～の一つだ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AF%EF%BD%9E%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%A0"
+                },
+                {
+                    "text": "～ない～はない",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AA%E3%81%84%EF%BD%9E%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "すこしも～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%93%E3%81%97%E3%82%82%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "すくなくない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8F%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 6,
+            "grammar_points": [
+                {
+                    "text": "ばあいは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%82%E3%81%84%E3%81%AF"
+                },
+                {
+                    "text": "Verb[て]",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%A6%5D"
+                },
+                {
+                    "text": "てよかった",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F"
+                },
+                {
+                    "text": "Verb［せる・させる］",
+                    "link": "https://bunpro.jp/grammar_points/Verb%EF%BC%BB%E3%81%9B%E3%82%8B%E3%83%BB%E3%81%95%E3%81%9B%E3%82%8B%EF%BC%BD"
+                },
+                {
+                    "text": "といってもいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "ても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "てしまう・ちゃう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%83%BB%E3%81%A1%E3%82%83%E3%81%86"
+                },
+                {
+                    "text": "Verb[て] + B",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%A6%5D%20%2B%20B"
+                },
+                {
+                    "text": "Causative-Passive",
+                    "link": "https://bunpro.jp/grammar_points/Causative-Passive"
+                },
+                {
+                    "text": "Verb[て]・Noun[で] + B",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%A6%5D%E3%83%BBNoun%5B%E3%81%A7%5D%20%2B%20B"
+                },
+                {
+                    "text": "てある ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%82%8B%20"
+                },
+                {
+                    "text": "ように～てほしい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%EF%BD%9E%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84"
+                },
+                {
+                    "text": "ているあいだに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E3%81%82%E3%81%84%E3%81%A0%E3%81%AB"
+                },
+                {
+                    "text": "なくてもいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "てみる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BF%E3%82%8B"
+                },
+                {
+                    "text": "てすみません",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93"
+                }
+            ]
+        },
+        {
+            "lesson_num": 7,
+            "grammar_points": [
+                {
+                    "text": "てあげる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B"
+                },
+                {
+                    "text": "てくれる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B"
+                },
+                {
+                    "text": "てもらう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%82%89%E3%81%86"
+                },
+                {
+                    "text": "なさい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%81%84"
+                },
+                {
+                    "text": "Verb[て] + B",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%A6%5D%20%2B%20B"
+                },
+                {
+                    "text": "Verb[ないで]",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%AA%E3%81%84%E3%81%A7%5D"
+                },
+                {
+                    "text": "てくれてありがとう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%A6%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86"
+                },
+                {
+                    "text": "てくれない・てもらえない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84%E3%83%BB%E3%81%A6%E3%82%82%E3%82%89%E3%81%88%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "～のだろうか",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AE%E3%81%A0%E3%82%8D%E3%81%86%E3%81%8B"
+                },
+                {
+                    "text": "お～になる ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%EF%BD%9E%E3%81%AB%E3%81%AA%E3%82%8B%20"
+                },
+                {
+                    "text": "なさる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%82%8B"
+                },
+                {
+                    "text": "お～ください ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%EF%BD%9E%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%20"
+                },
+                {
+                    "text": "いらっしゃる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%82%89%E3%81%A3%E3%81%97%E3%82%83%E3%82%8B"
+                },
+                {
+                    "text": "ございます",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99"
+                },
+                {
+                    "text": "でございます",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99"
+                },
+                {
+                    "text": "お〜する",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%80%9C%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "いたす",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%9F%E3%81%99"
+                },
+                {
+                    "text": "ていただけませんか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F%E3%81%A0%E3%81%91%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 8,
+            "grammar_points": [
+                {
+                    "text": "たら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "ほかに(も)・ほか(に)は",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%8B%E3%81%AB%28%E3%82%82%29%E3%83%BB%E3%81%BB%E3%81%8B%28%E3%81%AB%29%E3%81%AF"
+                },
+                {
+                    "text": "がひつよう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86"
+                },
+                {
+                    "text": "そんなに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%93%E3%81%AA%E3%81%AB"
+                },
+                {
+                    "text": "ひつようがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "たとえば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%88%E3%81%B0"
+                },
+                {
+                    "text": "れる・られる (Potential)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8C%E3%82%8B%E3%83%BB%E3%82%89%E3%82%8C%E3%82%8B%20%28Potential%29"
+                },
+                {
+                    "text": "んだけど・んですが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9%E3%83%BB%E3%82%93%E3%81%A7%E3%81%99%E3%81%8C"
+                },
+                {
+                    "text": "はずだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%A0"
+                },
+                {
+                    "text": "かどうか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B"
+                },
+                {
+                    "text": "と",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8"
+                },
+                {
+                    "text": "ないと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A8"
+                },
+                {
+                    "text": "はずがない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "しか～ない ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B%EF%BD%9E%E3%81%AA%E3%81%84%20"
+                },
+                {
+                    "text": "だけでなく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AA%E3%81%8F"
+                },
+                {
+                    "text": "ことができる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B"
+                },
+                {
+                    "text": "かい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%84"
+                },
+                {
+                    "text": "もし",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%97"
+                }
+            ]
+        },
+        {
+            "lesson_num": 9,
+            "grammar_points": [
+                {
+                    "text": "し～し ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%EF%BD%9E%E3%81%97%20"
+                },
+                {
+                    "text": "でできる・からできる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B%E3%83%BB%E3%81%8B%E3%82%89%E3%81%A7%E3%81%8D%E3%82%8B"
+                },
+                {
+                    "text": "ながら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89"
+                },
+                {
+                    "text": "たところだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0"
+                },
+                {
+                    "text": "ているところだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0"
+                },
+                {
+                    "text": "と～と、どちらが ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%EF%BD%9E%E3%81%A8%E3%80%81%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8C%20"
+                },
+                {
+                    "text": "ようにする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "なければいけない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "なければならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "つづける",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A5%E3%81%91%E3%82%8B"
+                },
+                {
+                    "text": "ようにいう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%84%E3%81%86"
+                },
+                {
+                    "text": "よていだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%A6%E3%81%84%E3%81%A0"
+                },
+                {
+                    "text": "ようにいのる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%84%E3%81%AE%E3%82%8B"
+                },
+                {
+                    "text": "たばかり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A"
+                },
+                {
+                    "text": "化する",
+                    "link": "https://bunpro.jp/grammar_points/%E5%8C%96%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "命令形",
+                    "link": "https://bunpro.jp/grammar_points/%E5%91%BD%E4%BB%A4%E5%BD%A2"
+                }
+            ]
+        },
+        {
+            "lesson_num": 10,
+            "grammar_points": [
+                {
+                    "text": "ように",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB"
+                },
+                {
+                    "text": "かしら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%97%E3%82%89"
+                },
+                {
+                    "text": "らしい ②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%89%E3%81%97%E3%81%84%20%E2%91%A1"
+                },
+                {
+                    "text": "にみえる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%BF%E3%81%88%E3%82%8B"
+                },
+                {
+                    "text": "とみえる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%BF%E3%81%88%E3%82%8B"
+                },
+                {
+                    "text": "風",
+                    "link": "https://bunpro.jp/grammar_points/%E9%A2%A8"
+                },
+                {
+                    "text": "がみられる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%BF%E3%82%89%E3%82%8C%E3%82%8B"
+                },
+                {
+                    "text": "にきがつく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8D%E3%81%8C%E3%81%A4%E3%81%8F"
+                },
+                {
+                    "text": "〜でも 〜でも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%81%A7%E3%82%82%20%E3%80%9C%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "それに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AB"
+                },
+                {
+                    "text": "それで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7"
+                },
+                {
+                    "text": "Question-phrase + か",
+                    "link": "https://bunpro.jp/grammar_points/Question-phrase%20%2B%20%E3%81%8B"
+                },
+                {
+                    "text": "それでも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "たらどう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%A9%E3%81%86"
+                },
+                {
+                    "text": "とかんがえられている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B%E3%82%93%E3%81%8C%E3%81%88%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "とされている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "といわれている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "ばよかった",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F"
+                }
+            ]
+        }
+    ],
+    "N3": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "ばいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "たらいい・といい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%84%E3%81%84%E3%83%BB%E3%81%A8%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "中",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%AD"
+                },
+                {
+                    "text": "の間に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E9%96%93%E3%81%AB"
+                },
+                {
+                    "text": "うちに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%86%E3%81%A1%E3%81%AB"
+                },
+                {
+                    "text": "ないうちに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%86%E3%81%A1%E3%81%AB"
+                },
+                {
+                    "text": "べき",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8D"
+                },
+                {
+                    "text": "べきではない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": " なかなか",
+                    "link": "https://bunpro.jp/grammar_points/%20%E3%81%AA%E3%81%8B%E3%81%AA%E3%81%8B"
+                },
+                {
+                    "text": "あまり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A"
+                },
+                {
+                    "text": "なかなか～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8B%E3%81%AA%E3%81%8B%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "によると・によれば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%88%E3%82%8B%E3%81%A8%E3%83%BB%E3%81%AB%E3%82%88%E3%82%8C%E3%81%B0"
+                },
+                {
+                    "text": "によって・による",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E3%83%BB%E3%81%AB%E3%82%88%E3%82%8B"
+                },
+                {
+                    "text": "全く～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E5%85%A8%E3%81%8F%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ことだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%A0"
+                },
+                {
+                    "text": "そうだ ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%A0%20"
+                },
+                {
+                    "text": "すると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "そうすると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%99%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "のはXの方だ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AFX%E3%81%AE%E6%96%B9%E3%81%A0"
+                },
+                {
+                    "text": "Noun＋型",
+                    "link": "https://bunpro.jp/grammar_points/Noun%EF%BC%8B%E5%9E%8B"
+                },
+                {
+                    "text": "てごらん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%94%E3%82%89%E3%82%93"
+                }
+            ]
+        },
+        {
+            "lesson_num": 2,
+            "grammar_points": [
+                {
+                    "text": "Particle + の",
+                    "link": "https://bunpro.jp/grammar_points/Particle%20%2B%20%E3%81%AE"
+                },
+                {
+                    "text": "である",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "ところが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%8C"
+                },
+                {
+                    "text": "ところで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A7"
+                },
+                {
+                    "text": "ほど",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A9"
+                },
+                {
+                    "text": "ば〜ほど",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%80%9C%E3%81%BB%E3%81%A9"
+                },
+                {
+                    "text": "ほど～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A9%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "では・それでは・じゃあ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%AF%E3%83%BB%E3%81%9D%E3%82%8C%E3%81%A7%E3%81%AF%E3%83%BB%E3%81%98%E3%82%83%E3%81%82"
+                },
+                {
+                    "text": "のに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AB"
+                },
+                {
+                    "text": "ため(に)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%81%28%E3%81%AB%29"
+                },
+                {
+                    "text": "ために",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%81%E3%81%AB"
+                },
+                {
+                    "text": "という",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86"
+                },
+                {
+                    "text": "ということだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A0"
+                },
+                {
+                    "text": "というのは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%AE%E3%81%AF"
+                },
+                {
+                    "text": "的",
+                    "link": "https://bunpro.jp/grammar_points/%E7%9A%84"
+                },
+                {
+                    "text": "もの・もん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%83%BB%E3%82%82%E3%82%93"
+                },
+                {
+                    "text": "ものだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A0"
+                },
+                {
+                    "text": "最中に",
+                    "link": "https://bunpro.jp/grammar_points/%E6%9C%80%E4%B8%AD%E3%81%AB"
+                },
+                {
+                    "text": "上で",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%8A%E3%81%A7"
+                },
+                {
+                    "text": "おかげで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%8B%E3%81%92%E3%81%A7"
+                },
+                {
+                    "text": "にもとづいて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%82%E3%81%A8%E3%81%A5%E3%81%84%E3%81%A6"
+                },
+                {
+                    "text": "点",
+                    "link": "https://bunpro.jp/grammar_points/%E7%82%B9"
+                }
+            ]
+        },
+        {
+            "lesson_num": 3,
+            "grammar_points": [
+                {
+                    "text": "なぜなら〜から",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%9C%E3%81%AA%E3%82%89%E3%80%9C%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "こそ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%9D"
+                },
+                {
+                    "text": "からこそ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%93%E3%81%9D"
+                },
+                {
+                    "text": "ばかり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A"
+                },
+                {
+                    "text": "ばかりだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%A0"
+                },
+                {
+                    "text": "ばかりに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "ことがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "ことにする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AB%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "ことなの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AA%E3%81%AE"
+                },
+                {
+                    "text": "ことになる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%82%8B"
+                },
+                {
+                    "text": "～は～で有名",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AF%EF%BD%9E%E3%81%A7%E6%9C%89%E5%90%8D"
+                },
+                {
+                    "text": "ことはない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": " ～と言っても",
+                    "link": "https://bunpro.jp/grammar_points/%20%EF%BD%9E%E3%81%A8%E8%A8%80%E3%81%A3%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "といえば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%88%E3%81%B0"
+                },
+                {
+                    "text": "合う",
+                    "link": "https://bunpro.jp/grammar_points/%E5%90%88%E3%81%86"
+                },
+                {
+                    "text": "に合わせて・に合った",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%83%BB%E3%81%AB%E5%90%88%E3%81%A3%E3%81%9F"
+                },
+                {
+                    "text": "について",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+                },
+                {
+                    "text": "～(の)姿",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%28%E3%81%AE%29%E5%A7%BF"
+                },
+                {
+                    "text": "と言える",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E8%A8%80%E3%81%88%E3%82%8B"
+                },
+                {
+                    "text": "ちゃんと・きちんと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E3%83%BB%E3%81%8D%E3%81%A1%E3%82%93%E3%81%A8"
+                },
+                {
+                    "text": "そのため(に)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE%E3%81%9F%E3%82%81%28%E3%81%AB%29"
+                },
+                {
+                    "text": "その結果",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE%E7%B5%90%E6%9E%9C"
+                }
+            ]
+        },
+        {
+            "lesson_num": 4,
+            "grammar_points": [
+                {
+                    "text": "に比べて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E6%AF%94%E3%81%B9%E3%81%A6"
+                },
+                {
+                    "text": "どんなに〜ても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%93%E3%81%AA%E3%81%AB%E3%80%9C%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "いくら〜でも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8F%E3%82%89%E3%80%9C%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "〜かは〜によって違う",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%81%8B%E3%81%AF%E3%80%9C%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E9%81%95%E3%81%86"
+                },
+                {
+                    "text": "かなり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AA%E3%82%8A"
+                },
+                {
+                    "text": "あまりに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "わけだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%A0"
+                },
+                {
+                    "text": "わけではない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "と同時に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E5%90%8C%E6%99%82%E3%81%AB"
+                },
+                {
+                    "text": "ところだった ①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0%E3%81%A3%E3%81%9F%20%E2%91%A0"
+                },
+                {
+                    "text": "だって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "んだって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%A0%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "関係がある",
+                    "link": "https://bunpro.jp/grammar_points/%E9%96%A2%E4%BF%82%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "に関する・に関して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%BB%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "に対して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "くらい ②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%89%E3%81%84%20%E2%91%A1"
+                },
+                {
+                    "text": "は～くらいです",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%EF%BD%9E%E3%81%8F%E3%82%89%E3%81%84%E3%81%A7%E3%81%99"
+                },
+                {
+                    "text": "さ - Interjection",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%20-%20Interjection"
+                },
+                {
+                    "text": "さ - Filler",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%20-%20Filler"
+                },
+                {
+                    "text": "さ - Casual よ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%20-%20Casual%20%E3%82%88"
+                },
+                {
+                    "text": "それぞれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%9E%E3%82%8C"
+                }
+            ]
+        },
+        {
+            "lesson_num": 5,
+            "grammar_points": [
+                {
+                    "text": "まま(に)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%BE%28%E3%81%AB%29"
+                },
+                {
+                    "text": "そこで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%93%E3%81%A7"
+                },
+                {
+                    "text": "しかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "てもかまわない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%8B%E3%81%BE%E3%82%8F%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "～ても～なくても",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%A6%E3%82%82%EF%BD%9E%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "んじゃない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "わけがない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "としたら・とすれば・とすると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%97%E3%81%9F%E3%82%89%E3%83%BB%E3%81%A8%E3%81%99%E3%82%8C%E3%81%B0%E3%83%BB%E3%81%A8%E3%81%99%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "として",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "にしては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "にしても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "～というのは事実だ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%A8%E3%81%84%E3%81%86%E3%81%AE%E3%81%AF%E4%BA%8B%E5%AE%9F%E3%81%A0"
+                },
+                {
+                    "text": "から言うと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E8%A8%80%E3%81%86%E3%81%A8"
+                },
+                {
+                    "text": "に取って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%8F%96%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "ことから",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "というより",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%82%88%E3%82%8A"
+                },
+                {
+                    "text": "はもちろん",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%82%82%E3%81%A1%E3%82%8D%E3%82%93"
+                },
+                {
+                    "text": "をはじめ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%81%AF%E3%81%98%E3%82%81"
+                },
+                {
+                    "text": "て初めて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E5%88%9D%E3%82%81%E3%81%A6"
+                },
+                {
+                    "text": "さえ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%88"
+                },
+                {
+                    "text": "さえ〜ば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%88%E3%80%9C%E3%81%B0"
+                },
+                {
+                    "text": "たものだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%82%E3%81%AE%E3%81%A0"
+                }
+            ]
+        },
+        {
+            "lesson_num": 6,
+            "grammar_points": [
+                {
+                    "text": "さて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%A6"
+                },
+                {
+                    "text": "むしろ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%80%E3%81%97%E3%82%8D"
+                },
+                {
+                    "text": "つまり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%BE%E3%82%8A"
+                },
+                {
+                    "text": "即ち",
+                    "link": "https://bunpro.jp/grammar_points/%E5%8D%B3%E3%81%A1"
+                },
+                {
+                    "text": "却って",
+                    "link": "https://bunpro.jp/grammar_points/%E5%8D%B4%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "まるで…ようだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%82%8B%E3%81%A7%E2%80%A6%E3%82%88%E3%81%86%E3%81%A0"
+                },
+                {
+                    "text": "ような気がする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AA%E6%B0%97%E3%81%8C%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "とても～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%A6%E3%82%82%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "別に〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E5%88%A5%E3%81%AB%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ばかりでなく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%A7%E3%81%AA%E3%81%8F"
+                },
+                {
+                    "text": "ではなくて・じゃなくて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%81%A6%E3%83%BB%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6"
+                },
+                {
+                    "text": "だけでなく(て)～も",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AA%E3%81%8F%28%E3%81%A6%29%EF%BD%9E%E3%82%82"
+                },
+                {
+                    "text": "だけしか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%97%E3%81%8B"
+                },
+                {
+                    "text": "は言うまでもない ①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E8%A8%80%E3%81%86%E3%81%BE%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84%20%E2%91%A0"
+                },
+                {
+                    "text": "決して〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E6%B1%BA%E3%81%97%E3%81%A6%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "わけにはいかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%AB%E3%81%AF%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "〜ようとしない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "もしかしたら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%97%E3%81%8B%E3%81%97%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "たとえ〜ても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%88%E3%80%9C%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "ことに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AB"
+                },
+                {
+                    "text": "ことか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8B"
+                },
+                {
+                    "text": "～かというと ①",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%8B%E3%81%A8%E3%81%84%E3%81%86%E3%81%A8%20%E2%91%A0"
+                },
+                {
+                    "text": "～かというと ②",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%8B%E3%81%A8%E3%81%84%E3%81%86%E3%81%A8%20%E2%91%A1"
+                },
+                {
+                    "text": "で言うと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E8%A8%80%E3%81%86%E3%81%A8"
+                }
+            ]
+        },
+        {
+            "lesson_num": 7,
+            "grammar_points": [
+                {
+                    "text": "～ずつ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%9A%E3%81%A4"
+                },
+                {
+                    "text": "ずっと ②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%A3%E3%81%A8%20%E2%91%A1"
+                },
+                {
+                    "text": "だらけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%89%E3%81%91"
+                },
+                {
+                    "text": "もっとも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82"
+                },
+                {
+                    "text": "再び",
+                    "link": "https://bunpro.jp/grammar_points/%E5%86%8D%E3%81%B3"
+                },
+                {
+                    "text": "み",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BF"
+                },
+                {
+                    "text": "と同じくらい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E5%90%8C%E3%81%98%E3%81%8F%E3%82%89%E3%81%84"
+                },
+                {
+                    "text": "と同じで・と違って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E5%90%8C%E3%81%98%E3%81%A7%E3%83%BB%E3%81%A8%E9%81%95%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "と並んで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E4%B8%A6%E3%82%93%E3%81%A7"
+                },
+                {
+                    "text": "に違いない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%81%95%E3%81%84%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "当たり",
+                    "link": "https://bunpro.jp/grammar_points/%E5%BD%93%E3%81%9F%E3%82%8A"
+                },
+                {
+                    "text": "に当たる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%BD%93%E3%81%9F%E3%82%8B"
+                },
+                {
+                    "text": "に限る",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%99%90%E3%82%8B"
+                },
+                {
+                    "text": "とは限らない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AF%E9%99%90%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "めったに〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%81%E3%81%A3%E3%81%9F%E3%81%AB%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "割に",
+                    "link": "https://bunpro.jp/grammar_points/%E5%89%B2%E3%81%AB"
+                },
+                {
+                    "text": "Verb[volitional]とする",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5Bvolitional%5D%E3%81%A8%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "Verb[volitional] + としたが",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5Bvolitional%5D%20%2B%20%E3%81%A8%E3%81%97%E3%81%9F%E3%81%8C"
+                },
+                {
+                    "text": "言うまでもない ②",
+                    "link": "https://bunpro.jp/grammar_points/%E8%A8%80%E3%81%86%E3%81%BE%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84%20%E2%91%A1"
+                },
+                {
+                    "text": "そうもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ないことはない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 8,
+            "grammar_points": [
+                {
+                    "text": "なんか・なんて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%93%E3%81%8B%E3%83%BB%E3%81%AA%E3%82%93%E3%81%A6"
+                },
+                {
+                    "text": "又〜も",
+                    "link": "https://bunpro.jp/grammar_points/%E5%8F%88%E3%80%9C%E3%82%82"
+                },
+                {
+                    "text": "ついでに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%84%E3%81%A7%E3%81%AB"
+                },
+                {
+                    "text": "と共に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E5%85%B1%E3%81%AB"
+                },
+                {
+                    "text": "につれて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%82%8C%E3%81%A6"
+                },
+                {
+                    "text": "直ちに",
+                    "link": "https://bunpro.jp/grammar_points/%E7%9B%B4%E3%81%A1%E3%81%AB"
+                },
+                {
+                    "text": "たとたんに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%9F%E3%82%93%E3%81%AB"
+                },
+                {
+                    "text": "おきに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%8D%E3%81%AB"
+                },
+                {
+                    "text": "たびに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B3%E3%81%AB"
+                },
+                {
+                    "text": "あるいは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF"
+                },
+                {
+                    "text": "ながらも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89%E3%82%82"
+                },
+                {
+                    "text": "において・における",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6%E3%83%BB%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B"
+                },
+                {
+                    "text": "第一",
+                    "link": "https://bunpro.jp/grammar_points/%E7%AC%AC%E4%B8%80"
+                },
+                {
+                    "text": "ますます",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%99%E3%81%BE%E3%81%99"
+                },
+                {
+                    "text": "一方だ",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E6%96%B9%E3%81%A0"
+                },
+                {
+                    "text": "一方で",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E6%96%B9%E3%81%A7"
+                },
+                {
+                    "text": "遂に",
+                    "link": "https://bunpro.jp/grammar_points/%E9%81%82%E3%81%AB"
+                },
+                {
+                    "text": "すでに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%A7%E3%81%AB"
+                },
+                {
+                    "text": "ずに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB"
+                },
+                {
+                    "text": "ずにはいられない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB%E3%81%AF%E3%81%84%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "なし",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%97"
+                },
+                {
+                    "text": "あり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%82%8A"
+                },
+                {
+                    "text": "考えられない",
+                    "link": "https://bunpro.jp/grammar_points/%E8%80%83%E3%81%88%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 9,
+            "grammar_points": [
+                {
+                    "text": "必ずしも ",
+                    "link": "https://bunpro.jp/grammar_points/%E5%BF%85%E3%81%9A%E3%81%97%E3%82%82%20"
+                },
+                {
+                    "text": "連用形",
+                    "link": "https://bunpro.jp/grammar_points/%E9%80%A3%E7%94%A8%E5%BD%A2"
+                },
+                {
+                    "text": "向き",
+                    "link": "https://bunpro.jp/grammar_points/%E5%90%91%E3%81%8D"
+                },
+                {
+                    "text": "向け",
+                    "link": "https://bunpro.jp/grammar_points/%E5%90%91%E3%81%91"
+                },
+                {
+                    "text": "上がる・上げる",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%8A%E3%81%8C%E3%82%8B%E3%83%BB%E4%B8%8A%E3%81%92%E3%82%8B"
+                },
+                {
+                    "text": "切る",
+                    "link": "https://bunpro.jp/grammar_points/%E5%88%87%E3%82%8B"
+                },
+                {
+                    "text": "切れない",
+                    "link": "https://bunpro.jp/grammar_points/%E5%88%87%E3%82%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "きり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%82%8A"
+                },
+                {
+                    "text": "かけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%91"
+                },
+                {
+                    "text": "にかけて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%91%E3%81%A6"
+                },
+                {
+                    "text": "たて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A6"
+                },
+                {
+                    "text": "込む ①",
+                    "link": "https://bunpro.jp/grammar_points/%E8%BE%BC%E3%82%80%20%E2%91%A0"
+                },
+                {
+                    "text": "込む ②",
+                    "link": "https://bunpro.jp/grammar_points/%E8%BE%BC%E3%82%80%20%E2%91%A1"
+                },
+                {
+                    "text": "ふりをする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B5%E3%82%8A%E3%82%92%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "できれば・できたら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%8D%E3%82%8C%E3%81%B0%E3%83%BB%E3%81%A7%E3%81%8D%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "でよければ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%88%E3%81%91%E3%82%8C%E3%81%B0"
+                },
+                {
+                    "text": "次第",
+                    "link": "https://bunpro.jp/grammar_points/%E6%AC%A1%E7%AC%AC"
+                },
+                {
+                    "text": "とおり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8A%E3%82%8A"
+                },
+                {
+                    "text": "でもある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "どうしても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "もしも～なら・もしも～でも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%97%E3%82%82%EF%BD%9E%E3%81%AA%E3%82%89%E3%83%BB%E3%82%82%E3%81%97%E3%82%82%EF%BD%9E%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "同士",
+                    "link": "https://bunpro.jp/grammar_points/%E5%90%8C%E5%A3%AB"
+                }
+            ]
+        },
+        {
+            "lesson_num": 10,
+            "grammar_points": [
+                {
+                    "text": "がたい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%9F%E3%81%84"
+                },
+                {
+                    "text": "まさか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%95%E3%81%8B"
+                },
+                {
+                    "text": "前者は・後者は",
+                    "link": "https://bunpro.jp/grammar_points/%E5%89%8D%E8%80%85%E3%81%AF%E3%83%BB%E5%BE%8C%E8%80%85%E3%81%AF"
+                },
+                {
+                    "text": "つい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%84"
+                },
+                {
+                    "text": "せいで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9B%E3%81%84%E3%81%A7"
+                },
+                {
+                    "text": "くせに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%81%9B%E3%81%AB"
+                },
+                {
+                    "text": "がち",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%A1"
+                },
+                {
+                    "text": "ぎみ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8E%E3%81%BF"
+                },
+                {
+                    "text": "っぽい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%BD%E3%81%84"
+                },
+                {
+                    "text": "っぱなし",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%B1%E3%81%AA%E3%81%97"
+                },
+                {
+                    "text": "わざわざ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%96%E3%82%8F%E3%81%96"
+                },
+                {
+                    "text": "一体",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E4%BD%93"
+                },
+                {
+                    "text": "折角",
+                    "link": "https://bunpro.jp/grammar_points/%E6%8A%98%E8%A7%92"
+                },
+                {
+                    "text": "っけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%91"
+                },
+                {
+                    "text": "代わりに",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A3%E3%82%8F%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "に代わって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E4%BB%A3%E3%82%8F%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "どころか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%93%E3%82%8D%E3%81%8B"
+                },
+                {
+                    "text": "という理由で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E7%90%86%E7%94%B1%E3%81%A7"
+                },
+                {
+                    "text": "～は～となっている",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AF%EF%BD%9E%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "左右する",
+                    "link": "https://bunpro.jp/grammar_points/%E5%B7%A6%E5%8F%B3%E3%81%99%E3%82%8B"
+                }
+            ]
+        }
+    ],
+    "N2": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "得る・得る",
+                    "link": "https://bunpro.jp/grammar_points/%E5%BE%97%E3%82%8B%E3%83%BB%E5%BE%97%E3%82%8B"
+                },
+                {
+                    "text": "〜得ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E5%BE%97%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ざるを得ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%96%E3%82%8B%E3%82%92%E5%BE%97%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "～ざる",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%96%E3%82%8B"
+                },
+                {
+                    "text": "つもりで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A7"
+                },
+                {
+                    "text": "どうせ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%9B"
+                },
+                {
+                    "text": "せめて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9B%E3%82%81%E3%81%A6"
+                },
+                {
+                    "text": "どうやら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%82%84%E3%82%89"
+                },
+                {
+                    "text": "よりほかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A%E3%81%BB%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "確かに",
+                    "link": "https://bunpro.jp/grammar_points/%E7%A2%BA%E3%81%8B%E3%81%AB"
+                },
+                {
+                    "text": "一応 ①",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E5%BF%9C%20%E2%91%A0"
+                },
+                {
+                    "text": "一応 ②",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E5%BF%9C%20%E2%91%A1"
+                },
+                {
+                    "text": "に相違ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E7%9B%B8%E9%81%95%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "万が一",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%87%E3%81%8C%E4%B8%80"
+                },
+                {
+                    "text": "ようがない・ようもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%8C%E3%81%AA%E3%81%84%E3%83%BB%E3%82%88%E3%81%86%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "にほかならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%BB%E3%81%8B%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "っこない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%93%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "それなら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AA%E3%82%89"
+                },
+                {
+                    "text": "ものなら①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%AA%E3%82%89%E2%91%A0"
+                },
+                {
+                    "text": "～を～に任せる",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%82%92%EF%BD%9E%E3%81%AB%E4%BB%BB%E3%81%9B%E3%82%8B"
+                },
+                {
+                    "text": "活かす",
+                    "link": "https://bunpro.jp/grammar_points/%E6%B4%BB%E3%81%8B%E3%81%99"
+                },
+                {
+                    "text": "おおよそ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%8A%E3%82%88%E3%81%9D"
+                },
+                {
+                    "text": "まい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 2,
+            "grammar_points": [
+                {
+                    "text": "上",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%8A"
+                },
+                {
+                    "text": "上に",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%8A%E3%81%AB"
+                },
+                {
+                    "text": "以上 ②",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A5%E4%B8%8A%20%E2%91%A1"
+                },
+                {
+                    "text": "以上に",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A5%E4%B8%8A%E3%81%AB"
+                },
+                {
+                    "text": "途中に・途中で",
+                    "link": "https://bunpro.jp/grammar_points/%E9%80%94%E4%B8%AD%E3%81%AB%E3%83%BB%E9%80%94%E4%B8%AD%E3%81%A7"
+                },
+                {
+                    "text": "中を",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%AD%E3%82%92"
+                },
+                {
+                    "text": "を中心に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E4%B8%AD%E5%BF%83%E3%81%AB"
+                },
+                {
+                    "text": "その上",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE%E4%B8%8A"
+                },
+                {
+                    "text": "上は",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%8A%E3%81%AF"
+                },
+                {
+                    "text": "の下で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E4%B8%8B%E3%81%A7"
+                },
+                {
+                    "text": "後(の) Noun",
+                    "link": "https://bunpro.jp/grammar_points/%E5%BE%8C%28%E3%81%AE%29%20Noun"
+                },
+                {
+                    "text": "手前",
+                    "link": "https://bunpro.jp/grammar_points/%E6%89%8B%E5%89%8D"
+                },
+                {
+                    "text": "を巡って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E5%B7%A1%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "にわたって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%8F%E3%81%9F%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "に沿って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E6%B2%BF%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "た末・の末",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E6%9C%AB%E3%83%BB%E3%81%AE%E6%9C%AB"
+                },
+                {
+                    "text": "にしたがって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%9F%E3%81%8C%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "に伴って・に伴い",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E4%BC%B4%E3%81%A3%E3%81%A6%E3%83%BB%E3%81%AB%E4%BC%B4%E3%81%84"
+                },
+                {
+                    "text": "につき",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%81%8D"
+                },
+                {
+                    "text": "につけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%81%91"
+                },
+                {
+                    "text": "にかかわる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%8B%E3%82%8F%E3%82%8B"
+                },
+                {
+                    "text": "に向かって・に向けて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%90%91%E3%81%8B%E3%81%A3%E3%81%A6%E3%83%BB%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6"
+                },
+                {
+                    "text": "が気になる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E6%B0%97%E3%81%AB%E3%81%AA%E3%82%8B"
+                },
+                {
+                    "text": "に気をつける",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E6%B0%97%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 3,
+            "grammar_points": [
+                {
+                    "text": "も構わず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E6%A7%8B%E3%82%8F%E3%81%9A"
+                },
+                {
+                    "text": "かねる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AD%E3%82%8B"
+                },
+                {
+                    "text": "かねない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AD%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "を除いて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E9%99%A4%E3%81%84%E3%81%A6"
+                },
+                {
+                    "text": "にかかわらず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%8B%E3%82%8F%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "にもかかわらず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%82%E3%81%8B%E3%81%8B%E3%82%8F%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "に限って",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%99%90%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "に限らず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%99%90%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "なお①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8A%E2%91%A0"
+                },
+                {
+                    "text": "なお②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8A%E2%91%A1"
+                },
+                {
+                    "text": "限り",
+                    "link": "https://bunpro.jp/grammar_points/%E9%99%90%E3%82%8A"
+                },
+                {
+                    "text": "次第だ・次第で",
+                    "link": "https://bunpro.jp/grammar_points/%E6%AC%A1%E7%AC%AC%E3%81%A0%E3%83%BB%E6%AC%A1%E7%AC%AC%E3%81%A7"
+                },
+                {
+                    "text": "～てこそ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%A6%E3%81%93%E3%81%9D"
+                },
+                {
+                    "text": "を問わず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E5%95%8F%E3%82%8F%E3%81%9A"
+                },
+                {
+                    "text": "よりしかたがない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A%E3%81%97%E3%81%8B%E3%81%9F%E3%81%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "に越したことはない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%B6%8A%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "要するに",
+                    "link": "https://bunpro.jp/grammar_points/%E8%A6%81%E3%81%99%E3%82%8B%E3%81%AB"
+                },
+                {
+                    "text": "てからでないと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89%E3%81%A7%E3%81%AA%E3%81%84%E3%81%A8"
+                },
+                {
+                    "text": "なくはない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ないことには～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AF%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ないではいられない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%81%AF%E3%81%84%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ねばならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AD%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "たまえ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%BE%E3%81%88"
+                }
+            ]
+        },
+        {
+            "lesson_num": 4,
+            "grammar_points": [
+                {
+                    "text": "～のうち(で)",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AE%E3%81%86%E3%81%A1%28%E3%81%A7%29"
+                },
+                {
+                    "text": "つつ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A4"
+                },
+                {
+                    "text": "つつ(も)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A4%28%E3%82%82%29"
+                },
+                {
+                    "text": "に際して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%9A%9B%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "際に",
+                    "link": "https://bunpro.jp/grammar_points/%E9%9A%9B%E3%81%AB"
+                },
+                {
+                    "text": "にあたり・にあたって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%82%E3%81%9F%E3%82%8A%E3%83%BB%E3%81%AB%E3%81%82%E3%81%9F%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "を契機に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E5%A5%91%E6%A9%9F%E3%81%AB"
+                },
+                {
+                    "text": "つつある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A4%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "～ところに・～ところへ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%A8%E3%81%93%E3%82%8D%E3%81%AB%E3%83%BB%EF%BD%9E%E3%81%A8%E3%81%93%E3%82%8D%E3%81%B8"
+                },
+                {
+                    "text": "か〜ないかのうちに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%80%9C%E3%81%AA%E3%81%84%E3%81%8B%E3%81%AE%E3%81%86%E3%81%A1%E3%81%AB"
+                },
+                {
+                    "text": "がけに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%91%E3%81%AB"
+                },
+                {
+                    "text": "ていては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "ところだった ②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0%E3%81%A3%E3%81%9F%20%E2%91%A1"
+                },
+                {
+                    "text": "どころではない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%93%E3%82%8D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ぶりに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B6%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "ては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "ては〜ては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%80%9C%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "も又",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E5%8F%88"
+                }
+            ]
+        },
+        {
+            "lesson_num": 5,
+            "grammar_points": [
+                {
+                    "text": "結果・の結果",
+                    "link": "https://bunpro.jp/grammar_points/%E7%B5%90%E6%9E%9C%E3%83%BB%E3%81%AE%E7%B5%90%E6%9E%9C"
+                },
+                {
+                    "text": "以来",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A5%E6%9D%A5"
+                },
+                {
+                    "text": "に先立ち",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%85%88%E7%AB%8B%E3%81%A1"
+                },
+                {
+                    "text": "はたして",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9F%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "甲斐がある",
+                    "link": "https://bunpro.jp/grammar_points/%E7%94%B2%E6%96%90%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "やがて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84%E3%81%8C%E3%81%A6"
+                },
+                {
+                    "text": "したがって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%9F%E3%81%8C%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "あげく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%92%E3%81%8F"
+                },
+                {
+                    "text": "きっかけ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91"
+                },
+                {
+                    "text": "にかけては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%91%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "とっくに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%A3%E3%81%8F%E3%81%AB"
+                },
+                {
+                    "text": "未だに",
+                    "link": "https://bunpro.jp/grammar_points/%E6%9C%AA%E3%81%A0%E3%81%AB"
+                },
+                {
+                    "text": "をもとに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%82%82%E3%81%A8%E3%81%AB"
+                },
+                {
+                    "text": "からには",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%AB%E3%81%AF"
+                },
+                {
+                    "text": "いつの間にか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%A4%E3%81%AE%E9%96%93%E3%81%AB%E3%81%8B"
+                },
+                {
+                    "text": "一旦",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%80%E6%97%A6"
+                },
+                {
+                    "text": "はもとより",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%82%82%E3%81%A8%E3%82%88%E3%82%8A"
+                },
+                {
+                    "text": "そうにない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%AB%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 6,
+            "grammar_points": [
+                {
+                    "text": "に反して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%8F%8D%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "逆に",
+                    "link": "https://bunpro.jp/grammar_points/%E9%80%86%E3%81%AB"
+                },
+                {
+                    "text": "反面",
+                    "link": "https://bunpro.jp/grammar_points/%E5%8F%8D%E9%9D%A2"
+                },
+                {
+                    "text": "抜く",
+                    "link": "https://bunpro.jp/grammar_points/%E6%8A%9C%E3%81%8F"
+                },
+                {
+                    "text": "抜きで",
+                    "link": "https://bunpro.jp/grammar_points/%E6%8A%9C%E3%81%8D%E3%81%A7"
+                },
+                {
+                    "text": "いよいよ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%82%88%E3%81%84%E3%82%88"
+                },
+                {
+                    "text": "ずに済む",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB%E6%B8%88%E3%82%80"
+                },
+                {
+                    "text": "に応じて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%BF%9C%E3%81%98%E3%81%A6"
+                },
+                {
+                    "text": "を通じて・を通して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E9%80%9A%E3%81%98%E3%81%A6%E3%83%BB%E3%82%92%E9%80%9A%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "に応えて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%BF%9C%E3%81%88%E3%81%A6"
+                },
+                {
+                    "text": "それとも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A8%E3%82%82"
+                },
+                {
+                    "text": "にしたら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "にしても～にしても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82%EF%BD%9E%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "としては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "としても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%97%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "それにしても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "ぬ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AC"
+                },
+                {
+                    "text": "ことなく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AA%E3%81%8F"
+                },
+                {
+                    "text": "にて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A6"
+                },
+                {
+                    "text": "には",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AF"
+                }
+            ]
+        },
+        {
+            "lesson_num": 7,
+            "grammar_points": [
+                {
+                    "text": "思うように",
+                    "link": "https://bunpro.jp/grammar_points/%E6%80%9D%E3%81%86%E3%82%88%E3%81%86%E3%81%AB"
+                },
+                {
+                    "text": "かと思ったら・かと思うと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%82%89%E3%83%BB%E3%81%8B%E3%81%A8%E6%80%9D%E3%81%86%E3%81%A8"
+                },
+                {
+                    "text": "というものでもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%82%82%E3%81%AE%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "と考えられる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E8%80%83%E3%81%88%E3%82%89%E3%82%8C%E3%82%8B"
+                },
+                {
+                    "text": "という点から考えると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E7%82%B9%E3%81%8B%E3%82%89%E8%80%83%E3%81%88%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "ということは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AF"
+                },
+                {
+                    "text": "ふうに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B5%E3%81%86%E3%81%AB"
+                },
+                {
+                    "text": "という風に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E9%A2%A8%E3%81%AB"
+                },
+                {
+                    "text": "ものの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%AE"
+                },
+                {
+                    "text": "というものだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%82%82%E3%81%AE%E3%81%A0"
+                },
+                {
+                    "text": "から見ると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "ところを見ると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%82%92%E8%A6%8B%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "からすると・からすれば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%99%E3%82%8B%E3%81%A8%E3%83%BB%E3%81%8B%E3%82%89%E3%81%99%E3%82%8C%E3%81%B0"
+                },
+                {
+                    "text": "からして",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "からといって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%A8%E3%81%84%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "そういえば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%84%E3%81%88%E3%81%B0"
+                },
+                {
+                    "text": "お～願う",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%EF%BD%9E%E9%A1%98%E3%81%86"
+                },
+                {
+                    "text": "とか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B"
+                },
+                {
+                    "text": "〜ようではないか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%82%88%E3%81%86%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%8B"
+                },
+                {
+                    "text": "かのようだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AE%E3%82%88%E3%81%86%E3%81%A0"
+                },
+                {
+                    "text": "のではないだろうか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%A0%E3%82%8D%E3%81%86%E3%81%8B"
+                }
+            ]
+        },
+        {
+            "lesson_num": 8,
+            "grammar_points": [
+                {
+                    "text": "て当然だ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E5%BD%93%E7%84%B6%E3%81%A0"
+                },
+                {
+                    "text": "のも当然だ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%82%82%E5%BD%93%E7%84%B6%E3%81%A0"
+                },
+                {
+                    "text": "たった(の)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A3%E3%81%9F%28%E3%81%AE%29"
+                },
+                {
+                    "text": "恐れがある",
+                    "link": "https://bunpro.jp/grammar_points/%E6%81%90%E3%82%8C%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "おそらく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%9D%E3%82%89%E3%81%8F"
+                },
+                {
+                    "text": "ものか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%8B"
+                },
+                {
+                    "text": "おまけに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%BE%E3%81%91%E3%81%AB"
+                },
+                {
+                    "text": "に決まっている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E6%B1%BA%E3%81%BE%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "ことになっている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "気",
+                    "link": "https://bunpro.jp/grammar_points/%E6%B0%97"
+                },
+                {
+                    "text": "げ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%92"
+                },
+                {
+                    "text": "ことだから",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%A0%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "ものだから",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A0%E3%81%8B%E3%82%89"
+                },
+                {
+                    "text": "ものですから・もので",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8B%E3%82%89%E3%83%BB%E3%82%82%E3%81%AE%E3%81%A7"
+                },
+                {
+                    "text": "ものがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "傾向がある",
+                    "link": "https://bunpro.jp/grammar_points/%E5%82%BE%E5%90%91%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "てしょうがない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%97%E3%82%87%E3%81%86%E3%81%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "だけましだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%BE%E3%81%97%E3%81%A0"
+                },
+                {
+                    "text": "幸い・幸いなことに",
+                    "link": "https://bunpro.jp/grammar_points/%E5%B9%B8%E3%81%84%E3%83%BB%E5%B9%B8%E3%81%84%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AB"
+                },
+                {
+                    "text": "ようでは・ようじゃ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A7%E3%81%AF%E3%83%BB%E3%82%88%E3%81%86%E3%81%98%E3%82%83"
+                },
+                {
+                    "text": "さすが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%99%E3%81%8C"
+                },
+                {
+                    "text": "ことは〜が",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AF%E3%80%9C%E3%81%8C"
+                }
+            ]
+        },
+        {
+            "lesson_num": 9,
+            "grammar_points": [
+                {
+                    "text": "更に",
+                    "link": "https://bunpro.jp/grammar_points/%E6%9B%B4%E3%81%AB"
+                },
+                {
+                    "text": "精々",
+                    "link": "https://bunpro.jp/grammar_points/%E7%B2%BE%E3%80%85"
+                },
+                {
+                    "text": "僅かに",
+                    "link": "https://bunpro.jp/grammar_points/%E5%83%85%E3%81%8B%E3%81%AB"
+                },
+                {
+                    "text": "および",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%82%88%E3%81%B3"
+                },
+                {
+                    "text": "たちまち",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A1%E3%81%BE%E3%81%A1"
+                },
+                {
+                    "text": "いきなり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8D%E3%81%AA%E3%82%8A"
+                },
+                {
+                    "text": "といった",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%A3%E3%81%9F"
+                },
+                {
+                    "text": "を込めて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E8%BE%BC%E3%82%81%E3%81%A6"
+                },
+                {
+                    "text": "に加えて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%8A%A0%E3%81%88%E3%81%A6"
+                },
+                {
+                    "text": "何から何まで",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BD%95%E3%81%8B%E3%82%89%E4%BD%95%E3%81%BE%E3%81%A7"
+                },
+                {
+                    "text": "は別として",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E5%88%A5%E3%81%A8%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "だけに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%AB"
+                },
+                {
+                    "text": "だけは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%AF"
+                },
+                {
+                    "text": "だけあって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%82%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "何より",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BD%95%E3%82%88%E3%82%8A"
+                },
+                {
+                    "text": "何といっても",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BD%95%E3%81%A8%E3%81%84%E3%81%A3%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "か何か",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E4%BD%95%E3%81%8B"
+                },
+                {
+                    "text": "てならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "のみならず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%BF%E3%81%AA%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "それなのに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AA%E3%81%AE%E3%81%AB"
+                },
+                {
+                    "text": "いわゆる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%82%8F%E3%82%86%E3%82%8B"
+                },
+                {
+                    "text": "にすぎない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%81%8E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "も～ば～も",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%EF%BD%9E%E3%81%B0%EF%BD%9E%E3%82%82"
+                }
+            ]
+        },
+        {
+            "lesson_num": 10,
+            "grammar_points": [
+                {
+                    "text": "でしかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "てたまらない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%9F%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "にせよ・にしろ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%9B%E3%82%88%E3%83%BB%E3%81%AB%E3%81%97%E3%82%8D"
+                },
+                {
+                    "text": "何しろ",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BD%95%E3%81%97%E3%82%8D"
+                },
+                {
+                    "text": "にしろ～にしろ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%82%8D%EF%BD%9E%E3%81%AB%E3%81%97%E3%82%8D"
+                },
+                {
+                    "text": "はともかく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%A8%E3%82%82%E3%81%8B%E3%81%8F"
+                },
+                {
+                    "text": "ならともかく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89%E3%81%A8%E3%82%82%E3%81%8B%E3%81%8F"
+                },
+                {
+                    "text": "やら～やら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84%E3%82%89%EF%BD%9E%E3%82%84%E3%82%89"
+                },
+                {
+                    "text": "しかしながら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89"
+                },
+                {
+                    "text": "ことにはならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AB%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "だけのことはある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%AE%E3%81%93%E3%81%A8%E3%81%AF%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "てはならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "てはいられない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%84%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "陸に～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E9%99%B8%E3%81%AB%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "しかも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B%E3%82%82"
+                },
+                {
+                    "text": "てでも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "とも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%82%82"
+                },
+                {
+                    "text": "ないわけにはいかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%82%8F%E3%81%91%E3%81%AB%E3%81%AF%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "というわけではない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%82%8F%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "のももっともだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%82%82%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A0"
+                },
+                {
+                    "text": "たって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A3%E3%81%A6"
+                }
+            ]
+        }
+    ],
+    "N1": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "に至るまで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%87%B3%E3%82%8B%E3%81%BE%E3%81%A7"
+                },
+                {
+                    "text": "たところで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A7"
+                },
+                {
+                    "text": "如く・如き・如し",
+                    "link": "https://bunpro.jp/grammar_points/%E5%A6%82%E3%81%8F%E3%83%BB%E5%A6%82%E3%81%8D%E3%83%BB%E5%A6%82%E3%81%97"
+                },
+                {
+                    "text": "に足る",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%B6%B3%E3%82%8B"
+                },
+                {
+                    "text": "極まりない・極まる",
+                    "link": "https://bunpro.jp/grammar_points/%E6%A5%B5%E3%81%BE%E3%82%8A%E3%81%AA%E3%81%84%E3%83%BB%E6%A5%B5%E3%81%BE%E3%82%8B"
+                },
+                {
+                    "text": "といえども",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%88%E3%81%A9%E3%82%82"
+                },
+                {
+                    "text": "を以て",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E4%BB%A5%E3%81%A6"
+                },
+                {
+                    "text": "きらいがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%82%89%E3%81%84%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "ならまだしも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89%E3%81%BE%E3%81%A0%E3%81%97%E3%82%82"
+                },
+                {
+                    "text": "までもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ともなると・にもなると",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%82%82%E3%81%AA%E3%82%8B%E3%81%A8%E3%83%BB%E3%81%AB%E3%82%82%E3%81%AA%E3%82%8B%E3%81%A8"
+                },
+                {
+                    "text": "をいいことに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%81%84%E3%81%84%E3%81%93%E3%81%A8%E3%81%AB"
+                },
+                {
+                    "text": "如何",
+                    "link": "https://bunpro.jp/grammar_points/%E5%A6%82%E4%BD%95"
+                },
+                {
+                    "text": "～るまでだ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%A0"
+                },
+                {
+                    "text": "にあって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%82%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "を余儀なくされる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E4%BD%99%E5%84%80%E3%81%AA%E3%81%8F%E3%81%95%E3%82%8C%E3%82%8B"
+                },
+                {
+                    "text": "とは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AF"
+                }
+            ]
+        },
+        {
+            "lesson_num": 2,
+            "grammar_points": [
+                {
+                    "text": "じゃあるまいし",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%82%E3%82%8B%E3%81%BE%E3%81%84%E3%81%97"
+                },
+                {
+                    "text": "てからというもの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89%E3%81%A8%E3%81%84%E3%81%86%E3%82%82%E3%81%AE"
+                },
+                {
+                    "text": "かたわら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%9F%E3%82%8F%E3%82%89"
+                },
+                {
+                    "text": "を皮切りに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E7%9A%AE%E5%88%87%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "に至っては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%87%B3%E3%81%A3%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "なり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%8A"
+                },
+                {
+                    "text": "ともなく・ともなしに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%82%82%E3%81%AA%E3%81%8F%E3%83%BB%E3%81%A8%E3%82%82%E3%81%AA%E3%81%97%E3%81%AB"
+                },
+                {
+                    "text": "塗れ",
+                    "link": "https://bunpro.jp/grammar_points/%E5%A1%97%E3%82%8C"
+                },
+                {
+                    "text": "ようが～まいが",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%8C%EF%BD%9E%E3%81%BE%E3%81%84%E3%81%8C"
+                },
+                {
+                    "text": "からする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "にして①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E2%91%A0"
+                },
+                {
+                    "text": "ものを",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%82%92"
+                },
+                {
+                    "text": "であれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%82%E3%82%8C"
+                },
+                {
+                    "text": "をおいてほかに〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%81%8A%E3%81%84%E3%81%A6%E3%81%BB%E3%81%8B%E3%81%AB%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "をもって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%82%82%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "とはいえ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AF%E3%81%84%E3%81%88"
+                },
+                {
+                    "text": "ならでは",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89%E3%81%A7%E3%81%AF"
+                }
+            ]
+        },
+        {
+            "lesson_num": 3,
+            "grammar_points": [
+                {
+                    "text": "すら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%82%89"
+                },
+                {
+                    "text": "あっての",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%A3%E3%81%A6%E3%81%AE"
+                },
+                {
+                    "text": "～たまでだ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%9F%E3%81%BE%E3%81%A7%E3%81%A0"
+                },
+                {
+                    "text": "を経て",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E7%B5%8C%E3%81%A6"
+                },
+                {
+                    "text": "ながらに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89%E3%81%AB"
+                },
+                {
+                    "text": "たなり・なり",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%AA%E3%82%8A%E3%83%BB%E3%81%AA%E3%82%8A"
+                },
+                {
+                    "text": "の極み",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E6%A5%B5%E3%81%BF"
+                },
+                {
+                    "text": "にしてみれば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8C%E3%81%B0"
+                },
+                {
+                    "text": "だの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%AE"
+                },
+                {
+                    "text": "あくまでも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%8F%E3%81%BE%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "べく",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8F"
+                },
+                {
+                    "text": "ところを",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%82%92"
+                },
+                {
+                    "text": "からある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "にして②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E2%91%A1"
+                },
+                {
+                    "text": "つ〜つ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%80%9C%E3%81%A4"
+                },
+                {
+                    "text": "飽くまで(も)",
+                    "link": "https://bunpro.jp/grammar_points/%E9%A3%BD%E3%81%8F%E3%81%BE%E3%81%A7%28%E3%82%82%29"
+                },
+                {
+                    "text": "であれ〜であれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%82%E3%82%8C%E3%80%9C%E3%81%A7%E3%81%82%E3%82%8C"
+                }
+            ]
+        },
+        {
+            "lesson_num": 4,
+            "grammar_points": [
+                {
+                    "text": "たら最後",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E6%9C%80%E5%BE%8C"
+                },
+                {
+                    "text": "いかなる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8B%E3%81%AA%E3%82%8B"
+                },
+                {
+                    "text": "なりに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "れる・られる + ままに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8C%E3%82%8B%E3%83%BB%E3%82%89%E3%82%8C%E3%82%8B%20%2B%20%E3%81%BE%E3%81%BE%E3%81%AB"
+                },
+                {
+                    "text": "にまつわる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%BE%E3%81%A4%E3%82%8F%E3%82%8B"
+                },
+                {
+                    "text": "たる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%8B"
+                },
+                {
+                    "text": "なら〜で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89%E3%80%9C%E3%81%A7"
+                },
+                {
+                    "text": "をものともせず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%82%82%E3%81%AE%E3%81%A8%E3%82%82%E3%81%9B%E3%81%9A"
+                },
+                {
+                    "text": "には当たらない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AF%E5%BD%93%E3%81%9F%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ものと思う",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A8%E6%80%9D%E3%81%86"
+                },
+                {
+                    "text": "を踏まえて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E8%B8%8F%E3%81%BE%E3%81%88%E3%81%A6"
+                },
+                {
+                    "text": "ゆえに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%86%E3%81%88%E3%81%AB"
+                },
+                {
+                    "text": "という",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86"
+                },
+                {
+                    "text": "にとどまらず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A8%E3%81%A9%E3%81%BE%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "と思いきや",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E6%80%9D%E3%81%84%E3%81%8D%E3%82%84"
+                },
+                {
+                    "text": "どうにも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%AB%E3%82%82"
+                },
+                {
+                    "text": "ことだし",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%A0%E3%81%97"
+                }
+            ]
+        },
+        {
+            "lesson_num": 5,
+            "grammar_points": [
+                {
+                    "text": "か否か",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E5%90%A6%E3%81%8B"
+                },
+                {
+                    "text": "たら〜で",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%80%9C%E3%81%A7"
+                },
+                {
+                    "text": "べくして",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8F%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "まま(に)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%BE%28%E3%81%AB%29"
+                },
+                {
+                    "text": "かれ〜かれ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%8C%E3%80%9C%E3%81%8B%E3%82%8C"
+                },
+                {
+                    "text": "〜に〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%80%9C%E3%81%AB%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "なくして(は)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%97%E3%81%A6%28%E3%81%AF%29"
+                },
+                {
+                    "text": "のなんのって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%82%93%E3%81%AE%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "にかかっている",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B"
+                },
+                {
+                    "text": "てやまない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%84%E3%81%BE%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ぐらいなら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%90%E3%82%89%E3%81%84%E3%81%AA%E3%82%89"
+                },
+                {
+                    "text": "ってば・ったら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6%E3%81%B0%E3%83%BB%E3%81%A3%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "ずとも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%A8%E3%82%82"
+                },
+                {
+                    "text": "とあって",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%82%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "でもなんでもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82%E3%81%AA%E3%82%93%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ぐるみで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%90%E3%82%8B%E3%81%BF%E3%81%A7"
+                },
+                {
+                    "text": "そばから",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%B0%E3%81%8B%E3%82%89"
+                }
+            ]
+        },
+        {
+            "lesson_num": 6,
+            "grammar_points": [
+                {
+                    "text": "に至って・に至り",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%87%B3%E3%81%A3%E3%81%A6%E3%83%BB%E3%81%AB%E8%87%B3%E3%82%8A"
+                },
+                {
+                    "text": "だに + しない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%AB%20%2B%20%E3%81%97%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "がてら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%A6%E3%82%89"
+                },
+                {
+                    "text": "んがため(に)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%8C%E3%81%9F%E3%82%81%28%E3%81%AB%29"
+                },
+                {
+                    "text": "いかん〜ず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8B%E3%82%93%E3%80%9C%E3%81%9A"
+                },
+                {
+                    "text": "にも～ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%82%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "い-Adj[く] + もなんともない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adj%5B%E3%81%8F%5D%20%2B%20%E3%82%82%E3%81%AA%E3%82%93%E3%81%A8%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "Verb + だに",
+                    "link": "https://bunpro.jp/grammar_points/Verb%20%2B%20%E3%81%A0%E3%81%AB"
+                },
+                {
+                    "text": "～なり～なり",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%AA%E3%82%8A%EF%BD%9E%E3%81%AA%E3%82%8A"
+                },
+                {
+                    "text": "ないでもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "もさることながら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%95%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AA%E3%81%8C%E3%82%89"
+                },
+                {
+                    "text": "ものと思っていた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F"
+                },
+                {
+                    "text": "でなくてなんだろう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AA%E3%82%93%E3%81%A0%E3%82%8D%E3%81%86"
+                },
+                {
+                    "text": "はさておき・はさておいて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%95%E3%81%A6%E3%81%8A%E3%81%8D%E3%83%BB%E3%81%AF%E3%81%95%E3%81%A6%E3%81%8A%E3%81%84%E3%81%A6"
+                },
+                {
+                    "text": "折には",
+                    "link": "https://bunpro.jp/grammar_points/%E6%8A%98%E3%81%AB%E3%81%AF"
+                },
+                {
+                    "text": "とばかり（に）",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%B0%E3%81%8B%E3%82%8A%EF%BC%88%E3%81%AB%EF%BC%89"
+                },
+                {
+                    "text": "わ〜わ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%80%9C%E3%82%8F"
+                }
+            ]
+        },
+        {
+            "lesson_num": 7,
+            "grammar_points": [
+                {
+                    "text": "に至っても",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%87%B3%E3%81%A3%E3%81%A6%E3%82%82"
+                },
+                {
+                    "text": "を兼ねて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E5%85%BC%E3%81%AD%E3%81%A6"
+                },
+                {
+                    "text": "Verb[ない]もの(だろう)か",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%AA%E3%81%84%5D%E3%82%82%E3%81%AE%28%E3%81%A0%E3%82%8D%E3%81%86%29%E3%81%8B"
+                },
+                {
+                    "text": "Verb[て] + みせる",
+                    "link": "https://bunpro.jp/grammar_points/Verb%5B%E3%81%A6%5D%20%2B%20%E3%81%BF%E3%81%9B%E3%82%8B"
+                },
+                {
+                    "text": "相まって",
+                    "link": "https://bunpro.jp/grammar_points/%E7%9B%B8%E3%81%BE%E3%81%A3%E3%81%A6"
+                },
+                {
+                    "text": "に足りない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%B6%B3%E3%82%8A%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "べからず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8B%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "んばかりに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "に則って・に則り",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%89%87%E3%81%A3%E3%81%A6%E3%83%BB%E3%81%AB%E5%89%87%E3%82%8A"
+                },
+                {
+                    "text": "Adj限りだ",
+                    "link": "https://bunpro.jp/grammar_points/Adj%E9%99%90%E3%82%8A%E3%81%A0"
+                },
+                {
+                    "text": "はおろか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%8A%E3%82%8D%E3%81%8B"
+                },
+                {
+                    "text": "めく・めいた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%81%E3%81%8F%E3%83%BB%E3%82%81%E3%81%84%E3%81%9F"
+                },
+                {
+                    "text": "といわず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%82%8F%E3%81%9A"
+                },
+                {
+                    "text": "にもほどがある",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%82%E3%81%BB%E3%81%A9%E3%81%8C%E3%81%82%E3%82%8B"
+                },
+                {
+                    "text": "にもまして",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%82%82%E3%81%BE%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "まくる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%8F%E3%82%8B"
+                },
+                {
+                    "text": "わ〜わ（で）",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%80%9C%E3%82%8F%EF%BC%88%E3%81%A7%EF%BC%89"
+                }
+            ]
+        },
+        {
+            "lesson_num": 8,
+            "grammar_points": [
+                {
+                    "text": "や否や",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84%E5%90%A6%E3%82%84"
+                },
+                {
+                    "text": "次第です",
+                    "link": "https://bunpro.jp/grammar_points/%E6%AC%A1%E7%AC%AC%E3%81%A7%E3%81%99"
+                },
+                {
+                    "text": "というところ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%A8%E3%81%93%E3%82%8D"
+                },
+                {
+                    "text": "１～たりとも～ない",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BC%91%EF%BD%9E%E3%81%9F%E3%82%8A%E3%81%A8%E3%82%82%EF%BD%9E%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ったらない・といったらない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%9F%E3%82%89%E3%81%AA%E3%81%84%E3%83%BB%E3%81%A8%E3%81%84%E3%81%A3%E3%81%9F%E3%82%89%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "に照らして・に照らすと",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E7%85%A7%E3%82%89%E3%81%97%E3%81%A6%E3%83%BB%E3%81%AB%E7%85%A7%E3%82%89%E3%81%99%E3%81%A8"
+                },
+                {
+                    "text": "とあれば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%82%E3%82%8C%E3%81%B0"
+                },
+                {
+                    "text": "さぞ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%9E"
+                },
+                {
+                    "text": "ときたら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8D%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "びる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B3%E3%82%8B"
+                },
+                {
+                    "text": "にしたところで",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A7"
+                },
+                {
+                    "text": "～ばこそ",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%B0%E3%81%93%E3%81%9D"
+                },
+                {
+                    "text": "ても差し支えない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E5%B7%AE%E3%81%97%E6%94%AF%E3%81%88%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "には及ばない①",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AF%E5%8F%8A%E3%81%B0%E3%81%AA%E3%81%84%E2%91%A0"
+                },
+                {
+                    "text": "に即して",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%8D%B3%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "ないまでも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%BE%E3%81%A7%E3%82%82"
+                },
+                {
+                    "text": "をよそに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E3%82%88%E3%81%9D%E3%81%AB"
+                },
+                {
+                    "text": "に限ったことではない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%99%90%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "とは比べものにならない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AF%E6%AF%94%E3%81%B9%E3%82%82%E3%81%AE%E3%81%AB%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+                }
+            ]
+        },
+        {
+            "lesson_num": 9,
+            "grammar_points": [
+                {
+                    "text": "まじき",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%98%E3%81%8D"
+                },
+                {
+                    "text": "の至り",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E8%87%B3%E3%82%8A"
+                },
+                {
+                    "text": "に恥じない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E6%81%A5%E3%81%98%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ずじまい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%98%E3%81%BE%E3%81%84"
+                },
+                {
+                    "text": "に言わせれば・に言わせると・に言わせたら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E8%A8%80%E3%82%8F%E3%81%9B%E3%82%8C%E3%81%B0%E3%83%BB%E3%81%AB%E8%A8%80%E3%82%8F%E3%81%9B%E3%82%8B%E3%81%A8%E3%83%BB%E3%81%AB%E8%A8%80%E3%82%8F%E3%81%9B%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "ったら・といったら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%9F%E3%82%89%E3%83%BB%E3%81%A8%E3%81%84%E3%81%A3%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "こととて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%A8%E3%81%A6"
+                },
+                {
+                    "text": "ずくめ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%8F%E3%82%81"
+                },
+                {
+                    "text": "には及ばない②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AF%E5%8F%8A%E3%81%B0%E3%81%AA%E3%81%84%E2%91%A1"
+                },
+                {
+                    "text": "とは言うものの",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AF%E8%A8%80%E3%81%86%E3%82%82%E3%81%AE%E3%81%AE"
+                },
+                {
+                    "text": "が早いか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E6%97%A9%E3%81%84%E3%81%8B"
+                },
+                {
+                    "text": "に難くない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E9%9B%A3%E3%81%8F%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "ならいざ知らず",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89%E3%81%84%E3%81%96%E7%9F%A5%E3%82%89%E3%81%9A"
+                },
+                {
+                    "text": "を禁じ得ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E7%A6%81%E3%81%98%E5%BE%97%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "にかこつけて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%93%E3%81%A4%E3%81%91%E3%81%A6"
+                },
+                {
+                    "text": "ようによっては",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E3%81%AF"
+                },
+                {
+                    "text": "べくもない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8F%E3%82%82%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "と来たら",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E6%9D%A5%E3%81%9F%E3%82%89"
+                },
+                {
+                    "text": "ものとして",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A8%E3%81%97%E3%81%A6"
+                },
+                {
+                    "text": "を前提に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E5%89%8D%E6%8F%90%E3%81%AB"
+                }
+            ]
+        },
+        {
+            "lesson_num": 10,
+            "grammar_points": [
+                {
+                    "text": "ずにはすまない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB%E3%81%AF%E3%81%99%E3%81%BE%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "に堪えない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%A0%AA%E3%81%88%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "始末だ",
+                    "link": "https://bunpro.jp/grammar_points/%E5%A7%8B%E6%9C%AB%E3%81%A0"
+                },
+                {
+                    "text": "ものなら②",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%AA%E3%82%89%E2%91%A1"
+                },
+                {
+                    "text": "にひきかえ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%B2%E3%81%8D%E3%81%8B%E3%81%88"
+                },
+                {
+                    "text": "それまでだ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%BE%E3%81%A7%E3%81%A0"
+                },
+                {
+                    "text": "といおうか",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%8A%E3%81%86%E3%81%8B"
+                },
+                {
+                    "text": "ずにはおかない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB%E3%81%AF%E3%81%8A%E3%81%8B%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "を限りに",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E9%99%90%E3%82%8A%E3%81%AB"
+                },
+                {
+                    "text": "てはかなわない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%8B%E3%81%AA%E3%82%8F%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "かたがた",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%9F%E3%81%8C%E3%81%9F"
+                },
+                {
+                    "text": "を余儀なくさせる",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E4%BD%99%E5%84%80%E3%81%AA%E3%81%8F%E3%81%95%E3%81%9B%E3%82%8B"
+                },
+                {
+                    "text": "～てやる",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%81%A6%E3%82%84%E3%82%8B"
+                },
+                {
+                    "text": "ただ〜のみ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A0%E3%80%9C%E3%81%AE%E3%81%BF"
+                },
+                {
+                    "text": "ものとする",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%AE%E3%81%A8%E3%81%99%E3%82%8B"
+                },
+                {
+                    "text": "との",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%AE"
+                },
+                {
+                    "text": "以前",
+                    "link": "https://bunpro.jp/grammar_points/%E4%BB%A5%E5%89%8D"
+                },
+                {
+                    "text": "ともあろう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%82%82%E3%81%82%E3%82%8D%E3%81%86"
+                },
+                {
+                    "text": "こそすれ〜ない",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%9D%E3%81%99%E3%82%8C%E3%80%9C%E3%81%AA%E3%81%84"
+                },
+                {
+                    "text": "並み",
+                    "link": "https://bunpro.jp/grammar_points/%E4%B8%A6%E3%81%BF"
+                },
+                {
+                    "text": "に先駆けて",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E5%85%88%E9%A7%86%E3%81%91%E3%81%A6"
+                },
+                {
+                    "text": "を機に",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%92%E6%A9%9F%E3%81%AB"
+                }
+            ]
+        }
+    ],
+    "Non-JLPT": [
+        {
+            "lesson_num": 1,
+            "grammar_points": [
+                {
+                    "text": "ぞ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9E"
+                },
+                {
+                    "text": "ぜ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%9C"
+                },
+                {
+                    "text": "わ",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%8F"
+                },
+                {
+                    "text": "い",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84"
+                },
+                {
+                    "text": "ん (Slang)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%93%20%28Slang%29"
+                },
+                {
+                    "text": "つ (Slang)",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%20%28Slang%29"
+                },
+                {
+                    "text": "～やがる",
+                    "link": "https://bunpro.jp/grammar_points/%EF%BD%9E%E3%82%84%E3%81%8C%E3%82%8B"
+                },
+                {
+                    "text": "がいい",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%84%E3%81%84"
+                },
+                {
+                    "text": "かろう",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%8D%E3%81%86"
+                },
+                {
+                    "text": "やや",
+                    "link": "https://bunpro.jp/grammar_points/%E3%82%84%E3%82%84"
+                },
+                {
+                    "text": "いずれも",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%9A%E3%82%8C%E3%82%82"
+                },
+                {
+                    "text": "あわよくば",
+                    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%82%8F%E3%82%88%E3%81%8F%E3%81%B0"
+                }
+            ]
+        }
+    ]
+}
