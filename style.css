@@ -1,0 +1,156 @@
+/* Basic Reset & Font */
+body {
+    margin: 0;
+    /* Updated font-family for Meiryo and Japanese fallbacks */
+    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    line-height: 1.6;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c2c2c; /* Slightly lighter dark for content area */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #555;
+    padding-bottom: 15px;
+}
+
+/* N-Level Styling */
+.n-level {
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden; /* Ensures borders/shadows clip correctly */
+}
+
+.n-level-header {
+    padding: 15px 20px;
+    font-size: 1.4em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* N-Level Specific Colors (Darker shades for dark theme) */
+.n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; } /* Darker green */
+.n-level-N4 .n-level-header { background-color: #385a38; color: #c9e2b6; } /* Darker green */
+.n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; } /* Darker yellow */
+.n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; } /* Darker orange */
+.n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; } /* Darker red */
+.n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; } /* Darker grey */
+.n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; } /* Darker bright red */
+
+
+.n-level-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Slower transition for content */
+    background-color: #333333; /* Background for N-level content */
+}
+
+.n-level-content.expanded {
+    max-height: 20000px; /* Large enough to accommodate all content */
+    transition: max-height 0.6s ease-in; /* Slower transition for expansion */
+}
+
+/* Lesson Styling */
+.lesson {
+    margin-bottom: 5px;
+    border-top: 1px dashed #555; /* Subtle separator */
+}
+
+.lesson-header {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #444444; /* Darker grey for lesson headers */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.lesson-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Faster transition for lesson content */
+    padding: 0 20px; /* Padding for collapsed state */
+    background-color: #3d3d3d; /* Slightly different background for lesson content */
+}
+
+.lesson-content.expanded {
+    max-height: 5000px; /* Large enough */
+    transition: max-height 0.5s ease-in;
+    padding-bottom: 15px; /* Add padding when expanded */
+}
+
+/* Grammar Point Styling */
+.grammar-point-list {
+    list-style-type: none;
+    padding: 10px 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 10px; /* Gap between grid items */
+}
+
+.grammar-point-item {
+    padding: 5px 10px;
+    background-color: #4d4d4d; /* Even darker grey for individual grammar points */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.grammar-point-item a {
+    color: #88c0d0; /* Light blue for links */
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s ease;
+}
+
+.grammar-point-item a:hover {
+    text-decoration: underline;
+    color: #b4e8f7; /* Lighter blue on hover */
+}
+
+/* Expand/Collapse Icon */
+.toggle-icon {
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+}
+
+.expanded .toggle-icon {
+    transform: rotate(90deg); /* Rotate for expanded state */
+}
+
+/* Pulse Animation */
+@keyframes pulse-effect {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.n-level-header.pulsing {
+    animation: pulse-effect 0.8s ease-out forwards;
+}
+.lesson-header.pulsing {
+    animation: pulse-effect 0.8s ease-out forwards;
+}
