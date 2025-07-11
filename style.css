@@ -28,245 +28,189 @@ h1 {
 
 /* Statistics Container */
 .statistics-container {
-    background-color: #383838;
-    border: 1px solid #4a4a4a;
-    border-radius: 6px;
-    padding: 15px 20px;
     margin-bottom: 30px;
+    padding: 20px;
+    background-color: #3a3a3a; /* Darker background for statistics */
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .statistics-container h2 {
+    text-align: center;
     color: #f0f0f0;
-    margin-top: 0;
     margin-bottom: 15px;
-    font-size: 1.5em;
-    text-align: center;
-    border-bottom: 1px solid #555;
     padding-bottom: 10px;
-}
-
-.statistics-container h3 {
-    color: #f0f0f0;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    text-align: center;
     border-bottom: 1px solid #555;
-    padding-bottom: 5px;
 }
 
+.stats-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #444; /* Dotted line between sections */
+}
+
+.stats-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none; /* No border for the last section */
+}
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Changed: Fixed 3-column layout */
-    gap: 10px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 10px 20px; /* Row and column gap */
 }
 
-.stats-grid p {
-    margin: 0;
-    font-size: 0.95em;
-    color: #cccccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.stats-grid .stat-value {
-    font-weight: bold;
-    color: #e0e0e0;
+.statistics-container p {
     font-size: 1.1em;
-}
-
-
-/* N-Level Styling */
-.n-level {
-    margin-bottom: 20px;
-    border: 1px solid #444;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.n-level-header {
-    padding: 15px 20px;
-    font-size: 1.4em;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.n-level-header span:first-child {
-    flex-shrink: 0;
-}
-
-.n-level-header .header-counts {
-    font-size: 0.7em;
     color: #c0c0c0;
-    font-weight: normal;
-    flex-grow: 0; /* Changed: flex-grow to 0 */
-    text-align: left; /* Changed: text-align to left */
-    margin-right: 0; /* Removed: margin-right */
-    margin-left: auto; /* Added: margin-left auto */
-    min-width: 120px; /* Added: min-width */
-    white-space: nowrap; /* Added: white-space nowrap */
-}
-
-/* N-Level Specific Colors (Darker shades for dark theme) */
-.n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; }
-.n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; }
-.n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
-.n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; }
-.n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; }
-.n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
-.n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
-
-/* Header highlight for content with bookmarked items - now an inset box-shadow */
-.n-level-header.has-bookmarked-children {
-    box-shadow: inset 0 0 0 3px #6ab0de,
-                0 4px 8px rgba(0, 0, 0, 0.3);
-    filter: none;
-}
-
-.n-level-header.all-children-complete {
-    box-shadow: inset 0 0 0 3px #558B55,
-                0 4px 8px rgba(0, 0, 0, 0.3);
-    filter: none;
-}
-
-.n-level-header.has-bookmarked-children.all-children-complete {
-    box-shadow: inset 0 0 0 3px #6ab0de,
-                0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.n-level-content {
-    height: 0;
-    overflow: hidden;
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0 20px;
-    background-color: #333333;
-    will-change: height;
-    box-sizing: border-box;
-}
-
-
-/* Lesson Styling */
-.lesson {
-    margin-bottom: 5px;
-    margin-top: 10px;
-    position: relative;
-}
-
-.lesson-header {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #444444;
+    margin: 5px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
-.lesson-header span:first-child {
-    flex-shrink: 0;
+.stat-value {
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #555;
+    padding: 3px 8px;
+    border-radius: 4px;
 }
 
-.lesson-header .header-counts {
+/* Reset All Button */
+#resetUserDataContainer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#resetAllProgressBtn {
+    background-color: #d9534f; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#resetAllProgressBtn:hover {
+    background-color: #c9302c;
+    transform: translateY(-1px);
+}
+
+#resetAllProgressBtn:active {
+    background-color: #ac2925;
+    transform: translateY(0);
+}
+
+
+/* N-Level and Lesson Headers */
+.n-level, .lesson {
+    background-color: #333; /* Slightly darker for sections */
+    margin-bottom: 15px;
+    border-radius: 6px;
+    overflow: hidden; /* For collapse animation */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.n-level-header, .lesson-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #444; /* Darker header background */
+    cursor: pointer;
+    position: relative;
+    user-select: none; /* Prevent text selection on click */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-height: 40px; /* Ensure consistent height */
+}
+
+.n-level-header:hover, .lesson-header:hover {
+    background-color: #555;
+}
+
+.n-level-header.expanded, .lesson-header.expanded {
+    background-color: #555; /* Darker when expanded */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.n-level-header span:first-child, .lesson-header span:first-child {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #f0f0f0;
+}
+
+/* Header Right Controls (buttons, counts, toggle icon) */
+.header-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between elements in this group */
+    margin-left: auto; /* Pushes this group to the right */
+}
+
+/* Header Counts */
+.header-counts {
+    font-size: 0.9em;
+    color: #ccc;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+/* Toggle Icon */
+.toggle-icon {
     font-size: 0.8em;
-    color: #b0b0b0;
-    font-weight: normal;
-    flex-grow: 0; /* Changed: flex-grow to 0 */
-    text-align: left; /* Changed: text-align to left */
-    margin-right: 0; /* Removed: margin-right */
-    margin-left: auto; /* Added: margin-left auto */
-    min-width: 120px; /* Added: min-width */
-    white-space: nowrap; /* Added: white-space nowrap */
+    transition: transform 0.3s ease;
+    margin-left: 10px; /* Space after counts */
 }
 
-.lesson-header.has-bookmarked-children {
-    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
-    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
+.n-level-header.expanded .toggle-icon,
+.lesson-header.expanded .toggle-icon {
+    transform: rotate(90deg);
 }
 
-.lesson-header.all-children-complete {
-    --lesson-header-inset-shadow: inset 0 0 0 3px #558B55;
-    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.lesson-header.has-bookmarked-children.all-children-complete {
-    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
-    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.lesson-header:hover {
-    transform: scale(1.01);
-    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.lesson-header.expanded {
-    transform: scale(1.01);
-    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-
-.lesson-content {
+/* N-Level and Lesson Content */
+.n-level-content, .lesson-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0 20px;
-    background-color: #3d3d3d;
-    will-change: height;
-    box-sizing: border-box;
+    transition: height 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 20px; /* Initial padding when collapsed */
+    background-color: #2c2c2c;
 }
 
+.n-level-header.expanded + .n-level-content,
+.lesson-header.expanded + .lesson-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 
-/* Grammar Point Styling */
 .grammar-point-list {
-    list-style-type: none;
-    padding: 10px 0;
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
 .grammar-point-wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.grammar-point-wrapper:last-child {
+    margin-bottom: 0;
 }
 
 .grammar-point-item {
-    flex-grow: 1;
-    /* Reduced max-width to give more space on the right for buttons */
-    max-width: calc(100% - 80px); /* 38px (button) + 38px (button) + 12px (gap) + ~-10px adjustment for tighter fit */
-    padding: 10px 15px;
-    background-color: #4d4d4d;
-    border-radius: 4px;
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, transform 0.1s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.grammar-point-item:hover {
-    background-color: #6a6a6a;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    flex-grow: 1; /* Allows content area to take available space */
 }
 
 .grammar-point-content-area {
@@ -275,279 +219,123 @@ h1 {
     flex-grow: 1;
 }
 
-.grammar-point-item a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 1.0em;
+.grammar-point-number {
     font-weight: 600;
+    color: #999;
+    margin-right: 10px;
+    min-width: 25px; /* Ensure numbers align vertically */
+    text-align: right;
+}
+
+.grammar-point-item a {
+    color: #87ceeb; /* Sky blue for links */
+    text-decoration: none;
+    font-weight: 500;
     transition: color 0.2s ease;
     flex-grow: 1;
-    display: flex;
-    align-items: center;
 }
 
-/* Highlight for Marked as Complete Grammar Point - GREEN */
+.grammar-point-item a:hover {
+    color: #6cb6d6;
+    text-decoration: underline;
+}
+
+/* States for Grammar Points */
 .grammar-point-item.completed {
-    background-color: #558B55;
-    color: #e0ffe0;
-    border: 1px solid #669966;
-    transform: scale(1.01);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    background-color: #4a6a4a; /* Darker green for completed */
+    opacity: 0.8;
 }
 
-/* Highlight for Bookmarked Grammar Point */
 .grammar-point-item.bookmarked {
-    background-color: #315065;
-    color: #e0e0e0;
-    border: 1px solid #4f748f;
-    transform: scale(1.01);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    background-color: #6a5b4a; /* Darker orange for bookmarked */
 }
 
-/* Visual precedence: If both bookmarked AND completed, bookmark style overrides complete style */
-.grammar-point-item.bookmarked.completed {
-    background-color: #315065;
-    border: 1px solid #4f748f;
+.grammar-point-item.completed a {
+    color: #a0ffa0; /* Lighter green for completed links */
+    text-decoration: none;
 }
 
-.grammar-point-item.bookmarked:hover {
-    background-color: #3d5e7a;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    border-color: #4f748f;
+.grammar-point-item.bookmarked a {
+    color: #ffd700; /* Gold for bookmarked links */
 }
 
-.grammar-point-item.completed:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-
-.grammar-point-number {
-    font-size: 0.9em;
-    font-weight: bold;
-    margin-right: 10px;
-    color: #bbb;
-    width: 1.5em;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-
-/* Expand/Collapse Icon (Dorito) */
-.toggle-icon {
-    font-size: 0.8em;
-    flex-shrink: 0;
-    margin-left: 10px;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.lesson-header .toggle-icon {
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.expanded .toggle-icon {
-    transform: rotate(90deg);
-}
-
-/* Dorito Flash Animation (removed: not needed as per discussion) */
-/* @keyframes flash-white {
-    0% { filter: brightness(1); }
-    50% { filter: brightness(2.5); }
-    100% { filter: brightness(1); }
-}
-
-.toggle-icon.flash-white {
-    animation: flash-white 0.3s ease-out;
-} */
-
-/* Finisher flash for button icons */
-@keyframes flash-white-icon {
-    0% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Default dim */
-    50% { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(2.5); } /* Bright white */
-    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to default dim */
-}
-
-.mark-level-complete-btn img.flash-white-icon,
-.mark-level-reset-btn img.flash-white-icon {
-    animation: flash-white-icon 0.3s ease-out;
-}
-
-
-/* Pulse (Breathing) Animation for N-level header text */
-@keyframes pulse-brightness {
-    0% { filter: brightness(1); }
-    50% { filter: brightness(1.2); }
-    100% { filter: brightness(1); }
-}
-
-/* Apply pulse animation only to the main text span within the header */
-.n-level-header.pulsing > span:first-child {
-    animation: pulse-brightness 1.5s ease-in-out infinite;
-}
-
-/* Action Buttons for Bookmark/Complete on Grammar Point */
+/* Action Buttons for individual grammar points */
 .action-buttons {
     display: flex;
-    flex-direction: row;
-    gap: 8px;
-    flex-shrink: 0;
+    gap: 5px;
+    margin-left: 15px; /* Space between grammar content and buttons */
 }
 
-.action-buttons button {
-    background-color: transparent;
+.action-btn {
+    background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
-    display: flex;
+    padding: 5px;
+    display: flex; /* For icon centering */
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    border-radius: 50%;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
 }
 
-.action-buttons button:hover {
-    transform: scale(1.05);
+.action-btn img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Make icons white by default */
 }
 
-.action-buttons button img {
-    width: 1.8em;
-    height: 1.8em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
-    transition: filter 0.2s ease;
-}
+.mark-complete-btn img { filter: invert(1) brightness(1.5) sepia(1) hue-rotate(80deg) saturate(3); } /* Green tint */
+.unmark-complete-btn img { filter: invert(1) brightness(1.5) sepia(1) hue-rotate(0deg) saturate(3); } /* Reddish tint */
+.bookmark-btn img { filter: invert(1) brightness(1.5) sepia(1) hue-rotate(200deg) saturate(3); } /* Blue tint */
+.unbookmark-btn img { filter: invert(1) brightness(1.5) sepia(1) hue-rotate(300deg) saturate(3); } /* Purple tint */
 
-.action-buttons button:hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
-}
+.mark-complete-btn:hover { background-color: #28a745; }
+.unmark-complete-btn:hover { background-color: #dc3545; }
+.bookmark-btn:hover { background-color: #007bff; }
+.unbookmark-btn:hover { background-color: #6f42c1; }
 
-/* Active Icon Styles - No box highlight, just brighter icon and soft shadow */
-.action-buttons button.active-bookmark {
-    box-shadow: 0 0 5px rgba(49, 80, 101, 0.7);
-    transform: none;
-}
-.action-buttons button.active-bookmark img {
-    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%);
-}
-
-.action-buttons button.active-complete {
-    box-shadow: 0 0 5px rgba(85, 139, 85, 0.7);
-    transform: none;
-}
-.action-buttons button.active-complete img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
-}
-
-.action-buttons button.active-bookmark:hover img,
-.action-buttons button.active-complete:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
-}
-
-/* Reset User Data Button (removed as per discussion) */
-/* #resetUserData {
-    background-color: #a04040;
-    color: #ffffff;
-    border: 1px solid #b05050;
-    padding: 8px 15px;
-    font-size: 0.9em;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 30px auto 10px auto;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-#resetUserData:hover {
-    background-color: #c05050;
-    border-color: #d06060;
-}
-
-#resetUserData img {
-    width: 1.3em;
-    height: 1.3em;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
-} */
-
-/* Mark Level Complete/Reset Buttons (Icon Buttons) */
-/* Shared styles */
+/* Mark Level Complete/Reset Buttons (inside N-level and Lesson headers) */
 .mark-level-complete-btn,
 .mark-level-reset-btn {
-    background-color: transparent;
+    background-color: #666;
     border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: visible;
-    width: 38px;
-    height: 38px;
-    padding: 0;
+    border-radius: 50%;
+    width: 38px; /* Standard size for circle */
+    height: 38px; /* Standard size for circle */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    flex-shrink: 0;
-    z-index: 0;
+    cursor: pointer;
+    position: relative; /* For progress circle positioning */
+    overflow: hidden; /* Ensure circle stays within bounds */
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent shrinking in flex container */
 }
 
-/* Position for the reset button */
-.n-level-header .mark-level-reset-btn,
-.lesson-header .mark-level-reset-btn {
-    margin-right: 10px;
-}
+.mark-level-complete-btn:hover { background-color: #28a745; }
+.mark-level-reset-btn:hover { background-color: #dc3545; }
 
-
-.mark-level-complete-btn:hover,
-.mark-level-reset-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
-/* Apply hover effect only when not holding */
-.mark-level-complete-btn:not(.holding):hover img,
-.mark-level-reset-btn:not(.holding):hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
-}
-
-
-.mark-level-complete-btn.holding,
-.mark-level-reset-btn.holding {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-/* Icon (image) inside the button */
-.mark-level-complete-btn img {
-    width: 1.6em;
-    height: 1.6em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
-    transition: filter 0.2s ease;
-    z-index: 2;
-    position: relative;
-    pointer-events: none;
-}
-
+.mark-level-complete-btn img,
 .mark-level-reset-btn img {
-    width: 1.4em;
-    height: 1.4em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
-    transition: filter 0.2s ease;
-    z-index: 2;
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Make icons white */
     position: relative;
-    pointer-events: none;
+    z-index: 2; /* Above SVG */
 }
 
-
-/* Green when level/lesson is completed (for complete button) */
-.mark-level-complete-btn.level-completed img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
+.mark-level-complete-btn.level-completed {
+    background-color: #28a745; /* Green when level is complete */
 }
 
-/* Override hover for completed state (keep green) */
-.mark-level-complete-btn.level-completed:hover img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
+.n-level-header.pulsing {
+    animation: pulse-header 1.5s infinite;
+}
+
+@keyframes pulse-header {
+    0% { box-shadow: 0 0 0px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 0 15px rgba(135,206,235,0.7); }
+    100% { box-shadow: 0 0 0px rgba(0,0,0,0.3); }
 }
 
 /* SVG Progress Circle */
@@ -582,4 +370,27 @@ h1 {
 .mark-level-reset-btn.holding .progress-circle-fg {
     opacity: 1;
     transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in;
+}
+
+/* Flash animation for containers (N-level and Lesson) */
+.n-level-content.flash-success,
+.lesson-content.flash-success {
+    animation: flashGreen 0.5s ease-out;
+}
+
+.n-level-content.flash-reset,
+.lesson-content.flash-reset {
+    animation: flashRed 0.5s ease-out;
+}
+
+@keyframes flashGreen {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(40, 167, 69, 0.3); } /* Green */
+    100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(220, 53, 69, 0.3); } /* Red */
+    100% { background-color: transparent; }
 }
