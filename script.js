@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ICON_PATHS = {
         bookmark: 'icons/bookmark-solid.svg',
         check: 'icons/circle-check-solid.svg',
-        trash: 'icons/trash-solid.svg',
+        trash: 'icons/trash-solid.svg', // Keeping this for consistency, though not actively used by a button now
         warning: 'icons/triangle-exclamation-solid.svg'
     };
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProgress(); // Load progress before rendering
             renderGrammarData(data);
             addResetButton(); // Add the reset button after rendering
-            updateAllParentHeaderStates(); // Initial update of headers based on loaded progress
+            updateParentHeaderStates(); // Initial update of headers based on loaded progress (now defined)
         } catch (error) {
             console.error("Could not load grammar data:", error);
             grammarContentDiv.innerHTML = '<p>Error loading grammar data. Please ensure "bunpro_grammar_data.json" is in the same directory and accessible. Details in console.</p>';
@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Header Highlighting Logic ---
+    // Moved this function definition BEFORE its call in loadGrammarData()
     function updateParentHeaderStates(startElement = null) {
         // If a specific element is provided, only update its relevant ancestors.
         // Otherwise, iterate through all grammar points to update all headers.
@@ -300,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Accordion Toggle Functions (from previous version, re-included for completeness) ---
+    // --- Accordion Toggle Functions ---
     function collapseSection(element, header) {
         element.style.height = element.scrollHeight + 'px';
 
