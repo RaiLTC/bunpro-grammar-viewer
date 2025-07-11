@@ -332,10 +332,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 38px; /* Explicit width for button */
+    height: 38px; /* Explicit height for button */
     padding: 0;
     border-radius: 50%;
+    position: relative; /* Needed for progress circle positioning */
 }
 
 .action-buttons button:hover {
@@ -349,11 +350,11 @@ h1 {
 .mark-lesson-complete-btn img,
 .mark-lesson-reset-btn img {
     /* Default: dim grey */
-    filter: grayscale(100%) brightness(0.7);
+    filter: grayscale(1) brightness(0.7);
     transition: filter 0.2s ease;
-    z-index: 2;
+    z-index: 2; /* Ensure icon is above progress circle */
     position: relative;
-    pointer-events: none;
+    pointer-events: none; /* Allow clicks to pass through to button */
 }
 
 /* Universal hover effect for all icons */
@@ -362,7 +363,7 @@ h1 {
 .mark-level-reset-btn:hover img,
 .mark-lesson-complete-btn:hover img,
 .mark-lesson-reset-btn:hover img {
-    filter: grayscale(0%) brightness(1.5); /* Bright white on hover */
+    filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
 }
 
 
@@ -391,6 +392,33 @@ h1 {
 
 
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
+/* Explicit width/height for these buttons to contain SVG */
+.mark-level-complete-btn,
+.mark-level-reset-btn,
+.mark-lesson-complete-btn,
+.mark-lesson-reset-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative; /* Crucial for progress circle positioning */
+    overflow: visible;
+    width: 38px; /* Explicit width */
+    height: 38px; /* Explicit height */
+    padding: 0;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+    z-index: 0;
+}
+
+.mark-level-complete-btn:hover,
+.mark-level-reset-btn:hover,
+.mark-lesson-complete-btn:hover,
+.mark-lesson-reset-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
 /* Specific sizes for these icons */
 .mark-level-complete-btn img,
 .mark-lesson-complete-btn img {
@@ -403,15 +431,15 @@ h1 {
     height: 1.4em;
 }
 
-/* Holding state filter - makes the icon brighter with its intended color */
-.mark-level-complete-btn.holding img,
+/* Holding state filter - applied by JS as inline style, but defining here for clarity */
+/* .mark-level-complete-btn.holding img,
 .mark-lesson-complete-btn.holding img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%); /* Brighter green */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%);
 }
 .mark-level-reset-btn.holding img,
 .mark-lesson-reset-btn.holding img {
-    filter: invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%); /* Brighter red */
-}
+    filter: invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%);
+} */
 
 
 /* Green when level/lesson is completed (for complete button) */
@@ -433,8 +461,8 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Fill parent button */
+    height: 100%; /* Fill parent button */
     pointer-events: none;
     z-index: 1;
     overflow: visible;
