@@ -47,7 +47,7 @@ h1 {
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none; /* For Safari */
     -moz-user-select: none; /* For Firefox */
-    -ms-user-select: none; /* For IE/Edge */
+    -ms-user-select: none;
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -275,14 +275,12 @@ h1 {
 
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
 .grammar-point-item.bookmarked + .action-buttons button:first-child img { /* Target the bookmark button (first child) next to a bookmarked item */
-    /* Adjusted filter to make the blue icon more vibrant, closer to #315065 */
-    filter: invert(36%) sepia(85%) saturate(1450%) hue-rotate(170deg) brightness(97%) contrast(85%);
+    filter: invert(27%) sepia(17%) saturate(1219%) hue-rotate(161deg) brightness(95%) contrast(87%);
 }
 
 /* Specific color for completed icon when its grammar point is completed */
 .grammar-point-item.completed + .action-buttons button:last-child img { /* Target the complete button (last child) next to a completed item */
-    /* Adjusted filter to make the red icon more vibrant, closer to #8b4545 */
-    filter: invert(27%) sepia(90%) saturate(1000%) hue-rotate(345deg) brightness(85%) contrast(100%);
+    filter: invert(28%) sepia(27%) saturate(1342%) hue-rotate(314deg) brightness(94%) contrast(75%);
 }
 
 /* Reset bookmark/complete icon filter on hover even if highlighted */
