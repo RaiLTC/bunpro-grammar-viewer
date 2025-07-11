@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const LOCAL_STORAGE_KEY = 'bunproGrammarProgress';
     let userProgress = {}; // In-memory store for user progress
 
+    // Paths to SVG files in your 'icons' folder
+    const ICON_PATHS = {
+        bookmark: 'icons/bookmark-solid.svg',
+        check: 'icons/circle-check-solid.svg',
+        trash: 'icons/trash-solid.svg', // Not used as individual clear is removed, but kept for reference
+        warning: 'icons/triangle-exclamation-solid.svg' // For reset button
+    };
+
     async function loadGrammarData() {
         try {
             const response = await fetch('bunpro_grammar_data.json');
@@ -90,13 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
     }
 
-    function clearGrammarPoint(gpId, grammarPointItemElement) {
-        userProgress[gpId] = { bookmarked: false, completed: false };
-        saveUserProgress();
-        grammarPointItemElement.classList.remove('bookmarked', 'completed');
-        renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
-    }
-
     function resetAllUserData() {
         if (confirm("Are you sure you want to reset ALL your saved progress (bookmarks and completed items)? This action cannot be undone.")) {
             userProgress = {}; // Clear in-memory state
@@ -146,7 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         html += `
                             <li class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
                                 <span class="grammar-point-number">${gpIdx + 1}.</span>
-                                <a href="${gp.link}" target="_blank" rel="noopener noreferrer">${gp.text}</a>
+                                <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
+                                    <img src="${ICON_PATHS.bookmark}" alt="Bookmark" class="bookmark-icon">
+                                    ${gp.text}
+                                </a>
                                 <div class="action-buttons"></div>
                             </li>
                         `;
@@ -184,7 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
         actionButtonsContainer.innerHTML = ''; // Clear existing buttons
 
         const bookmarkBtn = document.createElement('button');
-        bookmarkBtn.textContent = currentState.bookmarked ? 'Unbookmark' : 'Bookmark';
+        const bookmarkIcon = document.createElement('img');
+        bookmarkIcon.src = ICON_PATHS.bookmark;
+        bookmarkIcon.alt = "Bookmark";
+        bookmarkBtn.appendChild(bookmarkIcon);
+        bookmarkBtn.title = currentState.bookmarked ? 'Unbookmark this grammar point' : 'Bookmark this grammar point'; // Add tooltip
         bookmarkBtn.onclick = (e) => {
             e.stopPropagation(); // Prevent accordion from toggling
             toggleBookmark(gpId, grammarPointItemElement);
@@ -192,31 +200,35 @@ document.addEventListener('DOMContentLoaded', () => {
         actionButtonsContainer.appendChild(bookmarkBtn);
 
         const completeBtn = document.createElement('button');
-        completeBtn.textContent = currentState.completed ? 'Uncomplete' : 'Complete';
+        const checkIcon = document.createElement('img');
+        checkIcon.src = ICON_PATHS.check;
+        checkIcon.alt = "Complete";
+        completeBtn.appendChild(checkIcon);
+        completeBtn.title = currentState.completed ? 'Mark as incomplete' : 'Mark as complete'; // Add tooltip
         completeBtn.onclick = (e) => {
             e.stopPropagation(); // Prevent accordion from toggling
             toggleComplete(gpId, grammarPointItemElement);
         };
         actionButtonsContainer.appendChild(completeBtn);
-
-        // Only show clear button if either bookmark or complete is active
-        if (currentState.bookmarked || currentState.completed) {
-            const clearBtn = document.createElement('button');
-            clearBtn.textContent = 'Clear';
-            clearBtn.onclick = (e) => {
-                e.stopPropagation(); // Prevent accordion from toggling
-                clearGrammarPoint(gpId, grammarPointItemElement);
-            };
-            actionButtonsContainer.appendChild(clearBtn);
-        }
     }
 
     function addResetButton() {
-        const resetButton = document.createElement('button');
-        resetButton.id = 'resetUserData';
-        resetButton.textContent = 'Reset All Saved Progress';
-        resetButton.addEventListener('click', resetAllUserData);
-        document.querySelector('.container').appendChild(resetButton); // Append to main container
+        // Only add if it doesn't already exist to prevent duplicates on re-renders
+        if (!document.getElementById('resetUserData')) {
+            const resetButton = document.createElement('button');
+            resetButton.id = 'resetUserData';
+
+            const warningIcon = document.createElement('img');
+            warningIcon.src = ICON_PATHS.warning;
+            warningIcon.alt = "Warning";
+            resetButton.appendChild(warningIcon);
+
+            const buttonText = document.createTextNode('Reset All Saved Progress');
+            resetButton.appendChild(buttonText);
+
+            resetButton.addEventListener('click', resetAllUserData);
+            document.querySelector('.container').appendChild(resetButton); // Append to main container
+        }
     }
 
 
@@ -250,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const onTransitionEnd = () => {
-            element.removeEventListener('transitionend', onTransitionend);
+            element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = 'auto'; // Revert to auto so content can resize dynamically
             header.classList.add('expanded'); // Rotate icon
             // The pulsing class is applied immediately after expandSection is called
@@ -281,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Stop propagation if a child element (like a button) inside lesson header was clicked
                 // This is a safeguard, though our buttons are inside grammar-point-item, not lesson-header directly
-                if (e.target.tagName === 'BUTTON') {
+                if (e.target.tagName === 'BUTTON' || e.target.closest('.action-buttons')) { // Added closest for robustness
                     e.stopPropagation();
                     return;
                 }

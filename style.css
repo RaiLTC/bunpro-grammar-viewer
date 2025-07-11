@@ -117,7 +117,8 @@ h1 {
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; /* Added filter transition for highlights */
+    /* Added background-color and border-color to transition for smooth highlight */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
     position: relative;
     overflow: hidden;
 }
@@ -159,7 +160,7 @@ h1 {
     flex-shrink: 0; /* Prevent number from shrinking */
 }
 
-/* Bookmark Marker Icon */
+/* Bookmark Marker Icon - using an <img> tag now */
 .grammar-point-item a {
     color: #88c0d0; /* Light blue for links */
     text-decoration: none;
@@ -172,13 +173,19 @@ h1 {
     align-items: center; /* Vertically align icon with text */
 }
 
-.grammar-point-item.bookmarked a::before {
-    content: '★'; /* Star character for bookmark */
-    color: #ffd700; /* Gold color */
-    font-size: 1.1em;
+/* Hide the bookmark icon by default */
+.bookmark-icon {
+    display: none;
+    width: 1em; /* Set size of the icon */
+    height: 1em;
     margin-right: 5px;
-    line-height: 1; /* Prevent extra line height from icon */
-    transform: translateY(-1px); /* Slight adjustment for vertical alignment */
+    vertical-align: middle;
+    /* You might want to apply a filter or tint if the SVG color is not ideal for dark mode */
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5)) brightness(1.2); /* Subtle glow/brightness */
+}
+
+/* Show the bookmark icon when the grammar point is bookmarked */
+.grammar-point-item.bookmarked .bookmark-icon {
     display: inline-block;
 }
 
@@ -212,11 +219,6 @@ h1 {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Lesson header does NOT get the pulsing animation anymore */
-/* .lesson-header.pulsing {
-    animation: pulse-brightness 1.5s ease-in-out infinite;
-} */
-
 /* Buttons for actions - basic styling */
 .action-buttons {
     margin-left: auto; /* Push buttons to the right */
@@ -227,7 +229,7 @@ h1 {
 
 .action-buttons button {
     background-color: #555;
-    color: #ddd;
+    color: #ddd; /* Default text/icon color for buttons */
     border: 1px solid #666;
     border-radius: 4px;
     padding: 3px 8px;
@@ -235,12 +237,27 @@ h1 {
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     flex-shrink: 0; /* Prevent buttons from shrinking */
+    display: flex; /* Allows centering SVG inside */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Fixed width for icon buttons */
+    height: 28px; /* Fixed height for icon buttons */
+    padding: 0; /* Remove padding to make icon fill */
 }
 
 .action-buttons button:hover {
     background-color: #777;
     border-color: #888;
     color: #fff;
+}
+
+/* Style for SVG icons within buttons */
+.action-buttons button img { /* Changed from svg to img */
+    width: 1em; /* Control icon size relative to font-size of button */
+    height: 1em;
+    /* SVG files embedded as <img> generally don't respect fill: currentColor.
+       You might need to ensure your SVG files themselves have the correct colors,
+       or apply filters here if you need to dynamically change their color. */
 }
 
 /* Styles for Reset User Data button */
@@ -252,7 +269,10 @@ h1 {
     font-size: 0.9em;
     border-radius: 6px;
     cursor: pointer;
-    display: block; /* Make it a block element to center */
+    display: flex; /* Use flex to align icon and text */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    gap: 8px; /* Space between icon and text */
     margin: 30px auto 10px auto; /* Center it with margin */
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -260,4 +280,10 @@ h1 {
 #resetUserData:hover {
     background-color: #c05050;
     border-color: #d06060;
+}
+
+#resetUserData img {
+    width: 1.2em; /* Adjust size of warning icon */
+    height: 1.2em;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Make icon white/bright */
 }
