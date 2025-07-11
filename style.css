@@ -43,6 +43,10 @@ h1 {
     align-items: center;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    user-select: none; /* Make uncopyable */
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For IE/Edge */
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -63,7 +67,6 @@ h1 {
     box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
-/* No .expanded class for height, JS will set height directly */
 
 /* Lesson Styling */
 .lesson {
@@ -81,6 +84,10 @@ h1 {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.2s ease;
+    user-select: none; /* Make uncopyable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .lesson-content {
@@ -92,8 +99,6 @@ h1 {
     will-change: height; /* Hint to the browser for optimization */
     box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
-
-/* No .expanded class for height, JS will set height directly */
 
 
 /* Grammar Point Styling */
@@ -111,7 +116,6 @@ h1 {
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
-    /* Only transition background-color and box-shadow for a smooth change */
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
@@ -160,30 +164,61 @@ h1 {
     transform: rotate(90deg); /* Rotate for expanded state */
 }
 
-/* Pulse Animation - No changes needed here, still applies to headers */
-@keyframes pulse-effect-n5 { 0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); } 100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0); } }
-@keyframes pulse-effect-n4 { 0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); } 100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0); } }
-@keyframes pulse-effect-n3 { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0); } }
-@keyframes pulse-effect-n2 { 0% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 191, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0); } }
-@keyframes pulse-effect-n1 { 0% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 128, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0); } }
-@keyframes pulse-effect-non-jlpt { 0% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(170, 170, 170, 0); } 100% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0); } }
-@keyframes pulse-effect-unknown { 0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); } }
+/* Pulse (Breathing) Animation - Now with infinite iteration */
+/* Adjust opacity and blur for softer pulse */
+@keyframes pulse-effect-n5 {
+    0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } /* Return to initial state for seamless loop */
+}
+@keyframes pulse-effect-n4 {
+    0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); }
+}
+@keyframes pulse-effect-n3 {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); }
+}
+@keyframes pulse-effect-n2 {
+    0% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 191, 128, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); }
+}
+@keyframes pulse-effect-n1 {
+    0% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 128, 128, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); }
+}
+@keyframes pulse-effect-non-jlpt {
+    0% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(170, 170, 170, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); }
+}
+@keyframes pulse-effect-unknown {
+    0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); }
+}
 
 
-.n-level-N5.pulsing .n-level-header { animation: pulse-effect-n5 0.8s ease-out forwards; }
-.n-level-N4.pulsing .n-level-header { animation: pulse-effect-n4 0.8s ease-out forwards; }
-.n-level-N3.pulsing .n-level-header { animation: pulse-effect-n3 0.8s ease-out forwards; }
-.n-level-N2.pulsing .n-level-header { animation: pulse-effect-n2 0.8s ease-out forwards; }
-.n-level-N1.pulsing .n-level-header { animation: pulse-effect-n1 0.8s ease-out forwards; }
-.n-level-Non-JLPT.pulsing .n-level-header { animation: pulse-effect-non-jlpt 0.8s ease-out forwards; }
-.n-level-Unknown-N-Level.pulsing .n-level-header { animation: pulse-effect-unknown 0.8s ease-out forwards; }
+/* Apply pulse animation to the N-level header */
+.n-level-N5 .n-level-header.pulsing { animation: pulse-effect-n5 1.5s ease-in-out infinite; } /* Slower duration for breathing */
+.n-level-N4 .n-level-header.pulsing { animation: pulse-effect-n4 1.5s ease-in-out infinite; }
+.n-level-N3 .n-level-header.pulsing { animation: pulse-effect-n3 1.5s ease-in-out infinite; }
+.n-level-N2 .n-level-header.pulsing { animation: pulse-effect-n2 1.5s ease-in-out infinite; }
+.n-level-N1 .n-level-header.pulsing { animation: pulse-effect-n1 1.5s ease-in-out infinite; }
+.n-level-Non-JLPT .n-level-header.pulsing { animation: pulse-effect-non-jlpt 1.5s ease-in-out infinite; }
+.n-level-Unknown-N-Level .n-level-header.pulsing { animation: pulse-effect-unknown 1.5s ease-in-out infinite; }
 
+/* Lesson header pulsing (uses generic white pulse) */
 .lesson-header.pulsing {
-    animation: pulse-effect-lesson 0.8s ease-out forwards;
+    animation: pulse-effect-lesson 1.5s ease-in-out infinite; /* Slower duration for breathing */
 }
 
 @keyframes pulse-effect-lesson {
     0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
-    70% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
 }

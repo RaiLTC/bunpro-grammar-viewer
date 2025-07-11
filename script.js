@@ -71,90 +71,74 @@ document.addEventListener('DOMContentLoaded', () => {
         addToggleListeners();
     }
 
-    // --- Helper function for height animation ---
     function collapseSection(element, header) {
-        // Set element's height to its current computed height to lock it
         element.style.height = element.scrollHeight + 'px';
 
         requestAnimationFrame(() => {
-            // Force reflow
-            void element.offsetWidth;
-            // Then set height to 0
+            void element.offsetWidth; // Force reflow
             element.style.height = '0';
         });
 
-        // Listen for the transition end event to clean up styles
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = ''; // Remove inline height after transition
             header.classList.remove('expanded'); // Rotate icon back
-            header.classList.remove('pulsing'); // Remove pulse class if still there
+            header.classList.remove('pulsing'); // Ensure pulse class is removed on collapse
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
 
     function expandSection(element, header) {
-        // Temporarily set height to 'auto' to get the full scrollHeight
         element.style.height = 'auto';
-        const height = element.scrollHeight; // Get the computed height of the content
+        const height = element.scrollHeight;
 
-        // Set height back to 0 (or its current collapsed state)
         element.style.height = '0';
 
         requestAnimationFrame(() => {
-            // Force reflow
-            void element.offsetWidth;
-            // Animate to its full height
+            void element.offsetWidth; // Force reflow
             element.style.height = height + 'px';
         });
 
-        // Listen for the transition end event to clean up styles
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = 'auto'; // Revert to auto so content can resize dynamically
             header.classList.add('expanded'); // Rotate icon
-            header.classList.remove('pulsing'); // Remove pulse class
+            // The pulsing class is applied immediately after expandSection is called
+            // to start the animation and removed if collapsing.
+            // No need to remove it here as it handles the infinite loop.
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
 
-    // Function to add click listeners for toggling sections
     function addToggleListeners() {
-        // N-Level toggles
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', () => {
                 const nLevelContent = header.nextElementSibling;
 
-                if (header.classList.contains('expanded')) { // Check header's expanded class for icon state
+                if (header.classList.contains('expanded')) {
                     collapseSection(nLevelContent, header);
                 } else {
                     expandSection(nLevelContent, header);
-                    // Pulse animation on the N-level header
-                    header.classList.remove('pulsing');
-                    void header.offsetWidth; // Trigger reflow
+                    // Add pulsing class here to start infinite animation
                     header.classList.add('pulsing');
                 }
             });
         });
 
-        // Lesson toggles
         document.querySelectorAll('.lesson-header').forEach(header => {
             header.addEventListener('click', () => {
                 const lessonContent = header.nextElementSibling;
 
-                if (header.classList.contains('expanded')) { // Check header's expanded class for icon state
+                if (header.classList.contains('expanded')) {
                     collapseSection(lessonContent, header);
                 } else {
                     expandSection(lessonContent, header);
-                    // Pulse animation on the lesson header
-                    header.classList.remove('pulsing');
-                    void header.offsetWidth; // Trigger reflow
+                    // Add pulsing class here to start infinite animation
                     header.classList.add('pulsing');
                 }
             });
         });
     }
 
-    // Initial load of data when the DOM is ready
     loadGrammarData();
 });
