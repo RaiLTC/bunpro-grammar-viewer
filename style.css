@@ -32,7 +32,7 @@ h1 {
     border: 1px solid #4a4a4a;
     border-radius: 6px;
     padding: 15px 20px;
-    margin-bottom: 20px; /* Reduced to make space for announcement */
+    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -91,21 +91,22 @@ h1 {
 
 /* Announcement Container */
 .announcement-container {
-    background-color: #4a3e3e; /* Dark red background for visibility */
-    border: 1px solid #cc0000; /* Red border */
+    background-color: #4a3e3e; /* Dark red background */
+    border: 2px solid #ff3333; /* Bright red border for emphasis */
     border-radius: 6px;
     padding: 15px;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.5); /* Red glow effect */
 }
 
 .announcement-container img {
-    width: 1.5em;
-    height: 1.5em;
+    width: 24px; /* Fixed size for megaphone icon */
+    height: 24px;
     filter: invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(100%) contrast(100%); /* Red to match reset buttons */
+    flex-shrink: 0;
 }
 
 .announcement-container p {
@@ -113,6 +114,11 @@ h1 {
     font-size: 1em;
     color: #e0e0e0;
     font-weight: 500;
+    flex-grow: 1;
+}
+
+.announcement-container strong {
+    color: #ff6666; /* Lighter red for emphasis */
 }
 
 /* N-Level Styling */
@@ -129,9 +135,9 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     display: flex;
-    justify-content: flex-start; /* Align items to the start initially */
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px; /* Space between flex items */
+    gap: 10px;
     transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     user-select: none;
@@ -140,9 +146,9 @@ h1 {
     -ms-user-select: none;
 }
 
-.n-level-header .n-level-text { /* New class for the text span */
+.n-level-header .n-level-text {
     flex-shrink: 0;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
 .n-level-header .header-counts {
@@ -150,10 +156,10 @@ h1 {
     color: #c0c0c0;
     font-weight: normal;
     white-space: nowrap;
-    margin-right: auto; /* Pushes subsequent items to the right */
+    margin-right: auto;
 }
 
-/* N-Level Specific Colors (Darker shades for dark theme) */
+/* N-Level Specific Colors */
 .n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; }
 .n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; }
 .n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
@@ -162,22 +168,19 @@ h1 {
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
-/* Header highlight for content with bookmarked items - now an inset box-shadow */
+/* Header highlight for content with bookmarked items */
 .n-level-header.has-bookmarked-children {
-    box-shadow: inset 0 0 0 3px #6ab0de,
-                0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 0 3px #6ab0de, 0 4px 8px rgba(0, 0, 0, 0.3);
     filter: none;
 }
 
 .n-level-header.all-children-complete {
-    box-shadow: inset 0 0 0 3px #558B55,
-                0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 0 3px #558B55, 0 4px 8px rgba(0, 0, 0, 0.3);
     filter: none;
 }
 
 .n-level-header.has-bookmarked-children.all-children-complete {
-    box-shadow: inset 0 0 0 3px #6ab0de,
-                0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 0 3px #6ab0de, 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .n-level-content {
@@ -204,9 +207,9 @@ h1 {
     cursor: pointer;
     background-color: #444444;
     display: flex;
-    justify-content: flex-start; /* Align items to the start initially */
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px; /* Space between flex items */
+    gap: 10px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
     user-select: none;
     -webkit-user-select: none;
@@ -215,7 +218,7 @@ h1 {
 }
 
 .lesson-header span:first-child {
-    flex-shrink: 0; /* Prevent the main text from shrinking */
+    flex-shrink: 0;
 }
 
 .lesson-header .header-counts {
@@ -223,7 +226,7 @@ h1 {
     color: #b0b0b0;
     font-weight: normal;
     white-space: nowrap;
-    margin-right: auto; /* Pushes subsequent items to the right */
+    margin-right: auto;
 }
 
 .lesson-header.has-bookmarked-children {
@@ -279,7 +282,7 @@ h1 {
     flex-grow: 1;
     max-width: calc(100% - 80px);
     padding: 10px 15px;
-    background-color: #4d4d4d; /* Default background */
+    background-color: #4d4d4d;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s ease, transform 0.1s ease;
@@ -294,22 +297,19 @@ h1 {
     transform: translateY(-1px);
 }
 
-/* Bookmarked grammar point styling: SOLID BLUE background */
 .grammar-point-item.bookmarked {
-    background-color: #2A4B6B; /* More intense blue */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
+    background-color: #2A4B6B;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Completed grammar point styling: SOLID GREEN background */
 .grammar-point-item.completed {
-    background-color: #2E5C2E; /* More intense green */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
+    background-color: #2E5C2E;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Combined bookmarked and completed: A neutral, darker blend */
 .grammar-point-item.bookmarked.completed {
-    background-color: #2C4646; /* A neutral, slightly darker green-blue blend */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
+    background-color: #2C4646;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .grammar-point-content-area {
@@ -355,52 +355,50 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px; /* Smaller button size */
-    height: 24px; /* Smaller button size */
+    width: 24px;
+    height: 24px;
     padding: 0;
     border-radius: 50%;
-    position: relative; /* Needed for progress circle positioning */
+    position: relative;
 }
 
 .action-buttons button img {
-    width: 20px; /* Smaller icon size */
-    height: 20px; /* Smaller icon size */
-    filter: grayscale(0.5) brightness(1.0); /* Lighter default appearance */
-    color: #e0e0e0; /* Ensure visibility */
+    width: 20px;
+    height: 20px;
+    filter: grayscale(0.5) brightness(1.0);
+    color: #e0e0e0;
     transition: filter 0.2s ease;
-    z-index: 2; /* Ensure icon is above progress circle */
+    z-index: 2;
     position: relative;
-    pointer-events: none; /* Allow clicks to pass through to button */
+    pointer-events: none;
 }
 
 .action-buttons button:hover img {
-    filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
+    filter: grayscale(0) brightness(1.2);
 }
 
-/* Specific styles for active/completed/bookmarked states */
 .action-buttons button.bookmarked {
-    box-shadow: 0 0 8px rgba(106, 176, 222, 0.7); /* Blue shadow */
+    box-shadow: 0 0 8px rgba(106, 176, 222, 0.7);
 }
 .action-buttons button.bookmarked img {
-    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); /* Blue for bookmarked */
+    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%);
 }
 
 .action-buttons button.completed {
-    box-shadow: 0 0 8px rgba(85, 139, 85, 0.7); /* Green shadow */
+    box-shadow: 0 0 8px rgba(85, 139, 85, 0.7);
 }
 .action-buttons button.completed img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green for completed */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
 }
 
-/* Overrides for hover on active icons: keep color, just brighten */
 .action-buttons button.bookmarked:hover img {
-    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(120%) contrast(93%); /* Brighter blue */
+    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(120%) contrast(93%);
 }
 .action-buttons button.completed:hover img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%); /* Brighter green */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
 }
 
-/* Mark Level Complete/Reset Buttons (Icon Buttons) */
+/* Mark Level Complete/Reset Buttons */
 .mark-level-complete-btn,
 .mark-level-reset-btn,
 .mark-lesson-complete-btn,
@@ -408,10 +406,10 @@ h1 {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    position: relative; /* Crucial for progress circle positioning */
+    position: relative;
     overflow: visible;
-    width: 38px; /* Explicit width */
-    height: 38px; /* Explicit height */
+    width: 38px;
+    height: 38px;
     padding: 0;
     border-radius: 50%;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -423,22 +421,21 @@ h1 {
 .mark-lesson-complete-btn img,
 .mark-level-reset-btn img,
 .mark-lesson-reset-btn img {
-    filter: grayscale(0.5) brightness(1.0); /* Lighter default appearance */
-    color: #e0e0e0; /* Ensure visibility */
+    filter: grayscale(0.5) brightness(1.0);
+    color: #e0e0e0;
     transition: filter 0.2s ease;
-    z-index: 2; /* Ensure icon is above progress circle */
+    z-index: 2;
     position: relative;
-    pointer-events: none; /* Allow clicks to pass through to button */
+    pointer-events: none;
 }
 
 .mark-level-complete-btn:hover img,
 .mark-level-reset-btn:hover img,
 .mark-lesson-complete-btn:hover img,
 .mark-lesson-reset-btn:hover img {
-    filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
+    filter: grayscale(0) brightness(1.2);
 }
 
-/* Specific sizes for these icons */
 .mark-level-complete-btn img,
 .mark-lesson-complete-btn img {
     width: 1.6em;
@@ -450,13 +447,11 @@ h1 {
     height: 1.4em;
 }
 
-/* Green when level/lesson is completed (for complete button) */
 .mark-level-complete-btn.level-completed img,
 .mark-lesson-complete-btn.lesson-completed img {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
 }
 
-/* Override hover for completed state (keep green, just brighter) */
 .mark-level-complete-btn.level-completed:hover img,
 .mark-lesson-complete-btn.lesson-completed:hover img {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
@@ -468,8 +463,8 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%; /* Fill parent button */
-    height: 100%; /* Fill parent button */
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 1;
     overflow: visible;
@@ -482,19 +477,18 @@ h1 {
 }
 
 .progress-circle-fg {
-    stroke: #558B55; /* Fallback stroke color (green for complete) */
+    stroke: #558B55;
     stroke-width: 3;
     fill: none;
     stroke-linecap: round;
-    stroke-dasharray: 100.53 100.53; /* Circumference for r=16 */
-    stroke-dashoffset: 100.53; /* Initially fully hidden */
-    transform: rotate(-90deg); /* Start at top (12 o'clock) */
+    stroke-dasharray: 100.53 100.53;
+    stroke-dashoffset: 100.53;
+    transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    opacity: 0; /* Initially hidden */
+    opacity: 0;
     transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1);
 }
 
-/* Ensure progress circle is fully visible during hold */
 .progress-circle-fg.holding {
     opacity: 1;
 }
@@ -517,9 +511,9 @@ h1 {
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: inline-flex; /* To align icon and text */
+    display: inline-flex;
     align-items: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 8px;
 }
 
 .reset-button:hover {
@@ -530,7 +524,6 @@ h1 {
 .reset-button img {
     width: 1.3em;
     height: 1.3em;
-    /* Reset button icon is always white, so just brightness */
     filter: brightness(1.5);
 }
 
@@ -548,19 +541,18 @@ h1 {
 /* Toggle Icon (Dorito) Animation */
 .toggle-icon {
     font-size: 0.8em;
-    display: inline-block; /* Essential for transform to work */
-    color: #bbb; /* Default color */
+    display: inline-block;
+    color: #bbb;
     transition: transform var(--toggle-transition-duration) var(--toggle-transition-easing);
 }
 
 /* Finisher flash for button icons AND toggle icons */
 @keyframes flash-white-icon {
     0% { filter: brightness(1) grayscale(0%); }
-    50% { filter: brightness(3) grayscale(0%); } /* Very bright white */
+    50% { filter: brightness(3) grayscale(0%); }
     100% { filter: brightness(1) grayscale(0%); }
 }
 
-/* Apply flash animation to images and toggle icons */
 .action-buttons button img.flash-white-icon,
 .mark-level-complete-btn img.flash-white-icon,
 .mark-level-reset-btn img.flash-white-icon,
@@ -570,32 +562,31 @@ h1 {
     animation: flash-white-icon 0.3s ease-out;
 }
 
-/* New: N-Level Bookmark Indicator */
+/* N-Level Bookmark Indicator */
 .n-level-bookmark-indicator {
-    display: none; /* Hidden by default, shown by JS */
-    margin-right: 10px; /* Space from the next element */
-    width: 1.5em; /* Fixed size for the icon */
+    display: none;
+    margin-right: 10px;
+    width: 1.5em;
     height: 1.5em;
-    /* Blue color for bookmark indicator */
     filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%);
     transform-origin: center;
-    animation: none; /* No animation by default */
+    animation: none;
 }
 
 .n-level-bookmark-indicator.active {
-    display: block; /* Show when active */
-    animation: heartbeat 1.5s infinite ease-in-out; /* Heartbeat animation */
+    display: block;
+    animation: heartbeat 1.5s infinite ease-in-out;
 }
 
 @keyframes heartbeat {
     0% { transform: scale(1); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); }
-    25% { transform: scale(1.1); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(120%) contrast(93%); } /* Brighter blue */
+    25% { transform: scale(1.1); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(120%) contrast(93%); }
     50% { transform: scale(1); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); }
-    75% { transform: scale(0.9); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(80%) contrast(93%); } /* Slightly dimmer blue */
+    75% { transform: scale(0.9); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(80%) contrast(93%); }
     100% { transform: scale(1); filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); }
 }
 
-/* New: Header Flash Animation for Actions */
+/* Header Flash Animation for Actions */
 @keyframes header-flash {
     0% { box-shadow: inset 0 0 0 0px rgba(255, 255, 255, 0.5); }
     50% { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8); }

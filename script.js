@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         bookmarkSolid: 'icons/bookmark-solid.svg',
         checkSolid: 'icons/circle-check-solid.svg',
         warningTriangle: 'icons/triangle-exclamation-solid.svg',
-        trashSolid: 'icons/trash-solid.svg'
+        trashSolid: 'icons/trash-solid.svg',
+        announcement: 'icons/announcement-shout-svgrepo-com.svg'
     };
 
     let allGrammarData = [];
@@ -137,14 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let unknownNLevelGrammarPoints = 0;
         let unknownNLevelCompletedGPs = 0;
 
-
         const nLevelStats = {};
 
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
-
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -160,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lessonGPsCount = 0;
                     let lessonCompletedGPs = 0;
 
-
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
                         const state = getGrammarPointState(gpId);
@@ -175,8 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 unknownNLevelCompletedGPs++;
                             }
-                        }
-                        else {
+                        } else {
                             totalGrammarPoints++;
                             if (state.completed) {
                                 completedGrammarPoints++;
@@ -263,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
         const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'] || {};
 
-
         statsHtml += `
             <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
             <p>N5 Grammar Points: <span class="stat-value">${n5Stats.completedGrammarPoints || 0}/${n5Stats.grammarPoints || 0}</span></p>
@@ -297,6 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
         statsHtml += `
                     </div>
                 </div>
+            </div>
+            <div class="announcement-container">
+                <img src="${ICON_PATHS.announcement}" alt="Announcement" onerror="console.error('Failed to load announcement icon at ${ICON_PATHS.announcement}')">
+                <p><strong>Notice:</strong> Having some issues with icons being blacked-out, working on a fix. Functionality remains working </p>
             </div>
         `;
 
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.bookmarked) {
             bookmarkButton.classList.add('bookmarked');
         }
-        bookmarkButton.innerHTML = `<img src="${ICON_PATHS.bookmarkSolid}" alt="Bookmark">`;
+        bookmarkButton.innerHTML = `<img src="${ICON_PATHS.bookmarkSolid}" alt="Bookmark" onerror="console.error('Failed to load bookmark icon at ${ICON_PATHS.bookmarkSolid}')">`;
         bookmarkButton.title = state.bookmarked ? "Remove Bookmark" : "Bookmark this grammar point";
         bookmarkButton.addEventListener('click', () => toggleBookmark(gpId, grammarPointItem));
         actionButtonsDiv.appendChild(bookmarkButton);
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.completed) {
             completeButton.classList.add('completed');
         }
-        completeButton.innerHTML = `<img src="${ICON_PATHS.checkSolid}" alt="Complete">`;
+        completeButton.innerHTML = `<img src="${ICON_PATHS.checkSolid}" alt="Complete" onerror="console.error('Failed to load check icon at ${ICON_PATHS.checkSolid}')">`;
         completeButton.title = state.completed ? "Mark as Incomplete" : "Mark as Complete";
         completeButton.addEventListener('click', () => toggleComplete(gpId, grammarPointItem));
         actionButtonsDiv.appendChild(completeButton);
@@ -637,6 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 progressBarFg.classList.remove('holding'); // Remove holding class
                 buttonIcon.style.removeProperty('filter'); // Remove inline filter
                 progressBarFg.style.strokeDashoffset = '100.53'; // Reset to hidden
+                progressBarFg.style.opacity = '0'; // Ensure hidden after animation
 
                 // Flash the icon briefly after release if action was not completed
                 if (buttonIcon && !buttonIcon.classList.contains('flash-white-icon')) {
@@ -788,7 +789,6 @@ document.addEventListener('DOMContentLoaded', () => {
             headerElement.classList.remove('flash-action');
         }, { once: true });
     }
-
 
     // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
