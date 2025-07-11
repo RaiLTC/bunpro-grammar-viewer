@@ -57,8 +57,8 @@ h1 {
 .n-level-content {
     max-height: 0;
     overflow: hidden;
-    /* Longer duration, more sophisticated easing for smoother feel */
-    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* A common, smooth ease */
+    /* Adjusted cubic-bezier for a smoother, slower overall feel */
+    transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1); /* Slightly longer duration, smoother ease-out type */
     background-color: #333333; /* Background for N-level content */
     will-change: max-height; /* Hint to the browser for optimization */
 }
@@ -88,8 +88,8 @@ h1 {
 .lesson-content {
     max-height: 0;
     overflow: hidden;
-    /* Longer duration, more sophisticated easing for smoother feel */
-    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* A common, smooth ease */
+    /* Adjusted cubic-bezier for a smoother, slower overall feel */
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Slightly longer duration, smoother ease-out type */
     padding: 0 20px; /* Padding for collapsed state */
     background-color: #3d3d3d; /* Slightly different background for lesson content */
     will-change: max-height; /* Hint to the browser for optimization */
