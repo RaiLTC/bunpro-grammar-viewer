@@ -95,22 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentState = getGrammarPointState(gpId);
         currentState.bookmarked = !currentState.bookmarked;
         updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
-
-        const bookmarkIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.bookmark-btn img');
-        if (bookmarkIcon) {
-            flashIcon(bookmarkIcon); // Flash icon on bookmark action
-        }
     }
 
     function toggleComplete(gpId, grammarPointItemElement) {
         const currentState = getGrammarPointState(gpId);
         currentState.completed = !currentState.completed;
         updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
-
-        const completeIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.complete-btn img');
-        if (completeIcon) {
-            flashIcon(completeIcon); // Flash icon on complete action
-        }
     }
 
     function resetAllUserData() {
@@ -618,10 +608,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Set the progress bar color and icon filter based on button type
                 if (button.classList.contains('mark-level-complete-btn') || button.classList.contains('mark-lesson-complete-btn')) {
                     progressBarFg.style.stroke = '#558B55'; // Green for complete
-                    buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%)'; // Brighter green
+                    // Apply holding filter for complete button
+                    buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%)';
                 } else if (button.classList.contains('mark-level-reset-btn') || button.classList.contains('mark-lesson-reset-btn')) {
                     progressBarFg.style.stroke = '#cc0000'; // Red for reset
-                    buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%)'; // Brighter red
+                    // Apply holding filter for reset button
+                    buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%)';
                 }
 
                 progressBarFg.style.transition = 'none'; // Reset transition instantly
@@ -675,7 +667,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const nLevelKey = button.dataset.nLevelKey;
         const lessonNum = button.dataset.lessonNum;
 
-        flashIcon(button.querySelector('img')); // Flash the icon on successful action
+        // Flash the icon on successful action
+        flashIcon(button.querySelector('img'));
 
         const headerToFlash = button.closest('.n-level-header') || button.closest('.lesson-header');
         if (headerToFlash) {

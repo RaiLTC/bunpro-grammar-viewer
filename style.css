@@ -198,7 +198,7 @@ h1 {
     font-size: 0.8em;
     color: #b0b0b0;
     font-weight: normal;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
     margin-right: auto; /* Pushes subsequent items to the right */
 }
 
@@ -342,20 +342,31 @@ h1 {
     transform: scale(1.05);
 }
 
-.action-buttons button img {
-    width: 1.8em;
-    height: 1.8em;
-    /* Default filter for inactive icons: dim grey */
-    filter: brightness(0.7) grayscale(100%);
+/* Base style for all icon images */
+.action-buttons button img,
+.mark-level-complete-btn img,
+.mark-level-reset-btn img,
+.mark-lesson-complete-btn img,
+.mark-lesson-reset-btn img {
+    /* Default: dim grey */
+    filter: grayscale(100%) brightness(0.7);
     transition: filter 0.2s ease;
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
 }
 
-.action-buttons button:hover img {
-    /* Brighter white on hover for all icons */
-    filter: brightness(1.5) grayscale(0%);
+/* Universal hover effect for all icons */
+.action-buttons button:hover img,
+.mark-level-complete-btn:hover img,
+.mark-level-reset-btn:hover img,
+.mark-lesson-complete-btn:hover img,
+.mark-lesson-reset-btn:hover img {
+    filter: grayscale(0%) brightness(1.5); /* Bright white on hover */
 }
 
-/* Bookmarked icon filter: BLUE + Shadow */
+
+/* Specific styles for active/completed/bookmarked states */
 .action-buttons button.bookmarked {
     box-shadow: 0 0 8px rgba(106, 176, 222, 0.7); /* Blue shadow */
 }
@@ -363,7 +374,6 @@ h1 {
     filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); /* Blue for bookmarked */
 }
 
-/* Completed icon filter: GREEN + Shadow */
 .action-buttons button.completed {
     box-shadow: 0 0 8px rgba(85, 139, 85, 0.7); /* Green shadow */
 }
@@ -371,7 +381,7 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green for completed */
 }
 
-/* Override hover for active states (keep original color, just brighter) */
+/* Overrides for hover on active icons: keep color, just brighten */
 .action-buttons button.bookmarked:hover img {
     filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(120%) contrast(93%); /* Brighter blue */
 }
@@ -381,61 +391,16 @@ h1 {
 
 
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
-/* Shared styles */
-.mark-level-complete-btn,
-.mark-level-reset-btn,
-.mark-lesson-complete-btn,
-.mark-lesson-reset-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: visible;
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    flex-shrink: 0;
-    z-index: 0;
-}
-
-.mark-level-complete-btn:hover,
-.mark-level-reset-btn:hover,
-.mark-lesson-complete-btn:hover,
-.mark-lesson-reset-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
-/* Default filter for level/lesson action icons - dim grey */
+/* Specific sizes for these icons */
 .mark-level-complete-btn img,
-.mark-level-reset-btn img,
-.mark-lesson-complete-btn img,
-.mark-lesson-reset-btn img {
-    width: 1.6em; /* Complete icon slightly larger */
+.mark-lesson-complete-btn img {
+    width: 1.6em;
     height: 1.6em;
-    filter: brightness(0.7) grayscale(100%); /* Dim grey */
-    transition: filter 0.2s ease;
-    z-index: 2;
-    position: relative;
-    pointer-events: none;
 }
 .mark-level-reset-btn img,
 .mark-lesson-reset-btn img {
-    width: 1.4em; /* Trash icon slightly smaller */
+    width: 1.4em;
     height: 1.4em;
-}
-
-/* Apply hover effect for all icons */
-.mark-level-complete-btn:hover img,
-.mark-level-reset-btn:hover img,
-.mark-lesson-complete-btn:hover img,
-.mark-lesson-reset-btn:hover img {
-    filter: brightness(1.5) grayscale(0%); /* Brighter white on hover */
 }
 
 /* Holding state filter - makes the icon brighter with its intended color */
@@ -527,7 +492,8 @@ h1 {
 .reset-button img {
     width: 1.3em;
     height: 1.3em;
-    filter: brightness(1.5) grayscale(0%); /* White trash icon (originally black) */
+    /* Reset button icon is always white, so just brightness */
+    filter: brightness(1.5);
 }
 
 /* Pulsing effect for newly expanded N-level text */
@@ -557,12 +523,12 @@ h1 {
 }
 
 /* Apply flash animation to images and toggle icons */
+.action-buttons button img.flash-white-icon,
 .mark-level-complete-btn img.flash-white-icon,
 .mark-level-reset-btn img.flash-white-icon,
 .mark-lesson-complete-btn img.flash-white-icon,
 .mark-lesson-reset-btn img.flash-white-icon,
-.toggle-icon.flash-white-icon,
-.action-buttons button img.flash-white-icon {
+.toggle-icon.flash-white-icon {
     animation: flash-white-icon 0.3s ease-out;
 }
 
