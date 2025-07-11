@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bookmarkSolid: 'icons/bookmark-solid.svg',
         checkSolid: 'icons/circle-check-solid.svg',
         warningTriangle: 'icons/triangle-exclamation-solid.svg',
-        trashSolid: 'icons/trash-solid.svg' // Added trash icon path
+        trashSolid: 'icons/trash-solid.svg'
     };
 
     let allGrammarData = [];
@@ -133,11 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 allGrammarData[nLevelKey].forEach(lesson => {
                     totalLessons++;
                     nLevelLessonsCount++;
+                    let nLevelKeyLessonNum = lesson.lesson_num; // Store lesson.lesson_num for the inner loop
                     let lessonGPsCount = 0;
                     let lessonCompletedGPs = 0;
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
                         const state = getGrammarPointState(gpId);
 
                         totalGrammarPoints++;
@@ -430,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grammarContentDiv.innerHTML = html;
         addToggleListeners();
         addGrammarPointActionListeners();
-        addMarkLevelCompleteListeners(); // This now handles both complete and reset buttons
+        addMarkLevelCompleteListeners();
     }
 
     function addGrammarPointActionListeners() {
@@ -476,29 +477,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mark Level Complete / Reset Button Logic (Unified) ---
     let holdTimers = new Map();
 
-    function addMarkLevelCompleteListeners() { // Renamed from addMarkLevelCompleteListeners
+    function addMarkLevelCompleteListeners() {
         document.querySelectorAll('.mark-level-complete-btn, .mark-level-reset-btn').forEach(button => {
-            // Get the SVG progress circle
             let progressBarSVG = button.querySelector('.progress-circle');
             let progressBarFG = progressBarSVG ? progressBarSVG.querySelector('.progress-circle-fg') : null;
-            let buttonIcon = button.querySelector('img'); // Get the icon img
+            let buttonIcon = button.querySelector('img');
 
-            // Calculate circumference dynamically (for r=16, circumference = 2 * pi * 16 = 100.53)
             if (progressBarFG) {
                 const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
                 progressBarFG.style.strokeDasharray = `${circumference} ${circumference}`;
                 progressBarFG.style.strokeDashoffset = circumference;
-                progressBarFG.style.transition = 'none'; // Ensure no transition on initial setup
-                progressBarFG.style.opacity = '0'; // Keep it hidden
+                progressBarFG.style.transition = 'none';
+                progressBarFG.style.opacity = '0';
             }
-            // Reset icon filter on setup
             if (buttonIcon) {
                  buttonIcon.style.transition = 'none';
                  buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
 
-
-            // Clear any existing timers/states to prevent issues with re-rendering
             endHold({target: button}, button, progressBarFG, buttonIcon, true);
 
             button.addEventListener('mousedown', (e) => startHold(e, button, progressBarFG, buttonIcon));
@@ -516,38 +512,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const holdDuration = button.dataset.levelType === 'n-level' ? 3000 : 1000;
             const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
-            const actionType = button.dataset.actionType; // 'complete' or 'reset'
+            const actionType = button.dataset.actionType;
 
             const existingTimer = holdTimers.get(button);
             if (existingTimer) clearTimeout(existingTimer);
 
             button.classList.add('holding');
             if (progressBarFG) {
-                progressBarFG.style.transition = 'none'; // Reset any ongoing transitions
-                progressBarFG.style.strokeDashoffset = circumference; // Set to full circumference (hidden)
-                progressBarFG.style.opacity = '0'; // Keep it hidden until animation starts
+                progressBarFG.style.transition = 'none';
+                progressBarFG.style.strokeDashoffset = circumference;
+                progressBarFG.style.opacity = '0';
             }
             if (buttonIcon) {
-                 buttonIcon.style.transition = 'none'; // Reset icon transition
+                 buttonIcon.style.transition = 'none';
             }
 
-            // Force reflow to apply initial styles before transition
             void button.offsetWidth;
 
             if (progressBarFG) {
-                // Adjust cubic-bezier for a more pronounced slow down at the end
-                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.1s ease-in`;
-                progressBarFG.style.strokeDashoffset = '0'; // Animate to 0 (fully drawn)
+                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.4, 0.0, 0.6, 1.0), opacity 0.1s ease-in`; // Adjusted cubic-bezier
+                progressBarFG.style.strokeDashoffset = '0';
                 progressBarFG.style.opacity = '1';
             }
 
-            // Animate icon color during hold
             if (buttonIcon) {
-                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.2, 0.8, 0.2, 1)`;
+                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.4, 0.0, 0.6, 1.0)`; // Adjusted cubic-bezier
                 if (actionType === 'complete') {
-                    buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)'; // Green filter
+                    buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
                 } else if (actionType === 'reset') {
-                    buttonIcon.style.filter = 'invert(27%) sepia(51%) saturate(2878%) hue-rotate(345deg) brightness(97%) contrast(100%)'; // Red filter
+                    buttonIcon.style.filter = 'invert(27%) sepia(51%) saturate(2878%) hue-rotate(345deg) brightness(97%) contrast(100%)';
                 }
             }
 
@@ -588,18 +581,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.classList.remove('holding');
         if (progressBarFG) {
-            progressBarFG.style.transition = 'opacity 0.2s ease-out'; // Fast fade out
+            progressBarFG.style.transition = 'opacity 0.2s ease-out';
             progressBarFG.style.opacity = '0';
             if (!completed) {
-                 // Reset stroke-dashoffset only if not completed, so it appears ready for next hold
                 const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
                 progressBarFG.style.strokeDashoffset = circumference;
             }
         }
-        // Reset icon filter
         if (buttonIcon) {
-            buttonIcon.style.transition = 'filter 0.2s ease-out'; // Fast fade out for filter
-            buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)'; // Default dim
+            buttonIcon.style.transition = 'filter 0.2s ease-out';
+            buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
         }
     }
 
@@ -612,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentState = getGrammarPointState(gpId);
                 if (!currentState.completed) {
                     currentState.completed = true;
-                    currentState.bookmarked = false; // Unbookmark when completed
+                    currentState.bookmarked = false;
                     updateGrammarPointState(gpId, currentState);
 
                     const gpItemElement = document.querySelector(`[data-gp-id="${gpId}"]`);
@@ -627,9 +618,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (nLevelContainerElement) {
             nLevelContainerElement.classList.remove('flash-animation');
-            nLevelContainerElement.classList.remove('flash-red-animation'); // Ensure old red flash is removed
-            void nLevelContainerElement.offsetWidth; // Trigger reflow
-            nLevelContainerElement.classList.add('flash-animation'); // Green flash
+            nLevelContainerElement.classList.remove('flash-red-animation');
+            void nLevelContainerElement.offsetWidth;
+            nLevelContainerElement.classList.add('flash-animation');
             nLevelContainerElement.addEventListener('animationend', () => {
                 nLevelContainerElement.classList.remove('flash-animation');
             }, { once: true });
@@ -650,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentState = getGrammarPointState(gpId);
             if (!currentState.completed) {
                 currentState.completed = true;
-                currentState.bookmarked = false; // Unbookmark when completed
+                currentState.bookmarked = false;
                 updateGrammarPointState(gpId, currentState);
 
                 const gpItemElement = document.querySelector(`[data-gp-id="${gpId}"]`);
@@ -664,9 +655,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (lessonContainerElement) {
             lessonContainerElement.classList.remove('flash-animation');
-            lessonContainerElement.classList.remove('flash-red-animation'); // Ensure old red flash is removed
-            void lessonContainerElement.offsetWidth; // Trigger reflow
-            lessonContainerElement.classList.add('flash-animation'); // Green flash
+            lessonContainerElement.classList.remove('flash-red-animation');
+            void lessonContainerElement.offsetWidth;
+            lessonContainerElement.classList.add('flash-animation');
             lessonContainerElement.addEventListener('animationend', () => {
                 lessonContainerElement.classList.remove('flash-animation');
             }, { once: true });
@@ -682,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lesson.grammar_points.forEach((gp, gpIdx) => {
                 const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                 const currentState = getGrammarPointState(gpId);
-                if (currentState.completed || currentState.bookmarked) { // Only update if there's progress to reset
+                if (currentState.completed || currentState.bookmarked) {
                     currentState.completed = false;
                     currentState.bookmarked = false;
                     updateGrammarPointState(gpId, currentState);
@@ -698,10 +689,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (nLevelContainerElement) {
-            nLevelContainerElement.classList.remove('flash-animation'); // Remove green flash if present
+            nLevelContainerElement.classList.remove('flash-animation');
             nLevelContainerElement.classList.remove('flash-red-animation');
-            void nLevelContainerElement.offsetWidth; // Trigger reflow
-            nLevelContainerElement.classList.add('flash-red-animation'); // Red flash
+            void nLevelContainerElement.offsetWidth;
+            nLevelContainerElement.classList.add('flash-red-animation');
             nLevelContainerElement.addEventListener('animationend', () => {
                 nLevelContainerElement.classList.remove('flash-red-animation');
             }, { once: true });
@@ -719,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lessonData.grammar_points.forEach((gp, gpIdx) => {
             const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
             const currentState = getGrammarPointState(gpId);
-            if (currentState.completed || currentState.bookmarked) { // Only update if there's progress to reset
+            if (currentState.completed || currentState.bookmarked) {
                 currentState.completed = false;
                 currentState.bookmarked = false;
                 updateGrammarPointState(gpId, currentState);
@@ -734,10 +725,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (lessonContainerElement) {
-            lessonContainerElement.classList.remove('flash-animation'); // Remove green flash if present
+            lessonContainerElement.classList.remove('flash-animation');
             lessonContainerElement.classList.remove('flash-red-animation');
-            void lessonContainerElement.offsetWidth; // Trigger reflow
-            lessonContainerElement.classList.add('flash-red-animation'); // Red flash
+            void lessonContainerElement.offsetWidth;
+            lessonContainerElement.classList.add('flash-red-animation');
             lessonContainerElement.addEventListener('animationend', () => {
                 lessonContainerElement.classList.remove('flash-red-animation');
             }, { once: true });
@@ -763,6 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Accordion Toggle Functions ---
     function collapseSection(element, header) {
         element.style.height = element.scrollHeight + 'px';
+        header.classList.remove('expanded'); // Move to start of transition
         requestAnimationFrame(() => {
             void element.offsetWidth;
             element.style.height = '0';
@@ -770,7 +762,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = '';
-            header.classList.remove('expanded');
             header.classList.remove('pulsing');
         };
         element.addEventListener('transitionend', onTransitionEnd);
@@ -780,6 +771,7 @@ document.addEventListener('DOMContentLoaded', () => {
         element.style.height = 'auto';
         const height = element.scrollHeight;
         element.style.height = '0';
+        header.classList.add('expanded'); // Move to start of transition
         requestAnimationFrame(() => {
             void element.offsetWidth;
             element.style.height = height + 'px';
@@ -787,7 +779,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = 'auto';
-            header.classList.add('expanded');
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
@@ -795,7 +786,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                // Stop propagation if click originated from a button inside the header
                 if (e.target.closest('.mark-level-complete-btn') || e.target.closest('.mark-level-reset-btn')) {
                     e.stopPropagation();
                     return;
@@ -812,7 +802,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.lesson-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                 // Stop propagation if click originated from a button inside the header
                 if (e.target.closest('.mark-level-complete-btn') || e.target.closest('.mark-level-reset-btn')) {
                     e.stopPropagation();
                     return;
