@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Header Highlighting Logic ---
-    // Moved this function definition to before it is called in loadGrammarData()
     function updateParentHeaderStates(startElement = null) {
         // If a specific element is provided, only update its relevant ancestors.
         // Otherwise, iterate through all grammar points to update all headers.
