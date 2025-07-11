@@ -41,7 +41,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, filter 0.2s ease; /* Transition filter as well */
+    transition: background-color 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none; /* For Safari */
@@ -51,12 +51,22 @@ h1 {
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
 .n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; } /* Base Green */
-.n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; } /* Adjusted N4: slightly darker, less olive than before, still distinct from N5 */
+.n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; }
 .n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
 .n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; }
 .n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; }
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
+
+/* Header highlight for content with bookmarked items */
+.n-level-header.has-bookmarked-children,
+.lesson-header.has-bookmarked-children {
+    /* Subtle border or background change to indicate bookmarks inside */
+    border: 2px solid #ffd700; /* Gold border */
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Subtle glow */
+    filter: brightness(1.1); /* Slightly brighter background */
+}
+
 
 .n-level-content {
     height: 0; /* Start at 0 height */
@@ -84,7 +94,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease; /* Removed filter transition */
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -110,40 +120,88 @@ h1 {
 }
 
 .grammar-point-item {
-    padding: 10px 20px; /* Increased padding */
+    padding: 10px 15px; /* Adjust padding for button column */
     background-color: #4d4d4d; /* Base color */
     border-radius: 4px;
-    display: flex;
+    display: flex; /* Use flex to align text content and button column */
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
-    /* Added background-color and border-color to transition for smooth highlight */
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     position: relative;
     overflow: hidden;
 }
 
 .grammar-point-item:hover {
-    background-color: #6a6a6a; /* Lighter background on hover, stays bright */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Slightly more pronounced shadow on hover */
+    background-color: #6a6a6a; /* Lighter background on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
 }
 
-/* Highlight for Bookmarked Grammar Point */
-.grammar-point-item.bookmarked {
-    background-color: #6a8fb4; /* Muted blue for dark theme */
-    color: #e0eaf3; /* Brighter text for contrast */
-    border: 1px solid #7c9fce; /* Slightly brighter border */
+/* Grammar point content area (number + link) */
+.grammar-point-content-area {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows it to take available space */
 }
 
-/* Highlight for Marked as Complete Grammar Point */
+/* Bookmark Marker Icon - using an <img> tag now */
+.bookmark-icon-display { /* Renamed class for clarity */
+    display: none; /* Hidden by default */
+    width: 1.1em; /* Increased size slightly */
+    height: 1.1em;
+    margin-right: 8px; /* More spacing */
+    vertical-align: middle;
+    /* Filter to ensure icon is white */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+    transition: filter 0.2s ease; /* Smooth transition for its own appearance */
+}
+
+/* Show the bookmark icon when the grammar point is bookmarked */
+.grammar-point-item.bookmarked .bookmark-icon-display {
+    display: inline-block;
+}
+
+.grammar-point-item a {
+    color: #88c0d0; /* Light blue for links */
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s ease;
+    flex-grow: 1; /* Allow link to take available space */
+    position: relative; /* Ensure z-index works */
+    display: flex; /* Allows bookmark icon to sit next to text */
+    align-items: center; /* Vertically align icon with text */
+}
+
+
+/* Highlight for Marked as Complete Grammar Point - retains background change */
 .grammar-point-item.completed {
     background-color: #8b4545; /* Muted red for dark theme */
     color: #f0e0e0; /* Brighter text for contrast */
     border: 1px solid #9e5656; /* Slightly brighter border */
 }
 
+/* Highlight for Bookmarked Grammar Point - new breathing animation */
+@keyframes bookmark-pulse {
+    0% { box-shadow: 0 0 0px 0px rgba(255, 215, 0, 0.4); border-color: transparent; }
+    50% { box-shadow: 0 0 8px 3px rgba(255, 215, 0, 0.8); border-color: #ffd700; }
+    100% { box-shadow: 0 0 0px 0px rgba(255, 215, 0, 0.4); border-color: transparent; }
+}
+
+.grammar-point-item.bookmarked {
+    background-color: #4d4d4d; /* Revert to base background for bookmarked */
+    color: #e0e0e0; /* Revert to base text color */
+    border: 1px solid transparent; /* Start with transparent border */
+    animation: bookmark-pulse 2s infinite ease-in-out; /* Apply animation */
+}
+
 /* Ensure hover styles still apply over highlights, or adapt them */
-.grammar-point-item.bookmarked:hover,
+.grammar-point-item.bookmarked:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+    background-color: #6a6a6a; /* Apply hover background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Apply hover shadow */
+    border-color: transparent; /* Keep border transparent to respect hover */
+}
+
 .grammar-point-item.completed:hover {
     filter: brightness(1.1); /* Slightly brighten the highlighted color on hover */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
@@ -160,40 +218,6 @@ h1 {
     flex-shrink: 0; /* Prevent number from shrinking */
 }
 
-/* Bookmark Marker Icon - using an <img> tag now */
-.grammar-point-item a {
-    color: #88c0d0; /* Light blue for links */
-    text-decoration: none;
-    font-size: 0.95em;
-    transition: color 0.2s ease;
-    flex-grow: 1; /* Allow link to take available space */
-    z-index: 2; /* Ensure link is above the flash pseudo-element */
-    position: relative; /* Ensure z-index works */
-    display: flex; /* Allow bookmark icon to sit next to text */
-    align-items: center; /* Vertically align icon with text */
-}
-
-/* Hide the bookmark icon by default */
-.bookmark-icon {
-    display: none;
-    width: 1em; /* Set size of the icon */
-    height: 1em;
-    margin-right: 5px;
-    vertical-align: middle;
-    /* You might want to apply a filter or tint if the SVG color is not ideal for dark mode */
-    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5)) brightness(1.2); /* Subtle glow/brightness */
-}
-
-/* Show the bookmark icon when the grammar point is bookmarked */
-.grammar-point-item.bookmarked .bookmark-icon {
-    display: inline-block;
-}
-
-
-.grammar-point-item a:hover {
-    text-decoration: underline;
-    color: #b4e8f7; /* Lighter blue on hover */
-}
 
 /* Expand/Collapse Icon */
 .toggle-icon {
@@ -207,7 +231,7 @@ h1 {
     transform: rotate(90deg); /* Rotate for expanded state */
 }
 
-/* Pulse (Breathing) Animation - Now animating filter: brightness */
+/* Pulse (Breathing) Animation for N-level header */
 @keyframes pulse-brightness {
     0% { filter: brightness(1); } /* Normal brightness */
     50% { filter: brightness(1.2); } /* 20% brighter */
@@ -219,46 +243,48 @@ h1 {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Buttons for actions - basic styling */
+/* Buttons for actions - new positioning and styling */
 .action-buttons {
     margin-left: auto; /* Push buttons to the right */
     display: flex;
-    gap: 5px; /* Space between buttons */
+    gap: 8px; /* Increased space between buttons */
     z-index: 3; /* Ensure buttons are clickable above link */
+    padding-left: 10px; /* Some padding to separate from text */
 }
 
 .action-buttons button {
     background-color: #555;
-    color: #ddd; /* Default text/icon color for buttons */
     border: 1px solid #666;
     border-radius: 4px;
-    padding: 3px 8px;
-    font-size: 0.8em;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    transition: background-color 0.2s ease, border-color 0.2s ease, filter 0.2s ease; /* Added filter for icon highlight */
     display: flex; /* Allows centering SVG inside */
     align-items: center;
     justify-content: center;
-    width: 28px; /* Fixed width for icon buttons */
-    height: 28px; /* Fixed height for icon buttons */
+    width: 32px; /* Increased width for icon buttons */
+    height: 32px; /* Increased height for icon buttons */
     padding: 0; /* Remove padding to make icon fill */
 }
 
 .action-buttons button:hover {
     background-color: #777;
     border-color: #888;
-    color: #fff;
 }
 
 /* Style for SVG icons within buttons */
-.action-buttons button img { /* Changed from svg to img */
-    width: 1em; /* Control icon size relative to font-size of button */
-    height: 1em;
-    /* SVG files embedded as <img> generally don't respect fill: currentColor.
-       You might need to ensure your SVG files themselves have the correct colors,
-       or apply filters here if you need to dynamically change their color. */
+.action-buttons button img {
+    width: 1.2em; /* Control icon size relative to button's font-size (which is not set, so relative to parent) */
+    height: 1.2em;
+    /* Filter to turn black SVGs white/light */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
+    transition: filter 0.2s ease; /* Smooth transition for icon highlight */
 }
+
+/* Highlight the icons on hover/active state */
+.action-buttons button:hover img {
+    filter: invert(100%) sepia(100%) saturate(7500%) hue-rotate(0deg) brightness(2.5); /* A more intense white/yellow tint on hover */
+}
+
 
 /* Styles for Reset User Data button */
 #resetUserData {
@@ -283,7 +309,8 @@ h1 {
 }
 
 #resetUserData img {
-    width: 1.2em; /* Adjust size of warning icon */
-    height: 1.2em;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Make icon white/bright */
+    width: 1.3em; /* Adjust size of warning icon */
+    height: 1.3em;
+    /* Filter to make warning icon white/bright */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
 }

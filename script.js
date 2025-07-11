@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ICON_PATHS = {
         bookmark: 'icons/bookmark-solid.svg',
         check: 'icons/circle-check-solid.svg',
-        trash: 'icons/trash-solid.svg', // Not used as individual clear is removed, but kept for reference
-        warning: 'icons/triangle-exclamation-solid.svg' // For reset button
+        warning: 'icons/triangle-exclamation-solid.svg'
     };
 
     async function loadGrammarData() {
@@ -25,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProgress(); // Load progress before rendering
             renderGrammarData(data);
             addResetButton(); // Add the reset button after rendering
+            updateAllParentHeaderStates(); // Initial update of headers based on loaded progress
         } catch (error) {
             console.error("Could not load grammar data:", error);
             grammarContentDiv.innerHTML = '<p>Error loading grammar data. Please ensure "bunpro_grammar_data.json" is in the same directory and accessible. Details in console.</p>';
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grammarPointItemElement.classList.toggle('bookmarked', currentState.bookmarked);
         grammarPointItemElement.classList.remove('completed'); // Always remove completed class if bookmarking or unbookmarking
         renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
+        updateParentHeaderStates(grammarPointItemElement); // Update parent headers
     }
 
     function toggleComplete(gpId, grammarPointItemElement) {
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grammarPointItemElement.classList.toggle('completed', currentState.completed);
         grammarPointItemElement.classList.remove('bookmarked'); // Always remove bookmarked class if completing or uncompleting
         renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
+        updateParentHeaderStates(grammarPointItemElement); // Update parent headers
     }
 
     function resetAllUserData() {
@@ -107,6 +109,69 @@ document.addEventListener('DOMContentLoaded', () => {
             location.reload(); // Simplest way to re-render all elements
         }
     }
+
+    // --- Header Highlighting Logic ---
+    function updateParentHeaderStates(startElement = null) {
+        // If a specific element is provided, only update its relevant ancestors.
+        // Otherwise, iterate through all grammar points to update all headers.
+
+        let itemsToCheck = [];
+        if (startElement) {
+            itemsToCheck.push(startElement);
+        } else {
+            itemsToCheck = document.querySelectorAll('.grammar-point-item');
+        }
+
+        // Collect all unique lesson and N-level headers
+        const lessonHeaders = new Set();
+        const nLevelHeaders = new Set();
+
+        itemsToCheck.forEach(item => {
+            const lesson = item.closest('.lesson');
+            if (lesson) {
+                const lessonHeader = lesson.querySelector('.lesson-header');
+                if (lessonHeader) lessonHeaders.add(lessonHeader);
+            }
+            const nLevel = item.closest('.n-level');
+            if (nLevel) {
+                const nLevelHeader = nLevel.querySelector('.n-level-header');
+                if (nLevelHeader) nLevelHeaders.add(nLevelHeader);
+            }
+        });
+
+        // Function to check if a container (lesson or n-level) has any bookmarked children
+        const hasBookmarkedChildren = (containerElement) => {
+            return containerElement.querySelectorAll('.grammar-point-item.bookmarked').length > 0;
+        };
+
+        // Update lesson headers
+        lessonHeaders.forEach(header => {
+            const lessonContent = header.nextElementSibling;
+            if (hasBookmarkedChildren(lessonContent)) {
+                header.classList.add('has-bookmarked-children');
+            } else {
+                header.classList.remove('has-bookmarked-children');
+            }
+        });
+
+        // Update N-level headers
+        nLevelHeaders.forEach(header => {
+            const nLevelContent = header.nextElementSibling;
+            // Check if any of its immediate children (lessons) have bookmarked children, or if it directly contains bookmarked items
+            let foundBookmarked = false;
+            nLevelContent.querySelectorAll('.lesson').forEach(lesson => {
+                if (hasBookmarkedChildren(lesson.querySelector('.lesson-content'))) {
+                    foundBookmarked = true;
+                }
+            });
+            if (foundBookmarked) {
+                header.classList.add('has-bookmarked-children');
+            } else {
+                header.classList.remove('has-bookmarked-children');
+            }
+        });
+    }
+
 
     // --- Rendering and Event Listeners ---
     function renderGrammarData(data) {
@@ -146,11 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         html += `
                             <li class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
-                                <span class="grammar-point-number">${gpIdx + 1}.</span>
-                                <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
-                                    <img src="${ICON_PATHS.bookmark}" alt="Bookmark" class="bookmark-icon">
-                                    ${gp.text}
-                                </a>
+                                <div class="grammar-point-content-area">
+                                    <span class="grammar-point-number">${gpIdx + 1}.</span>
+                                    <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
+                                        <img src="${ICON_PATHS.bookmark}" alt="Bookmark" class="bookmark-icon-display">
+                                        ${gp.text}
+                                    </a>
+                                </div>
                                 <div class="action-buttons"></div>
                             </li>
                         `;
