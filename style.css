@@ -551,8 +551,7 @@ h1 {
 .mark-level-complete-btn.holding .progress-circle-fg,
 .mark-level-reset-btn.holding .progress-circle-fg {
     opacity: 1;
-    /* Adjusted cubic-bezier for smoother end */
-    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.1, 0.8, 0.2, 1.0), opacity 0.1s ease-in;
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in;
 }
 
 /* Flash animation for containers (N-level and Lesson) */

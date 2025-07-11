@@ -534,17 +534,16 @@ document.addEventListener('DOMContentLoaded', () => {
             void button.offsetWidth; // Trigger reflow to reset transition
 
             if (progressBarFG) {
-                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in`;, opacity 0.1s ease-in`; // Adjusted cubic-bezier
+                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in`;
                 progressBarFG.style.strokeDashoffset = '0';
                 progressBarFG.style.opacity = '1';
             }
 
             if (buttonIcon) {
-                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`; // Adjusted cubic-bezier
+                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
                 if (actionType === 'complete') {
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
                 } else if (actionType === 'reset') {
-                    // Start from dim, go to less intense red
                     buttonIcon.style.filter = 'invert(27%) sepia(51%) saturate(2878%) hue-rotate(345deg) brightness(85%) contrast(100%)';
                 }
             }
