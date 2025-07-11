@@ -55,17 +55,15 @@ h1 {
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
 .n-level-content {
-    max-height: 0;
-    overflow: hidden;
-    /* Adjusted cubic-bezier for a smoother, slower overall feel */
-    transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1); /* Slightly longer duration, smoother ease-out type */
+    height: 0; /* Start at 0 height */
+    overflow: hidden; /* Hide overflow content when collapsed */
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
     background-color: #333333; /* Background for N-level content */
-    will-change: max-height; /* Hint to the browser for optimization */
+    will-change: height; /* Hint to the browser for optimization */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
-.n-level-content.expanded {
-    max-height: 50000px; /* Keep a large value */
-}
+/* No .expanded class for height, JS will set height directly */
 
 /* Lesson Styling */
 .lesson {
@@ -86,19 +84,17 @@ h1 {
 }
 
 .lesson-content {
-    max-height: 0;
-    overflow: hidden;
-    /* Adjusted cubic-bezier for a smoother, slower overall feel */
-    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Slightly longer duration, smoother ease-out type */
-    padding: 0 20px; /* Padding for collapsed state */
+    height: 0; /* Start at 0 height */
+    overflow: hidden; /* Hide overflow content when collapsed */
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
+    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
     background-color: #3d3d3d; /* Slightly different background for lesson content */
-    will-change: max-height; /* Hint to the browser for optimization */
+    will-change: height; /* Hint to the browser for optimization */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
-.lesson-content.expanded {
-    max-height: 10000px; /* Keep a large value */
-    padding-bottom: 15px; /* Add padding when expanded */
-}
+/* No .expanded class for height, JS will set height directly */
+
 
 /* Grammar Point Styling */
 .grammar-point-list {
@@ -125,8 +121,6 @@ h1 {
     background-color: #6a6a6a; /* Lighter background on hover, stays bright */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Slightly more pronounced shadow on hover */
 }
-
-/* Removed the old flash animation rules */
 
 
 .grammar-point-number {
@@ -166,8 +160,7 @@ h1 {
     transform: rotate(90deg); /* Rotate for expanded state */
 }
 
-/* Pulse Animation - Now separate keyframes for each N-Level color */
-/* Adjust opacity and blur for softer pulse */
+/* Pulse Animation - No changes needed here, still applies to headers */
 @keyframes pulse-effect-n5 { 0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); } 100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0); } }
 @keyframes pulse-effect-n4 { 0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); } 100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0); } }
 @keyframes pulse-effect-n3 { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0); } }
@@ -177,7 +170,6 @@ h1 {
 @keyframes pulse-effect-unknown { 0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); } }
 
 
-/* Apply pulse animation to the N-level header */
 .n-level-N5.pulsing .n-level-header { animation: pulse-effect-n5 0.8s ease-out forwards; }
 .n-level-N4.pulsing .n-level-header { animation: pulse-effect-n4 0.8s ease-out forwards; }
 .n-level-N3.pulsing .n-level-header { animation: pulse-effect-n3 0.8s ease-out forwards; }
@@ -186,7 +178,6 @@ h1 {
 .n-level-Non-JLPT.pulsing .n-level-header { animation: pulse-effect-non-jlpt 0.8s ease-out forwards; }
 .n-level-Unknown-N-Level.pulsing .n-level-header { animation: pulse-effect-unknown 0.8s ease-out forwards; }
 
-/* Lesson header pulsing (uses generic white pulse) */
 .lesson-header.pulsing {
     animation: pulse-effect-lesson 0.8s ease-out forwards;
 }

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grammarContentDiv = document.getElementById('grammar-content');
 
-    // Function to fetch and render data
     async function loadGrammarData() {
         try {
             const response = await fetch('bunpro_grammar_data.json');
@@ -18,36 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to render the HTML from the JSON data
     function renderGrammarData(data) {
         let html = '';
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (data[nLevelKey] && data[nLevelKey].length > 0) {
-                // N-Level Container
-                const nLevelClass = `n-level n-level-${nLevelKey.replace(/ /g, '-')}`; // Replace all spaces
+                const nLevelClass = `n-level n-level-${nLevelKey.replace(/ /g, '-')}`;
                 html += `
                     <div class="${nLevelClass}" id="n-level-${nLevelKey.replace(/ /g, '-')}-container">
                         <div class="n-level-header">
                             <span>${nLevelKey} Grammar</span>
-                            <span class="toggle-icon">&#9654;</span> </div>
+                            <span class="toggle-icon">&#9654;</span>
+                        </div>
                         <div class="n-level-content">
                 `;
 
                 data[nLevelKey].forEach((lesson, lessonIdx) => {
-                    // Lesson Container
                     html += `
                         <div class="lesson">
                             <div class="lesson-header">
                                 <span>Lesson ${lesson.lesson_num}</span>
-                                <span class="toggle-icon">&#9654;</span> </div>
+                                <span class="toggle-icon">&#9654;</span>
+                            </div>
                             <div class="lesson-content">
                                 <ul class="grammar-point-list">
                     `;
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
-                        // Ensure target="_blank" rel="noopener noreferrer" for all links
                         html += `
                             <li class="grammar-point-item">
                                 <span class="grammar-point-number">${gpIdx + 1}.</span>
@@ -74,23 +71,67 @@ document.addEventListener('DOMContentLoaded', () => {
         addToggleListeners();
     }
 
+    // --- Helper function for height animation ---
+    function collapseSection(element, header) {
+        // Set element's height to its current computed height to lock it
+        element.style.height = element.scrollHeight + 'px';
+
+        requestAnimationFrame(() => {
+            // Force reflow
+            void element.offsetWidth;
+            // Then set height to 0
+            element.style.height = '0';
+        });
+
+        // Listen for the transition end event to clean up styles
+        const onTransitionEnd = () => {
+            element.removeEventListener('transitionend', onTransitionEnd);
+            element.style.height = ''; // Remove inline height after transition
+            header.classList.remove('expanded'); // Rotate icon back
+            header.classList.remove('pulsing'); // Remove pulse class if still there
+        };
+        element.addEventListener('transitionend', onTransitionEnd);
+    }
+
+    function expandSection(element, header) {
+        // Temporarily set height to 'auto' to get the full scrollHeight
+        element.style.height = 'auto';
+        const height = element.scrollHeight; // Get the computed height of the content
+
+        // Set height back to 0 (or its current collapsed state)
+        element.style.height = '0';
+
+        requestAnimationFrame(() => {
+            // Force reflow
+            void element.offsetWidth;
+            // Animate to its full height
+            element.style.height = height + 'px';
+        });
+
+        // Listen for the transition end event to clean up styles
+        const onTransitionEnd = () => {
+            element.removeEventListener('transitionend', onTransitionEnd);
+            element.style.height = 'auto'; // Revert to auto so content can resize dynamically
+            header.classList.add('expanded'); // Rotate icon
+            header.classList.remove('pulsing'); // Remove pulse class
+        };
+        element.addEventListener('transitionend', onTransitionEnd);
+    }
+
     // Function to add click listeners for toggling sections
     function addToggleListeners() {
         // N-Level toggles
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', () => {
-                const nLevelContainer = header.closest('.n-level');
                 const nLevelContent = header.nextElementSibling;
 
-                const isExpanded = nLevelContent.classList.toggle('expanded');
-                header.classList.toggle('expanded', isExpanded); // For icon rotation
-
-                // Manage pulsing class on the header
-                // Remove existing animation class to allow re-triggering
-                header.classList.remove('pulsing');
-                if (isExpanded) {
-                    // Force reflow to restart animation on re-adding the class
-                    void header.offsetWidth;
+                if (header.classList.contains('expanded')) { // Check header's expanded class for icon state
+                    collapseSection(nLevelContent, header);
+                } else {
+                    expandSection(nLevelContent, header);
+                    // Pulse animation on the N-level header
+                    header.classList.remove('pulsing');
+                    void header.offsetWidth; // Trigger reflow
                     header.classList.add('pulsing');
                 }
             });
@@ -101,13 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
             header.addEventListener('click', () => {
                 const lessonContent = header.nextElementSibling;
 
-                const isExpanded = lessonContent.classList.toggle('expanded');
-                header.classList.toggle('expanded', isExpanded); // For icon rotation
-
-                // Manage pulsing class on the header
-                header.classList.remove('pulsing');
-                if (isExpanded) {
-                    void header.offsetWidth;
+                if (header.classList.contains('expanded')) { // Check header's expanded class for icon state
+                    collapseSection(lessonContent, header);
+                } else {
+                    expandSection(lessonContent, header);
+                    // Pulse animation on the lesson header
+                    header.classList.remove('pulsing');
+                    void header.offsetWidth; // Trigger reflow
                     header.classList.add('pulsing');
                 }
             });
