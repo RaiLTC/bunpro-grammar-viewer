@@ -217,20 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let statsHtml = `
             <div class="statistics-container">
                 <h2>Statistics</h2>
-                <div class="stats-grid">
+                <div class="stats-grid main-stats-grid">
                     <p>N-Levels: <span class="stat-value">${stats.completedJlptLevels}/${stats.totalJlptLevels}</span></p>
                     <p>Total Lessons: <span class="stat-value">${stats.completedLessons}/${stats.totalLessons}</span></p>
                     <p>Total Grammar Points: <span class="stat-value">${stats.completedGrammarPoints}/${stats.totalGrammarPoints}</span></p>
                     <p>Bookmarked: <span class="stat-value">${stats.bookmarkedGrammarPoints}</span></p>
                 </div>
                 <h3>Detailed N-Level Statistics</h3>
-                <div class="stats-grid">
+                <div class="stats-grid detailed-stats-grid">
         `;
 
         const jlptLevels = ['N5', 'N4', 'N3', 'N2', 'N1'];
         jlptLevels.forEach(nLevelKey => {
             const nLevelStat = stats.nLevelStats[nLevelKey];
-            if (nLevelStat && nLevelStat.grammarPoints > 0) { // Only show if N-level has grammar points
+            if (nLevelStat && nLevelStat.grammarPoints > 0) {
                 statsHtml += `
                     <p>${nLevelKey} Lessons: <span class="stat-value">${nLevelStat.lessons}</span></p>
                     <p>${nLevelKey} Grammar Points: <span class="stat-value">${nLevelStat.completedGrammarPoints}/${nLevelStat.grammarPoints}</span></p>
@@ -238,10 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Non-JLPT is placed separately at the end of the detailed grid.
         if (stats.nLevelStats['Non-JLPT'] && stats.nLevelStats['Non-JLPT'].lessons > 0) {
             statsHtml += `
-                <p>Non-JLPT Lessons: <span class="stat-value">${stats.nonJlptLessons}</span></p>
-                <p>Non-JLPT Grammar Points: <span class="stat-value">${stats.nonJlptCompletedGPs}/${stats.nonJlptGrammarPoints}</span></p>
+                <p class="non-jlpt-lessons-stat">Non-JLPT Lessons: <span class="stat-value">${stats.nonJlptLessons}</span></p>
+                <p class="non-jlpt-grammar-stat">Non-JLPT Grammar Points: <span class="stat-value">${stats.nonJlptCompletedGPs}/${stats.nonJlptGrammarPoints}</span></p>
             `;
         }
         if (stats.nLevelStats['Unknown N-Level'] && stats.nLevelStats['Unknown N-Level'].lessons > 0) {
@@ -250,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Unknown N-Level Grammar Points: <span class="stat-value">${stats.nLevelStats['Unknown N-Level'].completedGrammarPoints}/${stats.nLevelStats['Unknown N-Level'].grammarPoints}</span></p>
             `;
         }
+
 
         statsHtml += `
                 </div>
@@ -312,13 +314,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.mark-level-complete-btn'));
                     }
                     const completedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx); // Use lessonNum here
                         return getGrammarPointState(gpId).completed;
                     }).length;
                     countSpan.textContent = `${completedGPs}/${grammarPointsInLesson} Grammar Points`; // CHANGED
 
                     const bookmarkedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx); // Use lessonNum here
                         return getGrammarPointState(gpId).bookmarked;
                     }).length;
 
@@ -548,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
 
-            endHold({target: button}, button, progressBarFG, buttonIcon, true);
+            endHold({target: button}, button, progressBarFG, buttonIcon, true); // Initialize state
 
             button.addEventListener('mousedown', (e) => startHold(e, button, progressBarFG, buttonIcon));
             button.addEventListener('touchstart', (e) => startHold(e, button, progressBarFG, buttonIcon), { passive: true });
@@ -593,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (actionType === 'complete') {
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
                 } else if (actionType === 'reset') {
-                    buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(120%) contrast(100%)'; // Adjusted filter for a brighter red
+                    buttonIcon.style.filter = 'invert(16%) sepia(90%) saturate(5833%) hue-rotate(357deg) brightness(98%) contrast(124%);'; // A more direct, vibrant red
                 }
             }
 
@@ -655,6 +657,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (buttonIcon) {
             buttonIcon.style.transition = 'filter 0.2s ease-out';
             buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
+            // If the level is completed, set it back to the completed green
+            const actionType = button.dataset.actionType;
+            if (actionType === 'complete' && button.classList.contains('level-completed')) {
+                buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
+            }
         }
     }
 
