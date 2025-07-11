@@ -1,7 +1,7 @@
 /* Basic Reset & Font */
 body {
     margin: 0;
-    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
     line-height: 1.6;
     background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text */
@@ -82,7 +82,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Transition box-shadow instead of border-color */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; /* Added transform transition */
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -93,6 +93,19 @@ h1 {
 .lesson-header.has-bookmarked-children {
     box-shadow: inset 0 0 0 3px #6ab0de, /* Inset border-like glow */
                 0 2px 5px rgba(0, 0, 0, 0.2); /* Existing external shadow */
+}
+
+/* New: Lesson header hover animation */
+.lesson-header:hover {
+    transform: scale(1.01); /* Subtle pop */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+}
+
+/* New: Lesson header click (expanded/collapsed) animation */
+/* We'll use the .expanded class for the 'clicked' state, similar to grammar points */
+.lesson-header.expanded {
+    transform: scale(1.01); /* Subtle pop when expanded */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Shadow when expanded */
 }
 
 
@@ -168,20 +181,19 @@ h1 {
     align-items: center;
 }
 
-/* Highlight for Marked as Complete Grammar Point */
-/* Re-added transition for a subtle "pop" animation when state changes */
+/* Highlight for Marked as Complete Grammar Point - NOW GREEN */
 .grammar-point-item.completed {
-    background-color: #8b4545; /* Muted red for dark theme */
-    color: #f0e0e0; /* Brighter text for contrast */
-    border: 1px solid #9e5656; /* Slightly brighter border */
+    background-color: #558B55; /* Soft Green */
+    color: #e0ffe0; /* Lighter green text for contrast */
+    border: 1px solid #669966; /* Slightly brighter green border */
     transform: scale(1.01); /* Subtle pop */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
 }
 
-/* Highlight for Bookmarked Grammar Point - now the requested dimmer blue, with consistent animation */
+/* Highlight for Bookmarked Grammar Point */
 .grammar-point-item.bookmarked {
-    background-color: #315065; /* Dimmer blue for bookmark highlight (from previous header color) */
+    background-color: #315065; /* Dimmer blue for bookmark highlight */
     color: #e0e0e0; /* Ensure text remains light and readable */
     border: 1px solid #4f748f; /* Dimmer, matching blue border */
     transform: scale(1.01); /* Subtle pop */
@@ -246,21 +258,20 @@ h1 {
 }
 
 .action-buttons button {
-    background-color: transparent; /* Make button background transparent */
+    background-color: transparent;
     border: none; /* REMOVED: Remove button border */
-    border-radius: 0; /* REMOVED: Remove border-radius */
+    /* REMOVED: border-radius: 0; */ /* No longer needed */
     cursor: pointer;
-    /* Updated transition for highlight animation */
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
-    display: flex; /* Allows centering SVG inside */
+    /* REMOVED box-shadow, REPLACED with brighter filters */
+    transition: transform 0.1s ease; /* Only transform transition now */
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px; /* Fixed width for icon button */
-    height: 38px; /* Fixed height for icon button */
-    padding: 0; /* Remove padding to make icon fill */
+    width: 38px;
+    height: 38px;
+    padding: 0;
 }
 
-/* Removed specific hover for buttons, relying on img hover */
 .action-buttons button:hover {
     transform: scale(1.05); /* Slightly larger on hover, apply to button itself */
 }
@@ -281,25 +292,22 @@ h1 {
 
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
 .action-buttons button.active-bookmark img {
-    filter: invert(27%) sepia(17%) saturate(1219%) hue-rotate(161deg) brightness(95%) contrast(87%);
+    /* Brighter blue for active bookmark */
+    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); /* Brighter blue */
 }
 
 /* Specific color for completed icon when its grammar point is completed */
 .action-buttons button.active-complete img {
-    filter: invert(28%) sepia(27%) saturate(1342%) hue-rotate(314deg) brightness(94%) contrast(75%);
+    /* Brighter green for active complete */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Brighter green */
 }
 
-/* Highlight for active icons (same as grammar point box) */
-.action-buttons button.active-bookmark {
-    box-shadow: 0 0 5px rgba(49, 80, 101, 0.7), inset 0 0 3px rgba(49, 80, 101, 0.5); /* Blue glow */
-    border-radius: 4px; /* Match grammar point box radius */
-    transform: scale(1.01); /* Subtle pop animation */
-}
-
+/* Removed highlight box for active icons */
+.action-buttons button.active-bookmark,
 .action-buttons button.active-complete {
-    box-shadow: 0 0 5px rgba(139, 69, 69, 0.7), inset 0 0 3px rgba(139, 69, 69, 0.5); /* Red glow */
-    border-radius: 4px; /* Match grammar point box radius */
-    transform: scale(1.01); /* Subtle pop animation */
+    box-shadow: none; /* Removed */
+    border-radius: 0; /* Removed */
+    transform: none; /* Removed scale animation, as requested */
 }
 
 
