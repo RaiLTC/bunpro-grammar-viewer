@@ -59,7 +59,7 @@ h1 {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Changed: Fixed 3-column layout */
     gap: 10px 20px;
 }
 
@@ -112,9 +112,12 @@ h1 {
     font-size: 0.7em;
     color: #c0c0c0;
     font-weight: normal;
-    flex-grow: 1;
-    text-align: right;
-    margin-right: 10px;
+    flex-grow: 0; /* Changed: flex-grow to 0 */
+    text-align: left; /* Changed: text-align to left */
+    margin-right: 0; /* Removed: margin-right */
+    margin-left: auto; /* Added: margin-left auto */
+    min-width: 120px; /* Added: min-width */
+    white-space: nowrap; /* Added: white-space nowrap */
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -187,9 +190,12 @@ h1 {
     font-size: 0.8em;
     color: #b0b0b0;
     font-weight: normal;
-    flex-grow: 1;
-    text-align: right;
-    margin-right: 10px;
+    flex-grow: 0; /* Changed: flex-grow to 0 */
+    text-align: left; /* Changed: text-align to left */
+    margin-right: 0; /* Removed: margin-right */
+    margin-left: auto; /* Added: margin-left auto */
+    min-width: 120px; /* Added: min-width */
+    white-space: nowrap; /* Added: white-space nowrap */
 }
 
 .lesson-header.has-bookmarked-children {
@@ -343,8 +349,8 @@ h1 {
     transform: rotate(90deg);
 }
 
-/* Dorito Flash Animation */
-@keyframes flash-white {
+/* Dorito Flash Animation (removed: not needed as per discussion) */
+/* @keyframes flash-white {
     0% { filter: brightness(1); }
     50% { filter: brightness(2.5); }
     100% { filter: brightness(1); }
@@ -352,13 +358,13 @@ h1 {
 
 .toggle-icon.flash-white {
     animation: flash-white 0.3s ease-out;
-}
+} */
 
 /* Finisher flash for button icons */
 @keyframes flash-white-icon {
     0% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Default dim */
     50% { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(2.5); } /* Bright white */
-    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to dim */
+    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to default dim */
 }
 
 .mark-level-complete-btn img.flash-white-icon,
@@ -438,8 +444,8 @@ h1 {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
 }
 
-/* Reset User Data Button */
-#resetUserData {
+/* Reset User Data Button (removed as per discussion) */
+/* #resetUserData {
     background-color: #a04040;
     color: #ffffff;
     border: 1px solid #b05050;
@@ -464,7 +470,7 @@ h1 {
     width: 1.3em;
     height: 1.3em;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
-}
+} */
 
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
 /* Shared styles */
@@ -576,28 +582,4 @@ h1 {
 .mark-level-reset-btn.holding .progress-circle-fg {
     opacity: 1;
     transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in;
-}
-
-/* Flash animation for containers (N-level and Lesson) */
-@keyframes flash-highlight {
-    0% { box-shadow: 0 0 0px transparent; }
-    50% { box-shadow: 0 0 15px 5px rgba(85, 139, 85, 0.6); }
-    100% { box-shadow: 0 0 0px transparent; }
-}
-
-@keyframes flash-red-highlight {
-    0% { box-shadow: 0 0 0px transparent; }
-    50% { box-shadow: 0 0 15px 5px rgba(176, 80, 80, 0.6); }
-    100% { box-shadow: 0 0 0px transparent; }
-}
-
-
-.n-level.flash-animation,
-.lesson.flash-animation {
-    animation: flash-highlight 0.8s ease-out forwards;
-}
-
-.n-level.flash-red-animation,
-.lesson.flash-red-animation {
-    animation: flash-red-highlight 0.8s ease-out forwards;
 }
