@@ -338,7 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     resetBtn.style.display = hasProgress ? 'flex' : 'none';
                 }
 
-                // Update N-Level Bookmark Indicator
                 const bookmarkIndicator = header.querySelector('.n-level-bookmark-indicator');
                 if (bookmarkIndicator) {
                     bookmarkIndicator.classList.toggle('active', stats.bookmarkedGrammarPoints > 0);
@@ -587,10 +586,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const holdProgressBar = new Map();
     const holdButtonIcon = new Map();
 
-    const N_LEVEL_HOLD_DURATION = 2000; // 2 seconds for N-level (Changed from 3000)
+    const N_LEVEL_HOLD_DURATION = 2000; // 2 seconds for N-level
     const LESSON_HOLD_DURATION = 1000; // 1 second for lesson
 
     function addLongPressListeners() {
+        // Select only the N-level and Lesson complete/reset buttons
         document.querySelectorAll('.mark-level-complete-btn, .mark-level-reset-btn, .mark-lesson-complete-btn, .mark-lesson-reset-btn').forEach(button => {
             const levelType = button.dataset.levelType;
             const holdDuration = levelType === 'n-level' ? N_LEVEL_HOLD_DURATION : LESSON_HOLD_DURATION;
@@ -619,18 +619,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 progressBarFg.style.transition = 'none';
-                progressBarFg.style.strokeDashoffset = '100.53';
+                progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
                 progressBarFg.style.opacity = '1';
 
                 void progressBarFg.offsetWidth; // Trigger reflow
 
                 // Use CSS variable for transition duration in CSS
                 button.style.setProperty('--hold-duration', `${holdDuration}ms`);
-                progressBarFg.style.strokeDashoffset = '0';
+                progressBarFg.style.strokeDashoffset = '0'; // Start filling
 
                 pressTimer = setTimeout(() => {
                     button.classList.remove('holding');
-                    buttonIcon.style.removeProperty('filter');
+                    buttonIcon.style.removeProperty('filter'); // Remove inline filter to let CSS take over
                     progressBarFg.style.opacity = '0';
                     executeLongPressAction(button);
                 }, holdDuration);
@@ -644,11 +644,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.classList.remove('holding');
                 buttonIcon.style.removeProperty('filter'); // Remove inline filter to let CSS take over
                 progressBarFg.style.transition = 'none';
-                progressBarFg.style.strokeDashoffset = '100.53';
+                progressBarFg.style.strokeDashoffset = '100.53'; // Reset to hidden
                 progressBarFg.style.opacity = '0';
 
                 // Flash the icon briefly after release if action was not completed
-                if (!buttonIcon.classList.contains('flash-white-icon')) { // Only flash if not already flashing from success
+                // Only flash if the action wasn't completed (i.e., timer didn't run out)
+                if (buttonIcon && !buttonIcon.classList.contains('flash-white-icon')) {
                     flashIcon(buttonIcon);
                 }
             };
@@ -671,7 +672,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         flashIcon(button.querySelector('img')); // Flash the icon on successful action
 
-        // Flash the header to indicate action
         const headerToFlash = button.closest('.n-level-header') || button.closest('.lesson-header');
         if (headerToFlash) {
             flashHeader(headerToFlash);
@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lesson.grammar_points.forEach((gp, gpIdx) => {
                 const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                 const currentState = getGrammarPointState(gpId);
-                if (currentState.completed || currentState.bookmarked) {
+                if (currentState.completed || currentState.bookmarked) { // Reset both completed and bookmarked
                     currentState.completed = false;
                     currentState.bookmarked = false;
                     updateGrammarPointState(gpId, currentState);
@@ -768,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetLesson.grammar_points.forEach((gp, gpIdx) => {
             const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
             const currentState = getGrammarPointState(gpId);
-            if (currentState.completed || currentState.bookmarked) {
+            if (currentState.completed || currentState.bookmarked) { // Reset both completed and bookmarked
                 currentState.completed = false;
                 currentState.bookmarked = false;
                 updateGrammarPointState(gpId, currentState);
@@ -803,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                if (e.target.closest('button') || e.target.closest('.n-level-bookmark-indicator')) { // Exclude bookmark indicator clicks
+                if (e.target.closest('button') || e.target.closest('.n-level-bookmark-indicator')) {
                     e.stopPropagation();
                     return;
                 }
@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function expandSection(element, header, toggleIcon) {
         const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
         const transitionDuration = sectionType === 'n-level' ? '0.6s' : '0.4s';
-        const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+        const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)'; // Matches the content transition easing
 
         // Set CSS variables for toggle icon transition
         toggleIcon.style.setProperty('--toggle-transition-duration', transitionDuration);
@@ -881,7 +881,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function collapseSection(element, header, toggleIcon) {
         const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
         const transitionDuration = sectionType === 'n-level' ? '0.6s' : '0.4s';
-        const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+        const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)'; // Matches the content transition easing
 
         // Set CSS variables for toggle icon transition
         toggleIcon.style.setProperty('--toggle-transition-duration', transitionDuration);
