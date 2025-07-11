@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ICON_PATHS = {
         bookmark: 'icons/bookmark-solid.svg',
         check: 'icons/circle-check-solid.svg',
-        trash: 'icons/trash-solid.svg', // Keeping this for consistency, though not actively used by a button now
+        trash: 'icons/trash-solid.svg', // Keeping this for consistency
         warning: 'icons/triangle-exclamation-solid.svg'
     };
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProgress(); // Load progress before rendering
             renderGrammarData(data);
             addResetButton(); // Add the reset button after rendering
-            updateParentHeaderStates(); // Initial update of headers based on loaded progress (now defined)
+            updateParentHeaderStates(); // Initial update of headers based on loaded progress
         } catch (error) {
             console.error("Could not load grammar data:", error);
             grammarContentDiv.innerHTML = '<p>Error loading grammar data. Please ensure "bunpro_grammar_data.json" is in the same directory and accessible. Details in console.</p>';
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Header Highlighting Logic ---
-    // Moved this function definition BEFORE its call in loadGrammarData()
+    // Moved this function definition to before it is called in loadGrammarData()
     function updateParentHeaderStates(startElement = null) {
         // If a specific element is provided, only update its relevant ancestors.
         // Otherwise, iterate through all grammar points to update all headers.
@@ -216,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="grammar-point-content-area">
                                     <span class="grammar-point-number">${gpIdx + 1}.</span>
                                     <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
-                                        <img src="${ICON_PATHS.bookmark}" alt="Bookmark" class="bookmark-icon-display">
                                         ${gp.text}
                                     </a>
                                 </div>
