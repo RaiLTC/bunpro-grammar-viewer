@@ -51,7 +51,7 @@ h1 {
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
 .n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; } /* Base Green */
-.n-level-N4 .n-level-header { background-color: #555e3e; color: #e0e8c6; } /* Slightly more olive/less pure green for distinction */
+.n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; } /* Adjusted N4: slightly darker, less olive than before, still distinct from N5 */
 .n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
 .n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; }
 .n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; }
@@ -62,6 +62,7 @@ h1 {
     height: 0; /* Start at 0 height */
     overflow: hidden; /* Hide overflow content when collapsed */
     transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
+    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
     background-color: #333333; /* Background for N-level content */
     will-change: height; /* Hint to the browser for optimization */
     box-sizing: border-box; /* Ensure padding is included in height calculation */
@@ -83,7 +84,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, filter 0.2s ease; /* Transition filter as well */
+    transition: background-color 0.2s ease; /* Removed filter transition */
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -116,7 +117,7 @@ h1 {
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; /* Added filter transition for highlights */
     position: relative;
     overflow: hidden;
 }
@@ -124,6 +125,27 @@ h1 {
 .grammar-point-item:hover {
     background-color: #6a6a6a; /* Lighter background on hover, stays bright */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Slightly more pronounced shadow on hover */
+}
+
+/* Highlight for Bookmarked Grammar Point */
+.grammar-point-item.bookmarked {
+    background-color: #6a8fb4; /* Muted blue for dark theme */
+    color: #e0eaf3; /* Brighter text for contrast */
+    border: 1px solid #7c9fce; /* Slightly brighter border */
+}
+
+/* Highlight for Marked as Complete Grammar Point */
+.grammar-point-item.completed {
+    background-color: #8b4545; /* Muted red for dark theme */
+    color: #f0e0e0; /* Brighter text for contrast */
+    border: 1px solid #9e5656; /* Slightly brighter border */
+}
+
+/* Ensure hover styles still apply over highlights, or adapt them */
+.grammar-point-item.bookmarked:hover,
+.grammar-point-item.completed:hover {
+    filter: brightness(1.1); /* Slightly brighten the highlighted color on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
 }
 
 
@@ -137,6 +159,7 @@ h1 {
     flex-shrink: 0; /* Prevent number from shrinking */
 }
 
+/* Bookmark Marker Icon */
 .grammar-point-item a {
     color: #88c0d0; /* Light blue for links */
     text-decoration: none;
@@ -145,7 +168,20 @@ h1 {
     flex-grow: 1; /* Allow link to take available space */
     z-index: 2; /* Ensure link is above the flash pseudo-element */
     position: relative; /* Ensure z-index works */
+    display: flex; /* Allow bookmark icon to sit next to text */
+    align-items: center; /* Vertically align icon with text */
 }
+
+.grammar-point-item.bookmarked a::before {
+    content: '★'; /* Star character for bookmark */
+    color: #ffd700; /* Gold color */
+    font-size: 1.1em;
+    margin-right: 5px;
+    line-height: 1; /* Prevent extra line height from icon */
+    transform: translateY(-1px); /* Slight adjustment for vertical alignment */
+    display: inline-block;
+}
+
 
 .grammar-point-item a:hover {
     text-decoration: underline;
@@ -165,19 +201,63 @@ h1 {
 }
 
 /* Pulse (Breathing) Animation - Now animating filter: brightness */
-/* The filter brightens the header, then returns to normal */
 @keyframes pulse-brightness {
     0% { filter: brightness(1); } /* Normal brightness */
     50% { filter: brightness(1.2); } /* 20% brighter */
     100% { filter: brightness(1); } /* Back to normal for loop */
 }
 
-/* Apply pulse animation to the N-level header */
+/* Apply pulse animation ONLY to the N-level header */
 .n-level-header.pulsing {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Lesson header pulsing */
-.lesson-header.pulsing {
+/* Lesson header does NOT get the pulsing animation anymore */
+/* .lesson-header.pulsing {
     animation: pulse-brightness 1.5s ease-in-out infinite;
+} */
+
+/* Buttons for actions - basic styling */
+.action-buttons {
+    margin-left: auto; /* Push buttons to the right */
+    display: flex;
+    gap: 5px; /* Space between buttons */
+    z-index: 3; /* Ensure buttons are clickable above link */
+}
+
+.action-buttons button {
+    background-color: #555;
+    color: #ddd;
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.action-buttons button:hover {
+    background-color: #777;
+    border-color: #888;
+    color: #fff;
+}
+
+/* Styles for Reset User Data button */
+#resetUserData {
+    background-color: #a04040; /* Reddish tone for reset */
+    color: #ffffff;
+    border: 1px solid #b05050;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block; /* Make it a block element to center */
+    margin: 30px auto 10px auto; /* Center it with margin */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#resetUserData:hover {
+    background-color: #c05050;
+    border-color: #d06060;
 }
