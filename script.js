@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ICON_PATHS = {
         bookmark: 'icons/bookmark-solid.svg',
         check: 'icons/circle-check-solid.svg',
+        trash: 'icons/trash-solid.svg',
         warning: 'icons/triangle-exclamation-solid.svg'
     };
 
