@@ -109,40 +109,24 @@ h1 {
 
 .grammar-point-item {
     padding: 10px 20px; /* Increased padding */
-    background-color: #4d4d4d; /* Even darker grey for individual grammar points */
+    background-color: #4d4d4d; /* Base color */
     border-radius: 4px;
-    display: flex; /* Use flexbox for numbering */
+    display: flex;
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    margin-bottom: 5px; /* Add spacing between items */
-    /* Removed hover transition from here, will handle with separate animation */
-    position: relative; /* Needed for ::before pseudo-element */
-    overflow: hidden; /* Ensures the flash doesn't go outside the box */
+    margin-bottom: 5px;
+    /* Only transition background-color and box-shadow for a smooth change */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Hover Flash Animation */
-.grammar-point-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* White flash */
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 0.1s ease-out; /* Quick fade out */
+.grammar-point-item:hover {
+    background-color: #6a6a6a; /* Lighter background on hover, stays bright */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Slightly more pronounced shadow on hover */
 }
 
-.grammar-point-item:hover::before {
-    opacity: 1; /* Instantly appear */
-    animation: flash-fade-out 0.3s forwards; /* Trigger animation */
-}
-
-@keyframes flash-fade-out {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
+/* Removed the old flash animation rules */
 
 
 .grammar-point-number {
@@ -193,13 +177,7 @@ h1 {
 @keyframes pulse-effect-unknown { 0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); } }
 
 
-/* Apply pulse animation to the N-level CONTAINER, not just the header */
-.n-level.pulsing .n-level-header {
-    animation: none; /* Reset if previously applied */
-    /* Add animation directly to the header, it's specific to each N-level */
-}
-
-/* This is where the specific N-level pulse is applied */
+/* Apply pulse animation to the N-level header */
 .n-level-N5.pulsing .n-level-header { animation: pulse-effect-n5 0.8s ease-out forwards; }
 .n-level-N4.pulsing .n-level-header { animation: pulse-effect-n4 0.8s ease-out forwards; }
 .n-level-N3.pulsing .n-level-header { animation: pulse-effect-n3 0.8s ease-out forwards; }

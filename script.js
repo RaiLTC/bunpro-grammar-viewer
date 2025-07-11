@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('bunpro_grammar_data.json');
             if (!response.ok) {
-                // If the fetch fails (e.g., 404), log details and show user message
                 const errorText = await response.text();
                 console.error(`HTTP error! status: ${response.status}, text: ${errorText}`);
                 throw new Error(`Failed to load grammar data: ${response.statusText}`);
@@ -48,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
+                        // Ensure target="_blank" rel="noopener noreferrer" for all links
                         html += `
                             <li class="grammar-point-item">
                                 <span class="grammar-point-number">${gpIdx + 1}.</span>
@@ -79,24 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // N-Level toggles
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', () => {
-                const nLevelContainer = header.closest('.n-level'); // Get the whole N-level container
+                const nLevelContainer = header.closest('.n-level');
                 const nLevelContent = header.nextElementSibling;
 
-                // Toggle 'expanded' class on content
                 const isExpanded = nLevelContent.classList.toggle('expanded');
-                // Toggle 'expanded' class on header for icon rotation
-                header.classList.toggle('expanded', isExpanded);
+                header.classList.toggle('expanded', isExpanded); // For icon rotation
 
-                // Handle pulse animation on the N-level header
+                // Manage pulsing class on the header
+                // Remove existing animation class to allow re-triggering
+                header.classList.remove('pulsing');
                 if (isExpanded) {
-                    // Remove animation class first to allow re-triggering
-                    header.classList.remove('pulsing');
                     // Force reflow to restart animation on re-adding the class
                     void header.offsetWidth;
                     header.classList.add('pulsing');
-                } else {
-                    // If collapsing, immediately remove pulsing class
-                    header.classList.remove('pulsing');
                 }
             });
         });
@@ -106,18 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
             header.addEventListener('click', () => {
                 const lessonContent = header.nextElementSibling;
 
-                // Toggle 'expanded' class on content
                 const isExpanded = lessonContent.classList.toggle('expanded');
-                // Toggle 'expanded' class on header for icon rotation
-                header.classList.toggle('expanded', isExpanded);
+                header.classList.toggle('expanded', isExpanded); // For icon rotation
 
-                // Handle pulse animation on the lesson header (generic white pulse)
+                // Manage pulsing class on the header
+                header.classList.remove('pulsing');
                 if (isExpanded) {
-                    header.classList.remove('pulsing');
                     void header.offsetWidth;
                     header.classList.add('pulsing');
-                } else {
-                    header.classList.remove('pulsing');
                 }
             });
         });
