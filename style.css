@@ -431,14 +431,15 @@ h1 {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
 }
 
-/* Mark N-Level/Lesson Complete Button (Icon Button) */
-.mark-level-complete-btn {
+/* Mark Level Complete/Reset Buttons (Icon Buttons) */
+/* Shared styles */
+.mark-level-complete-btn,
+.mark-level-reset-btn {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-left: auto;
     position: relative;
-    overflow: visible; /* Allow SVG to draw outside button bounds slightly if needed, though designed to fit */
+    overflow: visible;
     width: 38px;
     height: 38px;
     padding: 0;
@@ -451,33 +452,45 @@ h1 {
     z-index: 0; /* Ensures the button itself is not on top of the circles */
 }
 
-.mark-level-complete-btn:hover {
+/* Position for the reset button */
+.n-level-header .mark-level-reset-btn,
+.lesson-header .mark-level-reset-btn {
+    margin-right: 10px; /* Space between complete and reset buttons */
+}
+
+
+.mark-level-complete-btn:hover,
+.mark-level-reset-btn:hover {
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-.mark-level-complete-btn.holding {
+.mark-level-complete-btn.holding,
+.mark-level-reset-btn.holding {
     background-color: rgba(255, 255, 255, 0.15);
     cursor: progress; /* Keep browser cursor for user feedback */
 }
 
 /* Icon (image) inside the button */
-.mark-level-complete-btn img {
+.mark-level-complete-btn img,
+.mark-level-reset-btn img {
     width: 1.8em;
     height: 1.8em;
-    /* MATCHES grammar point icon dimness */
+    /* Default dim filter (matches grammar point action buttons) */
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
-    transition: filter 0.2s ease;
+    transition: filter 0.2s ease; /* Transition for filter changes */
     z-index: 2; /* Ensure icon is above progress circles */
     position: relative; /* Ensure z-index works */
     pointer-events: none; /* Allow clicks to pass through to the button */
 }
 
-.mark-level-complete-btn:hover img {
+/* Hover effects for all header buttons (complete & reset) */
+.mark-level-complete-btn:hover img,
+.mark-level-reset-btn:hover img {
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
 }
 
-/* Green when level/lesson is completed */
+/* Green when level/lesson is completed (for complete button) */
 .mark-level-complete-btn.level-completed img {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
 }
@@ -520,19 +533,34 @@ h1 {
     /* Transitions will be applied via JS to ensure the animation re-starts correctly */
 }
 
-.mark-level-complete-btn.holding .progress-circle-fg {
+.mark-level-complete-btn.holding .progress-circle-fg,
+.mark-level-reset-btn.holding .progress-circle-fg {
     opacity: 1; /* Make visible when holding */
     /* Animation for stroke-dashoffset handled by JS with cubic-bezier */
+    /* New cubic-bezier for a more distinct fast-start, slow-end */
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.1s ease-in;
 }
 
 /* Flash animation for containers (N-level and Lesson) */
 @keyframes flash-highlight {
     0% { box-shadow: 0 0 0px transparent; }
-    50% { box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); }
+    50% { box-shadow: 0 0 15px 5px rgba(85, 139, 85, 0.6); } /* Green for complete */
     100% { box-shadow: 0 0 0px transparent; }
 }
+
+@keyframes flash-red-highlight {
+    0% { box-shadow: 0 0 0px transparent; }
+    50% { box-shadow: 0 0 15px 5px rgba(176, 80, 80, 0.6); } /* Red for reset */
+    100% { box-shadow: 0 0 0px transparent; }
+}
+
 
 .n-level.flash-animation,
 .lesson.flash-animation {
     animation: flash-highlight 0.8s ease-out forwards;
+}
+
+.n-level.flash-red-animation,
+.lesson.flash-red-animation {
+    animation: flash-red-highlight 0.8s ease-out forwards;
 }
