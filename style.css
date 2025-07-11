@@ -229,13 +229,13 @@ h1 {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    gap: 12px; /* Increased gap for more spacing */
+    gap: 12px;
 }
 
 .grammar-point-item {
     flex-grow: 1;
-    /* Reduce max-width to make room for buttons and spacing */
-    max-width: calc(100% - 70px); /* Adjust based on button size + gap */
+    /* Reduced max-width to give more space on the right for buttons */
+    max-width: calc(100% - 80px); /* 38px (button) + 38px (button) + 12px (gap) + ~-10px adjustment for tighter fit */
     padding: 10px 15px;
     background-color: #4d4d4d;
     border-radius: 4px;
@@ -316,16 +316,17 @@ h1 {
 }
 
 
-/* Expand/Collapse Icon */
+/* Expand/Collapse Icon (Dorito) */
 .toggle-icon {
     font-size: 0.8em;
     flex-shrink: 0;
     margin-left: 10px;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Match content transition */
+    /* Match content transition durations */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lesson-header .toggle-icon {
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Match lesson content transition */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .expanded .toggle-icon {
@@ -437,7 +438,7 @@ h1 {
     cursor: pointer;
     margin-left: auto;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Allow SVG to draw outside button bounds slightly if needed, though designed to fit */
     width: 38px;
     height: 38px;
     padding: 0;
@@ -447,6 +448,7 @@ h1 {
     border-radius: 50%;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
+    z-index: 0; /* Ensures the button itself is not on top of the circles */
 }
 
 .mark-level-complete-btn:hover {
@@ -456,22 +458,23 @@ h1 {
 
 .mark-level-complete-btn.holding {
     background-color: rgba(255, 255, 255, 0.15);
-    cursor: progress;
+    cursor: progress; /* Keep browser cursor for user feedback */
 }
 
-/* Default dim state for the icon */
+/* Icon (image) inside the button */
 .mark-level-complete-btn img {
     width: 1.8em;
     height: 1.8em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8); /* Dimmed default */
+    /* MATCHES grammar point icon dimness */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
-    z-index: 2;
-    position: relative;
+    z-index: 2; /* Ensure icon is above progress circles */
+    position: relative; /* Ensure z-index works */
+    pointer-events: none; /* Allow clicks to pass through to the button */
 }
 
-/* Brighter on hover */
 .mark-level-complete-btn:hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
 }
 
 /* Green when level/lesson is completed */
@@ -484,53 +487,42 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
 }
 
-.mark-level-complete-btn .progress-circle {
+/* SVG Progress Circle */
+.progress-circle {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the SVG within the button */
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    border: 3px solid transparent; /* Base transparent border */
-    border-top-color: white; /* This will be the animating white line */
-    opacity: 0;
-    z-index: 1;
-    box-sizing: border-box;
-    transform-origin: center;
-    /* Initial state for animation */
-    transform: rotate(-45deg); /* Start from top-center when it appears */
+    pointer-events: none; /* Ensures the circle doesn't interfere with button clicks */
+    z-index: 1; /* Below icon, above button background */
+    overflow: visible; /* Ensure the stroke can render fully without being clipped by the SVG's viewport if slightly off */
 }
 
-/* Custom Circular Animation */
-.mark-level-complete-btn .progress-circle.active {
-    animation: drawCircle var(--hold-duration) cubic-bezier(0.1, 0.7, 1.0, 0.1) forwards,
-               fadeCircularProgress 0.3s ease-in forwards; /* Separate fade-in */
-    opacity: 1; /* Make visible when active */
+.progress-circle-bg {
+    /* Background circle - a light grey, always visible */
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 3;
 }
 
-@keyframes drawCircle {
-    0% { transform: rotate(-45deg); }
-    100% { transform: rotate(315deg); } /* 315deg = 360 - 45 (full circle) */
+.progress-circle-fg {
+    /* Foreground circle - the white animating line */
+    stroke: white;
+    stroke-width: 3;
+    /* Initial state: fully undrawn. Circumference for r=16 is approx 100.53 */
+    stroke-dasharray: 100.53 100.53;
+    stroke-dashoffset: 100.53; /* Hides the stroke */
+    /* Rotate to start at the top (-90 degrees from positive X axis) */
+    transform: rotate(-90deg); /* Applied directly to SVG circle for correct origin */
+    transform-origin: 19px 19px; /* Center of the SVG viewBox */
+    opacity: 0; /* Hidden by default */
+    /* Transitions will be applied via JS to ensure the animation re-starts correctly */
 }
 
-@keyframes fadeCircularProgress {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-/* Override fade out from previous version for consistency */
-.mark-level-complete-btn .progress-circle:not(.active) {
-    transition: opacity 0.2s ease-out; /* Fade out when not active */
-    opacity: 0;
-}
-
-
-.mark-level-complete-btn.n-level-btn .progress-circle.active {
-    --hold-duration: 3s;
-}
-
-.mark-level-complete-btn.lesson-btn .progress-circle.active {
-    --hold-duration: 1s;
+.mark-level-complete-btn.holding .progress-circle-fg {
+    opacity: 1; /* Make visible when holding */
+    /* Animation for stroke-dashoffset handled by JS with cubic-bezier */
 }
 
 /* Flash animation for containers (N-level and Lesson) */

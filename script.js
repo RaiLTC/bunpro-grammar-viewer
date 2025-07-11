@@ -219,11 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!countSpan) {
                     countSpan = document.createElement('span');
                     countSpan.classList.add('header-counts');
-                    header.insertBefore(countSpan, header.querySelector('.mark-level-complete-btn')); // Insert before the button
+                    header.insertBefore(countSpan, header.querySelector('.mark-level-complete-btn'));
                 }
                 countSpan.textContent = `${stats.lessons} Lessons, ${stats.grammarPoints} Grammar Points`;
 
-                // Update the N-level complete button state based on completion
                 const completeBtn = header.querySelector('.mark-level-complete-btn');
                 if (completeBtn) {
                     completeBtn.classList.toggle('level-completed', stats.completedGrammarPoints === stats.grammarPoints && stats.grammarPoints > 0);
@@ -247,11 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!countSpan) {
                         countSpan = document.createElement('span');
                         countSpan.classList.add('header-counts');
-                        lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.mark-level-complete-btn')); // Insert before the button
+                        lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.mark-level-complete-btn'));
                     }
                     countSpan.textContent = `${grammarPointsInLesson} Grammar Points`;
 
-                    // Update the lesson complete button state based on completion
                     const completedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                         return getGrammarPointState(gpId).completed;
@@ -332,7 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="header-counts"></span>
                             <button class="mark-level-complete-btn n-level-btn" data-level-type="n-level" data-n-level-key="${nLevelKey}" title="Press and hold to mark all grammar points in this N-level as complete">
                                 <img src="${ICON_PATHS.checkSolid}" alt="Complete All">
-                                <div class="progress-circle"></div>
+                                <svg class="progress-circle" viewBox="0 0 38 38">
+                                    <circle class="progress-circle-bg" cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"></circle>
+                                    <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></circle>
+                                </svg>
                             </button>
                             <span class="toggle-icon">&#9654;</span>
                         </div>
@@ -347,7 +348,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="header-counts"></span>
                                 <button class="mark-level-complete-btn lesson-btn" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}" title="Press and hold to mark all grammar points in this lesson as complete">
                                     <img src="${ICON_PATHS.checkSolid}" alt="Complete Lesson">
-                                    <div class="progress-circle"></div>
+                                    <svg class="progress-circle" viewBox="0 0 38 38">
+                                        <circle class="progress-circle-bg" cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"></circle>
+                                        <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></circle>
+                                    </svg>
                                 </button>
                                 <span class="toggle-icon">&#9654;</span>
                             </div>
@@ -442,45 +446,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addMarkLevelCompleteListeners() {
         document.querySelectorAll('.mark-level-complete-btn').forEach(button => {
-            let progressBar = button.querySelector('.progress-circle');
-            if (!progressBar) {
-                progressBar = document.createElement('div');
-                progressBar.classList.add('progress-circle');
-                button.appendChild(progressBar);
+            // Get the SVG progress circle
+            let progressBarSVG = button.querySelector('.progress-circle');
+            let progressBarFG = progressBarSVG ? progressBarSVG.querySelector('.progress-circle-fg') : null;
+
+            // Calculate circumference dynamically if needed (or use fixed value if radius is fixed)
+            // For r=16, circumference = 2 * pi * 16 = 100.53
+            // Set initial dasharray and dashoffset for the foreground circle to hide it
+            if (progressBarFG) {
+                const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
+                progressBarFG.style.strokeDasharray = `${circumference} ${circumference}`;
+                progressBarFG.style.strokeDashoffset = circumference;
+                progressBarFG.style.transition = 'none'; // Ensure no transition on initial setup
+                progressBarFG.style.opacity = '0'; // Keep it hidden
             }
 
-            endHold({target: button}, button, progressBar, true);
+            // Clear any existing timers/states to prevent issues with re-rendering
+            endHold({target: button}, button, progressBarFG, true);
 
-            button.addEventListener('mousedown', (e) => startHold(e, button, progressBar));
-            button.addEventListener('touchstart', (e) => startHold(e, button, progressBar), { passive: true });
-            button.addEventListener('mouseup', (e) => endHold(e, button, progressBar));
-            button.addEventListener('mouseleave', (e) => endHold(e, button, progressBar));
-            button.addEventListener('touchend', (e) => endHold(e, button, progressBar));
-            button.addEventListener('touchcancel', (e) => endHold(e, button, progressBar));
+            button.addEventListener('mousedown', (e) => startHold(e, button, progressBarFG));
+            button.addEventListener('touchstart', (e) => startHold(e, button, progressBarFG), { passive: true });
+            button.addEventListener('mouseup', (e) => endHold(e, button, progressBarFG));
+            button.addEventListener('mouseleave', (e) => endHold(e, button, progressBarFG));
+            button.addEventListener('touchend', (e) => endHold(e, button, progressBarFG));
+            button.addEventListener('touchcancel', (e) => endHold(e, button, progressBarFG));
         });
     }
 
-    function startHold(event, button, progressBar) {
+    function startHold(event, button, progressBarFG) {
         if (event.button === 0 || event.type === 'touchstart') {
             event.preventDefault();
 
             const holdDuration = button.dataset.levelType === 'n-level' ? 3000 : 1000;
+            const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
 
             const existingTimer = holdTimers.get(button);
             if (existingTimer) clearTimeout(existingTimer);
 
             button.classList.add('holding');
-            progressBar.style.transition = 'none';
-            progressBar.style.opacity = '0'; // Start invisible
-            progressBar.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)'; // Reset transform for animation
-            progressBar.classList.remove('active'); // Remove active to reset animation
+            progressBarFG.style.transition = 'none'; // Reset any ongoing transitions
+            progressBarFG.style.strokeDashoffset = circumference; // Set to full circumference (hidden)
+            progressBarFG.style.opacity = '0'; // Keep it hidden until animation starts
 
-            requestAnimationFrame(() => {
-                progressBar.classList.add('active');
-                progressBar.style.transition = `transform ${holdDuration}ms cubic-bezier(0.1, 0.7, 1.0, 0.1), opacity ${holdDuration * 0.1}ms ease-in forwards`; // Fade in quickly
-                progressBar.style.opacity = '1';
-                progressBar.style.transform = `translate(-50%, -50%) rotate(360deg) scale(1)`; // Rotate full circle
-            });
+            // Force reflow to apply initial styles before transition
+            void progressBarFG.offsetWidth;
+
+            progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.1, 0.7, 1.0, 0.1), opacity 0.1s ease-in`;
+            progressBarFG.style.strokeDashoffset = '0'; // Animate to 0 (fully drawn)
+            progressBarFG.style.opacity = '1';
 
             const timer = setTimeout(() => {
                 const levelType = button.dataset.levelType;
@@ -491,14 +504,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const lessonNum = parseInt(button.dataset.lessonNum);
                     markLessonComplete(nLevelKey, lessonNum, button.closest('.lesson'));
                 }
-                endHold(event, button, progressBar, true);
+                endHold(event, button, progressBarFG, true);
             }, holdDuration);
 
             holdTimers.set(button, timer);
         }
     }
 
-    function endHold(event, button, progressBar, completed = false) {
+    function endHold(event, button, progressBarFG, completed = false) {
         const timer = holdTimers.get(button);
         if (timer) {
             clearTimeout(timer);
@@ -506,15 +519,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         button.classList.remove('holding');
-        if (!completed) {
-            progressBar.style.transition = 'none';
-            progressBar.style.opacity = '0'; // Instantly hide
-            progressBar.style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)'; // Reset to initial state
-            progressBar.classList.remove('active');
-        } else {
-            // If completed, let the opacity transition finish (fade out)
-            progressBar.style.transition = 'opacity 0.2s ease-out';
-            progressBar.style.opacity = '0';
+        if (progressBarFG) {
+            progressBarFG.style.transition = 'opacity 0.2s ease-out'; // Fast fade out
+            progressBarFG.style.opacity = '0';
+            if (!completed) {
+                 // Reset stroke-dashoffset only if not completed, so it appears ready for next hold
+                const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
+                progressBarFG.style.strokeDashoffset = circumference;
+            }
         }
     }
 
