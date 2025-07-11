@@ -345,13 +345,14 @@ h1 {
 .action-buttons button img {
     width: 1.8em;
     height: 1.8em;
-    /* Default filter for individual action icons - dim grey */
-    filter: brightness(0.7) grayscale(100%); /* Dimmer grey */
+    /* Default filter for inactive icons: dim grey */
+    filter: brightness(0.7) grayscale(100%);
     transition: filter 0.2s ease;
 }
 
 .action-buttons button:hover img {
-    filter: brightness(1.5) grayscale(0%); /* Brighter white on hover */
+    /* Brighter white on hover for all icons */
+    filter: brightness(1.5) grayscale(0%);
 }
 
 /* Bookmarked icon filter: BLUE + Shadow */
@@ -429,11 +430,11 @@ h1 {
     height: 1.4em;
 }
 
-/* Apply hover effect only when not holding */
-.mark-level-complete-btn:not(.holding):hover img,
-.mark-level-reset-btn:not(.holding):hover img,
-.mark-lesson-complete-btn:not(.holding):hover img,
-.mark-lesson-reset-btn:not(.holding):hover img {
+/* Apply hover effect for all icons */
+.mark-level-complete-btn:hover img,
+.mark-level-reset-btn:hover img,
+.mark-lesson-complete-btn:hover img,
+.mark-lesson-reset-btn:hover img {
     filter: brightness(1.5) grayscale(0%); /* Brighter white on hover */
 }
 

@@ -95,12 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentState = getGrammarPointState(gpId);
         currentState.bookmarked = !currentState.bookmarked;
         updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
+
+        const bookmarkIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.bookmark-btn img');
+        if (bookmarkIcon) {
+            flashIcon(bookmarkIcon); // Flash icon on bookmark action
+        }
     }
 
     function toggleComplete(gpId, grammarPointItemElement) {
         const currentState = getGrammarPointState(gpId);
         currentState.completed = !currentState.completed;
         updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
+
+        const completeIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.complete-btn img');
+        if (completeIcon) {
+            flashIcon(completeIcon); // Flash icon on complete action
+        }
     }
 
     function resetAllUserData() {
@@ -605,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 button.classList.add('holding');
-                // Set the progress bar color based on button type
+                // Set the progress bar color and icon filter based on button type
                 if (button.classList.contains('mark-level-complete-btn') || button.classList.contains('mark-lesson-complete-btn')) {
                     progressBarFg.style.stroke = '#558B55'; // Green for complete
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%)'; // Brighter green
