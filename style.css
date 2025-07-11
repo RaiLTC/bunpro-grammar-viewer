@@ -151,7 +151,7 @@ h1 {
 
 .n-level-header.has-bookmarked-children.all-children-complete {
     box-shadow: inset 0 0 0 3px #6ab0de,
-                0 44px 8px rgba(0, 0, 0, 0.3);
+                0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .n-level-content {
@@ -342,13 +342,13 @@ h1 {
 .action-buttons button img {
     width: 1.8em;
     height: 1.8em;
-    /* Default filter for individual action icons - visible light grey */
-    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+    /* Default filter for individual action icons - dim grey */
+    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8);
     transition: filter 0.2s ease;
 }
 
 .action-buttons button:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Brighter on hover */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Brighter white on hover */
 }
 
 /* Bookmarked icon filter: BLUE */
@@ -400,14 +400,14 @@ h1 {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-/* Default filter for level/lesson action icons - visible light grey */
+/* Default filter for level/lesson action icons - dim grey */
 .mark-level-complete-btn img,
 .mark-level-reset-btn img,
 .mark-lesson-complete-btn img,
 .mark-lesson-reset-btn img {
     width: 1.6em; /* Complete icon slightly larger */
     height: 1.6em;
-    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8); /* Dim grey */
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
@@ -424,10 +424,10 @@ h1 {
 .mark-level-reset-btn:not(.holding):hover img,
 .mark-lesson-complete-btn:not(.holding):hover img,
 .mark-lesson-reset-btn:not(.holding):hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Brighter white on hover */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Brighter white on hover */
 }
 
-/* Holding state filter - makes the icon brighter without blacking out */
+/* Holding state filter - makes the icon brighter with its intended color */
 .mark-level-complete-btn.holding img,
 .mark-lesson-complete-btn.holding img {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%); /* Brighter green */
@@ -470,7 +470,7 @@ h1 {
     fill: none;
 }
 
-/* Updated: Progress circle fill transition for ease-out effect */
+/* Progress circle fill transition for ease-out effect */
 .progress-circle-fg {
     /* stroke color set by JS */
     stroke-width: 3;
@@ -535,7 +535,6 @@ h1 {
     font-size: 0.8em;
     display: inline-block; /* Essential for transform to work */
     color: #bbb; /* Default color */
-    /* Transition speed will be set by JS to match content expansion/collapse */
     transition: transform var(--toggle-transition-duration) var(--toggle-transition-easing);
 }
 
@@ -552,7 +551,7 @@ h1 {
 .mark-lesson-complete-btn img.flash-white-icon,
 .mark-lesson-reset-btn img.flash-white-icon,
 .toggle-icon.flash-white-icon,
-.action-buttons button img.flash-white-icon { /* Added for individual grammar point buttons */
+.action-buttons button img.flash-white-icon {
     animation: flash-white-icon 0.3s ease-out;
 }
 

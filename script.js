@@ -71,12 +71,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGrammarPointState(gpId, state) {
         userProgress[gpId] = state;
         saveUserProgress();
-        renderStatistics();
-        const changedElement = document.querySelector(`[data-gp-id="${gpId}"]`);
+        renderStatistics(); // Re-render statistics on any state change
+
+        // Find the specific grammar point item in the DOM and update its classes
+        const grammarPointItemElement = document.querySelector(`[data-gp-id="${gpId}"]`);
+        if (grammarPointItemElement) {
+            grammarPointItemElement.classList.toggle('bookmarked', state.bookmarked);
+            grammarPointItemElement.classList.toggle('completed', state.completed);
+            // Re-render action buttons for this specific grammar point to update their state/icon
+            renderActionButtons(grammarPointItemElement, gpId);
+        }
+
+        // Update parent headers (N-level and Lesson)
+        const changedElement = grammarPointItemElement; // Pass the grammar point element
         if (changedElement) {
             updateParentHeaderStates(changedElement);
         } else {
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // Fallback to update all if element not found
         }
     }
 
@@ -85,12 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentState.bookmarked = !currentState.bookmarked;
         updateGrammarPointState(gpId, currentState);
 
-        grammarPointItemElement.classList.toggle('bookmarked', currentState.bookmarked);
         const bookmarkIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.bookmark-btn img');
         if (bookmarkIcon) {
             flashIcon(bookmarkIcon); // Flash icon on bookmark action
         }
-        renderActionButtons(grammarPointItemElement, gpId);
     }
 
     function toggleComplete(gpId, grammarPointItemElement) {
@@ -98,12 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentState.completed = !currentState.completed;
         updateGrammarPointState(gpId, currentState);
 
-        grammarPointItemElement.classList.toggle('completed', currentState.completed);
         const completeIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.complete-btn img');
         if (completeIcon) {
             flashIcon(completeIcon); // Flash icon on complete action
         }
-        renderActionButtons(grammarPointItemElement, gpId);
     }
 
     function resetAllUserData() {
@@ -354,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonNum = lessonNumMatch ? parseInt(lessonNumMatch[0]) : null;
 
             if (nLevelKey && lessonNum && allGrammarData[nLevelKey]) {
-                const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num == lessonNum);
+                const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num === lessonNum); // Use strict equality
                 if (lessonData) {
                     const grammarPointsInLesson = lessonData.grammar_points.length;
                     let countSpan = lessonHeader.querySelector('.header-counts');
@@ -618,11 +625,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%)'; // Brighter red
                 }
 
-                progressBarFg.style.transition = 'none';
+                progressBarFg.style.transition = 'none'; // Reset transition instantly
                 progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
                 progressBarFg.style.opacity = '1';
 
-                void progressBarFg.offsetWidth; // Trigger reflow
+                void progressBarFg.offsetWidth; // Trigger reflow to ensure reset is applied
 
                 // Use CSS variable for transition duration in CSS
                 button.style.setProperty('--hold-duration', `${holdDuration}ms`);
@@ -703,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentState = getGrammarPointState(gpId);
                 if (!currentState.completed) {
                     currentState.completed = true;
-                    updateGrammarPointState(gpId, currentState);
+                    updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
                     grammarPointsUpdated++;
                 }
             });
@@ -711,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (grammarPointsUpdated > 0) {
             console.log(`Marked ${grammarPointsUpdated} grammar points in ${nLevelKey} as complete.`);
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // This will re-calculate and update header states
         }
     }
 
@@ -724,10 +731,10 @@ document.addEventListener('DOMContentLoaded', () => {
             lesson.grammar_points.forEach((gp, gpIdx) => {
                 const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                 const currentState = getGrammarPointState(gpId);
-                if (currentState.completed || currentState.bookmarked) { // Reset both completed and bookmarked
+                if (currentState.completed || currentState.bookmarked) {
                     currentState.completed = false;
                     currentState.bookmarked = false;
-                    updateGrammarPointState(gpId, currentState);
+                    updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
                     grammarPointsUpdated++;
                 }
             });
@@ -735,7 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (grammarPointsUpdated > 0) {
             console.log(`Reset ${grammarPointsUpdated} grammar points in ${nLevelKey}.`);
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // This will re-calculate and update header states
         }
     }
 
@@ -749,14 +756,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentState = getGrammarPointState(gpId);
             if (!currentState.completed) {
                 currentState.completed = true;
-                updateGrammarPointState(gpId, currentState);
+                updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
                 grammarPointsUpdated++;
             }
         });
 
         if (grammarPointsUpdated > 0) {
             console.log(`Marked ${grammarPointsUpdated} grammar points in ${nLevelKey} Lesson ${lessonNum} as complete.`);
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // This will re-calculate and update header states
         }
     }
 
@@ -768,17 +775,17 @@ document.addEventListener('DOMContentLoaded', () => {
         targetLesson.grammar_points.forEach((gp, gpIdx) => {
             const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
             const currentState = getGrammarPointState(gpId);
-            if (currentState.completed || currentState.bookmarked) { // Reset both completed and bookmarked
+            if (currentState.completed || currentState.bookmarked) {
                 currentState.completed = false;
                 currentState.bookmarked = false;
-                updateGrammarPointState(gpId, currentState);
+                updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
                 grammarPointsUpdated++;
             }
         });
 
         if (grammarPointsUpdated > 0) {
             console.log(`Reset ${grammarPointsUpdated} grammar points in ${nLevelKey} Lesson ${lessonNum}.`);
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // This will re-calculate and update header states
         }
     }
 
@@ -846,7 +853,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const transitionDuration = sectionType === 'n-level' ? '0.6s' : '0.4s';
         const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)'; // Matches the content transition easing
 
-        // Set CSS variables for toggle icon transition
         toggleIcon.style.setProperty('--toggle-transition-duration', transitionDuration);
         toggleIcon.style.setProperty('--toggle-transition-easing', transitionEasing);
 
@@ -883,7 +889,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const transitionDuration = sectionType === 'n-level' ? '0.6s' : '0.4s';
         const transitionEasing = 'cubic-bezier(0.4, 0, 0.2, 1)'; // Matches the content transition easing
 
-        // Set CSS variables for toggle icon transition
         toggleIcon.style.setProperty('--toggle-transition-duration', transitionDuration);
         toggleIcon.style.setProperty('--toggle-transition-easing', transitionEasing);
 
