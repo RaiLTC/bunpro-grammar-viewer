@@ -14,6 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allGrammarData = [];
 
+    // --- Core Data Loading Function (MUST BE DEFINED EARLY) ---
+    async function loadGrammarData() {
+        try {
+            const response = await fetch('bunpro_grammar_data.json');
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error(`HTTP error! status: ${response.status}, text: ${errorText}`);
+                throw new Error(`Failed to load grammar data: ${response.statusText}`);
+            }
+            allGrammarData = await response.json();
+            loadUserProgress(); // Defined below
+            renderStatistics(); // Defined below
+            renderGrammarData(allGrammarData); // Defined below
+            updateParentHeaderStates(); // Defined below
+            addResetButtonListener(); // Defined below
+        } catch (error) {
+            console.error("Could not load grammar data:", error);
+            grammarContentDiv.innerHTML = '<p>Error loading grammar data. Please ensure "bunpro_grammar_data.json" is in the same directory and accessible. Details in console.</p>';
+        }
+    }
+
     // --- User Progress Functions ---
     function loadUserProgress() {
         try {
@@ -50,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGrammarPointState(gpId, state) {
         userProgress[gpId] = state;
         saveUserProgress();
-        renderStatistics(); // Re-render statistics on any state change
+        renderStatistics();
         const changedElement = document.querySelector(`[data-gp-id="${gpId}"]`);
         if (changedElement) {
             updateParentHeaderStates(changedElement);
         } else {
-            updateParentHeaderStates(); // If element not found, re-check all headers
+            updateParentHeaderStates();
         }
     }
 
@@ -77,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderActionButtons(grammarPointItemElement, gpId);
     }
 
-    // New: Reset All Data function with confirmation
     function resetAllUserData() {
         if (confirm("Are you sure you want to reset ALL your saved progress (bookmarks and completed items)? This action cannot be undone.")) {
             userProgress = {};
@@ -87,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // New: Add event listener for the global reset button
     function addResetButtonListener() {
         const resetButton = document.getElementById('reset-all-button');
         if (resetButton) {
@@ -99,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateStatistics() {
         let totalJlptLevels = 0;
         let completedJlptLevels = 0;
-        let totalLessons = 0; // Only JLPT lessons
-        let completedLessons = 0; // Only JLPT completed lessons
-        let totalGrammarPoints = 0; // Only JLPT grammar points
-        let completedGrammarPoints = 0; // Only JLPT completed grammar points
+        let totalLessons = 0;
+        let completedLessons = 0;
+        let totalGrammarPoints = 0;
+        let completedGrammarPoints = 0;
         let bookmarkedGrammarPoints = 0;
 
         let nonJlptLessons = 0;
@@ -113,15 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let unknownNLevelGrammarPoints = 0;
         let unknownNLevelCompletedGPs = 0;
 
-
         const nLevelStats = {};
-
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
-
-                // Only count JLPT levels for totalJlptLevels
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -134,9 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 allGrammarData[nLevelKey].forEach(lesson => {
                     nLevelLessonsCount++;
                     let nLevelKeyLessonNum = lesson.lesson_num;
-                    let lessonGPsCount = 0; // Total GPs in this specific lesson
-                    let lessonCompletedGPs = 0; // Completed GPs in this specific lesson
-
+                    let lessonGPsCount = 0;
+                    let lessonCompletedGPs = 0;
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
@@ -152,16 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 unknownNLevelCompletedGPs++;
                             }
-                        }
-                        else {
-                             // Only count JLPT grammar points towards totalGrammarPoints
+                        } else {
                             totalGrammarPoints++;
                             if (state.completed) {
                                 completedGrammarPoints++;
                             }
                         }
 
-                        nLevelGPsCount++; // Count for current N-level
+                        nLevelGPsCount++;
                         if (state.completed) {
                             nLevelCompletedGPs++;
                             lessonCompletedGPs++;
@@ -170,18 +182,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             bookmarkedGrammarPoints++;
                             nLevelBookmarkedGPs++;
                         }
-                        lessonGPsCount++; // Count for current lesson
+                        lessonGPsCount++;
                     });
 
-                    // Check if current lesson is completed
                     if (lessonGPsCount > 0 && lessonCompletedGPs === lessonGPsCount) {
-                        // Only count JLPT lessons towards completedLessons
                         if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                             completedLessons++;
                         }
                     }
 
-                    // Only count JLPT lessons towards totalLessons
                     if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                         totalLessons++;
                     }
@@ -256,23 +265,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <p>N-3 Lessons: <span class="stat-value">${n3Stats.lessons || 0}</span></p>
             <p>N3 Grammar Points: <span class="stat-value">${n3Stats.completedGrammarPoints || 0}/${n3Stats.grammarPoints || 0}</span></p>
-            <div></div> <!-- Placeholder for layout -->
+            <div></div>
 
             <p>N-2 Lessons: <span class="stat-value">${n2Stats.lessons || 0}</span></p>
             <p>N2 Grammar Points: <span class="stat-value">${n2Stats.completedGrammarPoints || 0}/${n2Stats.grammarPoints || 0}</span></p>
-            <div></div> <!-- Placeholder for layout -->
+            <div></div>
 
             <p>N-1 Lessons: <span class="stat-value">${n1Stats.lessons || 0}</span></p>
             <p>N1 Grammar Points: <span class="stat-value">${n1Stats.completedGrammarPoints || 0}/${n1Stats.grammarPoints || 0}</span></p>
-            <div></div> <!-- Placeholder for layout -->
+            <div></div>
         `;
 
-        // If 'Unknown N-Level' exists and has lessons, add it on its own row/lines
         if (unknownNLevelStats.lessons > 0) {
             statsHtml += `
                 <p>Unknown N-Level Lessons: <span class="stat-value">${unknownNLevelStats.lessons || 0}</span></p>
                 <p>Unknown N-Level Grammar Points: <span class="stat-value">${unknownNLevelStats.completedGrammarPoints || 0}/${unknownNLevelStats.grammarPoints || 0}</span></p>
-                <div></div> <!-- Placeholder for layout -->
+                <div></div>
             `;
         }
 
@@ -284,9 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let existingStatsContainer = document.querySelector('.statistics-container');
         if (existingStatsContainer) {
-            existingStatsContainer.outerHTML = statsHtml; // Replace existing container
+            existingStatsContainer.outerHTML = statsHtml;
         } else {
-            containerDiv.insertAdjacentHTML('afterbegin', statsHtml); // Insert if not exists
+            containerDiv.insertAdjacentHTML('afterbegin', statsHtml);
         }
 
         updateHeaderCounts(stats.nLevelStats);
@@ -836,6 +844,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('transitionend', onTransitionEnd);
     }
 
-    // Call loadGrammarData once the DOM is fully loaded
+    // This call must be at the very end of the DOMContentLoaded listener
     loadGrammarData();
 });
