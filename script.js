@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userProgress));
         } catch (e) {
             console.error("Failed to save user progress to localStorage:", e);
+            // Using a simple alert for now as per previous implementation, consider a custom modal for better UX.
             alert("Could not save progress. Your browser's storage might be full or disabled.");
         }
     }
@@ -70,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGrammarPointState(gpId, state) {
         userProgress[gpId] = state;
         saveUserProgress();
-        renderStatistics();
+        renderStatistics(); // Re-render statistics on any state change
         const changedElement = document.querySelector(`[data-gp-id="${gpId}"]`);
         if (changedElement) {
             updateParentHeaderStates(changedElement);
         } else {
-            updateParentHeaderStates();
+            updateParentHeaderStates(); // If element not found, re-check all headers
         }
     }
 
@@ -84,8 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentState.bookmarked = !currentState.bookmarked;
         updateGrammarPointState(gpId, currentState);
 
+        // Update classes on the grammar point item itself
         grammarPointItemElement.classList.toggle('bookmarked', currentState.bookmarked);
-        grammarPointItemElement.classList.toggle('completed', currentState.completed);
+        // Re-render action buttons to update their state/icon
         renderActionButtons(grammarPointItemElement, gpId);
     }
 
@@ -94,21 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
         currentState.completed = !currentState.completed;
         updateGrammarPointState(gpId, currentState);
 
+        // Update classes on the grammar point item itself
         grammarPointItemElement.classList.toggle('completed', currentState.completed);
-        grammarPointItemElement.classList.toggle('bookmarked', currentState.bookmarked);
+        // Re-render action buttons to update their state/icon
         renderActionButtons(grammarPointItemElement, gpId);
     }
 
-    // Activated: Reset All Data function
+    // New: Reset All Data function with confirmation
     function resetAllUserData() {
+        // Using confirm() as per previous implementation, consider a custom modal for better UX.
         if (confirm("Are you sure you want to reset ALL your saved progress (bookmarks and completed items)? This action cannot be undone.")) {
-            userProgress = {};
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-            alert("All user data has been reset.");
-            location.reload();
+            userProgress = {}; // Clear all progress
+            localStorage.removeItem(LOCAL_STORAGE_KEY); // Remove from local storage
+            alert("All user data has been reset."); // Inform user
+            location.reload(); // Reload page to reflect changes
         }
     }
 
+    // New: Add event listener for the global reset button
     function addResetButtonListener() {
         const resetButton = document.getElementById('reset-all-button');
         if (resetButton) {
@@ -129,6 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let nonJlptLessons = 0;
         let nonJlptGrammarPoints = 0;
         let nonJlptCompletedGPs = 0;
+
+        let unknownNLevelLessons = 0;
+        let unknownNLevelGrammarPoints = 0;
+        let unknownNLevelCompletedGPs = 0;
+
 
         const nLevelStats = {};
 
@@ -163,18 +173,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 nonJlptCompletedGPs++;
                             }
-                        } else {
+                        } else if (nLevelKey === 'Unknown N-Level') {
+                            unknownNLevelGrammarPoints++;
+                            if (state.completed) {
+                                unknownNLevelCompletedGPs++;
+                            }
+                        }
+                        else {
                              // Only count JLPT grammar points towards totalGrammarPoints
-                            if (nLevelKey !== 'Unknown N-Level') {
-                                totalGrammarPoints++;
-                                if (state.completed) {
-                                    completedGrammarPoints++;
-                                }
+                            totalGrammarPoints++;
+                            if (state.completed) {
+                                completedGrammarPoints++;
                             }
                         }
 
                         nLevelGPsCount++; // Count for current N-level
-
                         if (state.completed) {
                             nLevelCompletedGPs++;
                             lessonCompletedGPs++;
@@ -224,6 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
             nonJlptLessons,
             nonJlptGrammarPoints,
             nonJlptCompletedGPs,
+            unknownNLevelLessons,
+            unknownNLevelGrammarPoints,
+            unknownNLevelCompletedGPs,
             nLevelStats
         };
     }
@@ -232,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const stats = calculateStatistics();
         let statsHtml = `
             <div class="statistics-container">
-                <h2>Statistics</h2>
                 <div class="global-stats">
                     <h3>Global Statistics</h3>
                     <div class="stats-grid">
@@ -253,6 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const n2Stats = stats.nLevelStats['N2'] || {};
         const n1Stats = stats.nLevelStats['N1'] || {};
         const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
+        const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'] || {};
+
 
         statsHtml += `
             <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
@@ -272,14 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div></div> `;
 
         // If 'Unknown N-Level' exists and has lessons, add it on its own row/lines
-        if (stats.nLevelStats['Unknown N-Level'] && stats.nLevelStats['Unknown N-Level'].lessons > 0) {
-            const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'];
+        if (unknownNLevelStats.lessons > 0) {
             statsHtml += `
                 <p>Unknown N-Level Lessons: <span class="stat-value">${unknownNLevelStats.lessons || 0}</span></p>
                 <p>Unknown N-Level Grammar Points: <span class="stat-value">${unknownNLevelStats.completedGrammarPoints || 0}/${unknownNLevelStats.grammarPoints || 0}</span></p>
                 <div></div> `;
         }
-
 
         statsHtml += `
                     </div>
@@ -289,9 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let existingStatsContainer = document.querySelector('.statistics-container');
         if (existingStatsContainer) {
-            existingStatsContainer.outerHTML = statsHtml;
+            existingStatsContainer.outerHTML = statsHtml; // Replace existing container
         } else {
-            containerDiv.insertAdjacentHTML('afterbegin', statsHtml);
+            containerDiv.insertAdjacentHTML('afterbegin', statsHtml); // Insert if not exists
         }
 
         updateHeaderCounts(stats.nLevelStats);
@@ -308,8 +323,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!countSpan) {
                     countSpan = document.createElement('span');
                     countSpan.classList.add('header-counts');
-                    // Insert after the main text span
-                    header.insertBefore(countSpan, header.children[1]); // Assuming 0 is the text span, 1 is where header-counts goes
+                    // Insert after the main text span (first child)
+                    header.insertBefore(countSpan, header.children[1]);
                 }
                 countSpan.textContent = `${stats.lessons} Lessons, ${stats.grammarPoints} Grammar Points`;
 
@@ -320,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resetBtn = header.querySelector('.mark-level-reset-btn');
                 if (resetBtn) {
                     const hasProgress = stats.completedGrammarPoints > 0 || stats.bookmarkedGrammarPoints > 0;
-                    resetBtn.style.display = hasProgress ? 'flex' : 'none';
+                    resetBtn.style.display = hasProgress ? 'flex' : 'none'; // Show/hide reset button based on progress
                 }
             }
         });
@@ -329,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonHeader = lessonDiv.querySelector('.lesson-header');
             const nLevelContainer = lessonDiv.closest('.n-level');
             const nLevelKey = nLevelContainer.id.replace('n-level-', '').replace(/-/g, ' ');
+            // Extract lesson number from the header text, assuming format "Lesson X"
             const lessonNumText = lessonHeader.querySelector('span').textContent;
             const lessonNumMatch = lessonNumText.match(/\d+/);
             const lessonNum = lessonNumMatch ? parseInt(lessonNumMatch[0]) : null;
@@ -341,84 +357,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!countSpan) {
                         countSpan = document.createElement('span');
                         countSpan.classList.add('header-counts');
-                        // Insert after the main text span
-                        lessonHeader.insertBefore(countSpan, lessonHeader.children[1]); // Assuming 0 is the text span, 1 is where header-counts goes
+                        // Insert after the main text span (first child)
+                        lessonHeader.insertBefore(countSpan, lessonHeader.children[1]);
                     }
                     const completedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lessonData.lesson_num, gpIdx); // Use lessonData.lesson_num
                         return getGrammarPointState(gpId).completed;
                     }).length;
-                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson}`; // Changed: Removed "Grammar Points" text
+                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson}`; // Displays "X/Y"
+
                     const bookmarkedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lessonData.lesson_num, gpIdx); // Use lessonData.lesson_num
                         return getGrammarPointState(gpId).bookmarked;
                     }).length;
-                    const completeBtn = lessonHeader.querySelector('.mark-lesson-complete-btn'); // Corrected selector
+
+                    const completeBtn = lessonHeader.querySelector('.mark-lesson-complete-btn');
                     if (completeBtn) {
-                        completeBtn.classList.toggle('lesson-completed', completedGPs === grammarPointsInLesson && grammarPointsInLesson > 0); // Corrected class
+                        completeBtn.classList.toggle('lesson-completed', completedGPs === grammarPointsInLesson && grammarPointsInLesson > 0);
                     }
-                    const resetBtn = lessonHeader.querySelector('.mark-lesson-reset-btn'); // Corrected selector
+                     const resetBtn = lessonHeader.querySelector('.mark-lesson-reset-btn');
                     if (resetBtn) {
                         const hasProgress = completedGPs > 0 || bookmarkedGPs > 0;
-                        resetBtn.style.display = hasProgress ? 'flex' : 'none';
+                        resetBtn.style.display = hasProgress ? 'flex' : 'none'; // Show/hide reset button based on progress
                     }
                 }
             }
         });
     }
 
-    // --- Header Highlighting Logic ---
-    function updateParentHeaderStates(startElement = null) {
-        let itemsToCheck = new Set();
-        if (startElement) {
-            let current = startElement;
-            while (current) {
-                if (current.classList.contains('lesson')) {
-                    itemsToCheck.add(current);
-                }
-                if (current.classList.contains('n-level')) {
-                    itemsToCheck.add(current);
-                    break;
-                }
-                current = current.parentElement;
-            }
-        } else {
-            document.querySelectorAll('.lesson, .n-level').forEach(el => itemsToCheck.add(el));
-        }
-        itemsToCheck.forEach(containerElement => {
-            const isNLevel = containerElement.classList.contains('n-level');
-            const header = containerElement.querySelector(isNLevel ? '.n-level-header' : '.lesson-header');
-            const grammarPointItems = containerElement.querySelectorAll('.grammar-point-item');
-            let allChildrenCompleted = true;
-            let hasBookmarkedChildren = false;
-
-            if (grammarPointItems.length === 0) {
-                allChildrenCompleted = false; // If no grammar points, it's not "all complete"
-            } else {
-                grammarPointItems.forEach(item => {
-                    const gpId = item.dataset.gpId;
-                    const state = getGrammarPointState(gpId);
-                    if (!state.completed) {
-                        allChildrenCompleted = false;
-                    }
-                    if (state.bookmarked) {
-                        hasBookmarkedChildren = true;
-                    }
-                });
-            }
-
-            if (header) {
-                header.classList.toggle('has-bookmarked-children', hasBookmarkedChildren);
-                header.classList.toggle('all-children-complete', allChildrenCompleted);
-            }
-        });
-        renderStatistics();
-    }
-
-    // --- Rendering and Event Listeners ---
+    // --- Rendering Grammar Data Structure ---
     function renderGrammarData(data) {
         let html = '';
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
+
         nLevelOrder.forEach(nLevelKey => {
             if (data[nLevelKey] && data[nLevelKey].length > 0) {
                 const nLevelClass = `n-level n-level-${nLevelKey.replace(/ /g, '-')}`;
@@ -426,17 +397,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="${nLevelClass}" id="n-level-${nLevelKey.replace(/ /g, '-')}-container">
                         <div class="n-level-header">
                             <span>${nLevelKey} Grammar</span>
-                            <span class="header-counts"></span> <button class="mark-level-complete-btn n-level-btn" data-action-type="complete" data-level-type="n-level" data-n-level-key="${nLevelKey}">
-                                <img src="${ICON_PATHS.checkSolid}" alt="Mark Level Complete">
-                                <svg class="progress-circle" viewBox="0 0 36 36">
-                                    <path class="progress-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="progress-circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <span class="header-counts"></span> <button class="mark-level-complete-btn" data-action-type="complete" data-level-type="n-level" data-n-level-key="${nLevelKey}" title="Press and hold to mark all grammar points in this N-level as complete">
+                                <img src="${ICON_PATHS.checkSolid}" alt="Complete All">
+                                <svg class="progress-circle" viewBox="0 0 38 38">
+                                    <circle class="progress-circle-bg" cx="19" cy="19" r="16"></circle>
+                                    <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
                                 </svg>
                             </button>
-                            <button class="mark-level-reset-btn n-level-btn" data-action-type="reset" data-level-type="n-level" data-n-level-key="${nLevelKey}">
-                                <img src="${ICON_PATHS.trashSolid}" alt="Reset Level Progress">
+                            <button class="mark-level-reset-btn" data-action-type="reset" data-level-type="n-level" data-n-level-key="${nLevelKey}" title="Press and hold to reset all grammar points in this N-level">
+                                <img src="${ICON_PATHS.trashSolid}" alt="Reset All">
+                                <svg class="progress-circle" viewBox="0 0 38 38">
+                                    <circle class="progress-circle-bg" cx="19" cy="19" r="16"></circle>
+                                    <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
+                                </svg>
                             </button>
-                            <img src="icons/chevron-right-solid.svg" alt="Toggle" class="toggle-icon">
+                            <span class="toggle-icon">&#9654;</span>
                         </div>
                         <div class="n-level-content">
                 `;
@@ -446,17 +421,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="lesson" id="lesson-${nLevelKey.replace(/ /g, '-')}-${lesson.lesson_num}-container">
                                 <div class="lesson-header">
                                     <span>Lesson ${lesson.lesson_num}</span>
-                                    <span class="header-counts"></span> <button class="mark-lesson-complete-btn lesson-btn" data-action-type="complete" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}">
-                                        <img src="${ICON_PATHS.checkSolid}" alt="Mark Lesson Complete">
-                                        <svg class="progress-circle" viewBox="0 0 36 36">
-                                            <path class="progress-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                            <path class="progress-circle-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <span class="header-counts"></span> <button class="mark-lesson-complete-btn" data-action-type="complete" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}" title="Press and hold to mark all grammar points in this lesson as complete">
+                                        <img src="${ICON_PATHS.checkSolid}" alt="Complete Lesson">
+                                        <svg class="progress-circle" viewBox="0 0 38 38">
+                                            <circle class="progress-circle-bg" cx="19" cy="19" r="16"></circle>
+                                            <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
                                         </svg>
                                     </button>
-                                    <button class="mark-lesson-reset-btn lesson-btn" data-action-type="reset" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}">
-                                        <img src="${ICON_PATHS.trashSolid}" alt="Reset Lesson Progress">
+                                    <button class="mark-lesson-reset-btn" data-action-type="reset" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}" title="Press and hold to reset all grammar points in this lesson">
+                                        <img src="${ICON_PATHS.trashSolid}" alt="Reset Lesson">
+                                        <svg class="progress-circle" viewBox="0 0 38 38">
+                                            <circle class="progress-circle-bg" cx="19" cy="19" r="16"></circle>
+                                            <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
+                                        </svg>
                                     </button>
-                                    <img src="icons/chevron-right-solid.svg" alt="Toggle" class="toggle-icon">
+                                    <span class="toggle-icon">&#9654;</span>
                                 </div>
                                 <div class="lesson-content">
                                     <ul class="grammar-point-list">
@@ -464,25 +443,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                         const state = getGrammarPointState(gpId);
-                        const bookmarkedClass = state.bookmarked ? 'bookmarked' : '';
-                        const completedClass = state.completed ? 'completed' : '';
+                        const itemClasses = ['grammar-point-item'];
+                        if (state.bookmarked) itemClasses.push('bookmarked');
+                        if (state.completed) itemClasses.push('completed');
 
                         html += `
                                         <li class="grammar-point-wrapper">
-                                            <div class="grammar-point-item ${bookmarkedClass} ${completedClass}" data-gp-id="${gpId}">
-                                                <p>${gp.title}</p>
-                                                <div class="grammar-point-actions">
-                                                    <button class="grammar-point-action-btn bookmark-btn" data-gp-id="${gpId}" data-action="bookmark">
-                                                        <img src="${ICON_PATHS.bookmarkSolid}" alt="Bookmark">
-                                                    </button>
-                                                    <button class="grammar-point-action-btn complete-btn" data-gp-id="${gpId}" data-action="complete">
-                                                        <img src="${ICON_PATHS.checkSolid}" alt="Complete">
-                                                    </button>
+                                            <div class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
+                                                <div class="grammar-point-content-area">
+                                                    <span class="grammar-point-number">${gpIdx + 1}.</span>
+                                                    <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
+                                                        ${gp.text}
+                                                    </a>
                                                 </div>
                                             </div>
+                                            <div class="action-buttons" data-gp-id="${gpId}"></div>
                                         </li>
                         `;
                     });
+
                     html += `
                                     </ul>
                                 </div>
@@ -497,189 +476,252 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         grammarContentDiv.innerHTML = html;
-        addToggleListeners();
-        addActionListeners();
-        addLongPressListeners();
+        addToggleListeners(); // Add listeners for expanding/collapsing sections
+        addActionListeners(); // Add listeners for individual grammar point actions
+        addLongPressListeners(); // Add listeners for the new long-press buttons
     }
 
+    // --- Action Button Listeners (Individual Grammar Points) ---
     function addActionListeners() {
-        document.querySelectorAll('.bookmark-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const gpId = button.dataset.gpId;
-                const grammarPointItemElement = button.closest('.grammar-point-item');
-                toggleBookmark(gpId, grammarPointItemElement);
-            });
-        });
-
-        document.querySelectorAll('.complete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const gpId = button.dataset.gpId;
-                const grammarPointItemElement = button.closest('.grammar-point-item');
-                toggleComplete(gpId, grammarPointItemElement);
-            });
-        });
-
-        document.querySelectorAll('.mark-level-complete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent header collapse
-                handleMarkLevelComplete(button);
-            });
-        });
-
-        document.querySelectorAll('.mark-level-reset-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent header collapse
-                handleMarkLevelReset(button);
-            });
-        });
-
-        document.querySelectorAll('.mark-lesson-complete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent header collapse
-                handleMarkLessonComplete(button);
-            });
-        });
-
-        document.querySelectorAll('.mark-lesson-reset-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent header collapse
-                handleMarkLessonReset(button);
-            });
+        document.querySelectorAll('.grammar-point-wrapper').forEach(wrapper => {
+            const grammarPointItem = wrapper.querySelector('.grammar-point-item');
+            const gpId = grammarPointItem.dataset.gpId;
+            const actionButtonsDiv = wrapper.querySelector('.action-buttons');
+            renderActionButtons(grammarPointItem, gpId, actionButtonsDiv); // Render buttons for each grammar point
         });
     }
 
-    function handleMarkLevelComplete(button) {
+    function renderActionButtons(grammarPointItem, gpId, actionButtonsDiv = null) {
+        if (!actionButtonsDiv) {
+            actionButtonsDiv = grammarPointItem.nextElementSibling; // Assuming it's the next sibling div
+            if (!actionButtonsDiv || !actionButtonsDiv.classList.contains('action-buttons')) {
+                console.error("Action buttons div not found for grammar point:", gpId);
+                return;
+            }
+        }
+        actionButtonsDiv.innerHTML = ''; // Clear existing buttons to re-render
+
+        const state = getGrammarPointState(gpId);
+
+        // Bookmark button
+        const bookmarkButton = document.createElement('button');
+        bookmarkButton.classList.add('bookmark-btn');
+        if (state.bookmarked) {
+            bookmarkButton.classList.add('bookmarked');
+        }
+        bookmarkButton.innerHTML = `<img src="${ICON_PATHS.bookmarkSolid}" alt="Bookmark">`;
+        bookmarkButton.title = state.bookmarked ? "Remove Bookmark" : "Bookmark this grammar point";
+        bookmarkButton.addEventListener('click', () => toggleBookmark(gpId, grammarPointItem));
+        actionButtonsDiv.appendChild(bookmarkButton);
+
+        // Complete button
+        const completeButton = document.createElement('button');
+        completeButton.classList.add('complete-btn');
+        if (state.completed) {
+            completeButton.classList.add('completed');
+        }
+        completeButton.innerHTML = `<img src="${ICON_PATHS.checkSolid}" alt="Complete">`;
+        completeButton.title = state.completed ? "Mark as Incomplete" : "Mark as Complete";
+        completeButton.addEventListener('click', () => toggleComplete(gpId, grammarPointItem));
+        actionButtonsDiv.appendChild(completeButton);
+    }
+
+    // --- Long Press Logic for Level/Lesson Buttons ---
+    const holdTimers = new Map(); // Maps element to its setTimeout ID
+    const holdProgressBar = new Map(); // Maps element to its progress bar SVG element
+    const holdButtonIcon = new Map(); // Maps element to its icon image element
+
+    const N_LEVEL_HOLD_DURATION = 3000; // 3 seconds for N-level
+    const LESSON_HOLD_DURATION = 1000; // 1 second for lesson
+
+    function addLongPressListeners() {
+        document.querySelectorAll('.mark-level-complete-btn, .mark-level-reset-btn, .mark-lesson-complete-btn, .mark-lesson-reset-btn').forEach(button => {
+            const levelType = button.dataset.levelType;
+            const holdDuration = levelType === 'n-level' ? N_LEVEL_HOLD_DURATION : LESSON_HOLD_DURATION;
+
+            const progressBarFg = button.querySelector('.progress-circle-fg');
+            const buttonIcon = button.querySelector('img');
+
+            holdProgressBar.set(button, progressBarFg);
+            holdButtonIcon.set(button, buttonIcon);
+
+            let pressTimer;
+
+            const startPress = () => {
+                button.classList.add('holding');
+                buttonIcon.style.filter = 'brightness(2)'; // Brighter icon when holding
+                progressBarFg.style.transition = 'none'; // Reset transition instantly
+                progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
+                progressBarFg.style.opacity = '1';
+
+                // Force reflow to ensure reset is applied before starting new transition
+                void progressBarFg.offsetWidth;
+
+                progressBarFg.style.transition = `stroke-dashoffset ${holdDuration}ms linear, opacity ${holdDuration / 3}ms ease-out`;
+                progressBarFg.style.strokeDashoffset = '0'; // Start filling
+
+                pressTimer = setTimeout(() => {
+                    button.classList.remove('holding');
+                    buttonIcon.style.removeProperty('filter');
+                    progressBarFg.style.opacity = '0';
+                    executeLongPressAction(button);
+                }, holdDuration);
+                holdTimers.set(button, pressTimer);
+            };
+
+            const endPress = () => {
+                clearTimeout(holdTimers.get(button));
+                holdTimers.delete(button);
+
+                // Stop animation and reset immediately
+                button.classList.remove('holding');
+                buttonIcon.style.removeProperty('filter');
+                progressBarFg.style.transition = 'none';
+                progressBarFg.style.strokeDashoffset = '100.53'; // Reset to hidden
+                progressBarFg.style.opacity = '0';
+
+                // Add a small delay for icon to reset filter if it was mid-animation
+                if (buttonIcon.classList.contains('flash-white-icon')) {
+                    buttonIcon.classList.remove('flash-white-icon');
+                    void buttonIcon.offsetWidth; // Trigger reflow
+                    buttonIcon.classList.add('flash-white-icon');
+                }
+            };
+
+            button.addEventListener('mousedown', startPress);
+            button.addEventListener('touchstart', startPress, { passive: true }); // Use passive for touch events
+
+            button.addEventListener('mouseup', endPress);
+            button.addEventListener('mouseleave', endPress); // If mouse leaves button while holding
+            button.addEventListener('touchend', endPress);
+            button.addEventListener('touchcancel', endPress);
+        });
+    }
+
+    function executeLongPressAction(button) {
+        const actionType = button.dataset.actionType; // 'complete' or 'reset'
+        const levelType = button.dataset.levelType;   // 'n-level' or 'lesson'
         const nLevelKey = button.dataset.nLevelKey;
-        const nLevelData = allGrammarData[nLevelKey];
-        if (nLevelData) {
-            let allCompleted = true;
-            nLevelData.forEach(lesson => {
-                lesson.grammar_points.forEach((gp, gpIdx) => {
-                    const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
-                    if (!getGrammarPointState(gpId).completed) {
-                        allCompleted = false;
-                    }
-                });
-            });
+        const lessonNum = button.dataset.lessonNum; // Only present for lesson buttons
 
-            const confirmMessage = allCompleted ?
-                `This will unmark all grammar points in ${nLevelKey} as complete. Are you sure?` :
-                `This will mark all grammar points in ${nLevelKey} as complete. Are you sure?`;
+        button.querySelector('img').classList.add('flash-white-icon');
+        setTimeout(() => {
+            button.querySelector('img').classList.remove('flash-white-icon');
+        }, 300); // Match animation duration
 
-            if (confirm(confirmMessage)) {
-                nLevelData.forEach(lesson => {
-                    lesson.grammar_points.forEach((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
-                        updateGrammarPointState(gpId, { ...getGrammarPointState(gpId), completed: !allCompleted });
-                    });
-                });
-                renderGrammarData(allGrammarData); // Re-render to update states visually
+        if (actionType === 'complete') {
+            if (levelType === 'n-level') {
+                handleMarkLevelComplete(nLevelKey);
+            } else if (levelType === 'lesson') {
+                handleMarkLessonComplete(nLevelKey, parseInt(lessonNum));
+            }
+        } else if (actionType === 'reset') {
+            if (levelType === 'n-level') {
+                handleMarkLevelReset(nLevelKey);
+            } else if (levelType === 'lesson') {
+                handleMarkLessonReset(nLevelKey, parseInt(lessonNum));
             }
         }
     }
 
-    function handleMarkLevelReset(button) {
-        const nLevelKey = button.dataset.nLevelKey;
-        if (confirm(`Are you sure you want to reset all progress (completed and bookmarked) for ${nLevelKey}? This cannot be undone.`)) {
-            const nLevelData = allGrammarData[nLevelKey];
-            if (nLevelData) {
-                nLevelData.forEach(lesson => {
-                    lesson.grammar_points.forEach((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
-                        updateGrammarPointState(gpId, { bookmarked: false, completed: false });
-                    });
-                });
-                renderGrammarData(allGrammarData); // Re-render to update states visually
-            }
-        }
-    }
 
-    function handleMarkLessonComplete(button) {
-        const nLevelKey = button.dataset.nLevelKey;
-        const lessonNum = parseInt(button.dataset.lessonNum);
-        const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num === lessonNum);
+    function handleMarkLevelComplete(nLevelKey) {
+        let grammarPointsUpdated = 0;
+        const targetNLevel = allGrammarData[nLevelKey];
+        if (!targetNLevel) return;
 
-        if (lessonData) {
-            let allCompleted = true;
-            lessonData.grammar_points.forEach((gp, gpIdx) => {
-                const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
-                if (!getGrammarPointState(gpId).completed) {
-                    allCompleted = false;
+        targetNLevel.forEach(lesson => {
+            lesson.grammar_points.forEach((gp, gpIdx) => {
+                const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                const currentState = getGrammarPointState(gpId);
+                if (!currentState.completed) {
+                    currentState.completed = true;
+                    updateGrammarPointState(gpId, currentState);
+                    grammarPointsUpdated++;
                 }
             });
+        });
 
-            const confirmMessage = allCompleted ?
-                `This will unmark all grammar points in Lesson ${lessonNum} as complete. Are you sure?` :
-                `This will mark all grammar points in Lesson ${lessonNum} as complete. Are you sure?`;
-
-            if (confirm(confirmMessage)) {
-                lessonData.grammar_points.forEach((gp, gpIdx) => {
-                    const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
-                    updateGrammarPointState(gpId, { ...getGrammarPointState(gpId), completed: !allCompleted });
-                });
-                renderGrammarData(allGrammarData);
-            }
+        if (grammarPointsUpdated > 0) {
+            console.log(`Marked ${grammarPointsUpdated} grammar points in ${nLevelKey} as complete.`);
+            updateParentHeaderStates();
         }
     }
 
-    function handleMarkLessonReset(button) {
-        const nLevelKey = button.dataset.nLevelKey;
-        const lessonNum = parseInt(button.dataset.lessonNum);
-        if (confirm(`Are you sure you want to reset all progress (completed and bookmarked) for Lesson ${lessonNum} in ${nLevelKey}? This cannot be undone.`)) {
-            const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num === lessonNum);
-            if (lessonData) {
-                lessonData.grammar_points.forEach((gp, gpIdx) => {
-                    const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
-                    updateGrammarPointState(gpId, { bookmarked: false, completed: false });
-                });
-                renderGrammarData(allGrammarData);
+    function handleMarkLevelReset(nLevelKey) {
+        let grammarPointsUpdated = 0;
+        const targetNLevel = allGrammarData[nLevelKey];
+        if (!targetNLevel) return;
+
+        targetNLevel.forEach(lesson => {
+            lesson.grammar_points.forEach((gp, gpIdx) => {
+                const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
+                const currentState = getGrammarPointState(gpId);
+                if (currentState.completed || currentState.bookmarked) {
+                    currentState.completed = false;
+                    currentState.bookmarked = false;
+                    updateGrammarPointState(gpId, currentState);
+                    grammarPointsUpdated++;
+                }
+            });
+        });
+
+        if (grammarPointsUpdated > 0) {
+            console.log(`Reset ${grammarPointsUpdated} grammar points in ${nLevelKey}.`);
+            updateParentHeaderStates();
+        }
+    }
+
+    function handleMarkLessonComplete(nLevelKey, lessonNum) {
+        let grammarPointsUpdated = 0;
+        const targetLesson = allGrammarData[nLevelKey]?.find(l => l.lesson_num === lessonNum);
+        if (!targetLesson) return;
+
+        targetLesson.grammar_points.forEach((gp, gpIdx) => {
+            const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
+            const currentState = getGrammarPointState(gpId);
+            if (!currentState.completed) {
+                currentState.completed = true;
+                updateGrammarPointState(gpId, currentState);
+                grammarPointsUpdated++;
             }
+        });
+
+        if (grammarPointsUpdated > 0) {
+            console.log(`Marked ${grammarPointsUpdated} grammar points in ${nLevelKey} Lesson ${lessonNum} as complete.`);
+            updateParentHeaderStates();
+        }
+    }
+
+    function handleMarkLessonReset(nLevelKey, lessonNum) {
+        let grammarPointsUpdated = 0;
+        const targetLesson = allGrammarData[nLevelKey]?.find(l => l.lesson_num === lessonNum);
+        if (!targetLesson) return;
+
+        targetLesson.grammar_points.forEach((gp, gpIdx) => {
+            const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
+            const currentState = getGrammarPointState(gpId);
+            if (currentState.completed || currentState.bookmarked) {
+                currentState.completed = false;
+                currentState.bookmarked = false;
+                updateGrammarPointState(gpId, currentState);
+                grammarPointsUpdated++;
+            }
+        });
+
+        if (grammarPointsUpdated > 0) {
+            console.log(`Reset ${grammarPointsUpdated} grammar points in ${nLevelKey} Lesson ${lessonNum}.`);
+            updateParentHeaderStates();
         }
     }
 
 
-    // --- Expand/Collapse Logic ---
-    function expandSection(contentElement, headerElement) {
-        // Remove pulsing class when expanded
-        headerElement.classList.remove('pulsing');
-
-        contentElement.style.height = 'auto'; // Set to auto to calculate full height
-        const contentHeight = contentElement.scrollHeight + 'px'; // Get the calculated scroll height
-        contentElement.style.height = '0'; // Reset to 0 for transition
-        // Use a timeout to ensure the browser registers the height: 0 before transitioning
-        requestAnimationFrame(() => {
-            contentElement.style.height = contentHeight; // Apply calculated height for transition
-            contentElement.classList.add('expanded');
-            headerElement.classList.add('expanded');
-        });
-
-        // Set 'auto' after transition to handle dynamic content changes
-        contentElement.addEventListener('transitionend', function onTransitionEnd() {
-            if (contentElement.classList.contains('expanded')) {
-                contentElement.style.height = 'auto';
-            }
-            contentElement.removeEventListener('transitionend', onTransitionEnd);
-        });
-    }
-
-
-    function collapseSection(contentElement, headerElement) {
-        // Before collapsing, set height to its scrollHeight, then transition to 0
-        contentElement.style.height = contentElement.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-            contentElement.style.height = '0';
-            contentElement.classList.remove('expanded');
-            headerElement.classList.remove('expanded');
-        });
-    }
-
+    // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                // Ensure clicks on buttons inside the header don't trigger expand/collapse
-                if (e.target.closest('.mark-level-complete-btn') || e.target.closest('.mark-level-reset-btn')) {
+                // Prevent click on header from triggering toggle if a button within it was clicked
+                if (e.target.closest('button')) {
                     e.stopPropagation();
                     return;
                 }
@@ -688,15 +730,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     collapseSection(nLevelContent, header);
                 } else {
                     expandSection(nLevelContent, header);
-                    header.classList.add('pulsing'); // Add pulsing effect only on expand
+                    header.classList.add('pulsing');
+                }
+            });
+
+            header.addEventListener('animationend', (e) => {
+                if (e.animationName === 'pulse-header') {
+                    header.classList.remove('pulsing');
                 }
             });
         });
 
         document.querySelectorAll('.lesson-header').forEach(header => {
             header.addEventListener('click', (e) => {
-                // Ensure clicks on buttons inside the header don't trigger expand/collapse
-                if (e.target.closest('.mark-lesson-complete-btn') || e.target.closest('.mark-lesson-reset-btn')) { // Corrected selectors
+                 // Prevent click on header from triggering toggle if a button within it was clicked
+                if (e.target.closest('button')) {
                     e.stopPropagation();
                     return;
                 }
@@ -710,59 +758,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Long Press Listeners (for mark all complete/reset) ---
-    const longPressDuration = 700; // milliseconds
-    let pressTimer;
+    function expandSection(element, header) {
+        const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
+        // Before expanding, ensure it's not set to height: 0
+        element.style.height = 'auto'; // Set to auto to measure full height
 
-    function startPress(button, callback) {
-        pressTimer = setTimeout(() => {
-            callback(button); // Execute the long press action
-            pressTimer = null; // Clear the timer
-        }, longPressDuration);
-    }
+        const contentHeight = element.scrollHeight; // Get the natural height of the content
 
-    function endPress() {
-        clearTimeout(pressTimer);
-        pressTimer = null;
-    }
+        element.style.height = '0px'; // Set back to 0 to prepare for transition
+        void element.offsetWidth; // Trigger reflow to ensure the height:0 is applied
+        element.style.height = `${contentHeight}px`; // Animate to full height
 
-    function addLongPressListeners() {
-        document.querySelectorAll('.mark-level-complete-btn, .mark-level-reset-btn, .mark-lesson-complete-btn, .mark-lesson-reset-btn').forEach(button => {
-            const actionType = button.dataset.actionType;
-            const levelType = button.dataset.levelType;
+        header.classList.add('expanded');
+        header.querySelector('.toggle-icon').innerHTML = '&#9660;'; // Down arrow
 
-            // Determine the correct handler based on actionType and levelType
-            const longPressHandler = (btn) => {
-                if (actionType === 'complete') {
-                    if (levelType === 'n-level') {
-                        handleMarkLevelComplete(btn);
-                    } else if (levelType === 'lesson') {
-                        handleMarkLessonComplete(btn);
-                    }
-                } else if (actionType === 'reset') {
-                    if (levelType === 'n-level') {
-                        handleMarkLevelReset(btn);
-                    } else if (levelType === 'lesson') {
-                        handleMarkLessonReset(btn);
-                    }
-                }
-            };
+        // Once transition is complete, remove fixed height for flexible content
+        const onTransitionEnd = () => {
+            if (element.style.height === `${contentHeight}px`) {
+                element.style.height = 'auto'; // Allow content to adjust if dynamic
+            }
+            element.removeEventListener('transitionend', onTransitionEnd);
+        };
+        element.addEventListener('transitionend', onTransitionEnd);
 
-            button.addEventListener('mousedown', (e) => {
-                if (e.button === 0) { // Only left-click
-                    startPress(button, longPressHandler);
+        // If it's an N-level, and it's being expanded, collapse other N-levels
+        if (sectionType === 'n-level') {
+            document.querySelectorAll('.n-level-header.expanded').forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    collapseSection(otherHeader.nextElementSibling, otherHeader);
                 }
             });
-            button.addEventListener('mouseup', endPress);
-            button.addEventListener('mouseleave', endPress); // If mouse leaves button during press
-            button.addEventListener('touchstart', (e) => { // For mobile devices
-                e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
-                startPress(button, longPressHandler);
-            }, { passive: false }); // Use passive: false to allow preventDefault
-            button.addEventListener('touchend', endPress);
-            button.addEventListener('touchcancel', endPress);
-        });
+        }
     }
+
+    function collapseSection(element, header) {
+        const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
+        // Set a fixed height before transitioning to 0
+        element.style.height = `${element.scrollHeight}px`;
+        void element.offsetWidth; // Trigger reflow
+        element.style.height = '0px';
+
+        header.classList.remove('expanded');
+        header.querySelector('.toggle-icon').innerHTML = '&#9654;'; // Right arrow
+
+        // Remove the 'pulsing' class immediately if collapsing an N-level
+        if (sectionType === 'n-level' && header.classList.contains('pulsing')) {
+            header.classList.remove('pulsing');
+        }
+
+        const onTransitionEnd = () => {
+            // Clean up: Ensure height is 0 and remove listener
+            if (element.style.height === '0px') {
+                 // Nothing specific to do, height is already 0
+            }
+            element.removeEventListener('transitionend', onTransitionEnd);
+        };
+        element.addEventListener('transitionend', onTransitionEnd);
+    }
+
 
     loadGrammarData();
 });
