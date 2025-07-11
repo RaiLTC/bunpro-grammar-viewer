@@ -1,7 +1,7 @@
 /* Basic Reset & Font */
 body {
     margin: 0;
-    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
     line-height: 1.6;
     background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text */
@@ -69,7 +69,6 @@ h1 {
 /* Lesson Styling */
 .lesson {
     margin-bottom: 5px;
-    /* REMOVED: border-top: 1.5px dashed #555; */ /* Dotted line removed */
     margin-top: 10px; /* Added spacing between N-level and first lesson */
 }
 
@@ -95,17 +94,25 @@ h1 {
                 0 2px 5px rgba(0, 0, 0, 0.2); /* Existing external shadow */
 }
 
-/* New: Lesson header hover animation */
+/* New: Lesson header hover animation - ensures bookmark shadow is preserved */
 .lesson-header:hover {
     transform: scale(1.01); /* Subtle pop */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+    /* Only apply an additional box-shadow, don't override the existing 'inset' one */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), var(--lesson-header-inset-shadow, none);
 }
 
-/* New: Lesson header click (expanded/collapsed) animation */
+/* New: Lesson header click (expanded/collapsed) animation - ensures bookmark shadow is preserved */
 /* We'll use the .expanded class for the 'clicked' state, similar to grammar points */
 .lesson-header.expanded {
     transform: scale(1.01); /* Subtle pop when expanded */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Shadow when expanded */
+    /* Only apply an additional box-shadow, don't override the existing 'inset' one */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), var(--lesson-header-inset-shadow, none);
+}
+
+/* Define a CSS variable for the inset shadow, so we can re-use it on hover/expanded */
+.lesson-header.has-bookmarked-children {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
+    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -259,11 +266,9 @@ h1 {
 
 .action-buttons button {
     background-color: transparent;
-    border: none; /* REMOVED: Remove button border */
-    /* REMOVED: border-radius: 0; */ /* No longer needed */
+    border: none;
     cursor: pointer;
-    /* REMOVED box-shadow, REPLACED with brighter filters */
-    transition: transform 0.1s ease; /* Only transform transition now */
+    transition: transform 0.1s ease, box-shadow 0.2s ease; /* Re-added box-shadow transition */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,18 +307,23 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Brighter green */
 }
 
-/* Removed highlight box for active icons */
-.action-buttons button.active-bookmark,
+/* New: Soft shadow for active icons */
+.action-buttons button.active-bookmark {
+    box-shadow: 0 0 5px rgba(49, 80, 101, 0.7); /* Soft blue glow */
+    border-radius: 50%; /* Make it round */
+    transform: scale(1.01); /* Bring back the subtle pop */
+}
+
 .action-buttons button.active-complete {
-    box-shadow: none; /* Removed */
-    border-radius: 0; /* Removed */
-    transform: none; /* Removed scale animation, as requested */
+    box-shadow: 0 0 5px rgba(85, 139, 85, 0.7); /* Soft green glow */
+    border-radius: 50%; /* Make it round */
+    transform: scale(1.01); /* Bring back the subtle pop */
 }
 
 
 /* Reset bookmark/complete icon filter on hover even if highlighted */
 .action-buttons button.active-bookmark:hover img,
-.action-buttons button.active-complete:hover img {
+.action-buttons button.action-complete:hover img { /* Corrected typo: .action-complete should be .active-complete */
     /* Keeping this as bright white on hover for active icons for stronger feedback */
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
 }
