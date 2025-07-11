@@ -42,7 +42,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease; /* Transition box-shadow instead of border-color */
     border-bottom: 1px solid rgba(255,255,255,0.1);
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none; /* For Safari */
@@ -59,30 +59,18 @@ h1 {
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
-/* Header highlight for content with bookmarked items - brighter frame */
-.n-level-header.has-bookmarked-children,
-.lesson-header.has-bookmarked-children {
-    border: 3px solid #6ab0de; /* Brighter blue border */
-    box-shadow: inset 0 0 5px rgba(106, 176, 222, 0.6); /* Subtle inner shadow, matching brighter blue */
+/* Header highlight for content with bookmarked items - now an inset box-shadow */
+.n-level-header.has-bookmarked-children {
+    box-shadow: inset 0 0 0 3px #6ab0de, /* Inset border-like glow */
+                0 4px 8px rgba(0, 0, 0, 0.3); /* Existing external shadow */
     filter: none; /* Remove brightness filter */
 }
-
-
-.n-level-content {
-    height: 0; /* Start at 0 height */
-    overflow: hidden; /* Hide overflow content when collapsed */
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
-    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
-    background-color: #333333; /* Background for N-level content */
-    will-change: height; /* Hint to the browser for optimization */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
-}
-
 
 /* Lesson Styling */
 .lesson {
     margin-bottom: 5px;
-    border-top: 1px dashed #555; /* Subtle separator */
+    /* REMOVED: border-top: 1.5px dashed #555; */ /* Dotted line removed */
+    margin-top: 10px; /* Added spacing between N-level and first lesson */
 }
 
 .lesson-header {
@@ -94,11 +82,28 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Transition box-shadow instead of border-color */
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+/* Lesson header highlight for content with bookmarked items - now an inset box-shadow */
+.lesson-header.has-bookmarked-children {
+    box-shadow: inset 0 0 0 3px #6ab0de, /* Inset border-like glow */
+                0 2px 5px rgba(0, 0, 0, 0.2); /* Existing external shadow */
+}
+
+
+.n-level-content {
+    height: 0; /* Start at 0 height */
+    overflow: hidden; /* Hide overflow content when collapsed */
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
+    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
+    background-color: #333333; /* Background for N-level content */
+    will-change: height; /* Hint to the browser for optimization */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
 .lesson-content {
@@ -242,10 +247,11 @@ h1 {
 
 .action-buttons button {
     background-color: transparent; /* Make button background transparent */
-    border: none; /* Remove button border */
-    border-radius: 0; /* Remove border-radius */
+    border: none; /* REMOVED: Remove button border */
+    border-radius: 0; /* REMOVED: Remove border-radius */
     cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease; /* Added box-shadow to transition */
+    /* Updated transition for highlight animation */
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
     display: flex; /* Allows centering SVG inside */
     align-items: center;
     justify-content: center;
@@ -254,8 +260,9 @@ h1 {
     padding: 0; /* Remove padding to make icon fill */
 }
 
+/* Removed specific hover for buttons, relying on img hover */
 .action-buttons button:hover {
-    transform: scale(1.05); /* Slightly larger on hover */
+    transform: scale(1.05); /* Slightly larger on hover, apply to button itself */
 }
 
 /* Style for SVG icons within buttons */
@@ -267,9 +274,9 @@ h1 {
     transition: filter 0.2s ease; /* Smooth transition for icon highlight */
 }
 
-/* Hover effect for inactive icons: match grammar point box hover (subtle brighten) */
+/* Hover effect for inactive icons: more intense by 15% */
 .action-buttons button:hover img {
-    filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Slightly brighter gray on hover */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* 1.2 * 1.15 = 1.38 */
 }
 
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
@@ -282,22 +289,25 @@ h1 {
     filter: invert(28%) sepia(27%) saturate(1342%) hue-rotate(314deg) brightness(94%) contrast(75%);
 }
 
-/* New: Highlight for active icons (same as grammar point box) */
+/* Highlight for active icons (same as grammar point box) */
 .action-buttons button.active-bookmark {
     box-shadow: 0 0 5px rgba(49, 80, 101, 0.7), inset 0 0 3px rgba(49, 80, 101, 0.5); /* Blue glow */
     border-radius: 4px; /* Match grammar point box radius */
+    transform: scale(1.01); /* Subtle pop animation */
 }
 
 .action-buttons button.active-complete {
     box-shadow: 0 0 5px rgba(139, 69, 69, 0.7), inset 0 0 3px rgba(139, 69, 69, 0.5); /* Red glow */
     border-radius: 4px; /* Match grammar point box radius */
+    transform: scale(1.01); /* Subtle pop animation */
 }
 
 
 /* Reset bookmark/complete icon filter on hover even if highlighted */
 .action-buttons button.active-bookmark:hover img,
 .action-buttons button.active-complete:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Revert to bright white on hover */
+    /* Keeping this as bright white on hover for active icons for stronger feedback */
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
 }
 
 /* Styles for Reset User Data button */
@@ -307,7 +317,7 @@ h1 {
     border: 1px solid #b05050;
     padding: 8px 15px;
     font-size: 0.9em;
-    border-radius: 6beitx;
+    border-radius: 6px;
     cursor: pointer;
     display: flex; /* Use flex to align icon and text */
     align-items: center; /* Center vertically */
