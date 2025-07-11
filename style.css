@@ -246,54 +246,56 @@ h1 {
     border: none; /* Remove button border */
     border-radius: 0; /* Remove border-radius */
     cursor: pointer;
-    transition: transform 0.1s ease; /* Only subtle press effect on hover */
+    transition: transform 0.1s ease, color 0.2s ease; /* Transition color for smooth changes */
     display: flex; /* Allows centering SVG inside */
     align-items: center;
     justify-content: center;
     width: 38px; /* Fixed width for icon button */
     height: 38px; /* Fixed height for icon button */
     padding: 0; /* Remove padding to make icon fill */
+
+    /* Default color for inactive icons (direct color, no filter) */
+    color: #777; /* More grey for inactive state */
 }
 
-.action-buttons button:hover {
+/* Style for embedded SVG icons inside buttons */
+.action-buttons button svg {
+    width: 1.6em; /* Control SVG size directly */
+    height: 1.6em;
+    /* fill="currentColor" on the SVG path makes it inherit the button's color property */
+}
+
+/* Hover effect for inactive icons */
+.action-buttons button:not(.active-bookmark):not(.active-complete):hover {
+    color: #bbb; /* Brighter grey on hover for inactive icons */
     transform: scale(1.05); /* Slightly larger on hover */
 }
 
-/* Style for SVG icons within buttons */
-.action-buttons button img {
-    width: 1.6em; /* Significantly larger icon size */
-    height: 1.6em;
-    /* Default filter for "inactive" icons - dimmer, more gray */
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* More gray/dimmer */
-    transition: filter 0.2s ease; /* Smooth transition for icon highlight */
-}
-
-/* Hover effect for inactive icons: match grammar point box hover (subtle brighten) */
-.action-buttons button:hover img {
-    filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Slightly brighter gray on hover */
-}
-
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
-.grammar-point-item.bookmarked + .action-buttons button:first-child img { /* Target the bookmark button (first child) next to a bookmarked item */
-    filter: invert(27%) sepia(17%) saturate(1219%) hue-rotate(161deg) brightness(95%) contrast(87%);
+.action-buttons button.active-bookmark {
+    color: #315065; /* Exact blue from grammar point box */
 }
 
 /* Specific color for completed icon when its grammar point is completed */
-.grammar-point-item.completed + .action-buttons button:last-child img { /* Target the complete button (last child) next to a completed item */
-    filter: invert(28%) sepia(27%) saturate(1342%) hue-rotate(314deg) brightness(94%) contrast(75%);
+.action-buttons button.active-complete {
+    color: #8b4545; /* Exact red from grammar point box */
 }
 
-/* Reset bookmark/complete icon filter on hover even if highlighted */
-.grammar-point-item.bookmarked + .action-buttons button:first-child:hover img,
-.grammar-point-item.completed + .action-buttons button:last-child:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Revert to bright white on hover */
+/* Hover effect for active icons - make them slightly brighter */
+.action-buttons button.active-bookmark:hover {
+    color: #4f748f; /* Slightly lighter blue on hover for active bookmark */
+    transform: scale(1.05);
 }
 
+.action-buttons button.active-complete:hover {
+    color: #a05050; /* Slightly lighter red on hover for active complete */
+    transform: scale(1.05);
+}
 
 /* Styles for Reset User Data button */
 #resetUserData {
     background-color: #a04040; /* Reddish tone for reset */
-    color: #ffffff;
+    color: #ffffff; /* Text and icon color (due to currentColor) */
     border: 1px solid #b05050;
     padding: 8px 15px;
     font-size: 0.9em;
@@ -312,9 +314,9 @@ h1 {
     border-color: #d06060;
 }
 
-#resetUserData img {
+/* Specific styling for the SVG inside the reset button */
+#resetUserData svg {
     width: 1.3em; /* Adjust size of warning icon */
     height: 1.3em;
-    /* Filter to make warning icon white/bright */
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+    /* The fill is inherited from the button's color property, which is #ffffff */
 }
