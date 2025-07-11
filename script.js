@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const LOCAL_STORAGE_KEY = 'bunproGrammarProgress';
     let userProgress = {}; // In-memory store for user progress
 
-    // SVG strings for the icons - using fill="currentColor" to allow CSS styling
-    const SVG_ICONS = {
-        bookmark: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M0 48V487.7C0 501.9 14.25 512 28.38 512C37.59 512 46.12 507.2 51.52 499.9L192 355.6L332.5 499.9C337.9 507.2 346.4 512 355.6 512C369.8 512 384 501.9 384 487.7V48C384 21.49 362.5 0 336 0H48C21.49 0 0 21.49 0 48Z"/></svg>',
-        check: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512L256 512zM369 209L241 337C235 343 225 343 219 337L143 261C137 255 137 245 143 239C149 233 159 233 165 239L219 293L347 165C353 159 363 159 369 165C375 171 375 181 369 187L369 209z"/></svg>',
-        warning: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M272 416c-13.25 0-24 10.75-24 24C248 453.3 258.8 464 272 464H304c13.25 0 24-10.75 24-24C328 426.8 317.3 416 304 416H272zM288 352C274.8 352 264 341.3 264 328V160c0-13.25 10.75-24 24-24C301.3 136 312 146.8 312 160V328C312 341.3 301.3 352 288 352zM288 0C129 0 0 129 0 288C0 447 129 576 288 576C447 576 576 447 576 288C576 129 447 0 288 0zM288 528C156.9 528 48 419.1 48 288C48 156.9 156.9 48 288 48C419.1 48 528 156.9 528 288C528 419.1 419.1 528 288 528zM319.1 128H256c-17.67 0-32 14.33-32 32V384c0 17.67 14.33 32 32 32H319.1c17.67 0 32-14.33 32-32V160C351.1 142.3 337.7 128 319.1 128z"/></svg>'
+    // Paths to your SVG icon files (assuming they are in an 'icons' folder)
+    const ICON_PATHS = {
+        bookmarkSolid: 'icons/bookmark-solid.svg',
+        checkSolid: 'icons/check-solid.svg',
+        warningTriangle: 'icons/warning-triangle.svg'
     };
-
 
     async function loadGrammarData() {
         try {
@@ -200,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (gpState.bookmarked) itemClasses.push('bookmarked');
                         if (gpState.completed) itemClasses.push('completed');
 
-                        // NEW: Wrap both grammar-point-item and action-buttons in a grammar-point-wrapper
+                        // Wrap both grammar-point-item and action-buttons in a grammar-point-wrapper
                         html += `
                             <li class="grammar-point-wrapper">
                                 <div class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
@@ -236,24 +235,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addGrammarPointActionListeners() {
-        // Now target the .action-buttons container directly, as it holds the gpId
         document.querySelectorAll('.grammar-point-wrapper').forEach(wrapper => {
             const grammarPointItem = wrapper.querySelector('.grammar-point-item');
-            const gpId = grammarPointItem.dataset.gpId; // Get ID from the grammar point item
-            renderActionButtons(grammarPointItem, gpId); // Pass the item itself for class toggling
+            const gpId = grammarPointItem.dataset.gpId;
+            renderActionButtons(grammarPointItem, gpId);
         });
     }
 
     function renderActionButtons(grammarPointItemElement, gpId) {
-        // Find the action buttons container within the same wrapper as the grammarPointItemElement
         const actionButtonsContainer = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.action-buttons');
         const currentState = getGrammarPointState(gpId);
         actionButtonsContainer.innerHTML = ''; // Clear existing buttons
 
         const bookmarkBtn = document.createElement('button');
-        bookmarkBtn.innerHTML = SVG_ICONS.bookmark; // Embed SVG directly
+        const bookmarkImg = document.createElement('img');
+        bookmarkImg.src = ICON_PATHS.bookmarkSolid;
+        bookmarkImg.alt = 'Bookmark Icon';
+        bookmarkBtn.appendChild(bookmarkImg);
         bookmarkBtn.title = currentState.bookmarked ? 'Unbookmark this grammar point' : 'Bookmark this grammar point';
-        bookmarkBtn.classList.toggle('active-bookmark', currentState.bookmarked); // Add a class for active state
+        bookmarkBtn.classList.toggle('active-bookmark', currentState.bookmarked);
         bookmarkBtn.onclick = (e) => {
             e.stopPropagation();
             toggleBookmark(gpId, grammarPointItemElement);
@@ -261,9 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
         actionButtonsContainer.appendChild(bookmarkBtn);
 
         const completeBtn = document.createElement('button');
-        completeBtn.innerHTML = SVG_ICONS.check; // Embed SVG directly
+        const checkImg = document.createElement('img');
+        checkImg.src = ICON_PATHS.checkSolid;
+        checkImg.alt = 'Checkmark Icon';
+        completeBtn.appendChild(checkImg);
         completeBtn.title = currentState.completed ? 'Mark as incomplete' : 'Mark as complete';
-        completeBtn.classList.toggle('active-complete', currentState.completed); // Add a class for active state
+        completeBtn.classList.toggle('active-complete', currentState.completed);
         completeBtn.onclick = (e) => {
             e.stopPropagation();
             toggleComplete(gpId, grammarPointItemElement);
@@ -275,11 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!document.getElementById('resetUserData')) {
             const resetButton = document.createElement('button');
             resetButton.id = 'resetUserData';
-
-            resetButton.innerHTML = SVG_ICONS.warning; // Embed SVG directly
-            const buttonText = document.createTextNode('Reset All Saved Progress');
-            resetButton.appendChild(buttonText);
-
+            const warningImg = document.createElement('img');
+            warningImg.src = ICON_PATHS.warningTriangle;
+            warningImg.alt = 'Warning Icon';
+            resetButton.appendChild(warningImg);
+            resetButton.appendChild(document.createTextNode('Reset All Saved Progress'));
             resetButton.addEventListener('click', resetAllUserData);
             document.querySelector('.container').appendChild(resetButton);
         }
@@ -287,16 +290,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Accordion Toggle Functions ---
     function collapseSection(element, header) {
+        // Set height explicitly before transitioning to 0
         element.style.height = element.scrollHeight + 'px';
 
         requestAnimationFrame(() => {
+            // Force reflow
             void element.offsetWidth;
             element.style.height = '0';
         });
 
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
-            element.style.height = '';
+            element.style.height = ''; // Remove inline height after transition
             header.classList.remove('expanded');
             header.classList.remove('pulsing');
         };
@@ -304,19 +309,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function expandSection(element, header) {
+        // Temporarily set height to auto to get the full scrollHeight
         element.style.height = 'auto';
         const height = element.scrollHeight;
 
+        // Set height to 0 for the transition start point
         element.style.height = '0';
 
         requestAnimationFrame(() => {
+            // Force reflow
             void element.offsetWidth;
+            // Set to full height for animation
             element.style.height = height + 'px';
         });
 
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
-            element.style.height = 'auto';
+            element.style.height = 'auto'; // Revert to auto after transition for responsive content
             header.classList.add('expanded');
         };
         element.addEventListener('transitionend', onTransitionEnd);
@@ -331,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     collapseSection(nLevelContent, header);
                 } else {
                     expandSection(nLevelContent, header);
-                    header.classList.add('pulsing');
+                    header.classList.add('pulsing'); // Add pulsing class when expanding
                 }
             });
         });
@@ -340,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
             header.addEventListener('click', (e) => {
                 const lessonContent = header.nextElementSibling;
 
+                // Prevent click on buttons inside header from triggering collapse/expand
                 if (e.target.tagName === 'BUTTON' || e.target.closest('.action-buttons')) {
                     e.stopPropagation();
                     return;
