@@ -1,53 +1,53 @@
 /* Basic Reset & Font */
 body {
-    margin: 0;
-    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-    line-height: 1.6;
-    background-color: #1a1a1a; /* Dark background */
-    color: #e0e0e0; /* Light text */
-    transition: background-color 0.3s ease;
-    font-weight: 500; /* Medium font weight for general text */
+   margin: 0;
+   font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+   line-height: 1.6;
+   background-color: #1a1a1a; /* Dark background */
+   color: #e0e0e0; /* Light text */
+   transition: background-color 0.3s ease;
+   font-weight: 500; /* Medium font weight for general text */
 }
 
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #2c2c2c; /* Slightly lighter dark for content area */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+   max-width: 900px;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: #2c2c2c; /* Slightly lighter dark for content area */
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-    text-align: center;
-    color: #f0f0f0;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #555;
-    padding-bottom: 15px;
+   text-align: center;
+   color: #f0f0f0;
+   margin-bottom: 30px;
+   border-bottom: 2px solid #555;
+   padding-bottom: 15px;
 }
 
 /* N-Level Styling */
 .n-level {
-    margin-bottom: 20px;
-    border: 1px solid #444;
-    border-radius: 6px;
-    overflow: hidden; /* Ensures borders/shadows clip correctly */
+   margin-bottom: 20px;
+   border: 1px solid #444;
+   border-radius: 6px;
+   overflow: hidden; /* Ensures borders/shadows clip correctly */
 }
 
 .n-level-header {
-    padding: 15px 20px;
-    font-size: 1.4em;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    user-select: none; /* Make uncopyable */
-    -webkit-user-select: none; /* For Safari */
-    -moz-user-select: none; /* For Firefox */
-    -ms-user-select: none; /* For IE/Edge */
+   padding: 15px 20px;
+   font-size: 1.4em;
+   font-weight: bold;
+   cursor: pointer;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   transition: background-color 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+   border-bottom: 1px solid rgba(255,255,255,0.1);
+   user-select: none; /* Make uncopyable */
+   -webkit-user-select: none; /* For Safari */
+   -moz-user-select: none; /* For Firefox */
+   -ms-user-select: none; /* For IE/Edge */
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -59,262 +59,262 @@ h1 {
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
-/* Header highlight for content with bookmarked items - now just a border */
+/* Header highlight for content with bookmarked items - now a more noticeable frame */
 .n-level-header.has-bookmarked-children,
 .lesson-header.has-bookmarked-children {
-    border: 2px solid #315065; /* Solid border for bookmarked headers */
-    box-shadow: none; /* Remove shadow */
-    filter: none; /* Remove brightness filter */
-    /* REMOVED background-color change */
+   border: 3px solid #315065; /* Thicker solid border for bookmarked headers */
+   box-shadow: inset 0 0 5px rgba(49, 80, 101, 0.6); /* Subtle inner shadow */
+   filter: none; /* Remove brightness filter */
+   /* REMOVED background-color change */
 }
 
 
 .n-level-content {
-    height: 0; /* Start at 0 height */
-    overflow: hidden; /* Hide overflow content when collapsed */
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
-    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
-    background-color: #333333; /* Background for N-level content */
-    will-change: height; /* Hint to the browser for optimization */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
+   height: 0; /* Start at 0 height */
+   overflow: hidden; /* Hide overflow content when collapsed */
+   transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
+   padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
+   background-color: #333333; /* Background for N-level content */
+   will-change: height; /* Hint to the browser for optimization */
+   box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
 
 /* Lesson Styling */
 .lesson {
-    margin-bottom: 5px;
-    border-top: 1px dashed #555; /* Subtle separator */
+   margin-bottom: 5px;
+   border-top: 1px dashed #555; /* Subtle separator */
 }
 
 .lesson-header {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #444444; /* Darker grey for lesson headers */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    user-select: none; /* Make uncopyable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+   padding: 10px 20px;
+   font-size: 1.1em;
+   font-weight: bold;
+   cursor: pointer;
+   background-color: #444444; /* Darker grey for lesson headers */
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+   user-select: none; /* Make uncopyable */
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
 }
 
 .lesson-content {
-    height: 0; /* Start at 0 height */
-    overflow: hidden; /* Hide overflow content when collapsed */
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
-    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
-    background-color: #3d3d3d; /* Slightly different background for lesson content */
-    will-change: height; /* Hint to the browser for optimization */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
+   height: 0; /* Start at 0 height */
+   overflow: hidden; /* Hide overflow content when collapsed */
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
+   padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
+   background-color: #3d3d3d; /* Slightly different background for lesson content */
+   will-change: height; /* Hint to the browser for optimization */
+   box-sizing: border-box; /* Ensure padding is included in height calculation */
 }
 
 
 /* Grammar Point Styling */
 .grammar-point-list {
-    list-style-type: none;
-    padding: 10px 0;
-    margin: 0;
+   list-style-type: none;
+   padding: 10px 0;
+   margin: 0;
 }
 
 /* New wrapper for grammar point item and its buttons */
 .grammar-point-wrapper {
-    display: flex; /* Arrange item and buttons side-by-side */
-    align-items: center; /* Vertically align them */
-    margin-bottom: 5px; /* Space between wrappers */
-    gap: 8px; /* Space between grammar point box and icons */
+   display: flex; /* Arrange item and buttons side-by-side */
+   align-items: center; /* Vertically align them */
+   margin-bottom: 5px; /* Space between wrappers */
+   gap: 8px; /* Space between grammar point box and icons */
 }
 
 .grammar-point-item {
-    flex-grow: 1; /* Allow grammar point to take available space */
-    padding: 10px 15px;
-    background-color: #4d4d4d; /* Base color */
-    border-radius: 4px;
-    display: flex; /* Use flex to align text content and button column (if any inside) */
-    align-items: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    position: relative;
-    overflow: hidden;
+   flex-grow: 1; /* Allow grammar point to take available space */
+   padding: 10px 15px;
+   background-color: #4d4d4d; /* Base color */
+   border-radius: 4px;
+   display: flex; /* Use flex to align text content and button column (if any inside) */
+   align-items: center;
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+   transition: background-color 0.2s ease, box-shadow 0.2s ease;
+   position: relative;
+   overflow: hidden;
 }
 
 .grammar-point-item:hover {
-    background-color: #6a6a6a; /* Lighter background on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+   background-color: #6a6a6a; /* Lighter background on hover */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
 }
 
 /* Fix for grammar point number and text display */
 .grammar-point-content-area {
-    display: flex; /* Makes number and link inline */
-    align-items: center; /* Vertically align them */
-    flex-grow: 1; /* Allows content area to take available space */
+   display: flex; /* Makes number and link inline */
+   align-items: center; /* Vertically align them */
+   flex-grow: 1; /* Allows content area to take available space */
 }
 
 .grammar-point-item a {
-    color: #e0e0e0; /* Revert to light text color for links */
-    text-decoration: none;
-    font-size: 1.0em; /* Slightly larger font size for grammar text */
-    font-weight: 600; /* Bolder font weight for grammar text */
-    transition: color 0.2s ease;
-    flex-grow: 1; /* Allow link to take available space */
-    display: flex; /* For possible future inner flex items */
-    align-items: center;
+   color: #e0e0e0; /* Revert to light text color for links */
+   text-decoration: none;
+   font-size: 1.0em; /* Slightly larger font size for grammar text */
+   font-weight: 600; /* Bolder font weight for grammar text */
+   transition: color 0.2s ease;
+   flex-grow: 1; /* Allow link to take available space */
+   display: flex; /* For possible future inner flex items */
+   align-items: center;
 }
 
 /* Highlight for Marked as Complete Grammar Point */
 /* Re-added transition for a subtle "pop" animation when state changes */
 .grammar-point-item.completed {
-    background-color: #8b4545; /* Muted red for dark theme */
-    color: #f0e0e0; /* Brighter text for contrast */
-    border: 1px solid #9e5656; /* Slightly brighter border */
-    transform: scale(1.01); /* Subtle pop */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+   background-color: #8b4545; /* Muted red for dark theme */
+   color: #f0e0e0; /* Brighter text for contrast */
+   border: 1px solid #9e5656; /* Slightly brighter border */
+   transform: scale(1.01); /* Subtle pop */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
 }
 
 /* Highlight for Bookmarked Grammar Point - now the requested dimmer blue, with consistent animation */
 .grammar-point-item.bookmarked {
-    background-color: #315065; /* Dimmer blue for bookmark highlight (from previous header color) */
-    color: #e0e0e0; /* Ensure text remains light and readable */
-    border: 1px solid #4f748f; /* Dimmer, matching blue border */
-    transform: scale(1.01); /* Subtle pop */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+   background-color: #315065; /* Dimmer blue for bookmark highlight (from previous header color) */
+   color: #e0e0e0; /* Ensure text remains light and readable */
+   border: 1px solid #4f748f; /* Dimmer, matching blue border */
+   transform: scale(1.01); /* Subtle pop */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
 }
 
 /* Ensure hover styles still apply over highlights, or adapt them */
 .grammar-point-item.bookmarked:hover {
-    background-color: #3d5e7a; /* Slightly lighter blue on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Apply hover shadow */
-    border-color: #4f748f; /* Keep border blue on hover */
+   background-color: #3d5e7a; /* Slightly lighter blue on hover */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Apply hover shadow */
+   border-color: #4f748f; /* Keep border blue on hover */
 }
 
 .grammar-point-item.completed:hover {
-    filter: brightness(1.1); /* Slightly brighten the highlighted color on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+   filter: brightness(1.1); /* Slightly brighten the highlighted color on hover */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
 }
 
 
 .grammar-point-number {
-    font-size: 0.9em;
-    font-weight: bold;
-    margin-right: 10px; /* Spacing between number and text */
-    color: #bbb; /* Light grey for numbers */
-    width: 1.5em; /* Fixed width for alignment */
-    text-align: right; /* Align numbers to the right */
-    flex-shrink: 0; /* Prevent number from shrinking */
+   font-size: 0.9em;
+   font-weight: bold;
+   margin-right: 10px; /* Spacing between number and text */
+   color: #bbb; /* Light grey for numbers */
+   width: 1.5em; /* Fixed width for alignment */
+   text-align: right; /* Align numbers to the right */
+   flex-shrink: 0; /* Prevent number from shrinking */
 }
 
 
 /* Expand/Collapse Icon */
 .toggle-icon {
-    font-size: 0.8em;
-    transition: transform 0.2s ease;
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    margin-left: 10px; /* Spacing for icon */
+   font-size: 0.8em;
+   transition: transform 0.2s ease;
+   flex-shrink: 0; /* Prevent icon from shrinking */
+   margin-left: 10px; /* Spacing for icon */
 }
 
 .expanded .toggle-icon {
-    transform: rotate(90deg); /* Rotate for expanded state */
+   transform: rotate(90deg); /* Rotate for expanded state */
 }
 
 /* Pulse (Breathing) Animation for N-level header */
 @keyframes pulse-brightness {
-    0% { filter: brightness(1); } /* Normal brightness */
-    50% { filter: brightness(1.2); } /* 20% brighter */
-    100% { filter: brightness(1); } /* Back to normal for loop */
+   0% { filter: brightness(1); } /* Normal brightness */
+   50% { filter: brightness(1.2); } /* 20% brighter */
+   100% { filter: brightness(1); } /* Back to normal for loop */
 }
 
 /* Apply pulse animation ONLY to the N-level header */
 .n-level-header.pulsing {
-    animation: pulse-brightness 1.5s ease-in-out infinite;
+   animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Buttons for actions - now outside the grammar point item */
+/* Buttons for actions - now inline (horizontal) */
 .action-buttons {
-    display: flex;
-    flex-direction: column; /* Stack icons vertically */
-    gap: 2px; /* Small space between icons */
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+   display: flex;
+   flex-direction: row; /* Display buttons horizontally */
+   gap: 8px; /* Space between icons */
+   flex-shrink: 0; /* Prevent buttons from shrinking */
 }
 
 .action-buttons button {
-    background-color: transparent; /* Make button background transparent */
-    border: none; /* Remove button border */
-    border-radius: 0; /* Remove border-radius */
-    cursor: pointer;
-    transition: transform 0.1s ease; /* Only subtle press effect on hover */
-    display: flex; /* Allows centering SVG inside */
-    align-items: center;
-    justify-content: center;
-    width: 38px; /* Fixed width for icon button */
-    height: 38px; /* Fixed height for icon button */
-    padding: 0; /* Remove padding to make icon fill */
+   background-color: transparent; /* Make button background transparent */
+   border: none; /* Remove button border */
+   border-radius: 0; /* Remove border-radius */
+   cursor: pointer;
+   transition: transform 0.1s ease; /* Only subtle press effect on hover */
+   display: flex; /* Allows centering SVG inside */
+   align-items: center;
+   justify-content: center;
+   width: 38px; /* Fixed width for icon button */
+   height: 38px; /* Fixed height for icon button */
+   padding: 0; /* Remove padding to make icon fill */
 }
 
 .action-buttons button:hover {
-    transform: scale(1.05); /* Slightly larger on hover */
+   transform: scale(1.05); /* Slightly larger on hover */
 }
 
 /* Style for SVG icons within buttons */
 .action-buttons button img {
-    width: 1.6em; /* Significantly larger icon size */
-    height: 1.6em;
-    /* Default filter for "inactive" icons - dimmer, more gray */
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* More gray/dimmer */
-    transition: filter 0.2s ease; /* Smooth transition for icon highlight */
+   width: 1.6em; /* Significantly larger icon size */
+   height: 1.6em;
+   /* Default filter for "inactive" icons - dimmer, more gray */
+   filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* More gray/dimmer */
+   transition: filter 0.2s ease; /* Smooth transition for icon highlight */
 }
 
 /* Hover effect for icons: match grammar point box hover (subtle brighten) */
 .action-buttons button:hover img {
-    filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Slightly brighter gray on hover */
+   filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Slightly brighter gray on hover */
 }
 
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
 .grammar-point-item.bookmarked + .action-buttons button:first-child img { /* Target the bookmark button (first child) next to a bookmarked item */
-    filter: invert(47%) sepia(85%) saturate(773%) hue-rotate(170deg) brightness(97%) contrast(85%); /* A distinct blue filter for bookmarked icon */
+   filter: invert(47%) sepia(85%) saturate(773%) hue-rotate(170deg) brightness(97%) contrast(85%); /* A distinct blue filter for bookmarked icon */
 }
 
 /* Specific color for completed icon when its grammar point is completed */
 .grammar-point-item.completed + .action-buttons button:last-child img { /* Target the complete button (last child) next to a completed item */
-    filter: invert(27%) sepia(83%) saturate(1000%) hue-rotate(345deg) brightness(85%) contrast(100%); /* A distinct red filter for completed icon */
+   filter: invert(27%) sepia(83%) saturate(1000%) hue-rotate(345deg) brightness(85%) contrast(100%); /* A distinct red filter for completed icon */
 }
 
 /* Reset bookmark/complete icon filter on hover even if highlighted */
 .grammar-point-item.bookmarked + .action-buttons button:first-child:hover img,
 .grammar-point-item.completed + .action-buttons button:last-child:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Revert to bright white on hover */
+   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Revert to bright white on hover */
 }
 
 
 /* Styles for Reset User Data button */
 #resetUserData {
-    background-color: #a04040; /* Reddish tone for reset */
-    color: #ffffff;
-    border: 1px solid #b05050;
-    padding: 8px 15px;
-    font-size: 0.9em;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex; /* Use flex to align icon and text */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    gap: 8px; /* Space between icon and text */
-    margin: 30px auto 10px auto; /* Center it with margin */
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+   background-color: #a04040; /* Reddish tone for reset */
+   color: #ffffff;
+   border: 1px solid #b05050;
+   padding: 8px 15px;
+   font-size: 0.9em;
+   border-radius: 6px;
+   cursor: pointer;
+   display: flex; /* Use flex to align icon and text */
+   align-items: center; /* Center vertically */
+   justify-content: center; /* Center horizontally */
+   gap: 8px; /* Space between icon and text */
+   margin: 30px auto 10px auto; /* Center it with margin */
+   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 #resetUserData:hover {
-    background-color: #c05050;
-    border-color: #d06060;
+   background-color: #c05050;
+   border-color: #d06060;
 }
 
 #resetUserData img {
-    width: 1.3em; /* Adjust size of warning icon */
-    height: 1.3em;
-    /* Filter to make warning icon white/bright */
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+   width: 1.3em; /* Adjust size of warning icon */
+   height: 1.3em;
+   /* Filter to make warning icon white/bright */
+   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
 }
