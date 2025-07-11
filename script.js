@@ -137,14 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let unknownNLevelGrammarPoints = 0;
         let unknownNLevelCompletedGPs = 0;
 
-
         const nLevelStats = {};
 
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
-
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -160,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lessonGPsCount = 0;
                     let lessonCompletedGPs = 0;
 
-
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
                         const state = getGrammarPointState(gpId);
@@ -175,8 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 unknownNLevelCompletedGPs++;
                             }
-                        }
-                        else {
+                        } else {
                             totalGrammarPoints++;
                             if (state.completed) {
                                 completedGrammarPoints++;
@@ -262,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const n1Stats = stats.nLevelStats['N1'] || {};
         const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
         const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'] || {};
-
 
         statsHtml += `
             <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
@@ -351,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonNum = lessonNumMatch ? parseInt(lessonNumMatch[0]) : null;
 
             if (nLevelKey && lessonNum && allGrammarData[nLevelKey]) {
-                const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num === lessonNum); // Use strict equality
+                const lessonData = allGrammarData[nLevelKey].find(l => l.lesson_num === lessonNum);
                 if (lessonData) {
                     const grammarPointsInLesson = lessonData.grammar_points.length;
                     let countSpan = lessonHeader.querySelector('.header-counts');
@@ -375,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (completeBtn) {
                         completeBtn.classList.toggle('lesson-completed', completedGPs === grammarPointsInLesson && grammarPointsInLesson > 0);
                     }
-                     const resetBtn = lessonHeader.querySelector('.mark-lesson-reset-btn');
+                    const resetBtn = lessonHeader.querySelector('.mark-lesson-reset-btn');
                     if (resetBtn) {
                         const hasProgress = completedGPs > 0 || bookmarkedGPs > 0;
                         resetBtn.style.display = hasProgress ? 'flex' : 'none';
@@ -464,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
                                 </svg>
                             </button>
-                            <span class="toggle-icon">&#9654;</span>
+                            <span class="toggle-icon">▶</span>
                         </div>
                         <div class="n-level-content">
                 `;
@@ -489,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                             <circle class="progress-circle-fg" cx="19" cy="19" r="16"></circle>
                                         </svg>
                                     </button>
-                                    <span class="toggle-icon">&#9654;</span>
+                                    <span class="toggle-icon">▶</span>
                                 </div>
                                 <div class="lesson-content">
                                     <ul class="grammar-point-list">
@@ -608,28 +603,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Set the progress bar color and icon filter based on button type
                 if (button.classList.contains('mark-level-complete-btn') || button.classList.contains('mark-lesson-complete-btn')) {
                     progressBarFg.style.stroke = '#558B55'; // Green for complete
-                    // Apply holding filter for complete button
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%)';
                 } else if (button.classList.contains('mark-level-reset-btn') || button.classList.contains('mark-lesson-reset-btn')) {
                     progressBarFg.style.stroke = '#cc0000'; // Red for reset
-                    // Apply holding filter for reset button
                     buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%)';
                 }
 
-                progressBarFg.style.transition = 'none'; // Reset transition instantly
+                progressBarFg.classList.add('holding'); // Add holding class to trigger opacity
                 progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
-                progressBarFg.style.opacity = '1';
-
-                void progressBarFg.offsetWidth; // Trigger reflow to ensure reset is applied
-
-                // Use CSS variable for transition duration in CSS
-                button.style.setProperty('--hold-duration', `${holdDuration}ms`);
+                void progressBarFg.offsetWidth; // Trigger reflow
                 progressBarFg.style.strokeDashoffset = '0'; // Start filling
+                button.style.setProperty('--hold-duration', `${holdDuration}ms`);
 
                 pressTimer = setTimeout(() => {
                     button.classList.remove('holding');
+                    progressBarFg.classList.remove('holding');
                     buttonIcon.style.removeProperty('filter'); // Remove inline filter to let CSS take over
-                    progressBarFg.style.opacity = '0';
                     executeLongPressAction(button);
                 }, holdDuration);
                 holdTimers.set(button, pressTimer);
@@ -640,10 +629,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 holdTimers.delete(button);
 
                 button.classList.remove('holding');
-                buttonIcon.style.removeProperty('filter'); // Remove inline filter to let CSS take over
-                progressBarFg.style.transition = 'none';
+                progressBarFg.classList.remove('holding'); // Remove holding class
+                buttonIcon.style.removeProperty('filter'); // Remove inline filter
                 progressBarFg.style.strokeDashoffset = '100.53'; // Reset to hidden
-                progressBarFg.style.opacity = '0';
 
                 // Flash the icon briefly after release if action was not completed
                 if (buttonIcon && !buttonIcon.classList.contains('flash-white-icon')) {
@@ -796,7 +784,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     }
 
-
     // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
@@ -896,7 +883,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const onTransitionEnd = () => {
             if (element.style.height === '0px') {
-                 // Nothing specific to do
+                // Nothing specific to do
             }
             flashIcon(toggleIcon);
             element.removeEventListener('transitionend', onTransitionEnd);

@@ -89,7 +89,6 @@ h1 {
     font-size: 1.1em;
 }
 
-
 /* N-Level Styling */
 .n-level {
     margin-bottom: 20px;
@@ -164,7 +163,6 @@ h1 {
     will-change: height;
     box-sizing: border-box;
 }
-
 
 /* Lesson Styling */
 .lesson {
@@ -315,7 +313,6 @@ h1 {
     flex-shrink: 0;
 }
 
-
 /* Action Buttons for Bookmark/Complete on Grammar Point */
 .action-buttons {
     display: flex;
@@ -366,7 +363,6 @@ h1 {
     filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
 }
 
-
 /* Specific styles for active/completed/bookmarked states */
 .action-buttons button.bookmarked {
     box-shadow: 0 0 8px rgba(106, 176, 222, 0.7); /* Blue shadow */
@@ -390,9 +386,7 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%); /* Brighter green */
 }
 
-
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
-/* Explicit width/height for these buttons to contain SVG */
 .mark-level-complete-btn,
 .mark-level-reset-btn,
 .mark-lesson-complete-btn,
@@ -431,17 +425,6 @@ h1 {
     height: 1.4em;
 }
 
-/* Holding state filter - applied by JS as inline style, but defining here for clarity */
-/* .mark-level-complete-btn.holding img,
-.mark-lesson-complete-btn.holding img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%);
-}
-.mark-level-reset-btn.holding img,
-.mark-lesson-reset-btn.holding img {
-    filter: invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(150%) contrast(100%);
-} */
-
-
 /* Green when level/lesson is completed (for complete button) */
 .mark-level-complete-btn.level-completed img,
 .mark-lesson-complete-btn.lesson-completed img {
@@ -453,7 +436,6 @@ h1 {
 .mark-lesson-complete-btn.lesson-completed:hover img {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
 }
-
 
 /* SVG Progress Circle */
 .progress-circle {
@@ -474,19 +456,22 @@ h1 {
     fill: none;
 }
 
-/* Progress circle fill transition for ease-out effect */
 .progress-circle-fg {
-    /* stroke color set by JS */
+    stroke: #558B55; /* Fallback stroke color (green for complete) */
     stroke-width: 3;
     fill: none;
     stroke-linecap: round;
     stroke-dasharray: 100.53 100.53; /* Circumference for r=16 */
     stroke-dashoffset: 100.53; /* Initially fully hidden */
-    transform: rotate(-90deg);
+    transform: rotate(-90deg); /* Start at top (12 o'clock) */
     transform-origin: 50% 50%;
     opacity: 0; /* Initially hidden */
-    /* Use CSS variable for hold duration and specific cubic-bezier for acceleration/deceleration */
-    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1), opacity 0.1s ease-in;
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1), opacity var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1);
+}
+
+/* Ensure progress circle is visible during hold */
+.progress-circle-fg.holding {
+    opacity: 1;
 }
 
 /* Reset All Button Styling */
