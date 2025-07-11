@@ -576,23 +576,19 @@ document.addEventListener('DOMContentLoaded', () => {
             let pressTimer;
 
             const startPress = (e) => {
-                // Prevent context menu on long press on mobile
                 if (e.type === 'touchstart') {
                     e.preventDefault();
                 }
 
                 button.classList.add('holding');
-                buttonIcon.style.filter = 'brightness(2)'; // Brighter icon when holding
+                buttonIcon.style.filter = 'brightness(2)';
 
-                // Reset progress bar instantly
                 progressBarFg.style.transition = 'none';
-                progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
+                progressBarFg.style.strokeDashoffset = '100.53';
                 progressBarFg.style.opacity = '1';
 
-                // Force reflow to ensure reset is applied before starting new transition
                 void progressBarFg.offsetWidth;
 
-                // Start filling animation
                 progressBarFg.style.transition = `stroke-dashoffset ${holdDuration}ms linear, opacity ${holdDuration / 3}ms ease-out`;
                 progressBarFg.style.strokeDashoffset = '0';
 
@@ -609,23 +605,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearTimeout(holdTimers.get(button));
                 holdTimers.delete(button);
 
-                // Stop animation and reset immediately
                 button.classList.remove('holding');
                 buttonIcon.style.removeProperty('filter');
                 progressBarFg.style.transition = 'none';
-                progressBarFg.style.strokeDashoffset = '100.53'; // Reset to hidden
+                progressBarFg.style.strokeDashoffset = '100.53';
                 progressBarFg.style.opacity = '0';
 
-                // Add a small delay for icon to reset filter if it was mid-animation
                 if (buttonIcon.classList.contains('flash-white-icon')) {
                     buttonIcon.classList.remove('flash-white-icon');
-                    void buttonIcon.offsetWidth; // Trigger reflow
+                    void buttonIcon.offsetWidth;
                     buttonIcon.classList.add('flash-white-icon');
                 }
             };
 
             button.addEventListener('mousedown', startPress);
-            button.addEventListener('touchstart', startPress, { passive: false }); // passive: false to allow preventDefault
+            button.addEventListener('touchstart', startPress, { passive: false });
 
             button.addEventListener('mouseup', endPress);
             button.addEventListener('mouseleave', endPress);
@@ -750,7 +744,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
@@ -843,5 +836,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('transitionend', onTransitionEnd);
     }
 
+    // Call loadGrammarData once the DOM is fully loaded
     loadGrammarData();
 });
