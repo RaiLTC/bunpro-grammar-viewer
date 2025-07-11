@@ -59,13 +59,13 @@ h1 {
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
-/* Header highlight for content with bookmarked items - now a solid, dimmer blue */
+/* Header highlight for content with bookmarked items - now just a border */
 .n-level-header.has-bookmarked-children,
 .lesson-header.has-bookmarked-children {
-    background-color: #315065; /* Muted blue for headers */
-    border-color: #4f748f; /* Slightly lighter border */
+    border: 2px solid #315065; /* Solid border for bookmarked headers */
     box-shadow: none; /* Remove shadow */
     filter: none; /* Remove brightness filter */
+    /* REMOVED background-color change */
 }
 
 
@@ -120,15 +120,23 @@ h1 {
     margin: 0;
 }
 
+/* New wrapper for grammar point item and its buttons */
+.grammar-point-wrapper {
+    display: flex; /* Arrange item and buttons side-by-side */
+    align-items: center; /* Vertically align them */
+    margin-bottom: 5px; /* Space between wrappers */
+    gap: 8px; /* Space between grammar point box and icons */
+}
+
 .grammar-point-item {
-    padding: 10px 15px; /* Adjust padding for button column */
+    flex-grow: 1; /* Allow grammar point to take available space */
+    padding: 10px 15px;
     background-color: #4d4d4d; /* Base color */
     border-radius: 4px;
-    display: flex; /* Use flex to align text content and button column */
+    display: flex; /* Use flex to align text content and button column (if any inside) */
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    margin-bottom: 5px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Removed border-color transition from here */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
 }
@@ -167,9 +175,9 @@ h1 {
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
 }
 
-/* Highlight for Bookmarked Grammar Point - now dimmed blue, with consistent animation */
+/* Highlight for Bookmarked Grammar Point - now the requested dimmer blue, with consistent animation */
 .grammar-point-item.bookmarked {
-    background-color: #3f6e8c; /* Softer blue for bookmark highlight */
+    background-color: #315065; /* Dimmer blue for bookmark highlight (from previous header color) */
     color: #e0e0e0; /* Ensure text remains light and readable */
     border: 1px solid #4f748f; /* Dimmer, matching blue border */
     transform: scale(1.01); /* Subtle pop */
@@ -179,7 +187,7 @@ h1 {
 
 /* Ensure hover styles still apply over highlights, or adapt them */
 .grammar-point-item.bookmarked:hover {
-    background-color: #4a7e9e; /* Slightly lighter blue on hover */
+    background-color: #3d5e7a; /* Slightly lighter blue on hover */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Apply hover shadow */
     border-color: #4f748f; /* Keep border blue on hover */
 }
@@ -225,13 +233,12 @@ h1 {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Buttons for actions - new positioning and styling */
+/* Buttons for actions - now outside the grammar point item */
 .action-buttons {
-    margin-left: auto; /* Push buttons to the right */
     display: flex;
-    gap: 8px; /* Space between buttons */
-    z-index: 3; /* Ensure buttons are clickable above link */
-    padding-left: 10px; /* Some padding to separate from text */
+    flex-direction: column; /* Stack icons vertically */
+    gap: 2px; /* Small space between icons */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
 }
 
 .action-buttons button {
@@ -243,8 +250,8 @@ h1 {
     display: flex; /* Allows centering SVG inside */
     align-items: center;
     justify-content: center;
-    width: 38px; /* Increased width for icon button to make it clickable */
-    height: 38px; /* Increased height for icon button */
+    width: 38px; /* Fixed width for icon button */
+    height: 38px; /* Fixed height for icon button */
     padding: 0; /* Remove padding to make icon fill */
 }
 
@@ -256,30 +263,29 @@ h1 {
 .action-buttons button img {
     width: 1.6em; /* Significantly larger icon size */
     height: 1.6em;
-    /* Default filter for "inactive" icons - dimmer */
-    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Dimmer white/light */
+    /* Default filter for "inactive" icons - dimmer, more gray */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* More gray/dimmer */
     transition: filter 0.2s ease; /* Smooth transition for icon highlight */
 }
 
 /* Hover effect for icons: match grammar point box hover (subtle brighten) */
 .action-buttons button:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Brighter white/light on hover */
+    filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Slightly brighter gray on hover */
 }
 
 /* Specific color for bookmarked icon when its grammar point is bookmarked */
-.grammar-point-item.bookmarked .action-buttons button:first-child img { /* Target the bookmark button (first child) */
+.grammar-point-item.bookmarked + .action-buttons button:first-child img { /* Target the bookmark button (first child) next to a bookmarked item */
     filter: invert(47%) sepia(85%) saturate(773%) hue-rotate(170deg) brightness(97%) contrast(85%); /* A distinct blue filter for bookmarked icon */
 }
 
 /* Specific color for completed icon when its grammar point is completed */
-.grammar-point-item.completed .action-buttons button:last-child img { /* Target the complete button (last child) */
+.grammar-point-item.completed + .action-buttons button:last-child img { /* Target the complete button (last child) next to a completed item */
     filter: invert(27%) sepia(83%) saturate(1000%) hue-rotate(345deg) brightness(85%) contrast(100%); /* A distinct red filter for completed icon */
 }
 
-
 /* Reset bookmark/complete icon filter on hover even if highlighted */
-.grammar-point-item.bookmarked .action-buttons button:first-child:hover img,
-.grammar-point-item.completed .action-buttons button:last-child:hover img {
+.grammar-point-item.bookmarked + .action-buttons button:first-child:hover img,
+.grammar-point-item.completed + .action-buttons button:last-child:hover img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8); /* Revert to bright white on hover */
 }
 

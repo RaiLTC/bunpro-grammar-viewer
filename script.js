@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         grammarPointItemElement.classList.toggle('bookmarked', currentState.bookmarked);
         grammarPointItemElement.classList.remove('completed'); // Always remove completed class if bookmarking or unbookmarking
-        renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
+        renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons (important for correct icon filter application)
         updateParentHeaderStates(grammarPointItemElement); // Update parent headers
     }
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         grammarPointItemElement.classList.toggle('completed', currentState.completed);
         grammarPointItemElement.classList.remove('bookmarked'); // Always remove bookmarked class if completing or uncompleting
-        renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons
+        renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons (important for correct icon filter application)
         updateParentHeaderStates(grammarPointItemElement); // Update parent headers
     }
 
@@ -113,9 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Header Highlighting Logic ---
     function updateParentHeaderStates(startElement = null) {
-        // If a specific element is provided, only update its relevant ancestors.
-        // Otherwise, iterate through all grammar points to update all headers.
-
         let itemsToCheck = [];
         if (startElement) {
             itemsToCheck.push(startElement);
@@ -123,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             itemsToCheck = document.querySelectorAll('.grammar-point-item');
         }
 
-        // Collect all unique lesson and N-level headers
         const lessonHeaders = new Set();
         const nLevelHeaders = new Set();
 
@@ -140,12 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Function to check if a container (lesson or n-level) has any bookmarked children
         const hasBookmarkedChildren = (containerElement) => {
             return containerElement.querySelectorAll('.grammar-point-item.bookmarked').length > 0;
         };
 
-        // Update lesson headers
         lessonHeaders.forEach(header => {
             const lessonContent = header.nextElementSibling;
             if (hasBookmarkedChildren(lessonContent)) {
@@ -155,10 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update N-level headers
         nLevelHeaders.forEach(header => {
             const nLevelContent = header.nextElementSibling;
-            // Check if any of its immediate children (lessons) have bookmarked children, or if it directly contains bookmarked items
             let foundBookmarked = false;
             nLevelContent.querySelectorAll('.lesson').forEach(lesson => {
                 if (hasBookmarkedChildren(lesson.querySelector('.lesson-content'))) {
@@ -172,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 
     // --- Rendering and Event Listeners ---
     function renderGrammarData(data) {
@@ -203,22 +194,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
-                        // Generate unique ID for this grammar point
                         const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                         const gpState = getGrammarPointState(gpId);
                         const itemClasses = ['grammar-point-item'];
                         if (gpState.bookmarked) itemClasses.push('bookmarked');
                         if (gpState.completed) itemClasses.push('completed');
 
+                        // NEW: Wrap both grammar-point-item and action-buttons in a grammar-point-wrapper
                         html += `
-                            <li class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
-                                <div class="grammar-point-content-area">
-                                    <span class="grammar-point-number">${gpIdx + 1}.</span>
-                                    <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
-                                        ${gp.text}
-                                    </a>
+                            <li class="grammar-point-wrapper">
+                                <div class="${itemClasses.join(' ')}" data-gp-id="${gpId}">
+                                    <div class="grammar-point-content-area">
+                                        <span class="grammar-point-number">${gpIdx + 1}.</span>
+                                        <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
+                                            ${gp.text}
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="action-buttons"></div>
+                                <div class="action-buttons" data-gp-id="${gpId}"></div>
                             </li>
                         `;
                     });
@@ -238,19 +231,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         grammarContentDiv.innerHTML = html;
-        addToggleListeners(); // Add listeners for accordions
-        addGrammarPointActionListeners(); // Add listeners for new buttons
+        addToggleListeners();
+        addGrammarPointActionListeners();
     }
 
     function addGrammarPointActionListeners() {
-        document.querySelectorAll('.grammar-point-item').forEach(item => {
-            const gpId = item.dataset.gpId;
-            renderActionButtons(item, gpId); // Initial rendering of buttons
+        // Now target the .action-buttons container directly, as it holds the gpId
+        document.querySelectorAll('.grammar-point-wrapper').forEach(wrapper => {
+            const grammarPointItem = wrapper.querySelector('.grammar-point-item');
+            const gpId = grammarPointItem.dataset.gpId; // Get ID from the grammar point item
+            renderActionButtons(grammarPointItem, gpId); // Pass the item itself for class toggling
         });
     }
 
     function renderActionButtons(grammarPointItemElement, gpId) {
-        const actionButtonsContainer = grammarPointItemElement.querySelector('.action-buttons');
+        // Find the action buttons container within the same wrapper as the grammarPointItemElement
+        const actionButtonsContainer = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.action-buttons');
         const currentState = getGrammarPointState(gpId);
         actionButtonsContainer.innerHTML = ''; // Clear existing buttons
 
@@ -259,9 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
         bookmarkIcon.src = ICON_PATHS.bookmark;
         bookmarkIcon.alt = "Bookmark";
         bookmarkBtn.appendChild(bookmarkIcon);
-        bookmarkBtn.title = currentState.bookmarked ? 'Unbookmark this grammar point' : 'Bookmark this grammar point'; // Add tooltip
+        bookmarkBtn.title = currentState.bookmarked ? 'Unbookmark this grammar point' : 'Bookmark this grammar point';
         bookmarkBtn.onclick = (e) => {
-            e.stopPropagation(); // Prevent accordion from toggling
+            e.stopPropagation();
             toggleBookmark(gpId, grammarPointItemElement);
         };
         actionButtonsContainer.appendChild(bookmarkBtn);
@@ -271,16 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
         checkIcon.src = ICON_PATHS.check;
         checkIcon.alt = "Complete";
         completeBtn.appendChild(checkIcon);
-        completeBtn.title = currentState.completed ? 'Mark as incomplete' : 'Mark as complete'; // Add tooltip
+        completeBtn.title = currentState.completed ? 'Mark as incomplete' : 'Mark as complete';
         completeBtn.onclick = (e) => {
-            e.stopPropagation(); // Prevent accordion from toggling
+            e.stopPropagation();
             toggleComplete(gpId, grammarPointItemElement);
         };
         actionButtonsContainer.appendChild(completeBtn);
     }
 
     function addResetButton() {
-        // Only add if it doesn't already exist to prevent duplicates on re-renders
         if (!document.getElementById('resetUserData')) {
             const resetButton = document.createElement('button');
             resetButton.id = 'resetUserData';
@@ -294,25 +289,24 @@ document.addEventListener('DOMContentLoaded', () => {
             resetButton.appendChild(buttonText);
 
             resetButton.addEventListener('click', resetAllUserData);
-            document.querySelector('.container').appendChild(resetButton); // Append to main container
+            document.querySelector('.container').appendChild(resetButton);
         }
     }
-
 
     // --- Accordion Toggle Functions ---
     function collapseSection(element, header) {
         element.style.height = element.scrollHeight + 'px';
 
         requestAnimationFrame(() => {
-            void element.offsetWidth; // Force reflow
+            void element.offsetWidth;
             element.style.height = '0';
         });
 
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
-            element.style.height = ''; // Remove inline height after transition
-            header.classList.remove('expanded'); // Rotate icon back
-            header.classList.remove('pulsing'); // Ensure pulse class is removed on collapse
+            element.style.height = '';
+            header.classList.remove('expanded');
+            header.classList.remove('pulsing');
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
@@ -324,17 +318,14 @@ document.addEventListener('DOMContentLoaded', () => {
         element.style.height = '0';
 
         requestAnimationFrame(() => {
-            void element.offsetWidth; // Force reflow
+            void element.offsetWidth;
             element.style.height = height + 'px';
         });
 
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
-            element.style.height = 'auto'; // Revert to auto so content can resize dynamically
-            header.classList.add('expanded'); // Rotate icon
-            // The pulsing class is applied immediately after expandSection is called
-            // to start the animation and removed if collapsing.
-            // No need to remove it here as it handles the infinite loop.
+            element.style.height = 'auto';
+            header.classList.add('expanded');
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
@@ -348,19 +339,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     collapseSection(nLevelContent, header);
                 } else {
                     expandSection(nLevelContent, header);
-                    // Add pulsing class here to start infinite animation
                     header.classList.add('pulsing');
                 }
             });
         });
 
         document.querySelectorAll('.lesson-header').forEach(header => {
-            header.addEventListener('click', (e) => { // Added 'e' for event object
+            header.addEventListener('click', (e) => {
                 const lessonContent = header.nextElementSibling;
 
-                // Stop propagation if a child element (like a button) inside lesson header was clicked
-                // This is a safeguard, though our buttons are inside grammar-point-item, not lesson-header directly
-                if (e.target.tagName === 'BUTTON' || e.target.closest('.action-buttons')) { // Added closest for robustness
+                if (e.target.tagName === 'BUTTON' || e.target.closest('.action-buttons')) {
                     e.stopPropagation();
                     return;
                 }
@@ -369,8 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     collapseSection(lessonContent, header);
                 } else {
                     expandSection(lessonContent, header);
-                    // Lesson headers no longer get pulsing class (CSS rule removed)
-                    // header.classList.add('pulsing'); // Removed this line
                 }
             });
         });
