@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`Failed to load grammar data: ${response.statusText}`);
             }
             allGrammarData = await response.json();
-            loadUserProgress(); // Defined below
-            renderStatistics(); // Defined below
-            renderGrammarData(allGrammarData); // Defined below
-            updateParentHeaderStates(); // Defined below
-            addResetButtonListener(); // Defined below
+            loadUserProgress();
+            renderStatistics();
+            renderGrammarData(allGrammarData);
+            updateParentHeaderStates();
+            addResetButtonListener();
         } catch (error) {
             console.error("Could not load grammar data:", error);
             grammarContentDiv.innerHTML = '<p>Error loading grammar data. Please ensure "bunpro_grammar_data.json" is in the same directory and accessible. Details in console.</p>';
@@ -132,11 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let unknownNLevelGrammarPoints = 0;
         let unknownNLevelCompletedGPs = 0;
 
+
         const nLevelStats = {};
+
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
+
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -152,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lessonGPsCount = 0;
                     let lessonCompletedGPs = 0;
 
+
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
                         const state = getGrammarPointState(gpId);
@@ -166,7 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 unknownNLevelCompletedGPs++;
                             }
-                        } else {
+                        }
+                        else {
                             totalGrammarPoints++;
                             if (state.completed) {
                                 completedGrammarPoints++;
@@ -432,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += `
                     <div class="${nLevelClass}" id="n-level-${nLevelKey.replace(/ /g, '-')}-container">
                         <div class="n-level-header">
-                            <span>${nLevelKey} Grammar</span>
+                            <span class="n-level-text">${nLevelKey} Grammar</span>
                             <span class="header-counts"></span>
                             <button class="mark-level-complete-btn" data-action-type="complete" data-level-type="n-level" data-n-level-key="${nLevelKey}" title="Press and hold to mark all grammar points in this N-level as complete">
                                 <img src="${ICON_PATHS.checkSolid}" alt="Complete All">
@@ -589,10 +594,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 button.classList.add('holding');
-                buttonIcon.style.filter = 'brightness(2)';
+                buttonIcon.style.filter = 'brightness(2)'; // Brighter icon when holding
 
                 progressBarFg.style.transition = 'none';
-                progressBarFg.style.strokeDashoffset = '100.53';
+                progressBarFg.style.strokeDashoffset = '100.53'; // Fully hidden
                 progressBarFg.style.opacity = '1';
 
                 void progressBarFg.offsetWidth;
@@ -752,6 +757,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Function to flash an icon (used for toggle icons and action buttons after long press)
+    function flashIcon(iconElement) {
+        iconElement.classList.add('flash-white-icon');
+        iconElement.addEventListener('animationend', () => {
+            iconElement.classList.remove('flash-white-icon');
+        }, { once: true });
+    }
+
     // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
         document.querySelectorAll('.n-level-header').forEach(header => {
@@ -761,17 +774,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 const nLevelContent = header.nextElementSibling;
+                const toggleIcon = header.querySelector('.toggle-icon');
                 if (header.classList.contains('expanded')) {
-                    collapseSection(nLevelContent, header);
+                    collapseSection(nLevelContent, header, toggleIcon);
                 } else {
-                    expandSection(nLevelContent, header);
-                    header.classList.add('pulsing');
+                    expandSection(nLevelContent, header, toggleIcon);
+                    header.querySelector('.n-level-text').classList.add('pulsing'); // Apply pulsing to text
                 }
             });
 
             header.addEventListener('animationend', (e) => {
-                if (e.animationName === 'pulse-header') {
-                    header.classList.remove('pulsing');
+                if (e.animationName === 'pulse-text') { // Listen for pulse-text animation
+                    header.querySelector('.n-level-text').classList.remove('pulsing');
                 }
             });
         });
@@ -783,16 +797,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 const lessonContent = header.nextElementSibling;
+                const toggleIcon = header.querySelector('.toggle-icon');
                 if (header.classList.contains('expanded')) {
-                    collapseSection(lessonContent, header);
+                    collapseSection(lessonContent, header, toggleIcon);
                 } else {
-                    expandSection(lessonContent, header);
+                    expandSection(lessonContent, header, toggleIcon);
                 }
             });
         });
     }
 
-    function expandSection(element, header) {
+    function expandSection(element, header, toggleIcon) {
         const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
         element.style.height = 'auto';
 
@@ -803,12 +818,13 @@ document.addEventListener('DOMContentLoaded', () => {
         element.style.height = `${contentHeight}px`;
 
         header.classList.add('expanded');
-        header.querySelector('.toggle-icon').innerHTML = '&#9660;';
+        toggleIcon.style.transform = 'rotate(90deg)'; // Rotate right to down
 
         const onTransitionEnd = () => {
             if (element.style.height === `${contentHeight}px`) {
                 element.style.height = 'auto';
             }
+            flashIcon(toggleIcon); // Flash icon after transition
             element.removeEventListener('transitionend', onTransitionEnd);
         };
         element.addEventListener('transitionend', onTransitionEnd);
@@ -816,29 +832,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sectionType === 'n-level') {
             document.querySelectorAll('.n-level-header.expanded').forEach(otherHeader => {
                 if (otherHeader !== header) {
-                    collapseSection(otherHeader.nextElementSibling, otherHeader);
+                    const otherToggleIcon = otherHeader.querySelector('.toggle-icon');
+                    collapseSection(otherHeader.nextElementSibling, otherHeader, otherToggleIcon);
                 }
             });
         }
     }
 
-    function collapseSection(element, header) {
+    function collapseSection(element, header, toggleIcon) {
         const sectionType = element.classList.contains('n-level-content') ? 'n-level' : 'lesson';
         element.style.height = `${element.scrollHeight}px`;
         void element.offsetWidth;
         element.style.height = '0px';
 
         header.classList.remove('expanded');
-        header.querySelector('.toggle-icon').innerHTML = '&#9654;';
+        toggleIcon.style.transform = 'rotate(0deg)'; // Rotate back to right
 
-        if (sectionType === 'n-level' && header.classList.contains('pulsing')) {
-            header.classList.remove('pulsing');
+        if (sectionType === 'n-level' && header.querySelector('.n-level-text').classList.contains('pulsing')) {
+            header.querySelector('.n-level-text').classList.remove('pulsing');
         }
 
         const onTransitionEnd = () => {
             if (element.style.height === '0px') {
                  // Nothing specific to do
             }
+            flashIcon(toggleIcon); // Flash icon after transition
             element.removeEventListener('transitionend', onTransitionEnd);
         };
         element.addEventListener('transitionend', onTransitionEnd);

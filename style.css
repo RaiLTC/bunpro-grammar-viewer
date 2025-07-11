@@ -428,7 +428,8 @@ h1 {
 .mark-lesson-complete-btn img {
     width: 1.6em;
     height: 1.6em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    /* Default filter for all these icons - visible but not too bright */
+    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
@@ -439,7 +440,8 @@ h1 {
 .mark-lesson-reset-btn img {
     width: 1.4em;
     height: 1.4em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    /* Default filter for trash icon */
+    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
@@ -485,7 +487,7 @@ h1 {
     fill: none;
 }
 
-.progress-circle-fill {
+.progress-circle-fg { /* Changed from .progress-circle-fill to .progress-circle-fg */
     stroke: white; /* Default white, will be overridden by JS for complete/reset */
     stroke-width: 3;
     fill: none;
@@ -533,26 +535,37 @@ h1 {
 }
 
 /* Pulsing effect for newly expanded N-level */
-.pulsing {
-    animation: pulse-header 1.5s infinite;
+/* Target the text span inside the header for pulsing */
+.n-level-header .n-level-text.pulsing {
+    animation: pulse-text 1.5s infinite;
 }
 
-@keyframes pulse-header {
-    0% { box-shadow: inset 0 0 0 0px #6ab0de; }
-    50% { box-shadow: inset 0 0 0 5px #6ab0de; }
-    100% { box-shadow: inset 0 0 0 0px #6ab0de; }
+@keyframes pulse-text {
+    0% { text-shadow: 0 0 0px rgba(106, 176, 222, 0); color: inherit; }
+    50% { text-shadow: 0 0 8px rgba(106, 176, 222, 0.8); color: #e0e0e0; }
+    100% { text-shadow: 0 0 0px rgba(106, 176, 222, 0); color: inherit; }
 }
 
-/* Finisher flash for button icons */
+/* Toggle Icon (Dorito) Animation */
+.toggle-icon {
+    font-size: 0.8em;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Match content transition speed */
+    display: inline-block; /* Essential for transform to work */
+    color: #bbb; /* Default color */
+}
+
+/* Finisher flash for button icons AND toggle icons */
 @keyframes flash-white-icon {
-    0% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Default dim */
-    50% { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(2.5); } /* Bright white */
-    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to default dim */
+    0% { filter: brightness(1); opacity: 1; }
+    50% { filter: brightness(3); opacity: 1; } /* Very bright white */
+    100% { filter: brightness(1); opacity: 1; }
 }
 
+/* Apply flash animation to images and toggle icons */
 .mark-level-complete-btn img.flash-white-icon,
 .mark-level-reset-btn img.flash-white-icon,
 .mark-lesson-complete-btn img.flash-white-icon,
-.mark-lesson-reset-btn img.flash-white-icon {
+.mark-lesson-reset-btn img.flash-white-icon,
+.toggle-icon.flash-white-icon {
     animation: flash-white-icon 0.3s ease-out;
 }
