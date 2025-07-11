@@ -333,6 +333,18 @@ h1 {
     transform: rotate(90deg);
 }
 
+/* Dorito Flash Animation */
+@keyframes flash-white {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(2.5); } /* Brighter flash */
+    100% { filter: brightness(1); }
+}
+
+.toggle-icon.flash-white {
+    animation: flash-white 0.3s ease-out; /* Quick flash */
+}
+
+
 /* Pulse (Breathing) Animation for N-level header */
 @keyframes pulse-brightness {
     0% { filter: brightness(1); }
@@ -468,15 +480,23 @@ h1 {
 .mark-level-complete-btn.holding,
 .mark-level-reset-btn.holding {
     background-color: rgba(255, 255, 255, 0.15);
-    /* Removed cursor: progress; */
 }
 
 /* Icon (image) inside the button */
-.mark-level-complete-btn img,
+.mark-level-complete-btn img {
+    width: 1.6em;
+    height: 1.6em;
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    transition: filter 0.2s ease;
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
+}
+
 .mark-level-reset-btn img {
-    /* Adjusted size */
-    width: 1.6em; /* Slightly smaller */
-    height: 1.6em; /* Slightly smaller */
+    /* Further decreased size */
+    width: 1.4em;
+    height: 1.4em;
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
     z-index: 2;
@@ -532,7 +552,7 @@ h1 {
 .mark-level-reset-btn.holding .progress-circle-fg {
     opacity: 1;
     /* Adjusted cubic-bezier for smoother end */
-    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.4, 0.0, 0.6, 1.0), opacity 0.1s ease-in;
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.1, 0.8, 0.2, 1.0), opacity 0.1s ease-in;
 }
 
 /* Flash animation for containers (N-level and Lesson) */

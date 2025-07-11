@@ -124,7 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
-                totalLevels++;
+                // Only count JLPT levels towards totalLevels and completedLevels
+                if (nLevelKey !== 'Non-JLPT') {
+                    totalLevels++;
+                }
+
                 let nLevelLessonsCount = 0;
                 let nLevelGPsCount = 0;
                 let nLevelCompletedGPs = 0;
@@ -161,7 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                if (nLevelGPsCount > 0 && nLevelCompletedGPs === nLevelGPsCount) {
+                // Only count JLPT levels towards completedLevels
+                if (nLevelKey !== 'Non-JLPT' && nLevelGPsCount > 0 && nLevelCompletedGPs === nLevelGPsCount) {
                     completedLevels++;
                 }
 
@@ -358,8 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="${ICON_PATHS.trashSolid}" alt="Reset All">
                                 <svg class="progress-circle" viewBox="0 0 38 38">
                                     <circle class="progress-circle-bg" cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"></circle>
-                                    <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></circle>
-                                </svg>
+                                    <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></svg>
                             </button>
                             <span class="toggle-icon">&#9654;</span>
                         </div>
@@ -527,20 +531,21 @@ document.addEventListener('DOMContentLoaded', () => {
                  buttonIcon.style.transition = 'none';
             }
 
-            void button.offsetWidth;
+            void button.offsetWidth; // Trigger reflow to reset transition
 
             if (progressBarFG) {
-                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.4, 0.0, 0.6, 1.0), opacity 0.1s ease-in`; // Adjusted cubic-bezier
+                progressBarFG.style.transition = `stroke-dashoffset ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in`;, opacity 0.1s ease-in`; // Adjusted cubic-bezier
                 progressBarFG.style.strokeDashoffset = '0';
                 progressBarFG.style.opacity = '1';
             }
 
             if (buttonIcon) {
-                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.4, 0.0, 0.6, 1.0)`; // Adjusted cubic-bezier
+                buttonIcon.style.transition = `filter ${holdDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`; // Adjusted cubic-bezier
                 if (actionType === 'complete') {
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
                 } else if (actionType === 'reset') {
-                    buttonIcon.style.filter = 'invert(27%) sepia(51%) saturate(2878%) hue-rotate(345deg) brightness(97%) contrast(100%)';
+                    // Start from dim, go to less intense red
+                    buttonIcon.style.filter = 'invert(27%) sepia(51%) saturate(2878%) hue-rotate(345deg) brightness(85%) contrast(100%)';
                 }
             }
 
@@ -755,14 +760,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function collapseSection(element, header) {
         element.style.height = element.scrollHeight + 'px';
         header.classList.remove('expanded'); // Move to start of transition
+        const toggleIcon = header.querySelector('.toggle-icon');
+
         requestAnimationFrame(() => {
-            void element.offsetWidth;
+            void element.offsetWidth; // Trigger reflow
             element.style.height = '0';
         });
+
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = '';
             header.classList.remove('pulsing');
+            // Trigger dorito flash
+            if (toggleIcon) {
+                toggleIcon.classList.remove('flash-white');
+                void toggleIcon.offsetWidth; // Trigger reflow
+                toggleIcon.classList.add('flash-white');
+            }
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
@@ -772,13 +786,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const height = element.scrollHeight;
         element.style.height = '0';
         header.classList.add('expanded'); // Move to start of transition
+        const toggleIcon = header.querySelector('.toggle-icon');
+
         requestAnimationFrame(() => {
-            void element.offsetWidth;
+            void element.offsetWidth; // Trigger reflow
             element.style.height = height + 'px';
         });
+
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = 'auto';
+            // Trigger dorito flash
+            if (toggleIcon) {
+                toggleIcon.classList.remove('flash-white');
+                void toggleIcon.offsetWidth; // Trigger reflow
+                toggleIcon.classList.add('flash-white');
+            }
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
