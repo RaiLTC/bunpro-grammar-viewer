@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Paths to your SVG icon files (assuming they are in an 'icons' folder)
     const ICON_PATHS = {
         bookmarkSolid: 'icons/bookmark-solid.svg',
-        checkSolid: 'icons/check-solid.svg',
+        checkSolid: 'icons/circle-check-solid.svg',
         warningTriangle: 'icons/warning-triangle.svg'
     };
 
