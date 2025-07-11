@@ -41,7 +41,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, filter 0.2s ease; /* Transition filter as well */
     border-bottom: 1px solid rgba(255,255,255,0.1);
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none; /* For Safari */
@@ -50,8 +50,8 @@ h1 {
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
-.n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; }
-.n-level-N4 .n-level-header { background-color: #385a38; color: #c9e2b6; }
+.n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; } /* Base Green */
+.n-level-N4 .n-level-header { background-color: #555e3e; color: #e0e8c6; } /* Slightly more olive/less pure green for distinction */
 .n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
 .n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; }
 .n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; }
@@ -83,7 +83,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, filter 0.2s ease; /* Transition filter as well */
     user-select: none; /* Make uncopyable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -164,61 +164,20 @@ h1 {
     transform: rotate(90deg); /* Rotate for expanded state */
 }
 
-/* Pulse (Breathing) Animation - Now with infinite iteration */
-/* Adjust opacity and blur for softer pulse */
-@keyframes pulse-effect-n5 {
-    0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } /* Return to initial state for seamless loop */
+/* Pulse (Breathing) Animation - Now animating filter: brightness */
+/* The filter brightens the header, then returns to normal */
+@keyframes pulse-brightness {
+    0% { filter: brightness(1); } /* Normal brightness */
+    50% { filter: brightness(1.2); } /* 20% brighter */
+    100% { filter: brightness(1); } /* Back to normal for loop */
 }
-@keyframes pulse-effect-n4 {
-    0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); }
-}
-@keyframes pulse-effect-n3 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); }
-}
-@keyframes pulse-effect-n2 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(255, 191, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); }
-}
-@keyframes pulse-effect-n1 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(255, 128, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); }
-}
-@keyframes pulse-effect-non-jlpt {
-    0% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(170, 170, 170, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); }
-}
-@keyframes pulse-effect-unknown {
-    0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); }
-}
-
 
 /* Apply pulse animation to the N-level header */
-.n-level-N5 .n-level-header.pulsing { animation: pulse-effect-n5 1.5s ease-in-out infinite; } /* Slower duration for breathing */
-.n-level-N4 .n-level-header.pulsing { animation: pulse-effect-n4 1.5s ease-in-out infinite; }
-.n-level-N3 .n-level-header.pulsing { animation: pulse-effect-n3 1.5s ease-in-out infinite; }
-.n-level-N2 .n-level-header.pulsing { animation: pulse-effect-n2 1.5s ease-in-out infinite; }
-.n-level-N1 .n-level-header.pulsing { animation: pulse-effect-n1 1.5s ease-in-out infinite; }
-.n-level-Non-JLPT .n-level-header.pulsing { animation: pulse-effect-non-jlpt 1.5s ease-in-out infinite; }
-.n-level-Unknown-N-Level .n-level-header.pulsing { animation: pulse-effect-unknown 1.5s ease-in-out infinite; }
-
-/* Lesson header pulsing (uses generic white pulse) */
-.lesson-header.pulsing {
-    animation: pulse-effect-lesson 1.5s ease-in-out infinite; /* Slower duration for breathing */
+.n-level-header.pulsing {
+    animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-@keyframes pulse-effect-lesson {
-    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
-    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+/* Lesson header pulsing */
+.lesson-header.pulsing {
+    animation: pulse-brightness 1.5s ease-in-out infinite;
 }
