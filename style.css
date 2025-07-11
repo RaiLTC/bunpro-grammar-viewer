@@ -26,39 +26,13 @@ h1 {
     padding-bottom: 15px;
 }
 
-/* Announcement Banner */
-.announcement-banner {
-    background-color: #4a2a2a; /* Dark red/brown for attention */
-    color: #f0f0f0;
-    padding: 10px 20px;
-    border-radius: 6px;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-.announcement-banner p {
-    margin: 0;
-    font-size: 0.95em;
-}
-
-.announcement-banner .megaphone-icon {
-    width: 1.8em;
-    height: 1.8em;
-    fill: #f0f0f0; /* White color for the SVG */
-    flex-shrink: 0;
-}
-
-
 /* Statistics Container */
 .statistics-container {
     background-color: #383838;
     border: 1px solid #4a4a4a;
     border-radius: 6px;
     padding: 15px 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced to make space for announcement */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -115,6 +89,31 @@ h1 {
     font-size: 1.1em;
 }
 
+/* Announcement Container */
+.announcement-container {
+    background-color: #4a3e3e; /* Dark red background for visibility */
+    border: 1px solid #cc0000; /* Red border */
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-container img {
+    width: 1.5em;
+    height: 1.5em;
+    filter: invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(100%) contrast(100%); /* Red to match reset buttons */
+}
+
+.announcement-container p {
+    margin: 0;
+    font-size: 1em;
+    color: #e0e0e0;
+    font-weight: 500;
+}
 
 /* N-Level Styling */
 .n-level {
@@ -190,7 +189,6 @@ h1 {
     will-change: height;
     box-sizing: border-box;
 }
-
 
 /* Lesson Styling */
 .lesson {
@@ -341,7 +339,6 @@ h1 {
     flex-shrink: 0;
 }
 
-
 /* Action Buttons for Bookmark/Complete on Grammar Point */
 .action-buttons {
     display: flex;
@@ -358,45 +355,26 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px; /* Explicit width for button */
-    height: 38px; /* Explicit height for button */
+    width: 24px; /* Smaller button size */
+    height: 24px; /* Smaller button size */
     padding: 0;
     border-radius: 50%;
     position: relative; /* Needed for progress circle positioning */
 }
 
-.action-buttons button:hover {
-    transform: scale(1.05);
-}
-
-/* Base style for all icon images */
-.action-buttons button img,
-.mark-level-complete-btn img,
-.mark-level-reset-btn img,
-.mark-lesson-complete-btn img,
-.mark-lesson-reset-btn img {
-    /* Default: dim grey */
-    filter: grayscale(1) brightness(0.7);
+.action-buttons button img {
+    width: 20px; /* Smaller icon size */
+    height: 20px; /* Smaller icon size */
+    filter: grayscale(0.5) brightness(1.0); /* Lighter default appearance */
+    color: #e0e0e0; /* Ensure visibility */
     transition: filter 0.2s ease;
     z-index: 2; /* Ensure icon is above progress circle */
     position: relative;
     pointer-events: none; /* Allow clicks to pass through to button */
 }
 
-/* Universal hover effect for all icons */
-.action-buttons button:hover img,
-.mark-level-complete-btn:hover img,
-.mark-level-reset-btn:hover img,
-.mark-lesson-complete-btn:hover img,
-.mark-lesson-reset-btn:hover img {
+.action-buttons button:hover img {
     filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
-}
-
-
-/* Specific sizes for grammar point icons */
-.action-buttons button img {
-    width: 1.8em;
-    height: 1.8em;
 }
 
 /* Specific styles for active/completed/bookmarked states */
@@ -422,9 +400,7 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%); /* Brighter green */
 }
 
-
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
-/* Explicit width/height for these buttons to contain SVG */
 .mark-level-complete-btn,
 .mark-level-reset-btn,
 .mark-lesson-complete-btn,
@@ -441,17 +417,25 @@ h1 {
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
     z-index: 0;
-    display: flex; /* Ensure flex for centering icon */
-    align-items: center; /* Center icon vertically */
-    justify-content: center; /* Center icon horizontally */
 }
 
-.mark-level-complete-btn:hover,
-.mark-level-reset-btn:hover,
-.mark-lesson-complete-btn:hover,
-.mark-lesson-reset-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+.mark-level-complete-btn img,
+.mark-lesson-complete-btn img,
+.mark-level-reset-btn img,
+.mark-lesson-reset-btn img {
+    filter: grayscale(0.5) brightness(1.0); /* Lighter default appearance */
+    color: #e0e0e0; /* Ensure visibility */
+    transition: filter 0.2s ease;
+    z-index: 2; /* Ensure icon is above progress circle */
+    position: relative;
+    pointer-events: none; /* Allow clicks to pass through to button */
+}
+
+.mark-level-complete-btn:hover img,
+.mark-level-reset-btn:hover img,
+.mark-lesson-complete-btn:hover img,
+.mark-lesson-reset-btn:hover img {
+    filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
 }
 
 /* Specific sizes for these icons */
@@ -506,13 +490,13 @@ h1 {
     stroke-dashoffset: 100.53; /* Initially fully hidden */
     transform: rotate(-90deg); /* Start at top (12 o'clock) */
     transform-origin: 50% 50%;
-    /* No default opacity: 0; it's controlled by .holding class */
-    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1), opacity var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1);
+    opacity: 0; /* Initially hidden */
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1);
 }
 
-/* Ensure progress circle is visible during hold */
+/* Ensure progress circle is fully visible during hold */
 .progress-circle-fg.holding {
-    opacity: 1; /* Make visible when holding */
+    opacity: 1;
 }
 
 /* Reset All Button Styling */
