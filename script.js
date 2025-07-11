@@ -78,8 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (grammarPointItemElement) {
             grammarPointItemElement.classList.toggle('bookmarked', state.bookmarked);
             grammarPointItemElement.classList.toggle('completed', state.completed);
-            // Re-render action buttons for this specific grammar point to update their state/icon
-            renderActionButtons(grammarPointItemElement, gpId);
+
+            // Update the status text within the grammar point
+            const statusTextSpan = grammarPointItemElement.querySelector('.grammar-point-status-text');
+            if (statusTextSpan) {
+                let statusText = [];
+                if (state.bookmarked) statusText.push('Bookmarked');
+                if (state.completed) statusText.push('Completed');
+                statusTextSpan.textContent = statusText.length > 0 ? ` (${statusText.join(', ')})` : '';
+            }
+
+            renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons to apply correct filters
         }
 
         // Update parent headers (N-level and Lesson)
@@ -94,23 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleBookmark(gpId, grammarPointItemElement) {
         const currentState = getGrammarPointState(gpId);
         currentState.bookmarked = !currentState.bookmarked;
-        updateGrammarPointState(gpId, currentState);
-
-        const bookmarkIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.bookmark-btn img');
-        if (bookmarkIcon) {
-            flashIcon(bookmarkIcon); // Flash icon on bookmark action
-        }
+        updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
     }
 
     function toggleComplete(gpId, grammarPointItemElement) {
         const currentState = getGrammarPointState(gpId);
         currentState.completed = !currentState.completed;
-        updateGrammarPointState(gpId, currentState);
-
-        const completeIcon = grammarPointItemElement.closest('.grammar-point-wrapper').querySelector('.complete-btn img');
-        if (completeIcon) {
-            flashIcon(completeIcon); // Flash icon on complete action
-        }
+        updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
     }
 
     function resetAllUserData() {
@@ -518,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                                     <span class="grammar-point-number">${gpIdx + 1}.</span>
                                                     <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
                                                         ${gp.text}
+                                                        <span class="grammar-point-status-text"></span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -597,7 +597,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const LESSON_HOLD_DURATION = 1000; // 1 second for lesson
 
     function addLongPressListeners() {
-        // Select only the N-level and Lesson complete/reset buttons
         document.querySelectorAll('.mark-level-complete-btn, .mark-level-reset-btn, .mark-lesson-complete-btn, .mark-lesson-reset-btn').forEach(button => {
             const levelType = button.dataset.levelType;
             const holdDuration = levelType === 'n-level' ? N_LEVEL_HOLD_DURATION : LESSON_HOLD_DURATION;
@@ -655,7 +654,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 progressBarFg.style.opacity = '0';
 
                 // Flash the icon briefly after release if action was not completed
-                // Only flash if the action wasn't completed (i.e., timer didn't run out)
                 if (buttonIcon && !buttonIcon.classList.contains('flash-white-icon')) {
                     flashIcon(buttonIcon);
                 }
@@ -710,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentState = getGrammarPointState(gpId);
                 if (!currentState.completed) {
                     currentState.completed = true;
-                    updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
+                    updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
                     grammarPointsUpdated++;
                 }
             });
@@ -734,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentState.completed || currentState.bookmarked) {
                     currentState.completed = false;
                     currentState.bookmarked = false;
-                    updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
+                    updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
                     grammarPointsUpdated++;
                 }
             });
@@ -756,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentState = getGrammarPointState(gpId);
             if (!currentState.completed) {
                 currentState.completed = true;
-                updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
+                updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
                 grammarPointsUpdated++;
             }
         });
@@ -778,7 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentState.completed || currentState.bookmarked) {
                 currentState.completed = false;
                 currentState.bookmarked = false;
-                updateGrammarPointState(gpId, currentState); // This now directly updates the DOM element
+                updateGrammarPointState(gpId, currentState); // This will trigger DOM update and icon flash
                 grammarPointsUpdated++;
             }
         });
