@@ -26,6 +26,32 @@ h1 {
     padding-bottom: 15px;
 }
 
+/* Announcement Banner */
+.announcement-banner {
+    background-color: #4a2a2a; /* Dark red/brown for attention */
+    color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.announcement-banner p {
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.announcement-banner .megaphone-icon {
+    width: 1.8em;
+    height: 1.8em;
+    fill: #f0f0f0; /* White color for the SVG */
+    flex-shrink: 0;
+}
+
+
 /* Statistics Container */
 .statistics-container {
     background-color: #383838;
@@ -88,6 +114,7 @@ h1 {
     color: #e0e0e0;
     font-size: 1.1em;
 }
+
 
 /* N-Level Styling */
 .n-level {
@@ -163,6 +190,7 @@ h1 {
     will-change: height;
     box-sizing: border-box;
 }
+
 
 /* Lesson Styling */
 .lesson {
@@ -313,6 +341,7 @@ h1 {
     flex-shrink: 0;
 }
 
+
 /* Action Buttons for Bookmark/Complete on Grammar Point */
 .action-buttons {
     display: flex;
@@ -363,6 +392,13 @@ h1 {
     filter: grayscale(0) brightness(1.2); /* Brighter, full color on hover */
 }
 
+
+/* Specific sizes for grammar point icons */
+.action-buttons button img {
+    width: 1.8em;
+    height: 1.8em;
+}
+
 /* Specific styles for active/completed/bookmarked states */
 .action-buttons button.bookmarked {
     box-shadow: 0 0 8px rgba(106, 176, 222, 0.7); /* Blue shadow */
@@ -386,7 +422,9 @@ h1 {
     filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%); /* Brighter green */
 }
 
+
 /* Mark Level Complete/Reset Buttons (Icon Buttons) */
+/* Explicit width/height for these buttons to contain SVG */
 .mark-level-complete-btn,
 .mark-level-reset-btn,
 .mark-lesson-complete-btn,
@@ -403,6 +441,9 @@ h1 {
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
     z-index: 0;
+    display: flex; /* Ensure flex for centering icon */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
 }
 
 .mark-level-complete-btn:hover,
@@ -465,13 +506,13 @@ h1 {
     stroke-dashoffset: 100.53; /* Initially fully hidden */
     transform: rotate(-90deg); /* Start at top (12 o'clock) */
     transform-origin: 50% 50%;
-    opacity: 0; /* Initially hidden */
+    /* No default opacity: 0; it's controlled by .holding class */
     transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1), opacity var(--hold-duration) cubic-bezier(0.25, 0.8, 0.75, 1);
 }
 
 /* Ensure progress circle is visible during hold */
 .progress-circle-fg.holding {
-    opacity: 1;
+    opacity: 1; /* Make visible when holding */
 }
 
 /* Reset All Button Styling */

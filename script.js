@@ -137,12 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let unknownNLevelGrammarPoints = 0;
         let unknownNLevelCompletedGPs = 0;
 
+
         const nLevelStats = {};
 
         const nLevelOrder = ['N5', 'N4', 'N3', 'N2', 'N1', 'Non-JLPT', 'Unknown N-Level'];
 
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
+
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -158,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lessonGPsCount = 0;
                     let lessonCompletedGPs = 0;
 
+
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
                         const state = getGrammarPointState(gpId);
@@ -172,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (state.completed) {
                                 unknownNLevelCompletedGPs++;
                             }
-                        } else {
+                        }
+                        else {
                             totalGrammarPoints++;
                             if (state.completed) {
                                 completedGrammarPoints++;
@@ -258,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const n1Stats = stats.nLevelStats['N1'] || {};
         const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
         const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'] || {};
+
 
         statsHtml += `
             <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
@@ -783,6 +788,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headerElement.classList.remove('flash-action');
         }, { once: true });
     }
+
 
     // --- Section Expansion/Collapse Logic ---
     function addToggleListeners() {
