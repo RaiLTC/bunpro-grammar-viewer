@@ -1,7 +1,7 @@
 /* Basic Reset & Font */
 body {
     margin: 0;
-    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
     line-height: 1.6;
     background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text */
@@ -103,7 +103,7 @@ h1 {
     font-weight: normal;
     flex-grow: 1;
     text-align: right;
-    margin-right: 10px; /* Add some space before the button */
+    margin-right: 10px;
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -148,7 +148,7 @@ h1 {
 .lesson {
     margin-bottom: 5px;
     margin-top: 10px;
-    position: relative; /* Needed for flash animation */
+    position: relative;
 }
 
 .lesson-header {
@@ -178,7 +178,7 @@ h1 {
     font-weight: normal;
     flex-grow: 1;
     text-align: right;
-    margin-right: 10px; /* Add some space before the button */
+    margin-right: 10px;
 }
 
 .lesson-header.has-bookmarked-children {
@@ -229,11 +229,13 @@ h1 {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    gap: 8px;
+    gap: 12px; /* Increased gap for more spacing */
 }
 
 .grammar-point-item {
     flex-grow: 1;
+    /* Reduce max-width to make room for buttons and spacing */
+    max-width: calc(100% - 70px); /* Adjust based on button size + gap */
     padding: 10px 15px;
     background-color: #4d4d4d;
     border-radius: 4px;
@@ -317,9 +319,13 @@ h1 {
 /* Expand/Collapse Icon */
 .toggle-icon {
     font-size: 0.8em;
-    transition: transform 0.2s ease;
     flex-shrink: 0;
     margin-left: 10px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Match content transition */
+}
+
+.lesson-header .toggle-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Match lesson content transition */
 }
 
 .expanded .toggle-icon {
@@ -366,12 +372,12 @@ h1 {
 .action-buttons button img {
     width: 1.8em;
     height: 1.8em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
     transition: filter 0.2s ease;
 }
 
 .action-buttons button:hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
 }
 
 /* Active Icon Styles - No box highlight, just brighter icon and soft shadow */
@@ -426,44 +432,56 @@ h1 {
 
 /* Mark N-Level/Lesson Complete Button (Icon Button) */
 .mark-level-complete-btn {
-    background-color: transparent; /* Make background transparent */
-    border: none; /* No border for the button itself */
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    margin-left: auto; /* Push to the right */
-    position: relative; /* For progress circle positioning */
-    overflow: hidden; /* Hide overflow of progress circle */
-    width: 38px; /* Fixed width for the icon button */
-    height: 38px; /* Fixed height for the icon button */
-    padding: 0; /* Remove padding */
+    margin-left: auto;
+    position: relative;
+    overflow: hidden;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* For the hover state / consistency */
+    border-radius: 50%;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    flex-shrink: 0; /* Prevent it from shrinking */
+    flex-shrink: 0;
 }
 
 .mark-level-complete-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* Subtle glow on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .mark-level-complete-btn.holding {
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly darker while holding */
+    background-color: rgba(255, 255, 255, 0.15);
     cursor: progress;
 }
 
+/* Default dim state for the icon */
 .mark-level-complete-btn img {
-    width: 1.8em; /* Match grammar point icon size */
-    height: 1.8em; /* Match grammar point icon size */
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green color for the icon */
+    width: 1.8em;
+    height: 1.8em;
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8); /* Dimmed default */
     transition: filter 0.2s ease;
-    z-index: 2; /* Ensure icon is above progress circle */
-    position: relative; /* Ensure z-index works */
+    z-index: 2;
+    position: relative;
 }
 
+/* Brighter on hover */
 .mark-level-complete-btn:hover img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%); /* Slightly brighter green on hover */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+}
+
+/* Green when level/lesson is completed */
+.mark-level-complete-btn.level-completed img {
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
+}
+
+/* Override hover for completed state (keep green) */
+.mark-level-complete-btn.level-completed:hover img {
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
 }
 
 .mark-level-complete-btn .progress-circle {
@@ -473,50 +491,56 @@ h1 {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid transparent; /* Base for the circle */
-    border-top-color: rgba(255, 255, 255, 0.7); /* The animating part of the circle */
+    border: 3px solid transparent; /* Base transparent border */
+    border-top-color: white; /* This will be the animating white line */
     opacity: 0;
     z-index: 1;
-    transform: rotate(0deg) scale(0); /* Start scaled down and rotated */
+    box-sizing: border-box;
     transform-origin: center;
-    box-sizing: border-box; /* Include border in width/height */
+    /* Initial state for animation */
+    transform: rotate(-45deg); /* Start from top-center when it appears */
 }
 
+/* Custom Circular Animation */
 .mark-level-complete-btn .progress-circle.active {
-    animation: rotateCircle var(--hold-duration) linear forwards,
-               fadeInOut 1s ease-in-out forwards; /* Separate animation for opacity */
+    animation: drawCircle var(--hold-duration) cubic-bezier(0.1, 0.7, 1.0, 0.1) forwards,
+               fadeCircularProgress 0.3s ease-in forwards; /* Separate fade-in */
     opacity: 1; /* Make visible when active */
 }
 
-@keyframes rotateCircle {
-    0% { transform: rotate(0deg) scale(0.6); opacity: 1; }
-    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+@keyframes drawCircle {
+    0% { transform: rotate(-45deg); }
+    100% { transform: rotate(315deg); } /* 315deg = 360 - 45 (full circle) */
 }
 
-@keyframes fadeInOut {
+@keyframes fadeCircularProgress {
     0% { opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    100% { opacity: 1; }
 }
+
+/* Override fade out from previous version for consistency */
+.mark-level-complete-btn .progress-circle:not(.active) {
+    transition: opacity 0.2s ease-out; /* Fade out when not active */
+    opacity: 0;
+}
+
 
 .mark-level-complete-btn.n-level-btn .progress-circle.active {
-    --hold-duration: 3s; /* Custom property for N-level hold duration */
+    --hold-duration: 3s;
 }
 
 .mark-level-complete-btn.lesson-btn .progress-circle.active {
-    --hold-duration: 1s; /* Custom property for lesson hold duration */
+    --hold-duration: 1s;
 }
-
 
 /* Flash animation for containers (N-level and Lesson) */
 @keyframes flash-highlight {
     0% { box-shadow: 0 0 0px transparent; }
-    50% { box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); } /* Bright white glow */
+    50% { box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); }
     100% { box-shadow: 0 0 0px transparent; }
 }
 
 .n-level.flash-animation,
-.lesson.flash-animation { /* Apply to both N-level and Lesson containers */
+.lesson.flash-animation {
     animation: flash-highlight 0.8s ease-out forwards;
 }
