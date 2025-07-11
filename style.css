@@ -46,6 +46,17 @@ h1 {
     padding-bottom: 10px;
 }
 
+.statistics-container h3 {
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+}
+
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -321,7 +332,6 @@ h1 {
     font-size: 0.8em;
     flex-shrink: 0;
     margin-left: 10px;
-    /* Match content transition durations */
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -336,23 +346,36 @@ h1 {
 /* Dorito Flash Animation */
 @keyframes flash-white {
     0% { filter: brightness(1); }
-    50% { filter: brightness(2.5); } /* Brighter flash */
+    50% { filter: brightness(2.5); }
     100% { filter: brightness(1); }
 }
 
 .toggle-icon.flash-white {
-    animation: flash-white 0.3s ease-out; /* Quick flash */
+    animation: flash-white 0.3s ease-out;
+}
+
+/* Finisher flash for button icons */
+@keyframes flash-white-icon {
+    0% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Default dim */
+    50% { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(2.5); } /* Bright white */
+    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to dim */
+}
+
+.mark-level-complete-btn img.flash-white-icon,
+.mark-level-reset-btn img.flash-white-icon {
+    animation: flash-white-icon 0.3s ease-out;
 }
 
 
-/* Pulse (Breathing) Animation for N-level header */
+/* Pulse (Breathing) Animation for N-level header text */
 @keyframes pulse-brightness {
     0% { filter: brightness(1); }
     50% { filter: brightness(1.2); }
     100% { filter: brightness(1); }
 }
 
-.n-level-header.pulsing {
+/* Apply pulse animation only to the main text span within the header */
+.n-level-header.pulsing > span:first-child {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
@@ -449,7 +472,7 @@ h1 {
 .mark-level-reset-btn {
     background-color: transparent;
     border: none;
-    cursor: pointer; /* Keep default cursor */
+    cursor: pointer;
     position: relative;
     overflow: visible;
     width: 38px;
@@ -477,6 +500,13 @@ h1 {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
+/* Apply hover effect only when not holding */
+.mark-level-complete-btn:not(.holding):hover img,
+.mark-level-reset-btn:not(.holding):hover img {
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
+}
+
+
 .mark-level-complete-btn.holding,
 .mark-level-reset-btn.holding {
     background-color: rgba(255, 255, 255, 0.15);
@@ -494,7 +524,6 @@ h1 {
 }
 
 .mark-level-reset-btn img {
-    /* Further decreased size */
     width: 1.4em;
     height: 1.4em;
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
@@ -504,11 +533,6 @@ h1 {
     pointer-events: none;
 }
 
-/* Hover effects for all header buttons (complete & reset) */
-.mark-level-complete-btn:hover img,
-.mark-level-reset-btn:hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
-}
 
 /* Green when level/lesson is completed (for complete button) */
 .mark-level-complete-btn.level-completed img {
