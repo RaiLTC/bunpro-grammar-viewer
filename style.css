@@ -1,36 +1,40 @@
-/* General Body and Container Styles */
+/* Basic Reset & Font */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c2c2c;
-    color: #e0e0e0;
     margin: 0;
-    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Changed to Segoe UI as per previous full file */
     line-height: 1.6;
-    display: flex;
+    background-color: #2c2c2c; /* Updated to match the previous full file's body background */
+    color: #e0e0e0; /* Light text */
+    transition: background-color 0.3s ease;
+    padding: 20px; /* Added padding to body as in previous full file */
+    display: flex; /* Added display flex for centering as in previous full file */
     flex-direction: column;
     align-items: center;
 }
 
 .container {
-    background-color: #3a3a3a;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     max-width: 900px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    padding: 30px; /* Updated padding to match previous full file */
+    background-color: #3a3a3a; /* Updated to match previous full file */
+    border-radius: 12px; /* Updated to match previous full file */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Updated to match previous full file */
+    width: 100%; /* Ensure it takes full width within max-width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-bottom: 20px; /* Added margin bottom for reset button */
 }
 
 h1 {
-    color: #f0f0f0;
     text-align: center;
+    color: #f0f0f0;
     margin-bottom: 30px;
-    font-size: 2.5em;
-    letter-spacing: 1px;
+    font-size: 2.5em; /* Updated font size to match previous full file */
+    letter-spacing: 1px; /* Added letter spacing as in previous full file */
+    border-bottom: 2px solid #555; /* Retained from original */
+    padding-bottom: 15px; /* Retained from original */
 }
 
-h2, h3 {
+h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
     color: #e0e0e0;
     border-bottom: 2px solid #555;
     padding-bottom: 10px;
@@ -38,26 +42,38 @@ h2, h3 {
     margin-bottom: 20px;
 }
 
-/* --- Statistics Section --- */
+/* --- Statistics Container --- */
 .statistics-container {
-    background-color: #4a4a4a;
-    padding: 20px;
-    border-radius: 8px;
+    background-color: #4a4a4a; /* Updated to match previous full file */
+    padding: 20px; /* Updated to match previous full file */
+    border-radius: 8px; /* Updated to match previous full file */
     margin-bottom: 30px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Updated to match previous full file */
+    border: none; /* Removed border, replaced with inner shadow */
 }
 
 .statistics-container h2,
 .statistics-container h3 {
-    border-bottom-color: #666;
     color: #f0f0f0;
+    border-bottom-color: #666; /* Adjusted border color */
+    margin-top: 0;
+    font-size: 1.5em; /* Retained from original */
+    text-align: left; /* Aligned left as per previous full file layout */
+    padding-bottom: 10px;
+}
+
+.statistics-container h3 {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: left; /* Aligned left as per previous full file layout */
+    padding-bottom: 5px;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: auto auto 1fr; /* Auto for first two columns, 1fr for the last */
-    gap: 10px 20px; /* Adjust gap as needed */
-    align-items: start; /* Align items to the top of their grid area */
+    grid-template-columns: auto auto 1fr; /* Specific columns for detailed stats */
+    gap: 10px 20px; /* Adjusted gap */
+    align-items: start;
 }
 
 .stats-grid p {
@@ -70,7 +86,6 @@ h2, h3 {
     padding: 2px 0; /* Small vertical padding for readability */
 }
 
-/* Target specific paragraphs to place them in the correct grid column */
 .stats-grid p:nth-child(odd) { /* N5 Lessons, N4 Lessons, etc. (odd children go to column 1) */
     grid-column: 1;
 }
@@ -79,73 +94,116 @@ h2, h3 {
     grid-column: 2;
 }
 
-/* Specific placement for Non-JLPT stats in the third column */
 .stats-grid p.non-jlpt-lessons-stat {
     grid-column: 3;
-    grid-row: 1; /* Align with the first row of JLPT stats */
-    justify-self: end; /* Align to the right */
-    padding-left: 20px; /* Add some space from the previous column */
+    grid-row: 1;
+    justify-self: end;
+    padding-left: 20px;
 }
 
 .stats-grid p.non-jlpt-grammar-stat {
     grid-column: 3;
-    grid-row: 2; /* Align with the second row of JLPT stats */
-    justify-self: end; /* Align to the right */
+    grid-row: 2;
+    justify-self: end;
     padding-left: 20px;
-}
-
-.stats-grid p:has(.stat-value) { /* Adjust spacing for all stats lines */
-    padding-bottom: 5px;
 }
 
 .stat-value {
     font-weight: bold;
-    color: #8aff8a;
+    color: #8aff8a; /* Bright green for values */
     margin-left: 10px;
 }
 
 /* --- N-Level and Lesson Headers --- */
 .n-level-header, .lesson-header {
-    background-color: #444;
+    background-color: #444; /* Default background, colors overridden by specific N-level classes */
     padding: 15px 20px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 8px; /* Slightly more rounded than original 6px */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Softer shadow */
     position: relative;
     overflow: hidden;
+    user-select: none; /* Retained user-select properties */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    border-bottom: none; /* Removed border-bottom, rely on box-shadow for separation */
 }
 
 .n-level-header:hover, .lesson-header:hover {
-    background-color: #555;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    background-color: #555; /* Slightly lighter on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
 }
 
 .n-level-header span:first-child, .lesson-header span:first-child {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.3em; /* Slightly smaller for n-level headers */
     color: #f9f9f9;
 }
 
 .header-counts {
-    font-size: 0.85em;
+    font-size: 0.85em; /* Slightly larger for better readability */
     color: #bbb;
-    margin-left: auto; /* Pushes it to the left of buttons */
-    margin-right: 15px; /* Spacing from buttons */
-    white-space: nowrap; /* Keep text on one line */
+    margin-left: auto;
+    margin-right: 15px;
+    white-space: nowrap;
 }
+
+/* N-Level Specific Colors */
+/* Keeping these for distinct N-level branding, but new highlights will layer on top */
+.n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; }
+.n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; }
+.n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
+.n-level-N2 .n-level-header { background-color: #7a5d3e; color: #ffd8b2; }
+.n-level-N1 .n-level-header { background-color: #7a3e3e; color: #ea9999; }
+.n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
+.n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
+
+/* Header highlight for content with bookmarked items and completed children */
+.n-level-header.has-bookmarked-children,
+.lesson-header.has-bookmarked-children {
+    border: 1px solid #d4c132; /* Yellow border */
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Yellow glow */
+    filter: none; /* Ensure no filter interferes */
+}
+
+.n-level-header.all-children-complete,
+.lesson-header.all-children-complete {
+    background-color: #385e38; /* Darker green */
+    box-shadow: 0 4px 10px rgba(0, 150, 0, 0.3); /* Green glow */
+    border: none; /* Remove border if completed to prioritize green highlight */
+    filter: none;
+}
+
+/* Specific styling for text and toggle icon when all children are complete */
+.n-level-header.all-children-complete .toggle-icon,
+.lesson-header.all-children-complete .toggle-icon,
+.n-level-header.all-children-complete span,
+.lesson-header.all-children-complete span {
+    color: #c8ffc8; /* Lighter green text */
+}
+
+/* When both bookmarked and complete, bookmark styling takes precedence */
+.n-level-header.has-bookmarked-children.all-children-complete,
+.lesson-header.has-bookmarked-children.all-children-complete {
+    border: 1px solid #d4c132; /* Keep yellow border */
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Keep yellow glow */
+    background-color: #315065; /* A blend or choose one dominant */
+}
+
 
 /* Toggle icon for headers */
 .toggle-icon {
-    font-size: 1.2em;
+    font-size: 1.2em; /* Slightly larger for better visibility */
     margin-left: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Faster transition */
     color: #ccc;
-    display: flex; /* To center it vertically */
+    display: flex;
     align-items: center;
 }
 
@@ -158,19 +216,13 @@ h2, h3 {
 .n-level-content, .lesson-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.4s ease-out;
+    transition: height 0.4s ease-out; /* Simpler transition */
     background-color: #333;
-    border-radius: 8px;
+    border-radius: 8px; /* Matching header border-radius */
     margin-bottom: 15px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.n-level-content {
-    padding: 0 20px; /* No padding when collapsed */
-}
-
-.lesson-content {
-    padding: 0 15px; /* No padding when collapsed */
+    padding: 0 20px; /* Base padding, height transition will show it */
+    box-sizing: border-box;
 }
 
 .n-level-header.expanded + .n-level-content,
@@ -179,103 +231,189 @@ h2, h3 {
     padding-bottom: 20px;
 }
 
-/* --- Grammar Point List --- */
+/* Lesson Styling */
+.lesson {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    position: relative;
+    border-radius: 8px; /* Added border-radius to lesson container */
+    overflow: hidden; /* For inner shadows/borders */
+}
+
+.lesson-header {
+    background-color: #444444; /* Standard lesson header color */
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Removed transform for simplicity */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.lesson-header span:first-child {
+    flex-shrink: 0;
+}
+
+.lesson-header .header-counts {
+    font-size: 0.8em;
+    color: #b0b0b0;
+    font-weight: normal;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.lesson-header:hover {
+    background-color: #555; /* Consistency with N-level hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly more pronounced shadow on hover */
+}
+
+/* No transform on expand, rely on background/border changes */
+.lesson-header.expanded {
+    background-color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-content {
+    padding: 0 15px; /* Adjusted padding as per previous full file */
+    background-color: #3d3d3d; /* Adjusted background color */
+}
+
+
+/* --- Grammar Point Styling --- */
 .grammar-point-list {
-    list-style: none;
-    padding: 0;
+    list-style-type: none;
+    padding: 10px 0;
     margin: 0;
 }
 
 .grammar-point-wrapper {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 8px 0;
-    border-bottom: 1px dotted rgba(255, 255, 255, 0.08);
-}
-
-.grammar-point-wrapper:last-child {
-    border-bottom: none;
+    align-items: center;
+    margin-bottom: 8px; /* Increased margin for better spacing */
+    gap: 12px;
 }
 
 .grammar-point-item {
-    display: flex;
-    align-items: flex-start;
     flex-grow: 1;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    font-size: 0.95em;
-    padding-right: 15px; /* Space for buttons */
+    max-width: calc(100% - 80px); /* Adjusting for two 38px buttons and gap */
+    padding: 10px 15px;
+    background-color: #4d4d4d;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease; /* Removed transform */
+    position: relative;
+    overflow: hidden;
 }
 
-.grammar-point-number {
-    font-weight: bold;
-    color: #999;
-    margin-right: 10px;
-    min-width: 25px; /* Align numbers */
-    text-align: right;
+.grammar-point-item:hover {
+    background-color: #6a6a6a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.grammar-point-content-area {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .grammar-point-item a {
-    color: #a0c0ff; /* A pleasant blue for links */
+    color: #a0c0ff; /* Changed link color to match previous full file */
     text-decoration: none;
+    font-size: 1.0em;
+    font-weight: normal; /* Default font-weight, not bold */
     transition: color 0.2s ease;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
-.grammar-point-item a:hover {
+.grammar-point-item a:hover { /* Added hover for grammar point links */
     color: #c0d9ff;
     text-decoration: underline;
 }
 
 /* Completed state */
 .grammar-point-item.completed {
-    color: #777; /* Dim text */
+    background-color: #558B55;
+    color: #777; /* Dim text for completed */
+    border: none; /* Removed border, relying on background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-
 .grammar-point-item.completed a {
-    color: #777; /* Dim link */
+    color: #777; /* Dim link for completed */
     text-decoration: line-through;
 }
 
 /* Bookmarked state */
 .grammar-point-item.bookmarked {
-    color: #e6e65a; /* Yellowish for bookmarked */
-    font-weight: 500;
+    background-color: #315065; /* Consistent blue-ish for bookmarked */
+    color: #e6e65a; /* Yellowish for bookmarked text */
+    border: none; /* Removed border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-
 .grammar-point-item.bookmarked a {
-    color: #e6e65a;
+    color: #e6e65a; /* Yellowish link for bookmarked */
     text-decoration: none;
 }
 
 /* Combination (completed and bookmarked) - completed takes precedence visually */
 .grammar-point-item.completed.bookmarked {
-    color: #777;
+    background-color: #315065; /* Keep bookmarked background */
+    color: #777; /* Still dim text */
 }
-
 .grammar-point-item.completed.bookmarked a {
-    color: #777;
+    color: #777; /* Still dim link */
     text-decoration: line-through;
 }
 
-/* --- Action Buttons (Bookmark/Complete on individual GPs) --- */
+.grammar-point-item.bookmarked:hover {
+    background-color: #3d5e7a; /* Darker blue on hover */
+}
+
+.grammar-point-item.completed:hover {
+    background-color: #669966; /* Slightly lighter green on hover */
+}
+
+.grammar-point-number {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #999; /* Adjusted color */
+    width: 1.5em;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+
+/* Action Buttons (Bookmark/Complete on individual GPs) */
 .action-buttons {
     display: flex;
-    gap: 5px;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    gap: 5px; /* Reduced gap for a tighter look */
+    flex-shrink: 0;
 }
 
 .action-buttons button {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 5px; /* Adjusted padding */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     transition: background-color 0.2s ease;
+    width: 38px; /* Fixed width/height */
+    height: 38px;
 }
 
 .action-buttons button:hover {
@@ -283,8 +421,8 @@ h2, h3 {
 }
 
 .action-buttons button img {
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.2em; /* Adjusted icon size */
+    height: 1.2em; /* Adjusted icon size */
     filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
     transition: filter 0.2s ease;
 }
@@ -301,9 +439,9 @@ h2, h3 {
 .mark-level-complete-btn,
 .mark-level-reset-btn {
     background: none;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin white border */
     border-radius: 50%;
-    width: 40px;
+    width: 40px; /* Consistent size */
     height: 40px;
     display: flex;
     align-items: center;
@@ -317,10 +455,21 @@ h2, h3 {
     z-index: 1; /* Ensure buttons are above potential flash animation */
 }
 
+/* Position for the reset button - removed margin-right, using gap in header */
+.n-level-header .mark-level-reset-btn,
+.lesson-header .mark-level-reset-btn {
+    margin-right: 0; /* Let flex gap handle spacing */
+}
+
 .mark-level-complete-btn:hover:not(.holding),
 .mark-level-reset-btn:hover:not(.holding) {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mark-level-complete-btn.holding,
+.mark-level-reset-btn.holding {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Icon (image) inside the button */
@@ -349,7 +498,6 @@ h2, h3 {
 .mark-level-reset-btn:not(.holding):hover img {
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
 }
-
 
 /* Specific colors for completed/reset state */
 .mark-level-complete-btn.level-completed img {
@@ -428,34 +576,13 @@ h2, h3 {
 }
 
 
-/* Styles for headers that have completed all children */
-.n-level-header.all-children-complete,
-.lesson-header.all-children-complete {
-    background-color: #385e38; /* Darker green */
-    box-shadow: 0 4px 10px rgba(0, 150, 0, 0.3); /* Green glow */
-}
-
-.n-level-header.all-children-complete .toggle-icon,
-.lesson-header.all-children-complete .toggle-icon,
-.n-level-header.all-children-complete span,
-.lesson-header.all-children-complete span {
-    color: #c8ffc8;
-}
-
-/* Styles for headers that have bookmarked children */
-.n-level-header.has-bookmarked-children,
-.lesson-header.has-bookmarked-children {
-    border: 1px solid #d4c132; /* Yellow border */
-    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Yellow glow */
-}
-
 /* Reset All User Data Button */
 #resetUserData {
-    background-color: #8b0000;
+    background-color: #8b0000; /* Darker red */
     color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
+    padding: 12px 25px; /* Larger padding */
+    border: none; /* No border */
+    border-radius: 8px; /* Consistent border radius */
     cursor: pointer;
     font-size: 1.1em;
     margin-top: 30px;
@@ -473,7 +600,7 @@ h2, h3 {
 }
 
 #resetUserData img {
-    width: 1.5em;
+    width: 1.5em; /* Larger icon */
     height: 1.5em;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
