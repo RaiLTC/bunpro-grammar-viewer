@@ -57,13 +57,14 @@ h1 {
 .n-level-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Slower transition for content */
+    /* Increased transition duration for smoother opening/closing */
+    transition: max-height 0.7s ease-in-out;
     background-color: #333333; /* Background for N-level content */
 }
 
 .n-level-content.expanded {
-    max-height: 20000px; /* Large enough to accommodate all content */
-    transition: max-height 0.6s ease-in; /* Slower transition for expansion */
+    /* Increased max-height to ensure all content fits, a very large value is safe */
+    max-height: 50000px;
 }
 
 /* Lesson Styling */
@@ -87,14 +88,15 @@ h1 {
 .lesson-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out; /* Faster transition for lesson content */
+    /* Increased transition duration for smoother opening/closing */
+    transition: max-height 0.5s ease-in-out;
     padding: 0 20px; /* Padding for collapsed state */
     background-color: #3d3d3d; /* Slightly different background for lesson content */
 }
 
 .lesson-content.expanded {
-    max-height: 5000px; /* Large enough */
-    transition: max-height 0.5s ease-in;
+    /* Increased max-height to ensure all content fits */
+    max-height: 10000px;
     padding-bottom: 15px; /* Add padding when expanded */
 }
 
@@ -103,7 +105,6 @@ h1 {
     list-style-type: none;
     padding: 10px 0;
     margin: 0;
-    /* Removed grid layout */
 }
 
 .grammar-point-item {
@@ -114,13 +115,35 @@ h1 {
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px; /* Add spacing between items */
-    transition: background-color 0.1s ease-in-out; /* Smooth transition for hover */
+    /* Removed hover transition from here, will handle with separate animation */
+    position: relative; /* Needed for ::before pseudo-element */
+    overflow: hidden; /* Ensures the flash doesn't go outside the box */
 }
 
-.grammar-point-item:hover {
-    background-color: #6a6a6a; /* Lighter on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+/* Hover Flash Animation */
+.grammar-point-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* White flash */
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.1s ease-out; /* Quick fade out */
 }
+
+.grammar-point-item:hover::before {
+    opacity: 1; /* Instantly appear */
+    animation: flash-fade-out 0.3s forwards; /* Trigger animation */
+}
+
+@keyframes flash-fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 
 .grammar-point-number {
     font-size: 0.9em;
@@ -129,6 +152,7 @@ h1 {
     color: #bbb; /* Light grey for numbers */
     width: 1.5em; /* Fixed width for alignment */
     text-align: right; /* Align numbers to the right */
+    flex-shrink: 0; /* Prevent number from shrinking */
 }
 
 .grammar-point-item a {
@@ -136,6 +160,9 @@ h1 {
     text-decoration: none;
     font-size: 0.95em;
     transition: color 0.2s ease;
+    flex-grow: 1; /* Allow link to take available space */
+    z-index: 2; /* Ensure link is above the flash pseudo-element */
+    position: relative; /* Ensure z-index works */
 }
 
 .grammar-point-item a:hover {
@@ -147,54 +174,32 @@ h1 {
 .toggle-icon {
     font-size: 0.8em;
     transition: transform 0.2s ease;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-left: 10px; /* Spacing for icon */
 }
 
 .expanded .toggle-icon {
     transform: rotate(90deg); /* Rotate for expanded state */
 }
 
-/* Pulse Animation */
-@keyframes pulse-effect-n5 {
-    0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } /* Light green */
-    70% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0); }
+/* Pulse Animation - Now separate keyframes for each N-Level color */
+/* Adjust opacity and blur for softer pulse */
+@keyframes pulse-effect-n5 { 0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); } 100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0); } }
+@keyframes pulse-effect-n4 { 0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); } 100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0); } }
+@keyframes pulse-effect-n3 { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0); } }
+@keyframes pulse-effect-n2 { 0% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 191, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0); } }
+@keyframes pulse-effect-n1 { 0% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 128, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0); } }
+@keyframes pulse-effect-non-jlpt { 0% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(170, 170, 170, 0); } 100% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0); } }
+@keyframes pulse-effect-unknown { 0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); } }
+
+
+/* Apply pulse animation to the N-level CONTAINER, not just the header */
+.n-level.pulsing .n-level-header {
+    animation: none; /* Reset if previously applied */
+    /* Add animation directly to the header, it's specific to each N-level */
 }
 
-@keyframes pulse-effect-n4 {
-    0% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0.4); } /* Light green */
-    70% { box-shadow: 0 0 0 10px rgba(146, 255, 146, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(146, 255, 146, 0); }
-}
-
-@keyframes pulse-effect-n3 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0.4); } /* Light yellow */
-    70% { box-shadow: 0 0 0 10px rgba(255, 255, 153, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 153, 0); }
-}
-
-@keyframes pulse-effect-n2 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0.4); } /* Light orange */
-    70% { box-shadow: 0 0 0 10px rgba(255, 191, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 191, 128, 0); }
-}
-
-@keyframes pulse-effect-n1 {
-    0% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0.4); } /* Light red */
-    70% { box-shadow: 0 0 0 10px rgba(255, 128, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 128, 128, 0); }
-}
-
-@keyframes pulse-effect-non-jlpt {
-     0% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0.4); } /* Light grey */
-    70% { box-shadow: 0 0 0 10px rgba(170, 170, 170, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(170, 170, 170, 0); }
-}
-@keyframes pulse-effect-unknown {
-    0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); } /* Light bright red */
-    70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); }
-}
-
+/* This is where the specific N-level pulse is applied */
 .n-level-N5.pulsing .n-level-header { animation: pulse-effect-n5 0.8s ease-out forwards; }
 .n-level-N4.pulsing .n-level-header { animation: pulse-effect-n4 0.8s ease-out forwards; }
 .n-level-N3.pulsing .n-level-header { animation: pulse-effect-n3 0.8s ease-out forwards; }
@@ -203,6 +208,13 @@ h1 {
 .n-level-Non-JLPT.pulsing .n-level-header { animation: pulse-effect-non-jlpt 0.8s ease-out forwards; }
 .n-level-Unknown-N-Level.pulsing .n-level-header { animation: pulse-effect-unknown 0.8s ease-out forwards; }
 
+/* Lesson header pulsing (uses generic white pulse) */
 .lesson-header.pulsing {
-    animation: pulse-effect 0.8s ease-out forwards; /* Default white pulse for lesson headers */
+    animation: pulse-effect-lesson 0.8s ease-out forwards;
+}
+
+@keyframes pulse-effect-lesson {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
