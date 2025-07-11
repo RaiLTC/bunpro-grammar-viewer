@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ICON_PATHS = {
         bookmarkSolid: 'icons/bookmark-solid.svg',
         checkSolid: 'icons/circle-check-solid.svg',
-        warningTriangle: 'icons/warning-triangle.svg'
+        warningTriangle: 'icons/triangle-exclamation-solid.svg'
     };
 
     async function loadGrammarData() {
