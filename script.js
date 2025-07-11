@@ -79,15 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             grammarPointItemElement.classList.toggle('bookmarked', state.bookmarked);
             grammarPointItemElement.classList.toggle('completed', state.completed);
 
-            // Update the status text within the grammar point
-            const statusTextSpan = grammarPointItemElement.querySelector('.grammar-point-status-text');
-            if (statusTextSpan) {
-                let statusText = [];
-                if (state.bookmarked) statusText.push('Bookmarked');
-                if (state.completed) statusText.push('Completed');
-                statusTextSpan.textContent = statusText.length > 0 ? ` (${statusText.join(', ')})` : '';
-            }
-
             renderActionButtons(grammarPointItemElement, gpId); // Re-render buttons to apply correct filters
         }
 
@@ -517,7 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                                     <span class="grammar-point-number">${gpIdx + 1}.</span>
                                                     <a href="${gp.link}" target="_blank" rel="noopener noreferrer">
                                                         ${gp.text}
-                                                        <span class="grammar-point-status-text"></span>
                                                     </a>
                                                 </div>
                                             </div>

@@ -117,6 +117,7 @@ h1 {
 
 .n-level-header .n-level-text { /* New class for the text span */
     flex-shrink: 0;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
 }
 
 .n-level-header .header-counts {
@@ -271,19 +272,19 @@ h1 {
 
 /* Bookmarked grammar point styling: SOLID BLUE background */
 .grammar-point-item.bookmarked {
-    background-color: #3f5060; /* Darker blue-grey solid background */
+    background-color: #2A4B6B; /* More intense blue */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
 }
 
 /* Completed grammar point styling: SOLID GREEN background */
 .grammar-point-item.completed {
-    background-color: #405040; /* Darker green-grey solid background */
+    background-color: #2E5C2E; /* More intense green */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
 }
 
-/* Combined bookmarked and completed: A neutral blend, rely on icons for distinction */
+/* Combined bookmarked and completed: A neutral, darker blend */
 .grammar-point-item.bookmarked.completed {
-    background-color: #384545; /* A neutral, slightly darker blend */
+    background-color: #2C4646; /* A neutral, slightly darker green-blue blend */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Keep subtle shadow */
 }
 
@@ -312,14 +313,6 @@ h1 {
     width: 1.5em;
     text-align: right;
     flex-shrink: 0;
-}
-
-/* New: Status text for grammar points */
-.grammar-point-status-text {
-    font-size: 0.8em;
-    color: #a0a0a0;
-    margin-left: 8px;
-    white-space: nowrap;
 }
 
 
@@ -353,12 +346,12 @@ h1 {
     width: 1.8em;
     height: 1.8em;
     /* Default filter for individual action icons - dim grey */
-    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8);
+    filter: brightness(0.7) grayscale(100%); /* Dimmer grey */
     transition: filter 0.2s ease;
 }
 
 .action-buttons button:hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Brighter white on hover */
+    filter: brightness(1.5) grayscale(0%); /* Brighter white on hover */
 }
 
 /* Bookmarked icon filter: BLUE + Shadow */
@@ -424,7 +417,7 @@ h1 {
 .mark-lesson-reset-btn img {
     width: 1.6em; /* Complete icon slightly larger */
     height: 1.6em;
-    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.8); /* Dim grey */
+    filter: brightness(0.7) grayscale(100%); /* Dim grey */
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
@@ -441,7 +434,7 @@ h1 {
 .mark-level-reset-btn:not(.holding):hover img,
 .mark-lesson-complete-btn:not(.holding):hover img,
 .mark-lesson-reset-btn:not(.holding):hover img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* Brighter white on hover */
+    filter: brightness(1.5) grayscale(0%); /* Brighter white on hover */
 }
 
 /* Holding state filter - makes the icon brighter with its intended color */
@@ -533,7 +526,7 @@ h1 {
 .reset-button img {
     width: 1.3em;
     height: 1.3em;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* White trash icon */
+    filter: brightness(1.5) grayscale(0%); /* White trash icon (originally black) */
 }
 
 /* Pulsing effect for newly expanded N-level text */
@@ -557,9 +550,9 @@ h1 {
 
 /* Finisher flash for button icons AND toggle icons */
 @keyframes flash-white-icon {
-    0% { filter: brightness(1); opacity: 1; }
-    50% { filter: brightness(3); opacity: 1; } /* Very bright white */
-    100% { filter: brightness(1); opacity: 1; }
+    0% { filter: brightness(1) grayscale(0%); }
+    50% { filter: brightness(3) grayscale(0%); } /* Very bright white */
+    100% { filter: brightness(1) grayscale(0%); }
 }
 
 /* Apply flash animation to images and toggle icons */
