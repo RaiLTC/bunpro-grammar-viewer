@@ -26,12 +26,54 @@ h1 {
     padding-bottom: 15px;
 }
 
+/* Statistics Container */
+.statistics-container {
+    background-color: #383838;
+    border: 1px solid #4a4a4a;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.statistics-container h2 {
+    color: #f0f0f0;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px 20px;
+}
+
+.stats-grid p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats-grid .stat-value {
+    font-weight: bold;
+    color: #e0e0e0;
+    font-size: 1.1em;
+}
+
+
 /* N-Level Styling */
 .n-level {
     margin-bottom: 20px;
     border: 1px solid #444;
     border-radius: 6px;
-    overflow: hidden; /* Ensures borders/shadows clip correctly */
+    overflow: hidden;
 }
 
 .n-level-header {
@@ -40,14 +82,27 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Distribute items */
     align-items: center;
-    transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease; /* Transition box-shadow instead of border-color */
+    gap: 10px; /* Space between items in header */
+    transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    user-select: none; /* Make uncopyable */
-    -webkit-user-select: none; /* For Safari */
-    -moz-user-select: none; /* For Firefox */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     -ms-user-select: none;
+}
+
+.n-level-header span:first-child {
+    flex-shrink: 0; /* Prevent "N5 Grammar" from shrinking */
+}
+
+.n-level-header .header-counts {
+    font-size: 0.7em; /* Smaller font for counts */
+    color: #c0c0c0;
+    font-weight: normal;
+    flex-grow: 1; /* Allow it to take up space */
+    text-align: right;
 }
 
 /* N-Level Specific Colors (Darker shades for dark theme) */
@@ -63,13 +118,36 @@ h1 {
 .n-level-header.has-bookmarked-children {
     box-shadow: inset 0 0 0 3px #6ab0de, /* Inset border-like glow */
                 0 4px 8px rgba(0, 0, 0, 0.3); /* Existing external shadow */
-    filter: none; /* Remove brightness filter */
+    filter: none;
 }
+
+/* New: N-level header for fully completed levels */
+.n-level-header.all-children-complete {
+    box-shadow: inset 0 0 0 3px #558B55, /* Green inset border for complete */
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    filter: none;
+}
+/* When both are true, bookmark (blue) overrides complete (green) border visual */
+.n-level-header.has-bookmarked-children.all-children-complete {
+    box-shadow: inset 0 0 0 3px #6ab0de, /* Blue inset border for bookmarked */
+                0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.n-level-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    background-color: #333333;
+    will-change: height;
+    box-sizing: border-box;
+}
+
 
 /* Lesson Styling */
 .lesson {
     margin-bottom: 5px;
-    margin-top: 10px; /* Added spacing between N-level and first lesson */
+    margin-top: 10px;
 }
 
 .lesson-header {
@@ -77,15 +155,28 @@ h1 {
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
-    background-color: #444444; /* Darker grey for lesson headers */
+    background-color: #444444;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Distribute items */
     align-items: center;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease; /* Added transform transition */
-    user-select: none; /* Make uncopyable */
+    gap: 10px; /* Space between items */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+.lesson-header span:first-child {
+    flex-shrink: 0;
+}
+
+.lesson-header .header-counts {
+    font-size: 0.8em; /* Smaller font for counts */
+    color: #b0b0b0;
+    font-weight: normal;
+    flex-grow: 1; /* Allow it to take up space */
+    text-align: right;
 }
 
 /* Lesson header highlight for content with bookmarked items - now an inset box-shadow */
@@ -94,46 +185,60 @@ h1 {
                 0 2px 5px rgba(0, 0, 0, 0.2); /* Existing external shadow */
 }
 
-/* New: Lesson header hover animation - ensures bookmark shadow is preserved */
+/* New: Lesson header for fully completed lessons */
+.lesson-header.all-children-complete {
+    box-shadow: inset 0 0 0 3px #558B55, /* Green inset border for complete */
+                0 2px 5px rgba(0, 0, 0, 0.2);
+}
+/* When both are true, bookmark (blue) overrides complete (green) border visual */
+.lesson-header.has-bookmarked-children.all-children-complete {
+    box-shadow: inset 0 0 0 3px #6ab0de, /* Blue inset border for bookmarked */
+                0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Lesson header hover animation - ensures bookmark/complete shadow is preserved */
 .lesson-header:hover {
-    transform: scale(1.01); /* Subtle pop */
-    /* Only apply an additional box-shadow, don't override the existing 'inset' one */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), var(--lesson-header-inset-shadow, none);
+    transform: scale(1.01);
+    /* Combine original box-shadow with an additional external one for hover effect */
+    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* New: Lesson header click (expanded/collapsed) animation - ensures bookmark shadow is preserved */
-/* We'll use the .expanded class for the 'clicked' state, similar to grammar points */
+/* Lesson header click (expanded/collapsed) animation - ensures bookmark/complete shadow is preserved */
 .lesson-header.expanded {
-    transform: scale(1.01); /* Subtle pop when expanded */
-    /* Only apply an additional box-shadow, don't override the existing 'inset' one */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), var(--lesson-header-inset-shadow, none);
+    transform: scale(1.01);
+    /* Combine original box-shadow with an additional external one for expanded effect */
+    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* Define a CSS variable for the inset shadow, so we can re-use it on hover/expanded */
+/* Define CSS variables for inset shadows, so we can re-use them on hover/expanded */
 .lesson-header.has-bookmarked-children {
     --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
+}
+.lesson-header.all-children-complete {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #558B55;
+}
+/* When both are true, bookmark takes precedence for the visual border */
+.lesson-header.has-bookmarked-children.all-children-complete {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
+}
+
+/* Apply the combined shadow based on the variable if present */
+.lesson-header.has-bookmarked-children,
+.lesson-header.all-children-complete,
+.lesson-header.has-bookmarked-children.all-children-complete {
     box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 
-.n-level-content {
-    height: 0; /* Start at 0 height */
-    overflow: hidden; /* Hide overflow content when collapsed */
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
-    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
-    background-color: #333333; /* Background for N-level content */
-    will-change: height; /* Hint to the browser for optimization */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
-}
-
 .lesson-content {
-    height: 0; /* Start at 0 height */
-    overflow: hidden; /* Hide overflow content when collapsed */
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animate height, smooth ease-in-out */
-    padding: 0 20px; /* Padding for collapsed state - IMPORTANT: Add this padding to the height calculation in JS! */
-    background-color: #3d3d3d; /* Slightly different background for lesson content */
-    will-change: height; /* Hint to the browser for optimization */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    background-color: #3d3d3d;
+    will-change: height;
+    box-sizing: border-box;
 }
 
 
@@ -144,47 +249,45 @@ h1 {
     margin: 0;
 }
 
-/* New wrapper for grammar point item and its buttons */
 .grammar-point-wrapper {
-    display: flex; /* Arrange item and buttons side-by-side */
-    align-items: center; /* Vertically align them */
-    margin-bottom: 5px; /* Space between wrappers */
-    gap: 8px; /* Space between grammar point box and icons */
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 8px;
 }
 
 .grammar-point-item {
-    flex-grow: 1; /* Allow grammar point to take available space */
+    flex-grow: 1;
     padding: 10px 15px;
     background-color: #4d4d4d; /* Base color */
     border-radius: 4px;
-    display: flex; /* Use flex to align text content and button column (if any inside) */
+    display: flex;
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, transform 0.1s ease; /* Added border-color transition */
     position: relative;
     overflow: hidden;
 }
 
 .grammar-point-item:hover {
-    background-color: #6a6a6a; /* Lighter background on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+    background-color: #6a6a6a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* Fix for grammar point number and text display */
 .grammar-point-content-area {
-    display: flex; /* Makes number and link inline */
-    align-items: center; /* Vertically align them */
-    flex-grow: 1; /* Allows content area to take available space */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .grammar-point-item a {
-    color: #e0e0e0; /* Revert to light text color for links */
+    color: #e0e0e0;
     text-decoration: none;
-    font-size: 1.0em; /* Slightly larger font size for grammar text */
-    font-weight: 600; /* Bolder font weight for grammar text */
+    font-size: 1.0em;
+    font-weight: 600;
     transition: color 0.2s ease;
-    flex-grow: 1; /* Allow link to take available space */
-    display: flex; /* For possible future inner flex items */
+    flex-grow: 1;
+    display: flex;
     align-items: center;
 }
 
@@ -194,41 +297,47 @@ h1 {
     color: #e0ffe0; /* Lighter green text for contrast */
     border: 1px solid #669966; /* Slightly brighter green border */
     transform: scale(1.01); /* Subtle pop */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Highlight for Bookmarked Grammar Point */
 .grammar-point-item.bookmarked {
     background-color: #315065; /* Dimmer blue for bookmark highlight */
-    color: #e0e0e0; /* Ensure text remains light and readable */
+    color: #e0e0e0;
     border: 1px solid #4f748f; /* Dimmer, matching blue border */
     transform: scale(1.01); /* Subtle pop */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Ensure hover styles still apply over highlights, or adapt them */
+/* Visual precedence: If both bookmarked AND completed, bookmark style overrides complete style */
+.grammar-point-item.bookmarked.completed {
+    background-color: #315065; /* Keep blue background */
+    border: 1px solid #4f748f; /* Keep blue border */
+    /* Filters for text color from completed state may still apply based on specificity,
+       ensure base text color for item is sufficient. */
+}
+
+
 .grammar-point-item.bookmarked:hover {
-    background-color: #3d5e7a; /* Slightly lighter blue on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Apply hover shadow */
-    border-color: #4f748f; /* Keep border blue on hover */
+    background-color: #3d5e7a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-color: #4f748f;
 }
 
 .grammar-point-item.completed:hover {
-    filter: brightness(1.1); /* Slightly brighten the highlighted color on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+    filter: brightness(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 
 .grammar-point-number {
     font-size: 0.9em;
     font-weight: bold;
-    margin-right: 10px; /* Spacing between number and text */
-    color: #bbb; /* Light grey for numbers */
-    width: 1.5em; /* Fixed width for alignment */
-    text-align: right; /* Align numbers to the right */
-    flex-shrink: 0; /* Prevent number from shrinking */
+    margin-right: 10px;
+    color: #bbb;
+    width: 1.5em;
+    text-align: right;
+    flex-shrink: 0;
 }
 
 
@@ -236,112 +345,99 @@ h1 {
 .toggle-icon {
     font-size: 0.8em;
     transition: transform 0.2s ease;
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    margin-left: 10px; /* Spacing for icon */
+    flex-shrink: 0;
+    margin-left: 10px;
 }
 
 .expanded .toggle-icon {
-    transform: rotate(90deg); /* Rotate for expanded state */
+    transform: rotate(90deg);
 }
 
 /* Pulse (Breathing) Animation for N-level header */
 @keyframes pulse-brightness {
-    0% { filter: brightness(1); } /* Normal brightness */
-    50% { filter: brightness(1.2); } /* 20% brighter */
-    100% { filter: brightness(1); } /* Back to normal for loop */
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+    100% { filter: brightness(1); }
 }
 
-/* Apply pulse animation ONLY to the N-level header */
 .n-level-header.pulsing {
     animation: pulse-brightness 1.5s ease-in-out infinite;
 }
 
-/* Buttons for actions - now inline (horizontal) */
+/* Action Buttons */
 .action-buttons {
     display: flex;
-    flex-direction: row; /* Display buttons horizontally */
-    gap: 8px; /* Space between icons */
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    flex-direction: row;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .action-buttons button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease; /* Re-added box-shadow transition */
+    transition: transform 0.1s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
     display: flex;
     align-items: center;
     justify-content: center;
     width: 38px;
     height: 38px;
     padding: 0;
+    border-radius: 50%; /* Make it round for the shadow */
 }
 
 .action-buttons button:hover {
-    transform: scale(1.05); /* Slightly larger on hover, apply to button itself */
+    transform: scale(1.05);
 }
 
-/* Style for SVG icons within buttons */
 .action-buttons button img {
-    width: 1.8em; /* SLIGHTLY LARGER ICON SIZE */
-    height: 1.8em; /* SLIGHTLY LARGER ICON SIZE */
-    /* Default filter for "inactive" icons - dimmer, more gray */
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* More gray/dimmer */
-    transition: filter 0.2s ease; /* Smooth transition for icon highlight */
+    width: 1.8em;
+    height: 1.8em;
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
+    transition: filter 0.2s ease;
 }
 
-/* Hover effect for inactive icons: more intense by 15% */
 .action-buttons button:hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* 1.2 * 1.15 = 1.38 */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
 }
 
-/* Specific color for bookmarked icon when its grammar point is bookmarked */
-.action-buttons button.active-bookmark img {
-    /* Brighter blue for active bookmark */
-    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); /* Brighter blue */
-}
-
-/* Specific color for completed icon when its grammar point is completed */
-.action-buttons button.active-complete img {
-    /* Brighter green for active complete */
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Brighter green */
-}
-
-/* New: Soft shadow for active icons */
+/* Active Icon Styles - No box highlight, just brighter icon and soft shadow */
 .action-buttons button.active-bookmark {
     box-shadow: 0 0 5px rgba(49, 80, 101, 0.7); /* Soft blue glow */
-    border-radius: 50%; /* Make it round */
-    transform: scale(1.01); /* Bring back the subtle pop */
+    transform: none; /* No pop on button itself, only color/shadow */
+}
+.action-buttons button.active-bookmark img {
+    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%); /* Brighter blue */
 }
 
 .action-buttons button.active-complete {
     box-shadow: 0 0 5px rgba(85, 139, 85, 0.7); /* Soft green glow */
-    border-radius: 50%; /* Make it round */
-    transform: scale(1.01); /* Bring back the subtle pop */
+    transform: none; /* No pop on button itself, only color/shadow */
+}
+.action-buttons button.active-complete img {
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Brighter green */
 }
 
-
-/* Reset bookmark/complete icon filter on hover even if highlighted */
+/* Hover for active icons: back to bright white */
 .action-buttons button.active-bookmark:hover img,
-.action-buttons button.action-complete:hover img { /* Corrected typo: .action-complete should be .active-complete */
-    /* Keeping this as bright white on hover for active icons for stronger feedback */
+.action-buttons button.active-complete:hover img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
 }
 
-/* Styles for Reset User Data button */
+/* Reset User Data Button */
 #resetUserData {
-    background-color: #a04040; /* Reddish tone for reset */
+    background-color: #a04040;
     color: #ffffff;
     border: 1px solid #b05050;
     padding: 8px 15px;
     font-size: 0.9em;
     border-radius: 6px;
     cursor: pointer;
-    display: flex; /* Use flex to align icon and text */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    gap: 8px; /* Space between icon and text */
-    margin: 30px auto 10px auto; /* Center it with margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 30px auto 10px auto;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -351,8 +447,80 @@ h1 {
 }
 
 #resetUserData img {
-    width: 1.3em; /* Adjust size of warning icon */
+    width: 1.3em;
     height: 1.3em;
-    /* Filter to make warning icon white/bright */
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+}
+
+/* Mark N-Level Complete Button */
+.mark-nlevel-complete-btn {
+    background-color: #4a4a4a;
+    color: #fff;
+    border: 1px solid #666;
+    padding: 6px 12px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto; /* Push to the right */
+    position: relative; /* For progress bar positioning */
+    overflow: hidden; /* Hide overflow of progress bar */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    min-width: 120px; /* Ensure consistent width */
+    text-align: center;
+}
+
+.mark-nlevel-complete-btn:hover {
+    background-color: #5a5a5a;
+    border-color: #777;
+}
+
+.mark-nlevel-complete-btn.holding {
+    background-color: #6a6a6a; /* Slightly darker while holding */
+    cursor: progress;
+}
+
+.mark-nlevel-complete-btn .progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0%;
+    height: 0%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3); /* Translucent white */
+    z-index: 1; /* Below text */
+    pointer-events: none; /* Do not interfere with button clicks */
+    box-sizing: border-box; /* Include padding/border in width/height */
+}
+
+/* Circular animation for progress bar */
+.mark-nlevel-complete-btn .progress-bar.active {
+    animation: expandCircle 3s forwards; /* 3 seconds, stops at end */
+    animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); /* Starts fast, slows down */
+}
+
+@keyframes expandCircle {
+    0% {
+        width: 0%;
+        height: 0%;
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Flash animation for N-level container */
+@keyframes flash-highlight {
+    0% { box-shadow: 0 0 0px transparent; }
+    50% { box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); } /* Bright white glow */
+    100% { box-shadow: 0 0 0px transparent; }
+}
+
+.n-level.flash-animation {
+    animation: flash-highlight 0.8s ease-out forwards;
 }
