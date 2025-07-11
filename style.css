@@ -37,7 +37,6 @@ h1 {
 }
 
 .statistics-container h2 {
-    /* This H2 was for "Statistics" which is now removed. Keeping the style just in case it's used elsewhere. */
     color: #f0f0f0;
     margin-top: 0;
     margin-bottom: 15px;
@@ -116,15 +115,15 @@ h1 {
     -ms-user-select: none;
 }
 
-.n-level-header span:first-child {
-    flex-shrink: 0; /* Prevent the main text from shrinking */
+.n-level-header .n-level-text { /* New class for the text span */
+    flex-shrink: 0;
 }
 
 .n-level-header .header-counts {
     font-size: 0.7em;
     color: #c0c0c0;
     font-weight: normal;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
     margin-right: auto; /* Pushes subsequent items to the right */
 }
 
@@ -202,8 +201,6 @@ h1 {
     margin-right: auto; /* Pushes subsequent items to the right */
 }
 
-/* No specific margin-left needed for the complete/reset buttons as header-counts handles pushing them */
-
 .lesson-header.has-bookmarked-children {
     --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
     box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -273,9 +270,10 @@ h1 {
     transform: translateY(-1px);
 }
 
+/* Updated: Bookmarked grammar point styling to be consistent with complete */
 .grammar-point-item.bookmarked {
-    box-shadow: inset 0 0 0 2px #6ab0de;
-    background-color: #4a5d6e; /* Slightly different background for bookmarked */
+    box-shadow: inset 0 0 0 2px #558B55; /* Green border */
+    background-color: #4f5a4f; /* Greenish background */
 }
 
 .grammar-point-item.completed {
@@ -283,10 +281,10 @@ h1 {
     background-color: #4f5a4f; /* Slightly different background for completed */
 }
 
-/* Combined bookmarked and completed */
+/* Combined bookmarked and completed - if both, prefer the green border */
 .grammar-point-item.bookmarked.completed {
-    box-shadow: inset 0 0 0 2px #6ab0de, inset 0 0 0 2px #558B55; /* Blue and green borders */
-    background-color: #4d5555; /* A blend or neutral color */
+    box-shadow: inset 0 0 0 2px #558B55; /* Keep green border */
+    background-color: #4f5a4f; /* Keep greenish background */
 }
 
 .grammar-point-content-area {
@@ -353,21 +351,13 @@ h1 {
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
 }
 
-/* Active Icon Styles - No box highlight, just brighter icon and soft shadow */
-.action-buttons button.bookmarked {
-    box-shadow: 0 0 5px rgba(49, 80, 101, 0.7);
-    transform: none;
-}
+/* Updated: Bookmarked icon filter to be green */
 .action-buttons button.bookmarked img {
-    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%);
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green for bookmarked */
 }
 
-.action-buttons button.completed {
-    box-shadow: 0 0 5px rgba(85, 139, 85, 0.7);
-    transform: none;
-}
 .action-buttons button.completed img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green for completed */
 }
 
 /* Combined bookmarked and completed */
@@ -487,7 +477,8 @@ h1 {
     fill: none;
 }
 
-.progress-circle-fg { /* Changed from .progress-circle-fill to .progress-circle-fg */
+/* Updated: Progress circle fill transition for ease-out effect */
+.progress-circle-fg {
     stroke: white; /* Default white, will be overridden by JS for complete/reset */
     stroke-width: 3;
     fill: none;
@@ -497,7 +488,8 @@ h1 {
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
     opacity: 0; /* Initially hidden */
-    transition: stroke-dashoffset 0.3s ease, opacity 0.1s ease-in; /* Default transition, overridden by JS */
+    /* Updated: cubic-bezier for ease-out effect */
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.1s ease-in;
 }
 
 /* Reset All Button Styling */
@@ -534,8 +526,7 @@ h1 {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5); /* White trash icon */
 }
 
-/* Pulsing effect for newly expanded N-level */
-/* Target the text span inside the header for pulsing */
+/* Pulsing effect for newly expanded N-level text */
 .n-level-header .n-level-text.pulsing {
     animation: pulse-text 1.5s infinite;
 }
@@ -549,9 +540,10 @@ h1 {
 /* Toggle Icon (Dorito) Animation */
 .toggle-icon {
     font-size: 0.8em;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Match content transition speed */
     display: inline-block; /* Essential for transform to work */
     color: #bbb; /* Default color */
+    /* Transition speed will be set by JS to match content expansion/collapse */
+    transition: transform var(--toggle-transition-duration) var(--toggle-transition-easing);
 }
 
 /* Finisher flash for button icons AND toggle icons */
@@ -568,4 +560,40 @@ h1 {
 .mark-lesson-reset-btn img.flash-white-icon,
 .toggle-icon.flash-white-icon {
     animation: flash-white-icon 0.3s ease-out;
+}
+
+/* New: N-Level Bookmark Indicator */
+.n-level-bookmark-indicator {
+    display: none; /* Hidden by default, shown by JS */
+    margin-right: 10px; /* Space from the next element */
+    width: 1.5em; /* Fixed size for the icon */
+    height: 1.5em;
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green color */
+    transform-origin: center;
+    animation: none; /* No animation by default */
+}
+
+.n-level-bookmark-indicator.active {
+    display: block; /* Show when active */
+    animation: heartbeat 1.5s infinite ease-in-out; /* Heartbeat animation */
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); }
+    25% { transform: scale(1.1); filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(150%) contrast(100%); } /* Brighter */
+    50% { transform: scale(1); filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); }
+    75% { transform: scale(0.9); filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(80%) contrast(100%); } /* Slightly dimmer */
+    100% { transform: scale(1); filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); }
+}
+
+/* New: Header Flash Animation for Actions */
+@keyframes header-flash {
+    0% { box-shadow: inset 0 0 0 0px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: inset 0 0 0 0px rgba(255, 255, 255, 0); }
+}
+
+.n-level-header.flash-action,
+.lesson-header.flash-action {
+    animation: header-flash 0.5s ease-out;
 }
