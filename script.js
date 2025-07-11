@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProgress();
             renderStatistics();
             renderGrammarData(allGrammarData);
-            addResetButton();
+            // addResetButton(); // Removed: No longer needed as per discussion
             updateParentHeaderStates();
         } catch (error) {
             console.error("Could not load grammar data:", error);
@@ -99,23 +99,24 @@ document.addEventListener('DOMContentLoaded', () => {
         renderActionButtons(grammarPointItemElement, gpId);
     }
 
-    function resetAllUserData() {
-        if (confirm("Are you sure you want to reset ALL your saved progress (bookmarks and completed items)? This action cannot be undone.")) {
-            userProgress = {};
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-            alert("All user data has been reset.");
-            location.reload();
-        }
-    }
+    // Removed: No longer needed as per discussion
+    // function resetAllUserData() {
+    //     if (confirm("Are you sure you want to reset ALL your saved progress (bookmarks and completed items)? This action cannot be undone.")) {
+    //         userProgress = {};
+    //         localStorage.removeItem(LOCAL_STORAGE_KEY);
+    //         alert("All user data has been reset.");
+    //         location.reload();
+    //     }
+    // }
 
     // --- Statistics Functions ---
     function calculateStatistics() {
         let totalJlptLevels = 0;
         let completedJlptLevels = 0;
-        let totalLessons = 0;
-        let completedLessons = 0;
-        let totalGrammarPoints = 0;
-        let completedGrammarPoints = 0;
+        let totalLessons = 0; // Only JLPT lessons
+        let completedLessons = 0; // Only JLPT completed lessons
+        let totalGrammarPoints = 0; // Only JLPT grammar points
+        let completedGrammarPoints = 0; // Only JLPT completed grammar points
         let bookmarkedGrammarPoints = 0;
 
         let nonJlptLessons = 0;
@@ -129,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nLevelOrder.forEach(nLevelKey => {
             if (allGrammarData[nLevelKey] && allGrammarData[nLevelKey].length > 0) {
 
+                // Only count JLPT levels for totalJlptLevels
                 if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
                     totalJlptLevels++;
                 }
@@ -139,16 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 let nLevelBookmarkedGPs = 0;
 
                 allGrammarData[nLevelKey].forEach(lesson => {
-                    if (nLevelKey === 'Non-JLPT') {
-                        nonJlptLessons++;
-                    } else {
-                        totalLessons++;
-                    }
-
                     nLevelLessonsCount++;
                     let nLevelKeyLessonNum = lesson.lesson_num;
-                    let lessonGPsCount = 0;
-                    let lessonCompletedGPs = 0;
+                    let lessonGPsCount = 0; // Total GPs in this specific lesson
+                    let lessonCompletedGPs = 0; // Completed GPs in this specific lesson
+
 
                     lesson.grammar_points.forEach((gp, gpIdx) => {
                         const gpId = generateGrammarPointId(nLevelKey, nLevelKeyLessonNum, gpIdx);
@@ -160,14 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 nonJlptCompletedGPs++;
                             }
                         } else {
-                            totalGrammarPoints++;
-                            if (state.completed) {
-                                completedGrammarPoints++;
+                             // Only count JLPT grammar points towards totalGrammarPoints
+                            if (nLevelKey !== 'Unknown N-Level') {
+                                totalGrammarPoints++;
+                                if (state.completed) {
+                                    completedGrammarPoints++;
+                                }
                             }
                         }
 
-                        nLevelGPsCount++;
-
+                        nLevelGPsCount++; // Count for current N-level
 
                         if (state.completed) {
                             nLevelCompletedGPs++;
@@ -177,10 +176,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             bookmarkedGrammarPoints++;
                             nLevelBookmarkedGPs++;
                         }
+                        lessonGPsCount++; // Count for current lesson
                     });
 
+                    // Check if current lesson is completed
                     if (lessonGPsCount > 0 && lessonCompletedGPs === lessonGPsCount) {
-                        completedLessons++;
+                        // Only count JLPT lessons towards completedLessons
+                        if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
+                            completedLessons++;
+                        }
+                    }
+
+                    // Only count JLPT lessons towards totalLessons
+                    if (nLevelKey !== 'Non-JLPT' && nLevelKey !== 'Unknown N-Level') {
+                        totalLessons++;
                     }
                 });
 
@@ -217,39 +226,46 @@ document.addEventListener('DOMContentLoaded', () => {
         let statsHtml = `
             <div class="statistics-container">
                 <h2>Statistics</h2>
-                <div class="stats-grid main-stats-grid">
+                <div class="stats-grid">
                     <p>N-Levels: <span class="stat-value">${stats.completedJlptLevels}/${stats.totalJlptLevels}</span></p>
                     <p>Total Lessons: <span class="stat-value">${stats.completedLessons}/${stats.totalLessons}</span></p>
                     <p>Total Grammar Points: <span class="stat-value">${stats.completedGrammarPoints}/${stats.totalGrammarPoints}</span></p>
                     <p>Bookmarked: <span class="stat-value">${stats.bookmarkedGrammarPoints}</span></p>
                 </div>
-                <h3>Detailed N-Level Statistics</h3>
-                <div class="stats-grid detailed-stats-grid">
+                <div class="stats-grid">
         `;
 
-        const jlptLevels = ['N5', 'N4', 'N3', 'N2', 'N1'];
-        jlptLevels.forEach(nLevelKey => {
-            const nLevelStat = stats.nLevelStats[nLevelKey];
-            if (nLevelStat && nLevelStat.grammarPoints > 0) {
-                statsHtml += `
-                    <p>${nLevelKey} Lessons: <span class="stat-value">${nLevelStat.lessons}</span></p>
-                    <p>${nLevelKey} Grammar Points: <span class="stat-value">${nLevelStat.completedGrammarPoints}/${nLevelStat.grammarPoints}</span></p>
-                `;
-            }
-        });
+        const n5Stats = stats.nLevelStats['N5'] || {};
+        const n4Stats = stats.nLevelStats['N4'] || {};
+        const n3Stats = stats.nLevelStats['N3'] || {};
+        const n2Stats = stats.nLevelStats['N2'] || {};
+        const n1Stats = stats.nLevelStats['N1'] || {};
+        const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
 
-        // Non-JLPT is placed separately at the end of the detailed grid.
-        if (stats.nLevelStats['Non-JLPT'] && stats.nLevelStats['Non-JLPT'].lessons > 0) {
-            statsHtml += `
-                <p class="non-jlpt-lessons-stat">Non-JLPT Lessons: <span class="stat-value">${stats.nonJlptLessons}</span></p>
-                <p class="non-jlpt-grammar-stat">Non-JLPT Grammar Points: <span class="stat-value">${stats.nonJlptCompletedGPs}/${stats.nonJlptGrammarPoints}</span></p>
-            `;
-        }
+        statsHtml += `
+            <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
+            <p>N5 Grammar Points: <span class="stat-value">${n5Stats.completedGrammarPoints || 0}/${n5Stats.grammarPoints || 0}</span></p>
+            <p>Non-JLPT Lessons: <span class="stat-value">${nonJlptStats.lessons || 0}</span></p>
+
+            <p>N-4 Lessons: <span class="stat-value">${n4Stats.lessons || 0}</span></p>
+            <p>N4 Grammar Points: <span class="stat-value">${n4Stats.completedGrammarPoints || 0}/${n4Stats.grammarPoints || 0}</span></p>
+            <p>Non-JLPT Grammar Points: <span class="stat-value">${nonJlptStats.completedGrammarPoints || 0}/${nonJlptStats.grammarPoints || 0}</span></p>
+
+            <p>N-3 Lessons: <span class="stat-value">${n3Stats.lessons || 0}</span></p>
+            <p>N3 Grammar Points: <span class="stat-value">${n3Stats.completedGrammarPoints || 0}/${n3Stats.grammarPoints || 0}</span></p>
+            <div></div> <p>N-2 Lessons: <span class="stat-value">${n2Stats.lessons || 0}</span></p>
+            <p>N2 Grammar Points: <span class="stat-value">${n2Stats.completedGrammarPoints || 0}/${n2Stats.grammarPoints || 0}</span></p>
+            <div></div> <p>N-1 Lessons: <span class="stat-value">${n1Stats.lessons || 0}</span></p>
+            <p>N1 Grammar Points: <span class="stat-value">${n1Stats.completedGrammarPoints || 0}/${n1Stats.grammarPoints || 0}</span></p>
+            <div></div> `;
+
+        // If 'Unknown N-Level' exists and has lessons, add it on its own row/lines
         if (stats.nLevelStats['Unknown N-Level'] && stats.nLevelStats['Unknown N-Level'].lessons > 0) {
+            const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'];
             statsHtml += `
-                <p>Unknown N-Level Lessons: <span class="stat-value">${stats.nLevelStats['Unknown N-Level'].lessons}</span></p>
-                <p>Unknown N-Level Grammar Points: <span class="stat-value">${stats.nLevelStats['Unknown N-Level'].completedGrammarPoints}/${stats.nLevelStats['Unknown N-Level'].grammarPoints}</span></p>
-            `;
+                <p>Unknown N-Level Lessons: <span class="stat-value">${unknownNLevelStats.lessons || 0}</span></p>
+                <p>Unknown N-Level Grammar Points: <span class="stat-value">${unknownNLevelStats.completedGrammarPoints || 0}/${unknownNLevelStats.grammarPoints || 0}</span></p>
+                <div></div> `;
         }
 
 
@@ -279,7 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!countSpan) {
                     countSpan = document.createElement('span');
                     countSpan.classList.add('header-counts');
-                    header.insertBefore(countSpan, header.querySelector('.mark-level-complete-btn'));
+                    // Insert after the last button, before the toggle icon
+                    header.insertBefore(countSpan, header.querySelector('.toggle-icon'));
                 }
                 countSpan.textContent = `${stats.lessons} Lessons, ${stats.grammarPoints} Grammar Points`;
 
@@ -311,16 +328,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!countSpan) {
                         countSpan = document.createElement('span');
                         countSpan.classList.add('header-counts');
-                        lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.mark-level-complete-btn'));
+                        // Insert after the last button, before the toggle icon
+                        lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.toggle-icon'));
                     }
                     const completedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                         return getGrammarPointState(gpId).completed;
                     }).length;
-                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson} Grammar Points`;
+                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson}`; // Changed: Removed "Grammar Points" text
 
                     const bookmarkedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
+                        const gpId = generateGrammarPointId(nLevelKey, lesson.lesson_num, gpIdx);
                         return getGrammarPointState(gpId).bookmarked;
                     }).length;
 
@@ -402,7 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="${nLevelClass}" id="n-level-${nLevelKey.replace(/ /g, '-')}-container">
                         <div class="n-level-header">
                             <span>${nLevelKey} Grammar</span>
-                            <span class="header-counts"></span>
                             <button class="mark-level-complete-btn n-level-btn" data-action-type="complete" data-level-type="n-level" data-n-level-key="${nLevelKey}" title="Press and hold to mark all grammar points in this N-level as complete">
                                 <img src="${ICON_PATHS.checkSolid}" alt="Complete All">
                                 <svg class="progress-circle" viewBox="0 0 38 38">
@@ -416,6 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <circle class="progress-circle-bg" cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"></circle>
                                     <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></svg>
                             </button>
+                            <span class="header-counts"></span>
                             <span class="toggle-icon">&#9654;</span>
                         </div>
                         <div class="n-level-content">
@@ -426,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="lesson" data-lesson-num="${lesson.lesson_num}" data-n-level-key="${nLevelKey}">
                             <div class="lesson-header">
                                 <span>Lesson ${lesson.lesson_num}</span>
-                                <span class="header-counts"></span>
                                 <button class="mark-level-complete-btn lesson-btn" data-action-type="complete" data-level-type="lesson" data-n-level-key="${nLevelKey}" data-lesson-num="${lesson.lesson_num}" title="Press and hold to mark all grammar points in this lesson as complete">
                                     <img src="${ICON_PATHS.checkSolid}" alt="Complete Lesson">
                                     <svg class="progress-circle" viewBox="0 0 38 38">
@@ -441,6 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <circle class="progress-circle-fg" cx="19" cy="19" r="16" fill="none" stroke="white" stroke-width="3" stroke-dasharray="100.53 100.53" stroke-dashoffset="100.53" transform="rotate(-90 19 19)"></circle>
                                     </svg>
                                 </button>
+                                <span class="header-counts"></span>
                                 <span class="toggle-icon">&#9654;</span>
                             </div>
                             <div class="lesson-content">
@@ -550,8 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
 
-            // Initialize state by simulating an endHold without completion
-            endHold({target: button}, button, progressBarFG, buttonIcon, false);
+            endHold({target: button}, button, progressBarFG, buttonIcon, true);
 
             button.addEventListener('mousedown', (e) => startHold(e, button, progressBarFG, buttonIcon));
             button.addEventListener('touchstart', (e) => startHold(e, button, progressBarFG, buttonIcon), { passive: true });
@@ -596,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (actionType === 'complete') {
                     buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
                 } else if (actionType === 'reset') {
-                    buttonIcon.style.filter = 'invert(16%) sepia(90%) saturate(5833%) hue-rotate(357deg) brightness(98%) contrast(124%);'; // A more direct, vibrant red
+                    buttonIcon.style.filter = 'invert(27%) sepia(80%) saturate(2878%) hue-rotate(345deg) brightness(120%) contrast(100%)'; // Adjusted filter for a brighter red
                 }
             }
 
@@ -641,29 +658,23 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonIcon.classList.remove('flash-white-icon');
             void buttonIcon.offsetWidth; // Trigger reflow
             buttonIcon.classList.add('flash-white-icon');
-            buttonIcon.addEventListener('animationend', () => {
-                buttonIcon.classList.remove('flash-white-icon');
-            }, { once: true });
+            // The animationend listener is handled by the CSS animation itself,
+            // which should revert the filter to its default.
         }
 
 
         if (progressBarFG) {
             progressBarFG.style.transition = 'opacity 0.2s ease-out';
             progressBarFG.style.opacity = '0';
-            if (!completed) { // Only reset progress bar if not completed the action
+            if (!completed) {
                 const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
                 progressBarFG.style.strokeDashoffset = circumference;
             }
         }
         if (buttonIcon) {
-            buttonIcon.style.transition = 'filter 0.2s ease-out';
-            // Reset filter based on button state (completed/reset) or default
-            const actionType = button.dataset.actionType;
-            if (actionType === 'complete' && button.classList.contains('level-completed')) {
-                // If it's a complete button and the level is actually completed, keep it green
-                buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
-            } else {
-                // Otherwise, revert to default dim state
+            // Revert to default filter if not completed, or let animation handle it if completed
+            if (!completed) {
+                buttonIcon.style.transition = 'filter 0.2s ease-out';
                 buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
         }
@@ -690,16 +701,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        if (nLevelContainerElement) {
-            nLevelContainerElement.classList.remove('flash-animation');
-            nLevelContainerElement.classList.remove('flash-red-animation');
-            void nLevelContainerElement.offsetWidth;
-            nLevelContainerElement.classList.add('flash-animation');
-            nLevelContainerElement.addEventListener('animationend', () => {
-                nLevelContainerElement.classList.remove('flash-animation');
-            }, { once: true });
-        }
 
         updateParentHeaderStates(nLevelContainerElement);
     }
@@ -728,16 +729,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (lessonContainerElement) {
-            lessonContainerElement.classList.remove('flash-animation');
-            lessonContainerElement.classList.remove('flash-red-animation');
-            void lessonContainerElement.offsetWidth;
-            lessonContainerElement.classList.add('flash-animation');
-            lessonContainerElement.addEventListener('animationend', () => {
-                lessonContainerElement.classList.remove('flash-animation');
-            }, { once: true });
-        }
-
         updateParentHeaderStates(lessonContainerElement);
     }
 
@@ -763,15 +754,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        if (nLevelContainerElement) {
-            nLevelContainerElement.classList.remove('flash-animation');
-            nLevelContainerElement.classList.remove('flash-red-animation');
-            void nLevelContainerElement.offsetWidth;
-            nLevelContainerElement.classList.add('flash-red-animation');
-            nLevelContainerElement.addEventListener('animationend', () => {
-                nLevelContainerElement.classList.remove('flash-red-animation');
-            }, { once: true });
-        }
         updateParentHeaderStates(nLevelContainerElement);
     }
 
@@ -799,31 +781,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (lessonContainerElement) {
-            lessonContainerElement.classList.remove('flash-animation');
-            lessonContainerElement.classList.remove('flash-red-animation');
-            void lessonContainerElement.offsetWidth;
-            lessonContainerElement.classList.add('flash-red-animation');
-            lessonContainerElement.addEventListener('animationend', () => {
-                lessonContainerElement.classList.remove('flash-red-animation');
-            }, { once: true });
-        }
         updateParentHeaderStates(lessonContainerElement);
-    }
-
-
-    function addResetButton() {
-        if (!document.getElementById('resetUserData')) {
-            const resetButton = document.createElement('button');
-            resetButton.id = 'resetUserData';
-            const warningImg = document.createElement('img');
-            warningImg.src = ICON_PATHS.warningTriangle;
-            warningImg.alt = 'Warning Icon';
-            resetButton.appendChild(warningImg);
-            resetButton.appendChild(document.createTextNode('Reset All Saved Progress'));
-            resetButton.addEventListener('click', resetAllUserData);
-            document.querySelector('.container').appendChild(resetButton);
-        }
     }
 
     // --- Accordion Toggle Functions ---
@@ -841,11 +799,6 @@ document.addEventListener('DOMContentLoaded', () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = '';
             header.classList.remove('pulsing');
-            if (toggleIcon) {
-                toggleIcon.classList.remove('flash-white');
-                void toggleIcon.offsetWidth;
-                toggleIcon.classList.add('flash-white');
-            }
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }
@@ -865,11 +818,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const onTransitionEnd = () => {
             element.removeEventListener('transitionend', onTransitionEnd);
             element.style.height = 'auto';
-            if (toggleIcon) {
-                toggleIcon.classList.remove('flash-white');
-                void toggleIcon.offsetWidth;
-                toggleIcon.classList.add('flash-white');
-            }
+            // Removed: Toggle icon flash is not needed here
+            // if (toggleIcon) {
+            //     toggleIcon.classList.remove('flash-white');
+            //     void toggleIcon.offsetWidth;
+            //     toggleIcon.classList.add('flash-white');
+            // }
         };
         element.addEventListener('transitionend', onTransitionEnd);
     }

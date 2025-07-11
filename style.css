@@ -1,79 +1,66 @@
 /* Basic Reset & Font */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Changed to Segoe UI as per previous full file */
+    font-family: 'Meiryo', 'メイリオ', 'YuGothic', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
     line-height: 1.6;
-    background-color: #2c2c2c; /* Updated to match the previous full file's body background */
+    background-color: #1a1a1a; /* Dark background */
     color: #e0e0e0; /* Light text */
     transition: background-color 0.3s ease;
-    padding: 20px; /* Added padding to body as in previous full file */
-    display: flex; /* Added display flex for centering as in previous full file */
-    flex-direction: column;
-    align-items: center;
+    font-weight: 500; /* Medium font weight for general text */
 }
 
 .container {
     max-width: 900px;
     margin: 20px auto;
-    padding: 30px; /* Updated padding to match previous full file */
-    background-color: #3a3a3a; /* Updated to match previous full file */
-    border-radius: 12px; /* Updated to match previous full file */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Updated to match previous full file */
-    width: 100%; /* Ensure it takes full width within max-width */
-    box-sizing: border-box; /* Include padding in width calculation */
-    margin-bottom: 20px; /* Added margin bottom for reset button */
+    padding: 20px;
+    background-color: #2c2c2c; /* Slightly lighter dark for content area */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
     text-align: center;
     color: #f0f0f0;
     margin-bottom: 30px;
-    font-size: 2.5em; /* Updated font size to match previous full file */
-    letter-spacing: 1px; /* Added letter spacing as in previous full file */
-    border-bottom: 2px solid #555; /* Retained from original */
-    padding-bottom: 15px; /* Retained from original */
-}
-
-h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
-    color: #e0e0e0;
     border-bottom: 2px solid #555;
-    padding-bottom: 10px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    padding-bottom: 15px;
 }
 
-/* --- Statistics Container --- */
+/* Statistics Container */
 .statistics-container {
-    background-color: #4a4a4a; /* Updated to match previous full file */
-    padding: 20px; /* Updated to match previous full file */
-    border-radius: 8px; /* Updated to match previous full file */
+    background-color: #383838;
+    border: 1px solid #4a4a4a;
+    border-radius: 6px;
+    padding: 15px 20px;
     margin-bottom: 30px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Updated to match previous full file */
-    border: none; /* Removed border, replaced with inner shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.statistics-container h2,
+.statistics-container h2 {
+    color: #f0f0f0;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
 .statistics-container h3 {
     color: #f0f0f0;
-    border-bottom-color: #666; /* Adjusted border color */
-    margin-top: 0;
-    font-size: 1.5em; /* Retained from original */
-    text-align: left; /* Aligned left as per previous full file layout */
-    padding-bottom: 10px;
-}
-
-.statistics-container h3 {
     margin-top: 20px;
+    margin-bottom: 10px;
     font-size: 1.2em;
-    text-align: left; /* Aligned left as per previous full file layout */
+    text-align: center;
+    border-bottom: 1px solid #555;
     padding-bottom: 5px;
 }
 
+
 .stats-grid {
     display: grid;
-    grid-template-columns: auto auto 1fr; /* Specific columns for detailed stats */
-    gap: 10px 20px; /* Adjusted gap */
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr); /* Changed: Fixed 3-column layout */
+    gap: 10px 20px;
 }
 
 .stats-grid p {
@@ -83,79 +70,57 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2px 0; /* Small vertical padding for readability */
 }
 
-.stats-grid p:nth-child(odd) { /* N5 Lessons, N4 Lessons, etc. (odd children go to column 1) */
-    grid-column: 1;
-}
-
-.stats-grid p:nth-child(even) { /* N5 Grammar Points, N4 Grammar Points, etc. (even children go to column 2) */
-    grid-column: 2;
-}
-
-.stats-grid p.non-jlpt-lessons-stat {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
-    padding-left: 20px;
-}
-
-.stats-grid p.non-jlpt-grammar-stat {
-    grid-column: 3;
-    grid-row: 2;
-    justify-self: end;
-    padding-left: 20px;
-}
-
-.stat-value {
+.stats-grid .stat-value {
     font-weight: bold;
-    color: #8aff8a; /* Bright green for values */
-    margin-left: 10px;
+    color: #e0e0e0;
+    font-size: 1.1em;
 }
 
-/* --- N-Level and Lesson Headers --- */
-.n-level-header, .lesson-header {
-    background-color: #444; /* Default background, colors overridden by specific N-level classes */
+
+/* N-Level Styling */
+.n-level {
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.n-level-header {
     padding: 15px 20px;
-    margin-bottom: 10px;
-    border-radius: 8px; /* Slightly more rounded than original 6px */
+    font-size: 1.4em;
+    font-weight: bold;
     cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Softer shadow */
-    position: relative;
-    overflow: hidden;
-    user-select: none; /* Retained user-select properties */
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    border-bottom: none; /* Removed border-bottom, rely on box-shadow for separation */
 }
 
-.n-level-header:hover, .lesson-header:hover {
-    background-color: #555; /* Slightly lighter on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+.n-level-header span:first-child {
+    flex-shrink: 0;
 }
 
-.n-level-header span:first-child, .lesson-header span:first-child {
-    font-weight: bold;
-    font-size: 1.3em; /* Slightly smaller for n-level headers */
-    color: #f9f9f9;
+.n-level-header .header-counts {
+    font-size: 0.7em;
+    color: #c0c0c0;
+    font-weight: normal;
+    flex-grow: 0; /* Changed: flex-grow to 0 */
+    text-align: left; /* Changed: text-align to left */
+    margin-right: 0; /* Removed: margin-right */
+    margin-left: auto; /* Added: margin-left auto */
+    min-width: 120px; /* Added: min-width */
+    white-space: nowrap; /* Added: white-space nowrap */
 }
 
-.header-counts {
-    font-size: 0.85em; /* Slightly larger for better readability */
-    color: #bbb;
-    margin-left: auto;
-    margin-right: 15px;
-    white-space: nowrap;
-}
-
-/* N-Level Specific Colors */
-/* Keeping these for distinct N-level branding, but new highlights will layer on top */
+/* N-Level Specific Colors (Darker shades for dark theme) */
 .n-level-N5 .n-level-header { background-color: #3e5e3e; color: #d9ead3; }
 .n-level-N4 .n-level-header { background-color: #4a664a; color: #d9ebc9; }
 .n-level-N3 .n-level-header { background-color: #6a6a4e; color: #fff2cc; }
@@ -164,93 +129,53 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 .n-level-Non-JLPT .n-level-header { background-color: #4a4a4a; color: #d9d9d9; }
 .n-level-Unknown-N-Level .n-level-header { background-color: #8b0000; color: #ffffff; }
 
-/* Header highlight for content with bookmarked items and completed children */
-.n-level-header.has-bookmarked-children,
-.lesson-header.has-bookmarked-children {
-    border: 1px solid #d4c132; /* Yellow border */
-    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Yellow glow */
-    filter: none; /* Ensure no filter interferes */
-}
-
-.n-level-header.all-children-complete,
-.lesson-header.all-children-complete {
-    background-color: #385e38; /* Darker green */
-    box-shadow: 0 4px 10px rgba(0, 150, 0, 0.3); /* Green glow */
-    border: none; /* Remove border if completed to prioritize green highlight */
+/* Header highlight for content with bookmarked items - now an inset box-shadow */
+.n-level-header.has-bookmarked-children {
+    box-shadow: inset 0 0 0 3px #6ab0de,
+                0 4px 8px rgba(0, 0, 0, 0.3);
     filter: none;
 }
 
-/* Specific styling for text and toggle icon when all children are complete */
-.n-level-header.all-children-complete .toggle-icon,
-.lesson-header.all-children-complete .toggle-icon,
-.n-level-header.all-children-complete span,
-.lesson-header.all-children-complete span {
-    color: #c8ffc8; /* Lighter green text */
+.n-level-header.all-children-complete {
+    box-shadow: inset 0 0 0 3px #558B55,
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    filter: none;
 }
 
-/* When both bookmarked and complete, bookmark styling takes precedence */
-.n-level-header.has-bookmarked-children.all-children-complete,
-.lesson-header.has-bookmarked-children.all-children-complete {
-    border: 1px solid #d4c132; /* Keep yellow border */
-    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Keep yellow glow */
-    background-color: #315065; /* A blend or choose one dominant */
+.n-level-header.has-bookmarked-children.all-children-complete {
+    box-shadow: inset 0 0 0 3px #6ab0de,
+                0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-
-/* Toggle icon for headers */
-.toggle-icon {
-    font-size: 1.2em; /* Slightly larger for better visibility */
-    margin-left: 15px;
-    transition: transform 0.3s ease; /* Faster transition */
-    color: #ccc;
-    display: flex;
-    align-items: center;
-}
-
-.n-level-header.expanded .toggle-icon,
-.lesson-header.expanded .toggle-icon {
-    transform: rotate(90deg);
-}
-
-/* --- Content sections (Initially hidden) --- */
-.n-level-content, .lesson-content {
+.n-level-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.4s ease-out; /* Simpler transition */
-    background-color: #333;
-    border-radius: 8px; /* Matching header border-radius */
-    margin-bottom: 15px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 0 20px; /* Base padding, height transition will show it */
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    background-color: #333333;
+    will-change: height;
     box-sizing: border-box;
 }
 
-.n-level-header.expanded + .n-level-content,
-.lesson-header.expanded + .lesson-content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 
 /* Lesson Styling */
 .lesson {
     margin-bottom: 5px;
     margin-top: 10px;
     position: relative;
-    border-radius: 8px; /* Added border-radius to lesson container */
-    overflow: hidden; /* For inner shadows/borders */
 }
 
 .lesson-header {
-    background-color: #444444; /* Standard lesson header color */
     padding: 10px 20px;
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
+    background-color: #444444;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Removed transform for simplicity */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -265,29 +190,52 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
     font-size: 0.8em;
     color: #b0b0b0;
     font-weight: normal;
-    flex-grow: 1;
-    text-align: right;
-    margin-right: 10px;
+    flex-grow: 0; /* Changed: flex-grow to 0 */
+    text-align: left; /* Changed: text-align to left */
+    margin-right: 0; /* Removed: margin-right */
+    margin-left: auto; /* Added: margin-left auto */
+    min-width: 120px; /* Added: min-width */
+    white-space: nowrap; /* Added: white-space nowrap */
+}
+
+.lesson-header.has-bookmarked-children {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
+    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-header.all-children-complete {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #558B55;
+    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-header.has-bookmarked-children.all-children-complete {
+    --lesson-header-inset-shadow: inset 0 0 0 3px #6ab0de;
+    box-shadow: var(--lesson-header-inset-shadow), 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .lesson-header:hover {
-    background-color: #555; /* Consistency with N-level hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly more pronounced shadow on hover */
+    transform: scale(1.01);
+    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* No transform on expand, rely on background/border changes */
 .lesson-header.expanded {
-    background-color: #555;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.01);
+    box-shadow: var(--lesson-header-inset-shadow, none), 0 2px 5px rgba(0, 0, 0, 0.4);
 }
+
 
 .lesson-content {
-    padding: 0 15px; /* Adjusted padding as per previous full file */
-    background-color: #3d3d3d; /* Adjusted background color */
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    background-color: #3d3d3d;
+    will-change: height;
+    box-sizing: border-box;
 }
 
 
-/* --- Grammar Point Styling --- */
+/* Grammar Point Styling */
 .grammar-point-list {
     list-style-type: none;
     padding: 10px 0;
@@ -297,20 +245,21 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 .grammar-point-wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 8px; /* Increased margin for better spacing */
+    margin-bottom: 5px;
     gap: 12px;
 }
 
 .grammar-point-item {
     flex-grow: 1;
-    max-width: calc(100% - 80px); /* Adjusting for two 38px buttons and gap */
+    /* Reduced max-width to give more space on the right for buttons */
+    max-width: calc(100% - 80px); /* 38px (button) + 38px (button) + 12px (gap) + ~-10px adjustment for tighter fit */
     padding: 10px 15px;
     background-color: #4d4d4d;
     border-radius: 4px;
     display: flex;
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease; /* Removed transform */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, transform 0.1s ease;
     position: relative;
     overflow: hidden;
 }
@@ -327,145 +276,242 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 }
 
 .grammar-point-item a {
-    color: #a0c0ff; /* Changed link color to match previous full file */
+    color: #e0e0e0;
     text-decoration: none;
     font-size: 1.0em;
-    font-weight: normal; /* Default font-weight, not bold */
+    font-weight: 600;
     transition: color 0.2s ease;
     flex-grow: 1;
     display: flex;
     align-items: center;
 }
 
-.grammar-point-item a:hover { /* Added hover for grammar point links */
-    color: #c0d9ff;
-    text-decoration: underline;
-}
-
-/* Completed state */
+/* Highlight for Marked as Complete Grammar Point - GREEN */
 .grammar-point-item.completed {
     background-color: #558B55;
-    color: #777; /* Dim text for completed */
-    border: none; /* Removed border, relying on background */
+    color: #e0ffe0;
+    border: 1px solid #669966;
+    transform: scale(1.01);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-.grammar-point-item.completed a {
-    color: #777; /* Dim link for completed */
-    text-decoration: line-through;
-}
 
-/* Bookmarked state */
+/* Highlight for Bookmarked Grammar Point */
 .grammar-point-item.bookmarked {
-    background-color: #315065; /* Consistent blue-ish for bookmarked */
-    color: #e6e65a; /* Yellowish for bookmarked text */
-    border: none; /* Removed border */
+    background-color: #315065;
+    color: #e0e0e0;
+    border: 1px solid #4f748f;
+    transform: scale(1.01);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-.grammar-point-item.bookmarked a {
-    color: #e6e65a; /* Yellowish link for bookmarked */
-    text-decoration: none;
-}
 
-/* Combination (completed and bookmarked) - completed takes precedence visually */
-.grammar-point-item.completed.bookmarked {
-    background-color: #315065; /* Keep bookmarked background */
-    color: #777; /* Still dim text */
-}
-.grammar-point-item.completed.bookmarked a {
-    color: #777; /* Still dim link */
-    text-decoration: line-through;
+/* Visual precedence: If both bookmarked AND completed, bookmark style overrides complete style */
+.grammar-point-item.bookmarked.completed {
+    background-color: #315065;
+    border: 1px solid #4f748f;
 }
 
 .grammar-point-item.bookmarked:hover {
-    background-color: #3d5e7a; /* Darker blue on hover */
+    background-color: #3d5e7a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-color: #4f748f;
 }
 
 .grammar-point-item.completed:hover {
-    background-color: #669966; /* Slightly lighter green on hover */
+    filter: brightness(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
 
 .grammar-point-number {
     font-size: 0.9em;
     font-weight: bold;
     margin-right: 10px;
-    color: #999; /* Adjusted color */
+    color: #bbb;
     width: 1.5em;
     text-align: right;
     flex-shrink: 0;
 }
 
 
-/* Action Buttons (Bookmark/Complete on individual GPs) */
+/* Expand/Collapse Icon (Dorito) */
+.toggle-icon {
+    font-size: 0.8em;
+    flex-shrink: 0;
+    margin-left: 10px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lesson-header .toggle-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expanded .toggle-icon {
+    transform: rotate(90deg);
+}
+
+/* Dorito Flash Animation (removed: not needed as per discussion) */
+/* @keyframes flash-white {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(2.5); }
+    100% { filter: brightness(1); }
+}
+
+.toggle-icon.flash-white {
+    animation: flash-white 0.3s ease-out;
+} */
+
+/* Finisher flash for button icons */
+@keyframes flash-white-icon {
+    0% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Default dim */
+    50% { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(2.5); } /* Bright white */
+    100% { filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); } /* Back to default dim */
+}
+
+.mark-level-complete-btn img.flash-white-icon,
+.mark-level-reset-btn img.flash-white-icon {
+    animation: flash-white-icon 0.3s ease-out;
+}
+
+
+/* Pulse (Breathing) Animation for N-level header text */
+@keyframes pulse-brightness {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+    100% { filter: brightness(1); }
+}
+
+/* Apply pulse animation only to the main text span within the header */
+.n-level-header.pulsing > span:first-child {
+    animation: pulse-brightness 1.5s ease-in-out infinite;
+}
+
+/* Action Buttons for Bookmark/Complete on Grammar Point */
 .action-buttons {
     display: flex;
-    gap: 5px; /* Reduced gap for a tighter look */
+    flex-direction: row;
+    gap: 8px;
     flex-shrink: 0;
 }
 
 .action-buttons button {
-    background: none;
+    background-color: transparent;
     border: none;
     cursor: pointer;
-    padding: 5px; /* Adjusted padding */
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
-    width: 38px; /* Fixed width/height */
+    width: 38px;
     height: 38px;
+    padding: 0;
+    border-radius: 50%;
 }
 
 .action-buttons button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }
 
 .action-buttons button img {
-    width: 1.2em; /* Adjusted icon size */
-    height: 1.2em; /* Adjusted icon size */
-    filter: invert(70%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
+    width: 1.8em;
+    height: 1.8em;
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
     transition: filter 0.2s ease;
 }
 
+.action-buttons button:hover img {
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
+}
+
+/* Active Icon Styles - No box highlight, just brighter icon and soft shadow */
+.action-buttons button.active-bookmark {
+    box-shadow: 0 0 5px rgba(49, 80, 101, 0.7);
+    transform: none;
+}
 .action-buttons button.active-bookmark img {
-    filter: invert(80%) sepia(90%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Bright yellow */
+    filter: invert(44%) sepia(87%) saturate(1455%) hue-rotate(180deg) brightness(97%) contrast(93%);
 }
 
+.action-buttons button.active-complete {
+    box-shadow: 0 0 5px rgba(85, 139, 85, 0.7);
+    transform: none;
+}
 .action-buttons button.active-complete img {
-    filter: invert(60%) sepia(80%) saturate(1000%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Bright green */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
 }
 
-/* --- Mark Level Complete/Reset Buttons (Header buttons) --- */
-.mark-level-complete-btn,
-.mark-level-reset-btn {
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin white border */
-    border-radius: 50%;
-    width: 40px; /* Consistent size */
-    height: 40px;
+.action-buttons button.active-bookmark:hover img,
+.action-buttons button.active-complete:hover img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.8);
+}
+
+/* Reset User Data Button (removed as per discussion) */
+/* #resetUserData {
+    background-color: #a04040;
+    color: #ffffff;
+    border: 1px solid #b05050;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 6px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    margin-left: 10px;
-    position: relative;
-    overflow: hidden;
+    gap: 8px;
+    margin: 30px auto 10px auto;
     transition: background-color 0.2s ease, border-color 0.2s ease;
-    flex-shrink: 0;
-    z-index: 1; /* Ensure buttons are above potential flash animation */
 }
 
-/* Position for the reset button - removed margin-right, using gap in header */
+#resetUserData:hover {
+    background-color: #c05050;
+    border-color: #d06060;
+}
+
+#resetUserData img {
+    width: 1.3em;
+    height: 1.3em;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.5);
+} */
+
+/* Mark Level Complete/Reset Buttons (Icon Buttons) */
+/* Shared styles */
+.mark-level-complete-btn,
+.mark-level-reset-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+    z-index: 0;
+}
+
+/* Position for the reset button */
 .n-level-header .mark-level-reset-btn,
 .lesson-header .mark-level-reset-btn {
-    margin-right: 0; /* Let flex gap handle spacing */
+    margin-right: 10px;
 }
 
-.mark-level-complete-btn:hover:not(.holding),
-.mark-level-reset-btn:hover:not(.holding) {
+
+.mark-level-complete-btn:hover,
+.mark-level-reset-btn:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
+
+/* Apply hover effect only when not holding */
+.mark-level-complete-btn:not(.holding):hover img,
+.mark-level-reset-btn:not(.holding):hover img {
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38);
+}
+
 
 .mark-level-complete-btn.holding,
 .mark-level-reset-btn.holding {
@@ -476,7 +522,7 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 .mark-level-complete-btn img {
     width: 1.6em;
     height: 1.6em;
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
@@ -484,35 +530,37 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 }
 
 .mark-level-reset-btn img {
-    width: 1.4em; /* Slightly smaller for trash */
-    height: 1.4em; /* Slightly smaller for trash */
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2); /* Default dim */
+    width: 1.4em;
+    height: 1.4em;
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2);
     transition: filter 0.2s ease;
     z-index: 2;
     position: relative;
     pointer-events: none;
 }
 
-/* Apply hover effect only when not holding */
-.mark-level-complete-btn:not(.holding):hover img,
-.mark-level-reset-btn:not(.holding):hover img {
-    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.38); /* Brighter on hover */
-}
 
-/* Specific colors for completed/reset state */
+/* Green when level/lesson is completed (for complete button) */
 .mark-level-complete-btn.level-completed img {
-    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%); /* Green when all complete */
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%);
 }
 
-/* Progress circle for hold animation */
+/* Override hover for completed state (keep green) */
+.mark-level-complete-btn.level-completed:hover img {
+    filter: invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(120%) contrast(100%);
+}
+
+/* SVG Progress Circle */
 .progress-circle {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    transform: rotate(-90deg); /* Start at the top */
+    pointer-events: none;
     z-index: 1;
+    overflow: visible;
 }
 
 .progress-circle-bg {
@@ -521,86 +569,17 @@ h2, h3 { /* Combined h2, h3 styles for consistency as in previous full file */
 }
 
 .progress-circle-fg {
-    stroke: #ffffff; /* Color during fill */
+    stroke: white;
     stroke-width: 3;
-    transition: stroke-dashoffset linear; /* Handled by JS */
-    opacity: 0; /* Hidden by default, shown during hold */
-    transform: rotate(90deg); /* Counter-rotate to keep circle upright */
-    transform-origin: center;
+    stroke-dasharray: 100.53 100.53;
+    stroke-dashoffset: 100.53;
+    transform: rotate(-90deg);
+    transform-origin: 19px 19px;
+    opacity: 0;
 }
 
-/* Flash animation for container on completion/reset */
-@keyframes flashGreen {
-    0% { background-color: transparent; }
-    50% { background-color: rgba(138, 255, 138, 0.2); } /* Light green flash */
-    100% { background-color: transparent; }
-}
-
-@keyframes flashRed {
-    0% { background-color: transparent; }
-    50% { background-color: rgba(255, 138, 138, 0.2); } /* Light red flash */
-    100% { background-color: transparent; }
-}
-
-.n-level.flash-animation .n-level-header,
-.lesson.flash-animation .lesson-header {
-    animation: flashGreen 0.7s ease-out;
-}
-
-.n-level.flash-red-animation .n-level-header,
-.lesson.flash-red-animation .lesson-header {
-    animation: flashRed 0.7s ease-out;
-}
-
-/* Flash for icons after hold */
-@keyframes flashWhiteIcon {
-    0% { opacity: 1; }
-    50% { opacity: 0.2; }
-    100% { opacity: 1; }
-}
-
-.mark-level-complete-btn img.flash-white-icon,
-.mark-level-reset-btn img.flash-white-icon {
-    animation: flashWhiteIcon 0.3s ease-in-out;
-}
-
-/* Pulsing effect for N-level header when expanding */
-@keyframes pulse {
-    0% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
-    50% { box-shadow: 0 0 20px rgba(170, 200, 255, 0.4); } /* Subtle blue glow */
-    100% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
-}
-
-.n-level-header.pulsing {
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-
-/* Reset All User Data Button */
-#resetUserData {
-    background-color: #8b0000; /* Darker red */
-    color: white;
-    padding: 12px 25px; /* Larger padding */
-    border: none; /* No border */
-    border-radius: 8px; /* Consistent border radius */
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-#resetUserData:hover {
-    background-color: #a00000;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-}
-
-#resetUserData img {
-    width: 1.5em; /* Larger icon */
-    height: 1.5em;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+.mark-level-complete-btn.holding .progress-circle-fg,
+.mark-level-reset-btn.holding .progress-circle-fg {
+    opacity: 1;
+    transition: stroke-dashoffset var(--hold-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.1s ease-in;
 }
