@@ -314,13 +314,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         lessonHeader.insertBefore(countSpan, lessonHeader.querySelector('.mark-level-complete-btn'));
                     }
                     const completedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx); // Use lessonNum here
+                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
                         return getGrammarPointState(gpId).completed;
                     }).length;
-                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson} Grammar Points`; // CHANGED
+                    countSpan.textContent = `${completedGPs}/${grammarPointsInLesson} Grammar Points`;
 
                     const bookmarkedGPs = lessonData.grammar_points.filter((gp, gpIdx) => {
-                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx); // Use lessonNum here
+                        const gpId = generateGrammarPointId(nLevelKey, lessonNum, gpIdx);
                         return getGrammarPointState(gpId).bookmarked;
                     }).length;
 
@@ -550,7 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
                  buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
 
-            endHold({target: button}, button, progressBarFG, buttonIcon, true); // Initialize state
+            // Initialize state by simulating an endHold without completion
+            endHold({target: button}, button, progressBarFG, buttonIcon, false);
 
             button.addEventListener('mousedown', (e) => startHold(e, button, progressBarFG, buttonIcon));
             button.addEventListener('touchstart', (e) => startHold(e, button, progressBarFG, buttonIcon), { passive: true });
@@ -638,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (completed && buttonIcon) {
             buttonIcon.classList.remove('flash-white-icon');
-            void buttonIcon.offsetWidth;
+            void buttonIcon.offsetWidth; // Trigger reflow
             buttonIcon.classList.add('flash-white-icon');
             buttonIcon.addEventListener('animationend', () => {
                 buttonIcon.classList.remove('flash-white-icon');
@@ -649,18 +650,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progressBarFG) {
             progressBarFG.style.transition = 'opacity 0.2s ease-out';
             progressBarFG.style.opacity = '0';
-            if (!completed) {
+            if (!completed) { // Only reset progress bar if not completed the action
                 const circumference = progressBarFG.r.baseVal.value * 2 * Math.PI;
                 progressBarFG.style.strokeDashoffset = circumference;
             }
         }
         if (buttonIcon) {
             buttonIcon.style.transition = 'filter 0.2s ease-out';
-            buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
-            // If the level is completed, set it back to the completed green
+            // Reset filter based on button state (completed/reset) or default
             const actionType = button.dataset.actionType;
             if (actionType === 'complete' && button.classList.contains('level-completed')) {
+                // If it's a complete button and the level is actually completed, keep it green
                 buttonIcon.style.filter = 'invert(61%) sepia(50%) saturate(350%) hue-rotate(70deg) brightness(100%) contrast(100%)';
+            } else {
+                // Otherwise, revert to default dim state
+                buttonIcon.style.filter = 'invert(45%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2)';
             }
         }
     }
