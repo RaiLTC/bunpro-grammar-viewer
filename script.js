@@ -243,50 +243,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="stats-grid">
                         <p>N-Levels: <span class="stat-value">${stats.completedJlptLevels}/${stats.totalJlptLevels}</span></p>
                         <p>Total Lessons: <span class="stat-value">${stats.completedLessons}/${stats.totalLessons}</span></p>
-                        <p>Total Grammar Points: <span class="stat-value">${stats.completedGrammarPoints}/${stats.totalGrammarPoints}</span></p>
+                        <p>Total Grammar Points: <span class="stat-value">${chains>completedGrammarPoints}/${stats.totalGrammarPoints}</span></p>
                         <p>Bookmarked: <span class="stat-value">${stats.bookmarkedGrammarPoints}</span></p>
                     </div>
                 </div>
                 <div class="detailed-jlpt-stats">
                     <h3>Detailed JLPT Statistics</h3>
                     <div class="stats-grid">
+                        <p>N-5 Lessons: <span class="stat-value">${stats.nLevelStats['N5']?.lessons || 0}</span></p>
+                        <p>N5 Grammar Points: <span class="stat-value">${stats.nLevelStats['N5']?.completedGrammarPoints || 0}/${stats.nLevelStats['N5']?.grammarPoints || 0}</span></p>
+                        <p>Non-JLPT Lessons: <span class="stat-value">${stats.nLevelStats['Non-JLPT']?.lessons || 0}</span></p>
+                        <p>N-4 Lessons: <span class="stat-value">${stats.nLevelStats['N4']?.lessons || 0}</span></p>
+                        <p>N4 Grammar Points: <span class="stat-value">${stats.nLevelStats['N4']?.completedGrammarPoints || 0}/${stats.nLevelStats['N4']?.grammarPoints || 0}</span></p>
+                        <p>Non-JLPT Grammar Points: <span class="stat-value">${stats.nLevelStats['Non-JLPT']?.completedGrammarPoints || 0}/${stats.nLevelStats['Non-JLPT']?.grammarPoints || 0}</span></p>
+                        <p>N-3 Lessons: <span class="stat-value">${stats.nLevelStats['N3']?.lessons || 0}</span></p>
+                        <p>N3 Grammar Points: <span class="stat-value">${stats.nLevelStats['N3']?.completedGrammarPoints || 0}/${stats.nLevelStats['N3']?.grammarPoints || 0}</span></p>
+                        <div></div>
+                        <p>N-2 Lessons: <span class="stat-value">${stats.nLevelStats['N2']?.lessons || 0}</span></p>
+                        <p>N2 Grammar Points: <span class="stat-value">${stats.nLevelStats['N2']?.completedGrammarPoints || 0}/${stats.nLevelStats['N2']?.grammarPoints || 0}</span></p>
+                        <div></div>
+                        <p>N-1 Lessons: <span class="stat-value">${stats.nLevelStats['N1']?.lessons || 0}</span></p>
+                        <p>N1 Grammar Points: <span class="stat-value">${stats.nLevelStats['N1']?.completedGrammarPoints || 0}/${stats.nLevelStats['N1']?.grammarPoints || 0}</span></p>
+                        <div></div>
         `;
 
-        const n5Stats = stats.nLevelStats['N5'] || {};
-        const n4Stats = stats.nLevelStats['N4'] || {};
-        const n3Stats = stats.nLevelStats['N3'] || {};
-        const n2Stats = stats.nLevelStats['N2'] || {};
-        const n1Stats = stats.nLevelStats['N1'] || {};
-        const nonJlptStats = stats.nLevelStats['Non-JLPT'] || {};
-        const unknownNLevelStats = stats.nLevelStats['Unknown N-Level'] || {};
-
-        statsHtml += `
-            <p>N-5 Lessons: <span class="stat-value">${n5Stats.lessons || 0}</span></p>
-            <p>N5 Grammar Points: <span class="stat-value">${n5Stats.completedGrammarPoints || 0}/${n5Stats.grammarPoints || 0}</span></p>
-            <p>Non-JLPT Lessons: <span class="stat-value">${nonJlptStats.lessons || 0}</span></p>
-
-            <p>N-4 Lessons: <span class="stat-value">${n4Stats.lessons || 0}</span></p>
-            <p>N4 Grammar Points: <span class="stat-value">${n4Stats.completedGrammarPoints || 0}/${n4Stats.grammarPoints || 0}</span></p>
-            <p>Non-JLPT Grammar Points: <span class="stat-value">${nonJlptStats.completedGrammarPoints || 0}/${nonJlptStats.grammarPoints || 0}</span></p>
-
-            <p>N-3 Lessons: <span class="stat-value">${n3Stats.lessons || 0}</span></p>
-            <p>N3 Grammar Points: <span class="stat-value">${n3Stats.completedGrammarPoints || 0}/${n3Stats.grammarPoints || 0}</span></p>
-            <div></div>
-
-            <p>N-2 Lessons: <span class="stat-value">${n2Stats.lessons || 0}</span></p>
-            <p>N2 Grammar Points: <span class="stat-value">${n2Stats.completedGrammarPoints || 0}/${n2Stats.grammarPoints || 0}</span></p>
-            <div></div>
-
-            <p>N-1 Lessons: <span class="stat-value">${n1Stats.lessons || 0}</span></p>
-            <p>N1 Grammar Points: <span class="stat-value">${n1Stats.completedGrammarPoints || 0}/${n1Stats.grammarPoints || 0}</span></p>
-            <div></div>
-        `;
-
-        if (unknownNLevelStats.lessons > 0) {
+        if (stats.nLevelStats['Unknown N-Level']?.lessons > 0) {
             statsHtml += `
-                <p>Unknown N-Level Lessons: <span class="stat-value">${unknownNLevelStats.lessons || 0}</span></p>
-                <p>Unknown N-Level Grammar Points: <span class="stat-value">${unknownNLevelStats.completedGrammarPoints || 0}/${unknownNLevelStats.grammarPoints || 0}</span></p>
-                <div></div>
+                        <p>Unknown N-Level Lessons: <span class="stat-value">${stats.nLevelStats['Unknown N-Level'].lessons || 0}</span></p>
+                        <p>Unknown N-Level Grammar Points: <span class="stat-value">${stats.nLevelStats['Unknown N-Level'].completedGrammarPoints || 0}/${stats.nLevelStats['Unknown N-Level'].grammarPoints || 0}</span></p>
+                        <div></div>
             `;
         }
 
@@ -294,17 +279,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-            <div class="announcement-container">
-                <img src="${ICON_PATHS.announcement}" alt="Announcement" onerror="console.error('Failed to load announcement icon at ${ICON_PATHS.announcement}')">
-                <p><strong>Notice:</strong> Having some issues with icons being blacked-out, working on a fix. Functionality remains working </p>
-            </div>
         `;
 
+        // Update or insert statistics container
         let existingStatsContainer = document.querySelector('.statistics-container');
         if (existingStatsContainer) {
             existingStatsContainer.outerHTML = statsHtml;
         } else {
             containerDiv.insertAdjacentHTML('afterbegin', statsHtml);
+        }
+
+        // Ensure announcement container exists only once
+        let existingAnnouncementContainer = document.querySelector('.announcement-container');
+        if (!existingAnnouncementContainer) {
+            const announcementHtml = `
+                <div class="announcement-container">
+                    <img src="${ICON_PATHS.announcement}" alt="Announcement" onerror="console.error('Failed to load announcement icon at ${ICON_PATHS.announcement}')">
+                    <p><strong>Notice:</strong> Having some issues with icons being blacked-out, working on a fix. Functionality remains working </p>
+                </div>
+            `;
+            // Insert announcement after the statistics container
+            const newStatsContainer = document.querySelector('.statistics-container');
+            if (newStatsContainer) {
+                newStatsContainer.insertAdjacentHTML('afterend', announcementHtml);
+            } else {
+                containerDiv.insertAdjacentHTML('afterbegin', announcementHtml);
+            }
         }
 
         updateHeaderCounts(stats.nLevelStats);
