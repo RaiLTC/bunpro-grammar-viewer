@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkSolid: 'icons/circle-check-solid.svg',
         warningTriangle: 'icons/triangle-exclamation-solid.svg',
         trashSolid: 'icons/trash-solid.svg',
-        announcement: 'icons/announcement-shout-svgrepo-com.svg'
+        announcement: 'megaphone-svgrepo-com.svg'
     };
 
     let allGrammarData = [];
